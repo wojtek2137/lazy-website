@@ -24,20 +24,29 @@ export const ContentWrapper = styled('div')`
     font-family: ${fonts.ropaSans};
     font-size: 130px;
     text-transform: uppercase;
+    @media  (max-width: 420px){
+        font-size: 60px;
+    }
 `;
 export const SubHeader = styled('span')`
     font-size: 50px;
     margin-top: 10px;
+    @media  (max-width: 420px){
+        font-size: 30px;
+    }
 `;
 export const SubSubHeader = styled('span')`
     margin-top: 20px;
     font-size: 35px;
     text-transform: capitalize;
     font-family: ${fonts.poppins.Medium};
+    @media  (max-width: 420px){
+        font-size: 20px;
+    }
 `;
 export const ExtraSmallHeader = styled('span')`
-    margin-top: 20px;
-    font-size: 15px;
+    margin-top: 100px;
+    font-size: 20px;
     text-transform: none;
     font-family: ${fonts.poppins.Medium};
 `;
