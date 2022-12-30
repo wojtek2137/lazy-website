@@ -18,6 +18,7 @@ export const ContentWrapper = styled('div')`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     align-items: center;
     color: ${colors.neutrals.N0};
     font-family: ${fonts.ropaSans};
