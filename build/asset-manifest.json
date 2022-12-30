@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/lazy-website/static/js/main.bb19d5d0.js",
+    "main.js": "/lazy-website/static/js/main.a4cfb486.js",
     "static/media/dragon2022.mp4": "/lazy-website/static/media/dragon2022.122eed63a9f4cf836c79.mp4",
     "static/media/ropasans-regular-webfont.woff2": "/lazy-website/static/media/ropasans-regular-webfont.1bf6aa3289e5d424b5bc.woff2",
     "static/media/poppins-medium-webfont.woff2": "/lazy-website/static/media/poppins-medium-webfont.7385c3cf77eb47b997fe.woff2",
@@ -8,9 +8,9 @@
     "static/media/poppins-bold-webfont.woff2": "/lazy-website/static/media/poppins-bold-webfont.fc3c59d97c10208409cb.woff2",
     "static/media/poppins-extrabold-webfont.woff2": "/lazy-website/static/media/poppins-extrabold-webfont.60c907ed7d74427f7214.woff2",
     "index.html": "/lazy-website/index.html",
-    "main.bb19d5d0.js.map": "/lazy-website/static/js/main.bb19d5d0.js.map"
+    "main.a4cfb486.js.map": "/lazy-website/static/js/main.a4cfb486.js.map"
   },
   "entrypoints": [
-    "static/js/main.bb19d5d0.js"
+    "static/js/main.a4cfb486.js"
   ]
 }
