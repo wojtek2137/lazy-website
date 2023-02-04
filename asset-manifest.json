@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/lazy-website/static/js/main.5b29abbe.js",
+    "main.js": "/lazy-website/static/js/main.c7d9388a.js",
     "static/media/dragon2022.mp4": "/lazy-website/static/media/dragon2022.122eed63a9f4cf836c79.mp4",
     "static/media/about.jpg": "/lazy-website/static/media/about.10389895c26d028205db.jpg",
     "static/media/Another.jpg": "/lazy-website/static/media/Another.00b0a9a100ad8f1777ac.jpg",
@@ -11,9 +11,9 @@
     "static/media/poppins-bold-webfont.woff2": "/lazy-website/static/media/poppins-bold-webfont.fc3c59d97c10208409cb.woff2",
     "static/media/poppins-extrabold-webfont.woff2": "/lazy-website/static/media/poppins-extrabold-webfont.60c907ed7d74427f7214.woff2",
     "index.html": "/lazy-website/index.html",
-    "main.5b29abbe.js.map": "/lazy-website/static/js/main.5b29abbe.js.map"
+    "main.c7d9388a.js.map": "/lazy-website/static/js/main.c7d9388a.js.map"
   },
   "entrypoints": [
-    "static/js/main.5b29abbe.js"
+    "static/js/main.c7d9388a.js"
   ]
 }
