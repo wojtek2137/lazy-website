@@ -62,7 +62,6 @@ export const SubHeader = styled('span')`
     letter-spacing: 5px;
     font-size: 24px;
     font-family: ${fonts.ropaSans.Regular};
-    text-transform: lowercase;
     color: ${colors.primary.white};
     @media  (max-width: 420px){
         font-size: 20px;
