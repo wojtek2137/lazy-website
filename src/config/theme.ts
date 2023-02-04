@@ -3,7 +3,12 @@ import { ColorPaletteTypes } from './colorPaletteTypes';
 
 export const colors: ColorPaletteTypes = {
     primary: {
-        P50: '#F2E8FF',
+        white: '#FFFFFF',
+        black: '#000000',
+        darkGrey: '#242424',
+        gold: '#f5cb5c',
+        yellow: '#daa61d',
+        sandy: '#e7d197',
         P75: '#C8A0FF',
         P100: '#B178FF',
         P200: '#8F3EFF',
@@ -12,9 +17,9 @@ export const colors: ColorPaletteTypes = {
         P500: '#490E9C'
     },
     secondary: {
-        S300:  '#01F1E3',
-        S400:  '#01A99F',
-        S500:  '#01938A',
+        S300: '#01F1E3',
+        S400: '#01A99F',
+        S500: '#01938A',
         DP100: '#0D0D21',
         DP200: '#151524',
         DP300: '#1B1B2E',
