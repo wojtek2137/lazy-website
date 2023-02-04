@@ -9,7 +9,7 @@ import TagSpotify from 'src/assets/images/spotify.png';
 
 export function ListenUsView() {
     return (
-        <ListenUsSection id="myMusic">
+        <ListenUsSection id="albums">
             <ListenUsHeader>
                 Albums
             </ListenUsHeader>
