@@ -1,6 +1,11 @@
 export interface ColorPaletteTypes {
     primary: {
-        P50: string,
+        white: string,
+        black: string,
+        darkGrey: string,
+        gold: string,
+        yellow: string,
+        sandy: string,
         P75: string,
         P100: string,
         P200: string,
