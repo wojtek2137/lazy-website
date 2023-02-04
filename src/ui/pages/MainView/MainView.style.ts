@@ -21,7 +21,8 @@ export const MainContainer = styled('div')`
     display: flex;
     flex-direction: row;
     min-width: 100%;
-    height: 100vh;
+    max-height: 100vh;
+    min-height: 100vh;
 `;
 
 export const ContentWrapper = styled('div')`
@@ -68,7 +69,7 @@ export const SubHeader = styled('span')`
     }
 `;
 export const ExtraSmallHeader = styled('span')`
-    margin-top: 100px;
+    /* margin-top: 10px; */
     font-size: 16px;
     text-transform: none;
     font-family: ${fonts.poppins.Medium};
