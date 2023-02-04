@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { ListenUsView } from './pages/ListenUsView/ListenUsView';
+// import { ListenUsView } from './pages/ListenUsView/ListenUsView';
 import { MainView } from './pages/MainView/MainView';
 import About from 'src/assets/images/about.jpg';
 import Another from 'src/assets/images/Another.jpg';
@@ -30,9 +30,9 @@ export function Ui() {
     return (
         <>
             <MainView />
-            <Wrapper />
+            {/* <Wrapper />
             <ListenUsView />
-            <Wrapper2 />
+            <Wrapper2 /> */}
         </>
     );
 };
