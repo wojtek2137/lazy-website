@@ -1,12 +1,9 @@
 {
   "files": {
-    "main.js": "/lazy-website/static/js/main.430770e3.js",
-    "static/media/polish.jpg": "/lazy-website/static/media/polish.9335ca3e7cd46759ef15.jpg",
+    "main.js": "/lazy-website/static/js/main.a1216d55.js",
     "static/media/dragon2022.mp4": "/lazy-website/static/media/dragon2022.122eed63a9f4cf836c79.mp4",
     "static/media/about.jpg": "/lazy-website/static/media/about.10389895c26d028205db.jpg",
-    "static/media/christmas.jpg": "/lazy-website/static/media/christmas.cfaa2d097c20c3ebf2a4.jpg",
     "static/media/Another.jpg": "/lazy-website/static/media/Another.00b0a9a100ad8f1777ac.jpg",
-    "static/media/lazy.png": "/lazy-website/static/media/lazy.9bae26fcb1527a180f59.png",
     "static/media/logo-color.png": "/lazy-website/static/media/logo-color.c48460381493cc6c40e5.png",
     "static/media/ropasans-regular-webfont.woff2": "/lazy-website/static/media/ropasans-regular-webfont.1bf6aa3289e5d424b5bc.woff2",
     "static/media/poppins-medium-webfont.woff2": "/lazy-website/static/media/poppins-medium-webfont.7385c3cf77eb47b997fe.woff2",
@@ -14,9 +11,9 @@
     "static/media/poppins-bold-webfont.woff2": "/lazy-website/static/media/poppins-bold-webfont.fc3c59d97c10208409cb.woff2",
     "static/media/poppins-extrabold-webfont.woff2": "/lazy-website/static/media/poppins-extrabold-webfont.60c907ed7d74427f7214.woff2",
     "index.html": "/lazy-website/index.html",
-    "main.430770e3.js.map": "/lazy-website/static/js/main.430770e3.js.map"
+    "main.a1216d55.js.map": "/lazy-website/static/js/main.a1216d55.js.map"
   },
   "entrypoints": [
-    "static/js/main.430770e3.js"
+    "static/js/main.a1216d55.js"
   ]
 }
