@@ -20,7 +20,7 @@ export const Logo = styled('div')`
 export const MainContainer = styled('div')`
     display: flex;
     flex-direction: row;
-    min-width: 100%;
+    width: 100%;
     height: 100vh;
     max-height: 100vh;
     overflow: hidden;
@@ -36,7 +36,7 @@ export const ContentWrapper = styled('div')`
     justify-content: center;
     align-items: center;
     color: ${colors.neutrals.N0};
-    /* margin: 0; */
+    overflow: hidden;
 
     @media  (max-width: 420px){
         font-size: 60px;
