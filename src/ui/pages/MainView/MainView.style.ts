@@ -21,8 +21,9 @@ export const MainContainer = styled('div')`
     display: flex;
     flex-direction: row;
     min-width: 100%;
+    height: 100vh;
     max-height: 100vh;
-    min-height: 100vh;
+    overflow: hidden;
 `;
 
 export const ContentWrapper = styled('div')`
