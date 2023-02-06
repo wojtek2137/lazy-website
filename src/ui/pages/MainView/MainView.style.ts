@@ -2,14 +2,14 @@ import styled from '@emotion/styled';
 import { colors, fonts } from 'src/config/theme';
 import LogoImage from 'src/assets/images/logo-color.png';
 
-export const Logo = styled('div')`
-    margin: 0;
+export const Logo = styled('img')`
+    margin: 0 auto 50px;
     display:flex;
-    min-width: 600px;
-    min-height: 600px;
-    background: url('${LogoImage}');
+    min-width: 500px;
+    min-height: 500px;
+    /* background: url('${LogoImage}');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
     @media  (max-width: 420px){
         min-width: 350px;
         min-height: 350px;
