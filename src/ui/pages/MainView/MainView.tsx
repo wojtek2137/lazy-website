@@ -1,6 +1,7 @@
 import React from 'react';
 import { ContentWrapper, ExtraSmallHeader, Header, HeaderWrapper, Logo, MainContainer, SubHeader, VideoWrapper } from './MainView.style';
 import dragonVideo2022 from 'src/assets/video/dragon2022.mp4';
+import LogoImage from 'src/assets/images/logo-color.png';
 
 // export const MuteButton = styled('a')`
 //    color: ${colors.primary.sandy};
@@ -23,7 +24,7 @@ export function MainView() {
             <MainContainer>
                 <VideoWrapper src={dragonVideo2022} autoPlay loop muted={true} playsInline></VideoWrapper>
                 <ContentWrapper>
-                    <Logo />
+                    <Logo src={LogoImage} />
                     <HeaderWrapper>
                         <SubHeader>originated from Krakow Poland</SubHeader>
 
