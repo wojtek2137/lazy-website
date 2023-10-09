@@ -1,13 +1,11 @@
 
 export interface FontTypes {
-    poppins: {
+    mulish: {
+        Light: string,
         Regular: string,
         Medium: string,
         Bold: string,
         ExtraBold: string,
-    };
-    ropaSans: {
-        Regular: string,
     };
 };
 

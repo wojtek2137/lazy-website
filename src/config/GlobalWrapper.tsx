@@ -1,12 +1,13 @@
 import React from 'react';
 import { Global, css } from '@emotion/react';
-import poppinsRegular from 'src/assets/fonts/poppins-regular-webfont.woff2';
-import poppinsMedium from 'src/assets/fonts/poppins-medium-webfont.woff2';
-import poppinsBold from 'src/assets/fonts/poppins-bold-webfont.woff2';
-import poppinsExtraBold from 'src/assets/fonts/poppins-extrabold-webfont.woff2';
-import ropaSans from 'src/assets/fonts/ropasans-regular-webfont.woff2';
+import mulishLight from 'src/assets/fonts/mulish-light.woff2';
+import mulishRegular from 'src/assets/fonts/mulish-regular.woff2';
+import mulishMedium from 'src/assets/fonts/mulish-medium.woff2';
+import mulishBold from 'src/assets/fonts/mulish-bold.woff2';
+import mulishExtraBold from 'src/assets/fonts/mulish-extra-bold.woff2';
+type FontType = 'mulish_light' | 'mulish_regular' | 'mulish_medium' | 'mulish_bold' | 'mulish_extra_bold';
 
-const getFont = (font: string, src: string): string => {
+const getFont = (font: FontType, src: string): string => {
     return `
         @font-face {
             font-family: '${font}';
@@ -28,12 +29,11 @@ export const GlobalWrapper = (): JSX.Element => {
                     box-sizing: border-box;
                 }
 
-                ${getFont('poppins_regular', poppinsRegular)};
-                ${getFont('poppins_medium', poppinsMedium)};
-                ${getFont('poppins_bold', poppinsBold)};
-                ${getFont('poppins_extrabold', poppinsExtraBold)};
-                ${getFont('ropa_sans', ropaSans)};
-
+                ${getFont('mulish_light', mulishLight)};
+                ${getFont('mulish_regular', mulishRegular)};
+                ${getFont('mulish_medium', mulishMedium)};
+                ${getFont('mulish_bold', mulishBold)};
+                ${getFont('mulish_extra_bold', mulishExtraBold)};
                 body {
                     width: 100%;
                     height: 100%;

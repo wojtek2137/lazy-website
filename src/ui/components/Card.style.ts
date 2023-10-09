@@ -57,7 +57,7 @@ export const CardContentWrapper = styled('div')`
 `;
 
 export const CardHeader = styled('h3')`
-    font-family: ${fonts.poppins.Medium};
+    font-family: ${fonts.mulish.Medium};
     color: ${colors.primary.sandy};
     font-size: 24px;
     text-align: center;
@@ -65,7 +65,7 @@ export const CardHeader = styled('h3')`
 `;
 export const ListenSpan = styled('span')`
     display: block;
-    font-family: ${fonts.poppins.Medium};
+    font-family: ${fonts.mulish.Medium};
     color: ${colors.primary.black};
     font-size: 18px;
     text-align: center;

@@ -16,7 +16,7 @@ export const ListenAlbumsWrapper = styled('div')`
 `;
 
 export const ListenUsHeader = styled('h2')`
-    font-family: ${fonts.poppins.Regular};
+    font-family: ${fonts.mulish.Regular};
     text-align:center;
     font-size: 2em;
     letter-spacing: 3px;
