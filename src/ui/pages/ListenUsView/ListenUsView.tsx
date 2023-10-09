@@ -17,7 +17,7 @@ export function ListenUsView() {
                 <Card coverSrc={LazySwingersCover} tagSrc={TagSpotify} />
                 <Card coverSrc={LazyChristmasCover} tagSrc={TagSpotify} />
                 <Card coverSrc={PolishSwingCover} tagSrc={TagSpotify} />
-                {/* <Card coverSrc={LazySwingersCover} tagSrc={TagSpotify} /> */}
+                <Card coverSrc={LazySwingersCover} tagSrc={TagSpotify} />
             </ListenAlbumsWrapper>
 
             {/* 

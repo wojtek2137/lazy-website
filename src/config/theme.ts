@@ -81,13 +81,11 @@ export const colors: ColorPaletteTypes = {
 };
 
 export const fonts: FontTypes = {
-    poppins: {
-        Regular: 'poppins_regular',
-        Medium: 'poppins_medium',
-        Bold: 'poppins_bold',
-        ExtraBold: 'poppins_extrabold'
-    },
-    ropaSans: {
-        Regular: 'ropa_sans'
+    mulish: {
+        Light: 'mulish_light',
+        Regular: 'mulish_regular',
+        Medium: 'mulish_medium',
+        Bold: 'mulish_bold',
+        ExtraBold: 'mulish_extra_bold',
     }
 };
