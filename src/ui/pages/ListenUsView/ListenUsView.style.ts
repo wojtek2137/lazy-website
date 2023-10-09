@@ -8,12 +8,28 @@ export const ListenUsSection = styled('section')`
     padding: 30px;
 `;
 
+const breakpoints = [576, 768, 992, 1200];
+
+const mq = breakpoints.map(
+    bp => `@media (max-width: ${bp}px)`
+);
+
 export const ListenAlbumsWrapper = styled('div')`
-    display:flex;
-    justify-content: center;
-    align-items: flex-end;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  ${mq[1]} {
+    flex-direction: column;
+  }
 `;
+
+// export const ListenAlbumsWrapper = styled('div')`
+//     display:flex;
+//     justify-content: center;
+//     align-items: flex-end;
+//     width: 100%;
+// `;
 
 export const ListenUsHeader = styled('h2')`
     font-family: ${fonts.mulish.Regular};
