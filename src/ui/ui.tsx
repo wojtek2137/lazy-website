@@ -9,6 +9,11 @@ import { YouTubeView } from 'src/ui/pages/YouTubeView/YouTubeView';
 interface SectionWrapperPropsType {
     imageUrl: string
 }
+const breakpoints = [576, 768, 992, 1200];
+
+const mq = breakpoints.map(
+    bp => `@media (max-width: ${bp}px)`
+);
 export const SectionWrapper = styled('section') <SectionWrapperPropsType>`
     display:flex;
     align-items: end;
@@ -31,6 +36,9 @@ export const TextWrapper = styled('div')`
     height: auto;
     margin: 0 15% 10%;
     padding: 10px;
+    ${mq[1]}{
+        margin: 0px 15px 60px;
+    }
 `;
 
 export const TextMedium = styled('p')`
@@ -41,7 +49,10 @@ export const TextMedium = styled('p')`
     width: 100%;
     letter-spacing: 1.5px;
     text-align: center;
-    /* text-transform: uppercase; */
+    ${mq[1]}{
+        text-align: initial;
+        padding: 10px;
+    }
   `;
 export const ListWrapper = styled('ul')`
     text-align: initial;

@@ -2,14 +2,24 @@ import React, { useState } from 'react';
 import { CardContainer, CardContentWrapper, CardHeader, CardWrapper, Img, ImgBox, ListenSpan, StreamingList, StreamingTag, StreamingTagWrapper } from './Card.style';
 
 interface PropsType {
+    name: string,
     coverSrc: string,
-    tagSrc: string
+    tags: Array<{
+        src: string,
+        imageUrl: string
+    }>
 }
 
 export function Card(props: PropsType) {
-    const { coverSrc, tagSrc } = props;
+    const { name, coverSrc, tags } = props;
     const [isHover, setIsHover] = useState<boolean>(false);
 
+    function insertBreak(name: string, afterWordNumber: number): JSX.Element[] {
+        const arr = name.split(' ');
+        let firstPart = arr.slice(0, afterWordNumber).join(' ');
+        let secondPart = arr.slice(afterWordNumber).join(' ');
+        return [<span key="1">{firstPart}</span>, <br key="2" />, <span key="3">{secondPart}</span>];
+    }
     return (
         <CardContainer>
             <CardWrapper
@@ -22,34 +32,20 @@ export function Card(props: PropsType) {
                 <CardContentWrapper>
                     <CardHeader>
 
-                        Lazy Swingers <br /> Band
+                        {insertBreak(name, 2)}
                         <ListenSpan>listen album: </ListenSpan>
 
                     </CardHeader>
 
 
                     <StreamingList>
-
-                        <StreamingTagWrapper>
-                            <a href="https://music.apple.com/pl/album/lazy-swingers-band/1507094483">
-                                <StreamingTag src={tagSrc} />
-                            </a>
-                        </StreamingTagWrapper>
-                        <StreamingTagWrapper>
-                            <a href="https://music.apple.com/pl/album/lazy-swingers-band/1507094483">
-                                <StreamingTag src={tagSrc} />
-                            </a>
-                        </StreamingTagWrapper>
-                        <StreamingTagWrapper>
-                            <a href="https://music.apple.com/pl/album/lazy-swingers-band/1507094483">
-                                <StreamingTag src={tagSrc} />
-                            </a>
-                        </StreamingTagWrapper>
-                        <StreamingTagWrapper>
-                            <a href="https://music.apple.com/pl/album/lazy-swingers-band/1507094483">
-                                <StreamingTag src={tagSrc} />
-                            </a>
-                        </StreamingTagWrapper>
+                        {tags.map(tag => {
+                            return <StreamingTagWrapper>
+                                <a href={tag.src}>
+                                    <StreamingTag src={tag.imageUrl} />
+                                </a>
+                            </StreamingTagWrapper>
+                        })}
                     </StreamingList>
 
                 </CardContentWrapper>
