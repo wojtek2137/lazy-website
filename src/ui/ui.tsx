@@ -5,6 +5,7 @@ import About from 'src/assets/images/about.jpg';
 import About2 from 'src/assets/images/about2.jpg';
 import { ListenUsView } from 'src/ui/pages/ListenUsView/ListenUsView';
 import { colors, fonts } from 'src/config/theme';
+import { YouTubeView } from 'src/ui/pages/YouTubeView/YouTubeView';
 interface SectionWrapperPropsType {
     imageUrl: string
 }
@@ -77,6 +78,7 @@ export function Ui() {
                     </TextMedium>
                 </TextWrapper>
             </SectionWrapper>
+            <YouTubeView />
         </>
     );
 };
