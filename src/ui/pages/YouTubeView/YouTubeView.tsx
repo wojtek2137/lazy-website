@@ -19,6 +19,7 @@ export const YouTubeIFramesWrapper = styled('div')`
 export const YouTubeIFrame = styled('iframe')`
     border-radius: 40px;
     border: 20px solid rgba(255,255,255,0.1);
+    margin-bottom: 30px;
     ${mq[1]} {
     width: 100%;
   }
