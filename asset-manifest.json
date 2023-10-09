@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/static/js/main.b86e8036.js",
-    "static/media/polish.jpg": "/static/media/polish.9335ca3e7cd46759ef15.jpg",
+    "main.js": "/static/js/main.c76a82f4.js",
     "static/media/dragon2022.mp4": "/static/media/dragon2022.122eed63a9f4cf836c79.mp4",
-    "static/media/christmas.jpg": "/static/media/christmas.cfaa2d097c20c3ebf2a4.jpg",
     "static/media/about2.jpg": "/static/media/about2.56a7e7e1a497342353ae.jpg",
-    "static/media/lazy.png": "/static/media/lazy.9bae26fcb1527a180f59.png",
     "static/media/about.jpg": "/static/media/about.29f524499642e40c5b25.jpg",
+    "static/media/polish.jpg": "/static/media/polish.352973f098cde93f6690.jpg",
+    "static/media/christmas.jpg": "/static/media/christmas.60511b24e6b82c6a04f6.jpg",
+    "static/media/lazy.png": "/static/media/lazy.0fe9e7c06c7ee61d76fb.png",
     "static/media/mulish-medium.woff2": "/static/media/mulish-medium.97952bebc179d0479bfe.woff2",
     "static/media/mulish-extra-bold.woff2": "/static/media/mulish-extra-bold.cf994c3a1130a30f0964.woff2",
     "static/media/mulish-regular.woff2": "/static/media/mulish-regular.f188daf01849fd250c9f.woff2",
@@ -14,9 +14,9 @@
     "static/media/mulish-light.woff2": "/static/media/mulish-light.64c58821947d7a871d54.woff2",
     "static/media/logo-color.png": "/static/media/logo-color.c48460381493cc6c40e5.png",
     "index.html": "/index.html",
-    "main.b86e8036.js.map": "/static/js/main.b86e8036.js.map"
+    "main.c76a82f4.js.map": "/static/js/main.c76a82f4.js.map"
   },
   "entrypoints": [
-    "static/js/main.b86e8036.js"
+    "static/js/main.c76a82f4.js"
   ]
 }
