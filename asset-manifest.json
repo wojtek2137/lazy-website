@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.c76a82f4.js",
+    "main.js": "/static/js/main.dfd5e9eb.js",
     "static/media/dragon2022.mp4": "/static/media/dragon2022.122eed63a9f4cf836c79.mp4",
     "static/media/about2.jpg": "/static/media/about2.56a7e7e1a497342353ae.jpg",
     "static/media/about.jpg": "/static/media/about.29f524499642e40c5b25.jpg",
@@ -14,9 +14,9 @@
     "static/media/mulish-light.woff2": "/static/media/mulish-light.64c58821947d7a871d54.woff2",
     "static/media/logo-color.png": "/static/media/logo-color.c48460381493cc6c40e5.png",
     "index.html": "/index.html",
-    "main.c76a82f4.js.map": "/static/js/main.c76a82f4.js.map"
+    "main.dfd5e9eb.js.map": "/static/js/main.dfd5e9eb.js.map"
   },
   "entrypoints": [
-    "static/js/main.c76a82f4.js"
+    "static/js/main.dfd5e9eb.js"
   ]
 }
