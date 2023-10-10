@@ -6,6 +6,7 @@ import About2 from 'src/assets/images/about2.jpg';
 import { ListenUsView } from 'src/ui/pages/ListenUsView/ListenUsView';
 import { colors, fonts } from 'src/config/theme';
 import { YouTubeView } from 'src/ui/pages/YouTubeView/YouTubeView';
+import { ContactSection } from 'src/ui/pages/ContactSection/ContactSection';
 interface SectionWrapperPropsType {
     imageUrl: string
 }
@@ -25,6 +26,7 @@ export const SectionWrapper = styled('section') <SectionWrapperPropsType>`
     background-size: cover;
     background-attachment: fixed;
     background-position: right;
+    overflow: scroll;
   `;
 
 export const TextWrapper = styled('div')`
@@ -90,6 +92,7 @@ export function Ui() {
                 </TextWrapper>
             </SectionWrapper>
             <YouTubeView />
+            <ContactSection />
         </>
     );
 };
