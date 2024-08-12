@@ -84,7 +84,7 @@ export function ContactSection() {
           />
         </a>
       </BoxSide>
-      <BoxSide>
+      <BoxMiddle>
         <ContactHeader>Dane Kontaktowe</ContactHeader>
         <List>
           <SpanStyle>
@@ -99,7 +99,7 @@ export function ContactSection() {
             Email: <TextParagraph>lazyswingband@gmail.com</TextParagraph>
           </SpanStyle>
         </List>
-      </BoxSide>
+      </BoxMiddle>
       <BoxSide>
         <ContactHeader>
           Obserwuj nas <br />

@@ -3,10 +3,14 @@ import React from "react";
 import { MainView } from "./pages/MainView/MainView";
 import About from "src/assets/images/about.jpg";
 import About2 from "src/assets/images/about2.jpg";
+import About3 from "src/assets/images/about3.jpg";
 import { ListenUsView } from "src/ui/pages/ListenUsView/ListenUsView";
 import { colors, fonts } from "src/config/theme";
 import { YouTubeView } from "src/ui/pages/YouTubeView/YouTubeView";
-import { ContactSection } from "src/ui/pages/ContactSection/ContactSection";
+import {
+  ContactSection,
+  SpanStyle,
+} from "src/ui/pages/ContactSection/ContactSection";
 interface SectionWrapperPropsType {
   imageUrl: string;
 }
@@ -23,7 +27,7 @@ export const SectionWrapper = styled("section")<SectionWrapperPropsType>`
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  background-position: right;
+  background-position: top;
   ${mq[1]} {
     background-attachment: scroll;
     background-position: center;
@@ -72,8 +76,8 @@ export function Ui() {
           <TextMedium>
             Jesteśmy młodą i dynamiczną grupą, która kocha muzykę i kulturę
             swingową. Nasz zespół powstał w Krakowie, gdzie w 2016 roku
-            zaczęliśmy naszą przygodę od małych swingowych potańcówek w Piwnicy
-            pod Baranami.
+            zaczęliśmy naszą przygodę od małych swingowych potańcówek w{" "}
+            <SpanStyle> Piwnicy pod Baranami.</SpanStyle>
           </TextMedium>
         </TextWrapper>
       </SectionWrapper>
@@ -83,7 +87,9 @@ export function Ui() {
           <TextMedium>
             Nasza pasja do muzyki swingowej prowadzi nas nie tylko po całej
             Polsce, ale także poza jej granice. <br />
-            Zawitaliśmy między innymi na takie festiwale jak:
+            <SpanStyle>
+              Zawitaliśmy między innymi na takie festiwale jak:
+            </SpanStyle>
             <ListWrapper>
               <li>Dragon Swing Festival,</li>
               <li>Transvingvania Lindy Exchange,</li>
@@ -96,6 +102,47 @@ export function Ui() {
         </TextWrapper>
       </SectionWrapper>
       <YouTubeView />
+      <SectionWrapper imageUrl={About3}>
+        <TextWrapper>
+          <TextMedium>
+            Jeśli organizujecie Państwo wszelakie wydarzenia kulturalne,
+            <ListWrapper>
+              <li>
+                festiwale jazzowe, retro-festiwale, festiwale tańca swingowego
+              </li>
+              <li>targi,</li>
+              <li>pikniki,</li>
+              <li>bankiety,</li>
+              <li>imprezy dla zróżnicowanej publiczności</li>
+              <br /> a może klimatycznego zespołu rodem z Ojca Chrzestnego, do
+              swojego filmu...
+            </ListWrapper>
+            <SpanStyle> - JESTEŚMY IDEALNYM WYBOREM!</SpanStyle>
+          </TextMedium>
+        </TextWrapper>
+      </SectionWrapper>
+      <section
+        style={{
+          backgroundColor: colors.primary.black,
+          height: "50vh",
+          margin: "auto",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <TextWrapper>
+          <TextMedium>
+            W okresie około-świątecznym mamy także przygotowany repertuar
+            x-masowy: <br />
+            <SpanStyle> Lazy Christmas! </SpanStyle>
+            ze standardami amerykańskich, swingowych przebojów <br /> <br />-{" "}
+            <SpanStyle>
+              doskonała oferta na wigilie firmowe i inne podobne wydarzenia w
+              klimacie bożonarodzeniowym.
+            </SpanStyle>
+          </TextMedium>
+        </TextWrapper>
+      </section>
       <ContactSection />
     </>
   );
