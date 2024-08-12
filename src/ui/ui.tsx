@@ -4,6 +4,12 @@ import { MainView } from "./pages/MainView/MainView";
 import About from "src/assets/images/about.jpg";
 import About2 from "src/assets/images/about2.jpg";
 import About3 from "src/assets/images/about3.jpg";
+import Wojtek from "src/assets/images/wojtek.jpg";
+import Michal from "src/assets/images/michal.jpg";
+import Lukasz from "src/assets/images/lukasz.jpg";
+import Sylwia from "src/assets/images/sylwia.jpg";
+import Dominik from "src/assets/images/dominik.jpg";
+import Milosz from "src/assets/images/milosz.jpg";
 import { ListenUsView } from "src/ui/pages/ListenUsView/ListenUsView";
 import { colors, fonts } from "src/config/theme";
 import { YouTubeView } from "src/ui/pages/YouTubeView/YouTubeView";
@@ -77,7 +83,83 @@ export const ChristmasSection = styled("section")`
     height: 80vh;
   }
 `;
-
+export const SquadSection = styled("section")`
+  display: flex;
+  flex-wrap: wrap;
+  /* max-height: 100vh; */
+  /* padding: 10px; */
+`;
+export const ImageBox = styled("div")`
+  flex: 1 1 calc(33.333%);
+  margin: 0;
+  padding: 0;
+  align-items: start;
+  /* position: relative;
+  box-sizing: border-box; */
+  ${mq[1]} {
+    flex: 1 1 100%;
+  }
+`;
+export const SquadImg = styled("img")`
+  width: 100%;
+  height: 100%;
+  /* display: block; */
+`;
+export const SquadHeader = styled("h3")`
+  font-family: ${fonts.mulish.Bold};
+  color: ${colors.primary.white};
+  width: 100%;
+  text-align: center;
+  position: relative;
+  bottom: 100px;
+  margin: 0;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+`;
+export const SquadHeaderMain = styled("h2")`
+  font-family: ${fonts.mulish.Bold};
+  color: #ccb379;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  background: ${colors.primary.black};
+  border-radius: 5px;
+  border: 1px solid #ccb379;
+  padding: 13px 0;
+`;
+const squadData = [
+  {
+    person: "Wojciech Rejdych",
+    imageSrc: Wojtek,
+    description: "Saksofon",
+  },
+  {
+    person: "Sylwia Buchalska",
+    imageSrc: Sylwia,
+    description: "Wokal",
+  },
+  {
+    person: "Dominik Borek",
+    imageSrc: Dominik,
+    description: "Trąbka",
+  },
+  {
+    person: "Michał Biel",
+    imageSrc: Michal,
+    description: "Kontrabas",
+  },
+  {
+    person: "Łukasz Giergiel",
+    imageSrc: Lukasz,
+    description: "Perkusja",
+  },
+  {
+    person: "Miłosz Bazarnik",
+    imageSrc: Milosz,
+    description: "Fortepian",
+  },
+];
 export function Ui() {
   return (
     <>
@@ -124,7 +206,7 @@ export function Ui() {
               <li>targi,</li>
               <li>pikniki,</li>
               <li>bankiety,</li>
-              <li>imprezy dla zróżnicowanej publiczności</li>
+              <li>imprezy dla zróżnicowanej publiczności,</li>
             </ListWrapper>
             a może poszukują klimatycznego zespołu, rodem z Ojca Chrzestnego, do
             swojego filmu...
@@ -146,6 +228,18 @@ export function Ui() {
           </TextMedium>
         </TextWrapper>
       </ChristmasSection>
+      <SquadSection>
+        <SquadHeaderMain>Skład zespołu</SquadHeaderMain>
+        {squadData.map((squad) => (
+          <ImageBox>
+            <SquadImg src={squad.imageSrc} />
+            <SquadHeader>
+              {`${squad.person} `} <br />
+              <SpanStyle>{`${squad.description}`}</SpanStyle>
+            </SquadHeader>
+          </ImageBox>
+        ))}
+      </SquadSection>
       <ContactSection />
     </>
   );
