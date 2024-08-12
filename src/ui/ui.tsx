@@ -61,10 +61,21 @@ export const TextMedium = styled("p")`
   ${mq[1]} {
     text-align: initial;
     padding: 10px;
+    font-size: 1em;
   }
 `;
 export const ListWrapper = styled("ul")`
   text-align: initial;
+`;
+export const ChristmasSection = styled("section")`
+  background-color: ${colors.primary.black};
+  height: 50vh;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  ${mq[1]} {
+    height: 80vh;
+  }
 `;
 
 export function Ui() {
@@ -114,35 +125,27 @@ export function Ui() {
               <li>pikniki,</li>
               <li>bankiety,</li>
               <li>imprezy dla zróżnicowanej publiczności</li>
-              <br /> a może klimatycznego zespołu rodem z Ojca Chrzestnego, do
-              swojego filmu...
             </ListWrapper>
+            a może poszukują klimatycznego zespołu, rodem z Ojca Chrzestnego, do
+            swojego filmu...
             <SpanStyle> - JESTEŚMY IDEALNYM WYBOREM!</SpanStyle>
           </TextMedium>
         </TextWrapper>
       </SectionWrapper>
-      <section
-        style={{
-          backgroundColor: colors.primary.black,
-          height: "50vh",
-          margin: "auto",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+      <ChristmasSection>
         <TextWrapper>
           <TextMedium>
             W okresie około-świątecznym mamy także przygotowany repertuar
             x-masowy: <br />
             <SpanStyle> Lazy Christmas! </SpanStyle>
-            ze standardami amerykańskich, swingowych przebojów <br /> <br />-{" "}
+            ze standardami amerykańskich, swingowych przebojów <br /> <br />
             <SpanStyle>
-              doskonała oferta na wigilie firmowe i inne podobne wydarzenia w
-              klimacie bożonarodzeniowym.
+              - To doskonała oferta na wigilie firmowe i inne podobne
+              wydarzenia, w klimacie bożonarodzeniowym.
             </SpanStyle>
           </TextMedium>
         </TextWrapper>
-      </section>
+      </ChristmasSection>
       <ContactSection />
     </>
   );
