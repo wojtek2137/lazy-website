@@ -94,28 +94,29 @@ export const ImageBox = styled("div")`
   margin: 0;
   padding: 0;
   align-items: start;
-  /* position: relative;
-  box-sizing: border-box; */
+  box-sizing: border-box;
+  background-color: black;
   ${mq[1]} {
     flex: 1 1 100%;
   }
 `;
 export const SquadImg = styled("img")`
   width: 100%;
-  height: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
   /* display: block; */
 `;
 export const SquadHeader = styled("h3")`
+  font-size: 18px;
   font-family: ${fonts.mulish.Bold};
   color: ${colors.primary.white};
   width: 100%;
   text-align: center;
   position: relative;
-  bottom: 100px;
-  margin: 0;
-  padding: 8px 10px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
+  padding: 0 0 8px 0;
+  background: ${colors.primary.black};
 `;
 export const SquadHeaderMain = styled("h2")`
   font-family: ${fonts.mulish.Bold};
