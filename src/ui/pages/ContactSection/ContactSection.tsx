@@ -3,13 +3,12 @@
 // import phoneicon from "./phone-icon.png";
 // import emailicon from "./email-icon.png";
 // import { ContactForm } from "src/ui/pages/ContactSection/ContactForm";
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
-import {
-  ContactHeader,
-  //   ContactHeaderCenter,
-} from "src/ui/pages/ContactSection/ContactSection.style";
+import { ContactHeader } from "src/ui/pages/ContactSection/ContactSection.style";
 import { colors, fonts } from "src/config/theme";
+import TagFacebookIcon from "src/assets/images/facebook-icon.png";
+import TagInstagramIcon from "src/assets/images/instagram-icon.png";
 
 const breakpoints = [576, 768, 992, 1200];
 
@@ -53,21 +52,38 @@ export const TextParagraph = styled("p")`
   font-size: 20px;
   color: ${colors.primary.white};
 `;
-
+interface SocialMediaPropsType {
+  isHover: boolean;
+}
+export const SocialMediaImg = styled("img")<SocialMediaPropsType>`
+  cursor: pointer;
+  max-height: 190px;
+  ${(props): string | null =>
+    props.isHover === true ? `filter: grayscale(50%);` : null}
+`;
 export function ContactSection() {
+  const facebookHref = "https://www.facebook.com/lazyswingersband";
+  const instagramHref = "https://www.instagram.com/lazyswingband/";
+  const [isFbHover, setIsFbHover] = useState<boolean>(false);
+  const [isIgHover, setIsIgHover] = useState<boolean>(false);
+
   return (
     <ContactSectionWrapper>
-      {/* <BoxSide>
+      <BoxSide>
         <ContactHeader>
-          Znajdź mnie <br /> na
+          Napisz do nas <br />
+          na <br />
+          Facebooku
         </ContactHeader>
+        <a href={facebookHref}>
+          <SocialMediaImg
+            onMouseEnter={() => setIsFbHover(true)}
+            onMouseLeave={() => setIsFbHover(false)}
+            src={TagFacebookIcon}
+            isHover={isFbHover}
+          />
+        </a>
       </BoxSide>
-      <BoxMiddle>
-        <ContactHeaderCenter>
-          Napisz <br /> do nas
-        </ContactHeaderCenter>
-        <ContactForm />
-      </BoxMiddle> */}
       <BoxSide>
         <ContactHeader>Dane Kontaktowe</ContactHeader>
         <List>
@@ -83,6 +99,21 @@ export function ContactSection() {
             Email: <TextParagraph>lazyswingband@gmail.com</TextParagraph>
           </SpanStyle>
         </List>
+      </BoxSide>
+      <BoxSide>
+        <ContactHeader>
+          Obserwuj nas <br />
+          na <br />
+          Instagramie
+        </ContactHeader>
+        <a href={instagramHref}>
+          <SocialMediaImg
+            onMouseEnter={() => setIsIgHover(true)}
+            onMouseLeave={() => setIsIgHover(false)}
+            src={TagInstagramIcon}
+            isHover={isIgHover}
+          />
+        </a>
       </BoxSide>
     </ContactSectionWrapper>
   );

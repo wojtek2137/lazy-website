@@ -24,6 +24,10 @@ export const SectionWrapper = styled("section")<SectionWrapperPropsType>`
   background-size: cover;
   background-attachment: fixed;
   background-position: right;
+  ${mq[1]} {
+    background-attachment: scroll;
+    background-position: center;
+  }
   /* overflow: scroll; */
 `;
 
