@@ -105,8 +105,6 @@ export const SquadImg = styled("img")`
   max-height: 100%;
   margin: 0;
   padding: 0;
-  border: none;
-  /* display: block; */
 `;
 export const SquadHeader = styled("h3")`
   font-size: 18px;
@@ -131,15 +129,16 @@ export const SquadHeaderMain = styled("h2")`
 `;
 const squadData = [
   {
-    person: "Wojciech Rejdych",
-    imageSrc: Wojtek,
-    description: "Saksofon",
-  },
-  {
     person: "Sylwia Buchalska",
     imageSrc: Sylwia,
     description: "Wokal",
   },
+  {
+    person: "Wojciech Rejdych",
+    imageSrc: Wojtek,
+    description: "Saksofon",
+  },
+
   {
     person: "Dominik Borek",
     imageSrc: Dominik,
