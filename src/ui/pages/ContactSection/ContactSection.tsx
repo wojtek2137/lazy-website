@@ -89,11 +89,11 @@ export function ContactSection() {
         <List>
           <SpanStyle>
             Manager:
-            <TextParagraph>Karolina Macałka</TextParagraph>
+            <TextParagraph>Sylwia Buchalska-Augustyn</TextParagraph>
           </SpanStyle>
           <SpanStyle>
             Telefon:
-            <TextParagraph>+48 691 135 466, +48 732 661 109</TextParagraph>
+            <TextParagraph>+48 794 210 665, +48 732 661 109</TextParagraph>
           </SpanStyle>
           <SpanStyle>
             Email: <TextParagraph>lazyswingband@gmail.com</TextParagraph>
