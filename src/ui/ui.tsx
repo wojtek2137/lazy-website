@@ -10,16 +10,34 @@ import { YouTubeView } from "ui/pages/YouTubeView/YouTubeView";
 import { SquadSection } from "ui/pages/SquadSection/SquadSection";
 import { LatoZRadiemSection } from "ui/pages/LatoZRadiemSection/LatoZRadiemSection";
 import { Navigation } from "ui/components/Navigation";
-import {
-  ContactSection,
-  SpanStyle,
-} from "ui/pages/ContactSection/ContactSection";
+import { ContactSection } from "ui/pages/ContactSection/ContactSection";
 interface SectionWrapperPropsType {
   imageUrl: string;
 }
 const breakpoints = [576, 768, 992, 1200];
 
 const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+
+// Highlighted text component for emphasis
+export const SpanStyle = styled("span")`
+  font-family: ${fonts.mulish.Bold};
+  font-size: 20px;
+  color: ${colors.primary.gold};
+  font-weight: 700;
+  text-shadow: 0 0 10px ${colors.primary.gold}30;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, ${colors.primary.gold}, transparent);
+    opacity: 0.6;
+  }
+`;
 export const SectionWrapper = styled("section")<SectionWrapperPropsType>`
   display: flex;
   align-items: end;
