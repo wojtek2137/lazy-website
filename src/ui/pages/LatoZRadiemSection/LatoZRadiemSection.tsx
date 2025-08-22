@@ -49,8 +49,8 @@ const cities = [
     url: 'https://jedynka.polskieradio.pl/artykul/3563339,Lato-z-Radiem-w-uniwersum-Rancza-Co-wydarzy-sie-w-Jeruzalu-i-Mrozach'
   },
   {
-    name: 'Mrozy',
-    url: 'https://jedynka.polskieradio.pl/artykul/3565373,Lato-z-Radiem-i-Telewizja-Polska-w-Mrozach'
+    name: 'Elbląg',
+    url: 'https://jedynka.polskieradio.pl/artykul/3549480,Drugi-przystanek-na-trasie-Lata-z-Radiem-i-Telewizj%C4%85-Polsk%C4%85-Co-wydarzy%C5%82o-si%C4%99-w-Elbl%C4%85gu'
   },
   {
     name: 'Tarnów',
