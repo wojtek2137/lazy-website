@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ContentWrapper,
   HeaderWrapper,
@@ -24,7 +24,30 @@ import dragonVideo2022 from "assets/video/dragon2022.mp4";
 // `;
 
 export function MainView() {
-  // const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [textIndex, setTextIndex] = useState(0);
+
+  const alternativeTexts = [
+    "Swingowa muzyka do tańca",
+    "Prawdziwy jazz w Krakowie", 
+    "Muzyka z duszą i pasją",
+    "Swing który porusza"
+  ];
+
+  useEffect(() => {
+    // Trigger animations after component mount
+    const timer = setTimeout(() => setIsLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    // Cycle through different main titles
+    const interval = setInterval(() => {
+      setTextIndex((prev) => (prev + 1) % alternativeTexts.length);
+    }, 4000);
+    
+    return () => clearInterval(interval);
+  }, [alternativeTexts.length]);
 
   return (
     <section id="glowna" aria-labelledby="main-title">
@@ -37,14 +60,15 @@ export function MainView() {
           playsInline
           aria-label="Wideo z występu zespołu Lazy Swing Band na Dragon Swing Festival 2022"
           poster="/logo-color.png"
+          onLoadedData={() => setIsLoaded(true)}
         ></VideoWrapper>
         <ContentWrapper>
           <Logo role="img" aria-label="Logo zespołu Lazy Swing Band" />
           <HeaderWrapper>
             <SubHeader>zespół zawodowych muzyków jazzowych z Krakowa</SubHeader>
 
-            <MainTitle id="main-title">
-              Swingowa muzyka do tańca
+            <MainTitle id="main-title" key={textIndex}>
+              {alternativeTexts[textIndex]}
             </MainTitle>
             <SubHeader>i nie tylko</SubHeader>
           </HeaderWrapper>
