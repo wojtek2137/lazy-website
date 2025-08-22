@@ -39,16 +39,10 @@ export function MainView() {
         <ContentWrapper>
           <Logo />
           <HeaderWrapper>
-            {/* <SubHeader>originated from Krakow Poland</SubHeader> */}
             <SubHeader>zespół zawodowych muzyków jazzowych z Krakowa</SubHeader>
 
             <Header>Swingowa muzyka do tańca </Header>
-            {/* <Header>associated with swing dancing </Header> */}
             <SubHeader>i nie tylko</SubHeader>
-
-            {/* <ExtraSmallHeader>
-                            Our website is under reconstruction see you soon...
-                        </ExtraSmallHeader> */}
           </HeaderWrapper>
         </ContentWrapper>
       </MainContainer>

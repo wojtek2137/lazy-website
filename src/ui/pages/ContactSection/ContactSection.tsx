@@ -1,8 +1,4 @@
-// import facebookicon from "./facebook-icon.png";
-// import adressicon from "./adress-icon.png";
-// import phoneicon from "./phone-icon.png";
-// import emailicon from "./email-icon.png";
-// import { ContactForm } from "ui/pages/ContactSection/ContactForm";
+
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { ContactHeader } from "ui/pages/ContactSection/ContactSection.style";

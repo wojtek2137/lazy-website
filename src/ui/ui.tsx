@@ -33,7 +33,6 @@ export const SectionWrapper = styled("section")<SectionWrapperPropsType>`
     background-attachment: scroll;
     background-position: center;
   }
-  /* overflow: scroll; */
 `;
 
 export const TextWrapper = styled("div")`
@@ -43,7 +42,6 @@ export const TextWrapper = styled("div")`
   border-radius: 1.5em;
   width: 100%;
   max-height: 100vh;
-  /* overflow: scroll; */
   margin: 5% 15% 10%;
   padding: 10px;
   ${mq[1]} {

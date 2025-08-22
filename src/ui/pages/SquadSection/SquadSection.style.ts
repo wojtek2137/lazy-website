@@ -21,12 +21,12 @@ export const ImageBox = styled("div")`
   flex-direction: column;
   position: relative;
   
-  /* Tablet: 2 w rzędzie */
+  /* Tablet: 2 per row */
   ${mq[2]} {
     flex: 1 1 50%;
   }
   
-  /* Mobile: 1 w rzędzie */
+  /* Mobile: 1 per row */
   ${mq[1]} {
     flex: 1 1 100%;
   }
@@ -91,9 +91,6 @@ export const SquadHeaderMain = styled("h2")`
   margin: 40px 0 0 0;
   padding: 25px 40px;
   position: relative;
-  background: 
-    linear-gradient(90deg, transparent 0%, #ccb379 50%, transparent 100%),
-    linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%);
   background-size: 100% 1px, 100% 100%;
   background-position: center top, center;
   background-repeat: no-repeat;
