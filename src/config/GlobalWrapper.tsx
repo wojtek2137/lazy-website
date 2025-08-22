@@ -1,10 +1,10 @@
 import React from 'react';
 import { Global, css } from '@emotion/react';
-import mulishLight from 'src/assets/fonts/mulish-light.woff2';
-import mulishRegular from 'src/assets/fonts/mulish-regular.woff2';
-import mulishMedium from 'src/assets/fonts/mulish-medium.woff2';
-import mulishBold from 'src/assets/fonts/mulish-bold.woff2';
-import mulishExtraBold from 'src/assets/fonts/mulish-extra-bold.woff2';
+import mulishLight from 'assets/fonts/mulish-light.woff2';
+import mulishRegular from 'assets/fonts/mulish-regular.woff2';
+import mulishMedium from 'assets/fonts/mulish-medium.woff2';
+import mulishBold from 'assets/fonts/mulish-bold.woff2';
+import mulishExtraBold from 'assets/fonts/mulish-extra-bold.woff2';
 type FontType = 'mulish_light' | 'mulish_regular' | 'mulish_medium' | 'mulish_bold' | 'mulish_extra_bold';
 
 const getFont = (font: FontType, src: string): string => {

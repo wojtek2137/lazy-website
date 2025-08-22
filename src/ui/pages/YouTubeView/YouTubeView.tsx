@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { ListenUsHeader, ListenUsSection } from 'src/ui/pages/ListenUsView/ListenUsView.style';
+import { ListenUsHeader, ListenUsSection } from 'ui/pages/ListenUsView/ListenUsView.style';
 const breakpoints = [576, 768, 992, 1200];
 
 const mq = breakpoints.map(

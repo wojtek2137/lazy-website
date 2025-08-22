@@ -8,7 +8,7 @@ import {
   SubHeader,
   VideoWrapper,
 } from "./MainView.style";
-import dragonVideo2022 from "src/assets/video/dragon2022.mp4";
+import dragonVideo2022 from "assets/video/dragon2022.mp4";
 
 // export const MuteButton = styled('a')`
 //    color: ${colors.primary.sandy};

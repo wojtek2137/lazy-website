@@ -2,13 +2,13 @@
 // import adressicon from "./adress-icon.png";
 // import phoneicon from "./phone-icon.png";
 // import emailicon from "./email-icon.png";
-// import { ContactForm } from "src/ui/pages/ContactSection/ContactForm";
+// import { ContactForm } from "ui/pages/ContactSection/ContactForm";
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { ContactHeader } from "src/ui/pages/ContactSection/ContactSection.style";
-import { colors, fonts } from "src/config/theme";
-import TagFacebookIcon from "src/assets/images/facebook-icon.png";
-import TagInstagramIcon from "src/assets/images/instagram-icon.png";
+import { ContactHeader } from "ui/pages/ContactSection/ContactSection.style";
+import { colors, fonts } from "config/theme";
+import TagFacebookIcon from "assets/images/facebook-icon.png";
+import TagInstagramIcon from "assets/images/instagram-icon.png";
 
 const breakpoints = [576, 768, 992, 1200];
 

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { colors, fonts } from "src/config/theme";
+import { colors, fonts } from "config/theme";
 
 export const CardContainer = styled("div")`
   display: flex;
