@@ -131,15 +131,14 @@ const ActionShortcut = styled.div`
   font-family: ${fonts.mulish.Regular};
 `;
 
-
 // Progress Ring Component
-const ProgressRing = styled.div<{ progress: number }>`
+const ProgressRing = styled.div<{ progress: number; isVisible: boolean }>`
   position: fixed;
   bottom: 30px;
   left: 30px;
   width: 64px;
   height: 64px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(20px);
   border-radius: 50%;
   display: flex;
@@ -147,7 +146,7 @@ const ProgressRing = styled.div<{ progress: number }>`
   justify-content: center;
   border: 3px solid transparent;
   background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
     conic-gradient(
       ${colors.primary.gold} 0deg,
       ${colors.primary.gold} ${({ progress }) => progress * 3.6}deg,
@@ -158,10 +157,23 @@ const ProgressRing = styled.div<{ progress: number }>`
   background-clip: content-box, border-box;
   transition: all 0.3s ease;
   cursor: pointer;
+  z-index: 10005;
+  opacity: ${({ isVisible }) => isVisible ? 1 : 0};
+  pointer-events: ${({ isVisible }) => isVisible ? 'all' : 'none'};
+  transform: ${({ isVisible }) => isVisible ? 'scale(1)' : 'scale(0.8)'};
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.4),
+    0 0 20px ${colors.primary.gold}20;
   
   &:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transform: ${({ isVisible }) => isVisible ? 'scale(1.1)' : 'scale(0.8)'};
+    box-shadow: 
+      0 12px 35px rgba(0, 0, 0, 0.5),
+      0 0 30px ${colors.primary.gold}30;
+  }
+  
+  &:active {
+    transform: ${({ isVisible }) => isVisible ? 'scale(1.05)' : 'scale(0.8)'};
   }
 `;
 
@@ -171,35 +183,32 @@ const ProgressText = styled.span`
   font-size: 12px;
 `;
 
-
-
-
-
 interface QuickActions2024Props {
   isVisible: boolean;
   onClose: () => void;
 }
 
 export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) {
-
   const [scrollProgress, setScrollProgress] = useState(0);
-
+  const [showProgressRing, setShowProgressRing] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
-      setScrollProgress(progress);
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrollProgress(Math.min(100, Math.max(0, progress)));
+      
+      // Show progress ring after scrolling past main section (roughly 100vh)
+      const mainSectionHeight = window.innerHeight;
+      setShowProgressRing(scrollTop > mainSectionHeight * 0.8);
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial calculation
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-
-
-
 
   const quickActions = [
     {
@@ -248,8 +257,6 @@ export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) 
     }
   ];
 
-
-
   return (
     <>
       {/* Quick Actions Panel */}
@@ -277,17 +284,15 @@ export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) 
         </QuickActionsList>
       </QuickActionsPanel>
 
-
       {/* Scroll Progress Ring */}
       <ProgressRing 
         progress={scrollProgress}
+        isVisible={showProgressRing}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        title={`Postęp: ${Math.round(scrollProgress)}%`}
+        title={`Postęp czytania: ${Math.round(scrollProgress)}% - kliknij aby wrócić na górę`}
       >
         <ProgressText>{Math.round(scrollProgress)}%</ProgressText>
       </ProgressRing>
-
-
     </>
   );
 }

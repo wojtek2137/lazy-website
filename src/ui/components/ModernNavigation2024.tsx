@@ -146,7 +146,7 @@ const CommandShortcut = styled.div`
 `;
 
 // Floating Navigation Dots (Scroll Indicators)
-const FloatingDots = styled.div`
+const FloatingDots = styled.div<{ isVisible: boolean }>`
   position: fixed;
   right: 30px;
   top: 50%;
@@ -156,6 +156,20 @@ const FloatingDots = styled.div`
   gap: 16px;
   pointer-events: all;
   z-index: 9999;
+  opacity: ${({ isVisible }) => isVisible ? 1 : 0};
+  pointer-events: ${({ isVisible }) => isVisible ? 'all' : 'none'};
+  transform: ${({ isVisible }) => isVisible ? 'translateY(-50%) scale(1)' : 'translateY(-50%) scale(0.8)'};
+  transition: all 0.3s ease;
+  
+  @media (max-width: 768px) {
+    right: 20px;
+    gap: 12px;
+  }
+  
+  @media (max-width: 480px) {
+    right: 15px;
+    gap: 8px;
+  }
 `;
 
 const NavigationDot = styled.button<{ isActive: boolean; progress: number }>`
@@ -187,6 +201,34 @@ const NavigationDot = styled.button<{ isActive: boolean; progress: number }>`
   
   &:active {
     transform: scale(1.2);
+  }
+  
+  @media (max-width: 768px) {
+    width: 8px;
+    height: 8px;
+    border-width: 1px;
+    
+    &:hover {
+      transform: scale(1.3);
+    }
+    
+    &:active {
+      transform: scale(1.1);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    width: 6px;
+    height: 6px;
+    border-width: 1px;
+    
+    &:hover {
+      transform: scale(1.2);
+    }
+    
+    &:active {
+      transform: scale(1.0);
+    }
   }
 `;
 
@@ -368,6 +410,7 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [currentSection, setCurrentSection] = useState('glowna');
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [showFloatingDots, setShowFloatingDots] = useState(false);
 
   
   const commandInputRef = useRef<HTMLInputElement>(null);
@@ -529,6 +572,10 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
       const progress = (scrollTop / docHeight) * 100;
       setScrollProgress(progress);
 
+      // Show floating dots after scrolling past main section (roughly 100vh)
+      const mainSectionHeight = window.innerHeight;
+      setShowFloatingDots(scrollTop > mainSectionHeight * 0.8);
+
       // Detect current section
       const sectionElements = sections.map(id => document.getElementById(id)).filter(Boolean);
       for (let i = sectionElements.length - 1; i >= 0; i--) {
@@ -588,7 +635,7 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
       </BreadcrumbWrapper>
 
       {/* Floating Navigation Dots */}
-      <FloatingDots>
+      <FloatingDots isVisible={showFloatingDots}>
         {sections.map((sectionId, index) => {
           const item = navigationItems.find(item => item.id === sectionId);
           const isActive = currentSection === sectionId;
