@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, InputSubmit, TextAreaWrapper } from "src/ui/pages/ContactSection/ContactForm.style";
+import { Form, Input, InputSubmit, TextAreaWrapper } from "ui/pages/ContactSection/ContactForm.style";
 export function ContactForm() {
     return (
         <Form method="post">

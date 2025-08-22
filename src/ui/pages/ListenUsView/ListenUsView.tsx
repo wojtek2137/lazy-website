@@ -1,17 +1,17 @@
 import React from "react";
-import { Card } from "src/ui/components/Card";
+import { Card } from "ui/components/Card";
 import {
   ListenAlbumsWrapper,
   ListenUsHeader,
   ListenUsSection,
 } from "./ListenUsView.style";
-import LazySwingersCover from "src/assets/images/lazy.png";
-import LazyChristmasCover from "src/assets/images/christmas.jpg";
-import PolishSwingCover from "src/assets/images/polish.jpg";
-import TagSpotify from "src/assets/images/spotify.png";
-import TagTidal from "src/assets/images/tidal.png";
-import TagYouTube from "src/assets/images/youtube.png";
-import TagAppleMusic from "src/assets/images/apple.png";
+import LazySwingersCover from "assets/images/lazy.webp";
+import LazyChristmasCover from "assets/images/christmas.webp";
+import PolishSwingCover from "assets/images/polish.webp";
+import TagSpotify from "assets/images/spotify.png";
+import TagTidal from "assets/images/tidal.png";
+import TagYouTube from "assets/images/youtube.png";
+import TagAppleMusic from "assets/images/apple.png";
 export interface CardConfigType {
   name: string;
   cover: string;

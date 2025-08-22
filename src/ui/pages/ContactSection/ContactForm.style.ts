@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { fonts } from "src/config/theme";
+import { fonts } from "config/theme";
 
 export const Form = styled('form')`
     padding: 50px;

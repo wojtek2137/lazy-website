@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { colors, fonts } from 'src/config/theme';
-import LogoImage from 'src/assets/images/logo-color.png';
+import { colors, fonts } from 'config/theme';
+import LogoImage from 'assets/images/logo-color.webp';
 
 export const Logo = styled('div')`
     margin: 0;

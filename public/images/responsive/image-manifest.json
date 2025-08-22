@@ -1,0 +1,292 @@
+{
+  "about2": {
+    "desktop": {
+      "path": "./responsive/about2_desktop.webp",
+      "size": "115.1KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/about2_mobile.webp",
+      "size": "13.9KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/about2_tablet.webp",
+      "size": "48.3KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/about2_thumb.webp",
+      "size": "2.9KB",
+      "format": "webp"
+    }
+  },
+  "about3": {
+    "desktop": {
+      "path": "./responsive/about3_desktop.webp",
+      "size": "88.8KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/about3_mobile.webp",
+      "size": "15.9KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/about3_tablet.webp",
+      "size": "45.7KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/about3_thumb.webp",
+      "size": "3.1KB",
+      "format": "webp"
+    }
+  },
+  "about": {
+    "desktop": {
+      "path": "./responsive/about_desktop.webp",
+      "size": "179.4KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/about_mobile.webp",
+      "size": "29.2KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/about_tablet.webp",
+      "size": "90.9KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/about_thumb.webp",
+      "size": "4.8KB",
+      "format": "webp"
+    }
+  },
+  "christmas": {
+    "desktop": {
+      "path": "./responsive/christmas_desktop.webp",
+      "size": "267.5KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/christmas_mobile.webp",
+      "size": "37.8KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/christmas_tablet.webp",
+      "size": "117.3KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/christmas_thumb.webp",
+      "size": "7.6KB",
+      "format": "webp"
+    }
+  },
+  "dominik": {
+    "desktop": {
+      "path": "./responsive/dominik_desktop.webp",
+      "size": "84.4KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/dominik_mobile.webp",
+      "size": "19.5KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/dominik_tablet.webp",
+      "size": "46.7KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/dominik_thumb.webp",
+      "size": "5.0KB",
+      "format": "webp"
+    }
+  },
+  "facebook-icon": {
+    "thumb": {
+      "path": "./responsive/facebook-icon_thumb.webp",
+      "size": "1.4KB",
+      "format": "webp"
+    }
+  },
+  "instagram-icon": {
+    "thumb": {
+      "path": "./responsive/instagram-icon_thumb.webp",
+      "size": "3.1KB",
+      "format": "webp"
+    }
+  },
+  "lazy": {
+    "desktop": {
+      "path": "./responsive/lazy_desktop.webp",
+      "size": "165.4KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/lazy_mobile.webp",
+      "size": "28.2KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/lazy_tablet.webp",
+      "size": "85.5KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/lazy_thumb.webp",
+      "size": "5.3KB",
+      "format": "webp"
+    }
+  },
+  "logo-color": {
+    "mobile": {
+      "path": "./responsive/logo-color_mobile.webp",
+      "size": "30.7KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/logo-color_thumb.webp",
+      "size": "8.4KB",
+      "format": "webp"
+    }
+  },
+  "lukasz": {
+    "desktop": {
+      "path": "./responsive/lukasz_desktop.webp",
+      "size": "64.1KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/lukasz_mobile.webp",
+      "size": "15.8KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/lukasz_tablet.webp",
+      "size": "35.4KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/lukasz_thumb.webp",
+      "size": "4.2KB",
+      "format": "webp"
+    }
+  },
+  "michal": {
+    "desktop": {
+      "path": "./responsive/michal_desktop.webp",
+      "size": "88.4KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/michal_mobile.webp",
+      "size": "19.3KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/michal_tablet.webp",
+      "size": "48.6KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/michal_thumb.webp",
+      "size": "4.8KB",
+      "format": "webp"
+    }
+  },
+  "milosz": {
+    "desktop": {
+      "path": "./responsive/milosz_desktop.webp",
+      "size": "61.5KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/milosz_mobile.webp",
+      "size": "13.9KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/milosz_tablet.webp",
+      "size": "32.5KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/milosz_thumb.webp",
+      "size": "4.1KB",
+      "format": "webp"
+    }
+  },
+  "polish": {
+    "desktop": {
+      "path": "./responsive/polish_desktop.webp",
+      "size": "240.3KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/polish_mobile.webp",
+      "size": "25.2KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/polish_tablet.webp",
+      "size": "93.2KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/polish_thumb.webp",
+      "size": "5.0KB",
+      "format": "webp"
+    }
+  },
+  "sylwia": {
+    "desktop": {
+      "path": "./responsive/sylwia_desktop.webp",
+      "size": "74.8KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/sylwia_mobile.webp",
+      "size": "16.0KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/sylwia_tablet.webp",
+      "size": "39.0KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/sylwia_thumb.webp",
+      "size": "4.3KB",
+      "format": "webp"
+    }
+  },
+  "wojtek": {
+    "desktop": {
+      "path": "./responsive/wojtek_desktop.webp",
+      "size": "77.7KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/wojtek_mobile.webp",
+      "size": "18.2KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/wojtek_tablet.webp",
+      "size": "43.4KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/wojtek_thumb.webp",
+      "size": "4.5KB",
+      "format": "webp"
+    }
+  }
+}
