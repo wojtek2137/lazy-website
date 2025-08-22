@@ -35,17 +35,11 @@ const Placeholder = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
-              linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
-              linear-gradient(45deg, transparent 75%, #f0f0f0 75%), 
-              linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-  opacity: 0.3;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #999;
+  color: #666;
   font-size: 12px;
   animation: shimmer 2s ease-in-out infinite;
   

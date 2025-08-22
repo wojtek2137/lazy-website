@@ -49,6 +49,7 @@ export const Img = styled("img")<PropsType>`
   cursor: pointer;
   max-height: 190px;
   transition: 0.5s ease-in-out;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
   ${(props): string | null =>
     props.isHover === true ? "max-width: 75px;" : null}
 `;
