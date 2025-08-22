@@ -3,14 +3,19 @@
     "name": "Lazy Swing Band Website",
     "icons": [
         {
-            "src": "lsb_favicon.png",
+            "src": "logo192.png",
             "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "logo512.png",
+            "sizes": "512x512",
             "type": "image/png"
         },
         {
             "src": "logo-color.png",
             "type": "image/png",
-            "sizes": "512x512"
+            "sizes": "709x709"
         }
     ],
     "start_url": ".",
