@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.74be9bb4.js",
+    "main.js": "/static/js/main.3d22c59d.js",
     "static/media/dragon2022.mp4": "/static/media/dragon2022.77b5b2f9471a4ecb01cc.mp4",
     "static/media/about3.jpg": "/static/media/about3.e545ec6d7aba2116d563.jpg",
     "static/media/lato_z_radiem_2.jpg": "/static/media/lato_z_radiem_2.b8e94cd4bd1b5d969efe.jpg",
@@ -27,9 +27,9 @@
     "static/media/instagram-icon.png": "/static/media/instagram-icon.00f9ab659d4e62520af0.png",
     "static/media/logo-color.webp": "/static/media/logo-color.b653918752da596e4155.webp",
     "index.html": "/index.html",
-    "main.74be9bb4.js.map": "/static/js/main.74be9bb4.js.map"
+    "main.3d22c59d.js.map": "/static/js/main.3d22c59d.js.map"
   },
   "entrypoints": [
-    "static/js/main.74be9bb4.js"
+    "static/js/main.3d22c59d.js"
   ]
 }
