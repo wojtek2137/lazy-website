@@ -24,21 +24,16 @@ import dragonVideo2022 from "assets/video/dragon2022.mp4";
 // `;
 
 export function MainView() {
-  const [isLoaded, setIsLoaded] = useState(false);
   const [textIndex, setTextIndex] = useState(0);
 
   const alternativeTexts = [
     "Swingowa muzyka do tańca",
-    "Prawdziwy jazz w Krakowie", 
+    "Prawdziwy jazz", 
     "Muzyka z duszą i pasją",
     "Swing który porusza"
   ];
 
-  useEffect(() => {
-    // Trigger animations after component mount
-    const timer = setTimeout(() => setIsLoaded(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
+  // Removed isLoaded state as it was unused
 
   useEffect(() => {
     // Cycle through different main titles
@@ -60,7 +55,6 @@ export function MainView() {
           playsInline
           aria-label="Wideo z występu zespołu Lazy Swing Band na Dragon Swing Festival 2022"
           poster="/logo-color.png"
-          onLoadedData={() => setIsLoaded(true)}
         ></VideoWrapper>
         <ContentWrapper>
           <Logo role="img" aria-label="Logo zespołu Lazy Swing Band" />

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { useState } from "react";
 import { MainView } from "./pages/MainView/MainView";
 import About from "assets/images/about.jpg";
 import About2 from "assets/images/about2.jpg";
@@ -10,6 +10,9 @@ import { YouTubeView } from "ui/pages/YouTubeView/YouTubeView";
 import { SquadSection } from "ui/pages/SquadSection/SquadSection";
 import { LatoZRadiemSection } from "ui/pages/LatoZRadiemSection/LatoZRadiemSection";
 import { Navigation } from "ui/components/Navigation";
+import { ModernNavigation2024 } from "ui/components/ModernNavigation2024";
+import { QuickActions2024 } from "ui/components/QuickActions2024";
+import { MicroInteractions2024 } from "ui/components/MicroInteractions2024";
 import { ContactSection } from "ui/pages/ContactSection/ContactSection";
 import { 
   ModernSectionWrapper, 
@@ -114,10 +117,27 @@ export const ChristmasSection = styled("section")`
 
 
 export function Ui() {
+  const [quickActionsVisible, setQuickActionsVisible] = useState(false);
+
   return (
     <>
       <FloatingParticles />
-      <Navigation />
+      <MicroInteractions2024 />
+      
+      {/* Legacy Navigation - Hidden for now */}
+      <div style={{ display: 'none' }}>
+        <Navigation />
+      </div>
+      
+      {/* Modern 2024 Navigation System */}
+      <ModernNavigation2024 
+        onQuickActionsToggle={setQuickActionsVisible}
+      />
+      <QuickActions2024 
+        isVisible={quickActionsVisible} 
+        onClose={() => setQuickActionsVisible(false)} 
+      />
+      
       <main id="main-content">
         <MainView />
         

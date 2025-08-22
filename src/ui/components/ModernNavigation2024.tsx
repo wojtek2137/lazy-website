@@ -1,0 +1,715 @@
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import styled from '@emotion/styled';
+import { colors, fonts } from 'config/theme';
+
+// Command Palette Interface
+interface NavigationItem {
+  id: string;
+  label: string;
+  description: string;
+  href: string;
+  icon: string;
+  category: 'primary' | 'content' | 'action';
+  keywords: string[];
+}
+
+// Modern 2024 Navigation System
+const ModernNavWrapper = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  pointer-events: none;
+`;
+
+// Command Palette (VS Code style)
+const CommandPalette = styled.div<{ isOpen: boolean }>`
+  position: fixed;
+  top: ${({ isOpen }) => isOpen ? '20vh' : '-100vh'};
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(600px, 90vw);
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(40px);
+  border: 1px solid ${colors.primary.gold}30;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: ${({ isOpen }) => isOpen ? 'all' : 'none'};
+  z-index: 10002;
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.8),
+    0 0 60px ${colors.primary.gold}20,
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, ${colors.primary.gold}60, transparent);
+  }
+`;
+
+const CommandBackdrop = styled.div<{ isOpen: boolean }>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 10001;
+  pointer-events: ${({ isOpen }) => isOpen ? 'all' : 'none'};
+  opacity: ${({ isOpen }) => isOpen ? 1 : 0};
+  transition: opacity 0.3s ease;
+`;
+
+const CommandInput = styled.input`
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 20px 24px;
+  color: ${colors.primary.white};
+  font-family: ${fonts.mulish.Medium};
+  font-size: 18px;
+  outline: none;
+  border-bottom: 1px solid ${colors.primary.gold}20;
+  
+  &::placeholder {
+    color: ${colors.neutrals.N300};
+  }
+`;
+
+const CommandResults = styled.div`
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+const CommandItem = styled.div<{ isSelected: boolean }>`
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  cursor: pointer;
+  background: ${({ isSelected }) => isSelected ? 
+    `linear-gradient(90deg, ${colors.primary.gold}15, ${colors.primary.gold}05)` : 
+    'transparent'
+  };
+  border-left: 3px solid ${({ isSelected }) => isSelected ? colors.primary.gold : 'transparent'};
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: linear-gradient(90deg, ${colors.primary.gold}10, ${colors.primary.gold}03);
+    border-left-color: ${colors.primary.gold}60;
+  }
+`;
+
+const CommandIcon = styled.span`
+  font-size: 20px;
+  margin-right: 16px;
+  width: 24px;
+  text-align: center;
+`;
+
+const CommandContent = styled.div`
+  flex: 1;
+`;
+
+const CommandLabel = styled.div`
+  color: ${colors.primary.white};
+  font-family: ${fonts.mulish.Medium};
+  font-size: 16px;
+  margin-bottom: 4px;
+`;
+
+const CommandDescription = styled.div`
+  color: ${colors.neutrals.N300};
+  font-family: ${fonts.mulish.Regular};
+  font-size: 14px;
+`;
+
+const CommandShortcut = styled.div`
+  color: ${colors.neutrals.N300};
+  font-family: ${fonts.mulish.Regular};
+  font-size: 12px;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+`;
+
+// Floating Navigation Dots (Scroll Indicators)
+const FloatingDots = styled.div`
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  pointer-events: all;
+  z-index: 9999;
+`;
+
+const NavigationDot = styled.button<{ isActive: boolean; progress: number }>`
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid ${({ isActive }) => isActive ? colors.primary.gold : colors.primary.gold}40;
+  background: ${({ isActive }) => isActive ? colors.primary.gold : 'transparent'};
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: ${({ progress }) => progress}%;
+    background: ${colors.primary.gold}60;
+    transition: height 0.3s ease;
+  }
+  
+  &:hover {
+    transform: scale(1.5);
+    box-shadow: 0 0 20px ${colors.primary.gold}60;
+  }
+  
+  &:active {
+    transform: scale(1.2);
+  }
+`;
+
+// Smart Breadcrumbs
+const BreadcrumbWrapper = styled.div`
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: all;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: 1px solid ${colors.primary.gold}20;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: ${colors.primary.gold}40;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+`;
+
+const BreadcrumbItem = styled.span<{ isActive: boolean }>`
+  color: ${({ isActive }) => isActive ? colors.primary.gold : colors.neutrals.N300};
+  font-family: ${fonts.mulish.Medium};
+  font-size: 14px;
+  transition: color 0.3s ease;
+  cursor: ${({ isActive }) => isActive ? 'default' : 'pointer'};
+  
+  &:hover {
+    color: ${colors.primary.sandy};
+  }
+`;
+
+const BreadcrumbSeparator = styled.span`
+  color: ${colors.neutrals.N400};
+  font-size: 12px;
+`;
+
+// Quick Actions Floating Button
+const QuickActionsButton = styled.button<{ isExpanded: boolean }>`
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: ${({ isExpanded }) => isExpanded ? '200px' : '64px'};
+  height: 64px;
+  background: linear-gradient(135deg, ${colors.primary.gold}, ${colors.primary.sandy});
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  pointer-events: all;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 
+    0 12px 40px rgba(245, 203, 92, 0.4),
+    0 0 30px rgba(245, 203, 92, 0.2);
+  
+  &:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 
+      0 20px 60px rgba(245, 203, 92, 0.6),
+      0 0 50px rgba(245, 203, 92, 0.4);
+  }
+  
+  &:active {
+    transform: translateY(-2px) scale(1.02);
+  }
+`;
+
+const QuickActionsIcon = styled.span<{ isExpanded: boolean }>`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(${({ isExpanded }) => isExpanded ? '45deg' : '0deg'});
+  font-size: 24px;
+  color: ${colors.primary.black};
+  opacity: ${({ isExpanded }) => isExpanded ? 0 : 1};
+  transition: all 0.3s ease;
+`;
+
+const QuickActionsText = styled.span<{ isExpanded: boolean }>`
+  opacity: ${({ isExpanded }) => isExpanded ? 1 : 0};
+  transform: translateX(${({ isExpanded }) => isExpanded ? '20px' : '0px'});
+  transition: all 0.3s ease;
+  color: ${colors.primary.black};
+  font-family: ${fonts.mulish.Bold};
+  font-size: 14px;
+  white-space: nowrap;
+`;
+
+// Command Trigger Button
+const CommandTrigger = styled.button`
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid ${colors.primary.gold}30;
+  border-radius: 12px;
+  padding: 12px 20px;
+  color: ${colors.primary.white};
+  font-family: ${fonts.mulish.Medium};
+  font-size: 14px;
+  cursor: pointer;
+  pointer-events: all;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  &:hover {
+    background: rgba(0, 0, 0, 0.95);
+    border-color: ${colors.primary.gold}50;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+`;
+
+const KeyboardShortcut = styled.span`
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: ${colors.neutrals.N300};
+`;
+
+// Smart Tooltip
+const SmartTooltip = styled.div<{ show: boolean; x: number; y: number }>`
+  position: fixed;
+  left: ${({ x }) => x}px;
+  top: ${({ y }) => y}px;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid ${colors.primary.gold}40;
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: ${colors.primary.white};
+  font-family: ${fonts.mulish.Medium};
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 10001;
+  opacity: ${({ show }) => show ? 1 : 0};
+  transform: translateY(${({ show }) => show ? 0 : '10px'});
+  transition: all 0.3s ease;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid rgba(0, 0, 0, 0.95);
+  }
+`;
+
+// Props interface
+interface ModernNavigation2024Props {
+  onQuickActionsToggle?: (isVisible: boolean) => void;
+}
+
+// Main Navigation Component
+export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2024Props = {}) {
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const [quickActionsExpanded, setQuickActionsExpanded] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [currentSection, setCurrentSection] = useState('glowna');
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [tooltip, setTooltip] = useState({ show: false, text: '', x: 0, y: 0 });
+  
+  const commandInputRef = useRef<HTMLInputElement>(null);
+
+  const navigationItems: NavigationItem[] = [
+    {
+      id: 'glowna',
+      label: 'Strona Główna',
+      description: 'Powrót do sekcji powitalnej z wideo',
+      href: '#glowna',
+      icon: '',
+      category: 'primary',
+      keywords: ['home', 'start', 'główna', 'wideo', 'logo']
+    },
+    {
+      id: 'o-nas',
+      label: 'O Nas',
+      description: 'Historia zespołu i nasza misja',
+      href: '#o-nas',
+      icon: '',
+      category: 'content',
+      keywords: ['zespół', 'historia', 'o nas', 'biografia', 'kraków']
+    },
+    {
+      id: 'lato-z-radiem',
+      label: 'Lato z Radiem',
+      description: 'Współpraca z Polskim Radiem',
+      href: '#lato-z-radiem',
+      icon: '',
+      category: 'content',
+      keywords: ['radio', 'polskie radio', 'potańcówki', 'lato', 'koncerty']
+    },
+    {
+      id: 'albumy',
+      label: 'Nasza Muzyka',
+      description: 'Posłuchaj naszych utworów',
+      href: '#albumy',
+      icon: '',
+      category: 'content',
+      keywords: ['muzyka', 'albumy', 'spotify', 'słuchaj', 'piosenki']
+    },
+    {
+      id: 'festiwale',
+      label: 'Festiwale',
+      description: 'Nasze występy w Polsce i za granicą',
+      href: '#festiwale',
+      icon: '',
+      category: 'content',
+      keywords: ['festiwale', 'koncerty', 'występy', 'dragon', 'lindy hop']
+    },
+    {
+      id: 'wideo',
+      label: 'Zobacz Nas',
+      description: 'Filmiki z naszych występów',
+      href: '#wideo',
+      icon: '',
+      category: 'content',
+      keywords: ['wideo', 'youtube', 'występy', 'nagrania', 'koncerty']
+    },
+    {
+      id: 'uslugi',
+      label: 'Nasza Oferta',
+      description: 'Co możemy dla Ciebie zagrać',
+      href: '#uslugi',
+      icon: '',
+      category: 'content',
+      keywords: ['usługi', 'oferta', 'wesela', 'eventy', 'koncerty']
+    },
+    {
+      id: 'swieta',
+      label: 'Lazy Christmas',
+      description: 'Świąteczna oferta zespołu',
+      href: '#swieta',
+      icon: '',
+      category: 'content',
+      keywords: ['święta', 'christmas', 'wigilie', 'świąteczne', 'xmas']
+    },
+    {
+      id: 'zespol',
+      label: 'Poznaj Zespół',
+      description: 'Członkowie Lazy Swing Band',
+      href: '#zespol',
+      icon: '',
+      category: 'content',
+      keywords: ['zespół', 'muzycy', 'członkowie', 'instrumenty', 'sylwetki']
+    },
+    {
+      id: 'kontakt',
+      label: 'Kontakt',
+      description: 'Skontaktuj się z nami',
+      href: '#kontakt',
+      icon: '',
+      category: 'action',
+      keywords: ['kontakt', 'telefon', 'email', 'rezerwacja', 'booking']
+    }
+  ];
+
+  const sections = ['glowna', 'o-nas', 'lato-z-radiem', 'albumy', 'festiwale', 'wideo', 'uslugi', 'swieta', 'zespol', 'kontakt'];
+
+  // Filter items based on search
+  const filteredItems = navigationItems.filter(item =>
+    item.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.keywords.some(keyword => keyword.toLowerCase().includes(searchQuery.toLowerCase()))
+  );
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Cmd/Ctrl + K to open command palette
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setCommandPaletteOpen(true);
+        setTimeout(() => {
+          console.log('Focusing command input, ref:', commandInputRef.current);
+          commandInputRef.current?.focus();
+        }, 150);
+      }
+
+      // Escape to close
+      if (e.key === 'Escape') {
+        setCommandPaletteOpen(false);
+        setQuickActionsExpanded(false);
+      }
+
+      // Arrow navigation in command palette (only when not typing in input)
+      if (commandPaletteOpen && e.target !== commandInputRef.current) {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          setSelectedIndex(prev => Math.min(prev + 1, filteredItems.length - 1));
+        }
+        if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          setSelectedIndex(prev => Math.max(prev - 1, 0));
+        }
+        if (e.key === 'Enter' && filteredItems[selectedIndex]) {
+          e.preventDefault();
+          handleNavigation(filteredItems[selectedIndex].href);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [commandPaletteOpen, selectedIndex, filteredItems]);
+
+  // Reset search when palette closes
+  useEffect(() => {
+    if (!commandPaletteOpen) {
+      setSearchQuery('');
+      setSelectedIndex(0);
+    }
+  }, [commandPaletteOpen]);
+
+  // Scroll tracking
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      setScrollProgress(progress);
+
+      // Detect current section
+      const sectionElements = sections.map(id => document.getElementById(id)).filter(Boolean);
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const element = sectionElements[i];
+        if (element && element.offsetTop <= scrollTop + 100) {
+          setCurrentSection(sections[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavigation = useCallback((href: string) => {
+    console.log('Navigating to:', href);
+    const element = document.querySelector(href);
+    console.log('Found element:', element);
+    
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      setCommandPaletteOpen(false);
+      
+      // Haptic feedback simulation
+      if ('vibrate' in navigator) {
+        navigator.vibrate(50);
+      }
+    } else {
+      console.error('Element not found for href:', href);
+    }
+  }, []);
+
+  const handleMouseEnter = useCallback((e: React.MouseEvent, text: string) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setTooltip({
+      show: true,
+      text,
+      x: rect.left + rect.width / 2,
+      y: rect.top - 10
+    });
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setTooltip(prev => ({ ...prev, show: false }));
+  }, []);
+
+  return (
+    <ModernNavWrapper>
+      {/* Command Trigger */}
+      <CommandTrigger
+        onClick={() => setCommandPaletteOpen(true)}
+        onMouseEnter={(e) => handleMouseEnter(e, 'Szybka nawigacja (Cmd+K)')}
+        onMouseLeave={handleMouseLeave}
+      >
+        ⚡ Szybka nawigacja
+        <KeyboardShortcut>⌘K</KeyboardShortcut>
+      </CommandTrigger>
+
+      {/* Smart Breadcrumbs */}
+      <BreadcrumbWrapper>
+        <BreadcrumbItem isActive={false}>Lazy Swing Band</BreadcrumbItem>
+        <BreadcrumbSeparator>/</BreadcrumbSeparator>
+        <BreadcrumbItem isActive={true}>
+          {navigationItems.find(item => item.id === currentSection)?.label || 'Start'}
+        </BreadcrumbItem>
+      </BreadcrumbWrapper>
+
+      {/* Floating Navigation Dots */}
+      <FloatingDots>
+        {sections.map((sectionId, index) => {
+          const item = navigationItems.find(item => item.id === sectionId);
+          const isActive = currentSection === sectionId;
+          const progress = isActive ? Math.min((scrollProgress - (index * 10)) * 10, 100) : 0;
+          
+          return (
+            <NavigationDot
+              key={sectionId}
+              isActive={isActive}
+              progress={Math.max(0, progress)}
+              onClick={() => handleNavigation(`#${sectionId}`)}
+              onMouseEnter={(e) => handleMouseEnter(e, item?.label || sectionId)}
+              onMouseLeave={handleMouseLeave}
+            />
+          );
+        })}
+      </FloatingDots>
+
+      {/* Command Palette */}
+      <CommandBackdrop 
+        isOpen={commandPaletteOpen} 
+        onClick={() => setCommandPaletteOpen(false)}
+      />
+      <CommandPalette isOpen={commandPaletteOpen}>
+        <CommandInput
+          ref={commandInputRef}
+          placeholder="Szukaj sekcji, wpisz komendę..."
+          value={searchQuery}
+          onChange={(e) => {
+            console.log('Input changed:', e.target.value);
+            setSearchQuery(e.target.value);
+            setSelectedIndex(0);
+          }}
+          onFocus={() => console.log('Input focused')}
+          onBlur={() => console.log('Input blurred')}
+        />
+        <CommandResults>
+          {filteredItems.map((item, index) => (
+            <CommandItem
+              key={item.id}
+              isSelected={index === selectedIndex}
+              onClick={(e) => {
+                console.log('CommandItem clicked:', item.label, item.href);
+                e.stopPropagation();
+                handleNavigation(item.href);
+              }}
+            >
+              {item.icon && <CommandIcon>{item.icon}</CommandIcon>}
+              <CommandContent>
+                <CommandLabel>{item.label}</CommandLabel>
+                <CommandDescription>{item.description}</CommandDescription>
+              </CommandContent>
+              <CommandShortcut>Enter</CommandShortcut>
+            </CommandItem>
+          ))}
+          {filteredItems.length === 0 && (
+            <CommandItem isSelected={false}>
+              <CommandContent>
+                <CommandLabel>Brak wyników</CommandLabel>
+                <CommandDescription>Spróbuj innego wyszukiwania</CommandDescription>
+              </CommandContent>
+            </CommandItem>
+          )}
+        </CommandResults>
+      </CommandPalette>
+
+      {/* Quick Actions Button */}
+      <QuickActionsButton
+        isExpanded={quickActionsExpanded}
+        onClick={() => {
+          const newState = !quickActionsExpanded;
+          setQuickActionsExpanded(newState);
+          onQuickActionsToggle?.(newState);
+        }}
+        onMouseEnter={(e) => handleMouseEnter(e, 'Szybkie akcje')}
+        onMouseLeave={handleMouseLeave}
+      >
+        <QuickActionsIcon isExpanded={quickActionsExpanded}>
+          •••
+        </QuickActionsIcon>
+        <QuickActionsText isExpanded={quickActionsExpanded}>
+          Szybkie Akcje
+        </QuickActionsText>
+      </QuickActionsButton>
+
+      {/* Smart Tooltip */}
+      <SmartTooltip
+        show={tooltip.show}
+        x={tooltip.x}
+        y={tooltip.y}
+      >
+        {tooltip.text}
+      </SmartTooltip>
+
+      {/* Click outside to close */}
+      {commandPaletteOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 9999,
+            pointerEvents: 'all'
+          }}
+          onClick={() => setCommandPaletteOpen(false)}
+        />
+      )}
+    </ModernNavWrapper>
+  );
+}
