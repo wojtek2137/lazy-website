@@ -11,6 +11,20 @@ import { SquadSection } from "ui/pages/SquadSection/SquadSection";
 import { LatoZRadiemSection } from "ui/pages/LatoZRadiemSection/LatoZRadiemSection";
 import { Navigation } from "ui/components/Navigation";
 import { ContactSection } from "ui/pages/ContactSection/ContactSection";
+import { 
+  ModernSectionWrapper, 
+  ModernContentContainer, 
+  ModernTextWrapper,
+  ModernHeading,
+  ModernText,
+  ModernSpan,
+  ModernList
+} from "ui/components/SharedStyles";
+import { 
+  SectionTransition, 
+  FloatingParticles,
+  CSSParticleSystem 
+} from "ui/components/ScrollTransitions";
 interface SectionWrapperPropsType {
   imageUrl: string;
 }
@@ -102,101 +116,144 @@ export const ChristmasSection = styled("section")`
 export function Ui() {
   return (
     <>
+      <FloatingParticles />
       <Navigation />
       <main id="main-content">
         <MainView />
         
+        <SectionTransition />
+        
         <section id="o-nas" aria-labelledby="about-heading">
-          <SectionWrapper imageUrl={About}>
-            <TextWrapper>
-              <header>
-                <h2 id="about-heading" className="sr-only">O zespole Lazy Swing Band</h2>
-              </header>
-              <TextMedium>
-                Jesteśmy młodą i dynamiczną grupą, która kocha muzykę i kulturę
-                swingową. Nasz zespół powstał w Krakowie, gdzie w 2016 roku
-                zaczęliśmy naszą przygodę od małych swingowych potańcówek w{" "}
-                <SpanStyle> Piwnicy pod Baranami.</SpanStyle>
-              </TextMedium>
-            </TextWrapper>
-          </SectionWrapper>
+          <ModernSectionWrapper backgroundImage={About} parallaxEffect>
+            <CSSParticleSystem />
+            <ModernContentContainer glassmorphism enhanced>
+              <ModernTextWrapper centerAlign enhanced>
+                <header>
+                  <ModernHeading id="about-heading" size="medium" color="gold" enhanced>
+                    O zespole Lazy Swing Band
+                  </ModernHeading>
+                </header>
+                <ModernText size="large" emphasis enhanced>
+                  Jesteśmy <ModernSpan variant="highlight" enhanced>młodą i dynamiczną grupą</ModernSpan>, która kocha muzykę i kulturę
+                  swingową. Nasz zespół powstał w Krakowie, gdzie w 2016 roku
+                  zaczęliśmy naszą przygodę od małych swingowych potańcówek w{" "}
+                  <ModernSpan variant="glow" enhanced>Piwnicy pod Baranami.</ModernSpan>
+                </ModernText>
+                <ModernText size="medium" enhanced>
+                  Od tamtej pory przeszliśmy długą drogę, stając się jednym z najbardziej 
+                  rozpoznawalnych zespołów swingowych w Polsce. Nasza pasja do autentycznego 
+                  brzmienia lat 20. i 30. XX wieku łączy się z nowoczesną energią sceny.
+                </ModernText>
+              </ModernTextWrapper>
+            </ModernContentContainer>
+          </ModernSectionWrapper>
         </section>
         
+        <SectionTransition />
         <LatoZRadiemSection />
+        <SectionTransition />
         <ListenUsView />
         
+        <SectionTransition />
         <section id="festiwale" aria-labelledby="festivals-heading">
-          <SectionWrapper imageUrl={About2}>
-            <TextWrapper>
-              <header>
-                <h2 id="festivals-heading" className="sr-only">Nasze występy na festiwalach</h2>
-              </header>
-              <TextMedium>
-                Nasza pasja do muzyki swingowej prowadzi nas nie tylko po całej
-                Polsce, ale także poza jej granice. <br />
-                <SpanStyle>
-                  Zawitaliśmy między innymi na takie festiwale jak:
-                </SpanStyle>
-                <ListWrapper>
-                  <li>Dragon Swing Festival,</li>
-                  <li>Transvingvania Lindy Exchange,</li>
-                  <li>Letni Festiwal Jazzowy w Krakowie,</li>
-                  <li>Lindy Hop Non Stop,</li>
+          <ModernSectionWrapper backgroundImage={About2} parallaxEffect>
+            <CSSParticleSystem />
+            <ModernContentContainer glassmorphism enhanced>
+              <ModernTextWrapper centerAlign enhanced>
+                <header>
+                  <ModernHeading id="festivals-heading" size="medium" color="gold" enhanced>
+                    Nasze występy na festiwalach
+                  </ModernHeading>
+                </header>
+                <ModernText size="large" emphasis enhanced>
+                  Nasza pasja do muzyki swingowej prowadzi nas nie tylko po całej
+                  Polsce, ale także <ModernSpan variant="accent" enhanced>poza jej granice</ModernSpan>.
+                </ModernText>
+                <ModernText size="medium" enhanced>
+                  <ModernSpan variant="highlight" enhanced>
+                    Zawitaliśmy między innymi na takie festiwale jak:
+                  </ModernSpan>
+                </ModernText>
+                <ModernList variant="grid" enhanced>
+                  <li>Dragon Swing Festival</li>
+                  <li>Transvingvania Lindy Exchange</li>
+                  <li>Letni Festiwal Jazzowy w Krakowie</li>
+                  <li>Lindy Hop Non Stop</li>
                   <li>Kraków Lindy Invasion</li>
-                  <br />i wiele innych...
-                </ListWrapper>
-              </TextMedium>
-            </TextWrapper>
-          </SectionWrapper>
+                  <li>i wiele innych...</li>
+                </ModernList>
+              </ModernTextWrapper>
+            </ModernContentContainer>
+          </ModernSectionWrapper>
         </section>
+        
+        <SectionTransition />
         <YouTubeView />
         
+        <SectionTransition />
         <section id="uslugi" aria-labelledby="services-heading">
-          <SectionWrapper imageUrl={About3}>
-            <TextWrapper>
-              <header>
-                <h2 id="services-heading" className="sr-only">Nasze usługi i oferta</h2>
-              </header>
-              <TextMedium>
-                Jeśli organizujecie Państwo wszelakie wydarzenia kulturalne,
-                <ListWrapper>
-                  <li>
-                    festiwale jazzowe, retro-festiwale, festiwale tańca swingowego
-                  </li>
-                  <li>targi,</li>
-                  <li>pikniki,</li>
-                  <li>bankiety,</li>
-                  <li>imprezy dla zróżnicowanej publiczności,</li>
-                </ListWrapper>
-                a może poszukują klimatycznego zespołu, rodem z Ojca Chrzestnego, do
-                swojego filmu...
-                <SpanStyle> - JESTEŚMY IDEALNYM WYBOREM!</SpanStyle>
-              </TextMedium>
-            </TextWrapper>
-          </SectionWrapper>
+          <ModernSectionWrapper backgroundImage={About3} parallaxEffect>
+            <CSSParticleSystem />
+            <ModernContentContainer glassmorphism enhanced>
+              <ModernTextWrapper centerAlign enhanced>
+                <header>
+                  <ModernHeading id="services-heading" size="medium" color="gold" enhanced>
+                    Nasze usługi i oferta
+                  </ModernHeading>
+                </header>
+                <ModernText size="large" enhanced>
+                  Jeśli organizujecie Państwo <ModernSpan variant="highlight" enhanced>wszelakie wydarzenia kulturalne</ModernSpan>,
+                  a może poszukują <ModernSpan variant="accent" enhanced>klimatycznego zespołu</ModernSpan>, rodem z Ojca Chrzestnego...
+                </ModernText>
+                <ModernList variant="grid" enhanced>
+                  <li>Festiwale jazzowe i retro-festiwale</li>
+                  <li>Festiwale tańca swingowego</li>
+                  <li>Targi i wydarzenia korporacyjne</li>
+                  <li>Pikniki i wydarzenia plenerowe</li>
+                  <li>Bankiety i uroczystości</li>
+                  <li>Imprezy dla zróżnicowanej publiczności</li>
+                  <li>Projekty filmowe i teatralne</li>
+                </ModernList>
+                <ModernText size="large" emphasis enhanced>
+                  <ModernSpan variant="glow" enhanced>- JESTEŚMY IDEALNYM WYBOREM!</ModernSpan>
+                </ModernText>
+              </ModernTextWrapper>
+            </ModernContentContainer>
+          </ModernSectionWrapper>
         </section>
         
         <section id="swieta" aria-labelledby="christmas-heading">
-          <ChristmasSection>
-            <TextWrapper>
-              <header>
-                <h2 id="christmas-heading" className="sr-only">Lazy Christmas - Oferta świąteczna</h2>
-              </header>
-              <TextMedium>
-                W okresie około-świątecznym mamy także przygotowany repertuar
-                x-masowy: <br />
-                <SpanStyle> Lazy Christmas! </SpanStyle>
-                ze standardami amerykańskich, swingowych przebojów <br /> <br />
-                <SpanStyle>
-                  - To doskonała oferta na wigilie firmowe i inne podobne
-                  wydarzenia, w klimacie bożonarodzeniowym.
-                </SpanStyle>
-              </TextMedium>
-            </TextWrapper>
-          </ChristmasSection>
+          <ModernSectionWrapper darkTheme>
+            <ModernContentContainer glassmorphism maxWidth="1200px">
+              <ModernTextWrapper centerAlign>
+                <header>
+                  <ModernHeading id="christmas-heading" size="medium" color="gold">
+                    🎄 Lazy Christmas 🎄
+                  </ModernHeading>
+                </header>
+                <ModernText size="large" emphasis>
+                  W okresie około-świątecznym mamy także przygotowany 
+                  <ModernSpan variant="glow"> repertuar x-masowy</ModernSpan>!
+                </ModernText>
+                <ModernText size="medium">
+                  <ModernSpan variant="highlight">Lazy Christmas!</ModernSpan> - 
+                  ze standardami amerykańskich, swingowych przebojów świątecznych
+                  w niepowtarzalnym klimacie lat 20. i 30.
+                </ModernText>
+                <ModernText size="large">
+                  <ModernSpan variant="accent">
+                    🎅 To doskonała oferta na wigilie firmowe i inne podobne
+                    wydarzenia, w magicznym klimacie bożonarodzeniowym. 🎁
+                  </ModernSpan>
+                </ModernText>
+              </ModernTextWrapper>
+            </ModernContentContainer>
+          </ModernSectionWrapper>
         </section>
         
+        <SectionTransition />
         <SquadSection />
+        <SectionTransition />
         <ContactSection />
       </main>
     </>
