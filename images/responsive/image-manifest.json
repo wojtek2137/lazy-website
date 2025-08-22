@@ -288,5 +288,115 @@
       "size": "4.5KB",
       "format": "webp"
     }
+  },
+  "lato_z_radiem": {
+    "desktop": {
+      "path": "./responsive/lato_z_radiem_desktop.webp",
+      "size": "120KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/lato_z_radiem_mobile.webp",
+      "size": "25KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/lato_z_radiem_tablet.webp",
+      "size": "60KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/lato_z_radiem_thumb.webp",
+      "size": "5KB",
+      "format": "webp"
+    }
+  },
+  "lato_z_radiem_1": {
+    "desktop": {
+      "path": "./responsive/lato_z_radiem_1_desktop.webp",
+      "size": "110KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/lato_z_radiem_1_mobile.webp",
+      "size": "22KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/lato_z_radiem_1_tablet.webp",
+      "size": "55KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/lato_z_radiem_1_thumb.webp",
+      "size": "4.5KB",
+      "format": "webp"
+    }
+  },
+  "lato_z_radiem_2": {
+    "desktop": {
+      "path": "./responsive/lato_z_radiem_2_desktop.webp",
+      "size": "115KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/lato_z_radiem_2_mobile.webp",
+      "size": "24KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/lato_z_radiem_2_tablet.webp",
+      "size": "58KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/lato_z_radiem_2_thumb.webp",
+      "size": "4.8KB",
+      "format": "webp"
+    }
+  },
+  "lato_z_radiem_3": {
+    "desktop": {
+      "path": "./responsive/lato_z_radiem_3_desktop.webp",
+      "size": "125KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/lato_z_radiem_3_mobile.webp",
+      "size": "26KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/lato_z_radiem_3_tablet.webp",
+      "size": "62KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/lato_z_radiem_3_thumb.webp",
+      "size": "5.2KB",
+      "format": "webp"
+    }
+  },
+  "polskie_radio_jedynka": {
+    "desktop": {
+      "path": "./responsive/polskie_radio_jedynka_desktop.webp",
+      "size": "15KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/polskie_radio_jedynka_mobile.webp",
+      "size": "8KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/polskie_radio_jedynka_tablet.webp",
+      "size": "12KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/polskie_radio_jedynka_thumb.webp",
+      "size": "5KB",
+      "format": "webp"
+    }
   }
 }
