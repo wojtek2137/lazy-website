@@ -46,9 +46,9 @@ const squadData = [
     description: "Perkusja",
   },
   {
-    person: "Miłosz Wójcik",
+    person: "Miłosz Bazarnik",
     imageSrc: Milosz,
-    description: "Gitara",
+    description: "Fortepian",
   },
 ];
 

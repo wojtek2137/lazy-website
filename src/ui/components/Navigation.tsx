@@ -72,6 +72,7 @@ export function Navigation() {
   const navItems = [
     { href: '#glowna', label: '🎷 Start' },
     { href: '#o-nas', label: '👥 O nas' },
+    { href: '#lato-z-radiem', label: '📻 Lato z Radiem' },
     { href: '#albumy', label: '🎵 Albumy' },
     { href: '#festiwale', label: '🎪 Festiwale' },
     { href: '#wideo', label: '📹 Wideo' },
