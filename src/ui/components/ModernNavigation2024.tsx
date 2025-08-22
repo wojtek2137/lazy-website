@@ -232,55 +232,45 @@ const BreadcrumbSeparator = styled.span`
 `;
 
 // Quick Actions Floating Button
-const QuickActionsButton = styled.button<{ isExpanded: boolean }>`
+const QuickActionsButton = styled.button`
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: ${({ isExpanded }) => isExpanded ? '200px' : '64px'};
+  width: 64px;
   height: 64px;
   background: linear-gradient(135deg, ${colors.primary.gold}, ${colors.primary.sandy});
   border: none;
   border-radius: 32px;
   cursor: pointer;
   pointer-events: all;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.3s ease;
   box-shadow: 
-    0 12px 40px rgba(245, 203, 92, 0.4),
-    0 0 30px rgba(245, 203, 92, 0.2);
+    0 8px 25px rgba(245, 203, 92, 0.3),
+    0 0 20px rgba(245, 203, 92, 0.2);
   
   &:hover {
-    transform: translateY(-4px) scale(1.05);
+    transform: translateY(-2px) scale(1.1);
     box-shadow: 
-      0 20px 60px rgba(245, 203, 92, 0.6),
-      0 0 50px rgba(245, 203, 92, 0.4);
+      0 12px 35px rgba(245, 203, 92, 0.5),
+      0 0 30px rgba(245, 203, 92, 0.3);
   }
   
   &:active {
-    transform: translateY(-2px) scale(1.02);
+    transform: translateY(-1px) scale(1.05);
   }
 `;
 
-const QuickActionsIcon = styled.span<{ isExpanded: boolean }>`
+const QuickActionsIcon = styled.span`
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) rotate(${({ isExpanded }) => isExpanded ? '45deg' : '0deg'});
+  transform: translate(-50%, -50%);
   font-size: 24px;
   color: ${colors.primary.black};
-  opacity: ${({ isExpanded }) => isExpanded ? 0 : 1};
   transition: all 0.3s ease;
 `;
 
-const QuickActionsText = styled.span<{ isExpanded: boolean }>`
-  opacity: ${({ isExpanded }) => isExpanded ? 1 : 0};
-  transform: translateX(${({ isExpanded }) => isExpanded ? '20px' : '0px'});
-  transition: all 0.3s ease;
-  color: ${colors.primary.black};
-  font-family: ${fonts.mulish.Bold};
-  font-size: 14px;
-  white-space: nowrap;
-`;
+
 
 // Command Trigger Button
 const CommandTrigger = styled.button`
@@ -308,6 +298,47 @@ const CommandTrigger = styled.button`
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
   }
+  
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 25px;
+    top: 20px;
+    right: 20px;
+    justify-content: center;
+  }
+  
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+    border-radius: 22px;
+    top: 15px;
+    right: 15px;
+  }
+`;
+
+const CommandTriggerIcon = styled.span`
+  font-size: 16px;
+  
+  @media (min-width: 769px) {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    display: block;
+    font-size: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
+`;
+
+const CommandText = styled.span`
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const KeyboardShortcut = styled.span`
@@ -316,41 +347,13 @@ const KeyboardShortcut = styled.span`
   border-radius: 4px;
   font-size: 12px;
   color: ${colors.neutrals.N300};
-`;
-
-// Smart Tooltip
-const SmartTooltip = styled.div<{ show: boolean; x: number; y: number }>`
-  position: fixed;
-  left: ${({ x }) => x}px;
-  top: ${({ y }) => y}px;
-  background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid ${colors.primary.gold}40;
-  border-radius: 12px;
-  padding: 12px 16px;
-  color: ${colors.primary.white};
-  font-family: ${fonts.mulish.Medium};
-  font-size: 14px;
-  pointer-events: none;
-  z-index: 10001;
-  opacity: ${({ show }) => show ? 1 : 0};
-  transform: translateY(${({ show }) => show ? 0 : '10px'});
-  transition: all 0.3s ease;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
   
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid rgba(0, 0, 0, 0.95);
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
+
+
 
 // Props interface
 interface ModernNavigation2024Props {
@@ -360,12 +363,12 @@ interface ModernNavigation2024Props {
 // Main Navigation Component
 export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2024Props = {}) {
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
-  const [quickActionsExpanded, setQuickActionsExpanded] = useState(false);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [currentSection, setCurrentSection] = useState('glowna');
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [tooltip, setTooltip] = useState({ show: false, text: '', x: 0, y: 0 });
+
   
   const commandInputRef = useRef<HTMLInputElement>(null);
 
@@ -487,7 +490,6 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
       // Escape to close
       if (e.key === 'Escape') {
         setCommandPaletteOpen(false);
-        setQuickActionsExpanded(false);
       }
 
       // Arrow navigation in command palette (only when not typing in input)
@@ -563,29 +565,16 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
     }
   }, []);
 
-  const handleMouseEnter = useCallback((e: React.MouseEvent, text: string) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setTooltip({
-      show: true,
-      text,
-      x: rect.left + rect.width / 2,
-      y: rect.top - 10
-    });
-  }, []);
 
-  const handleMouseLeave = useCallback(() => {
-    setTooltip(prev => ({ ...prev, show: false }));
-  }, []);
 
   return (
     <ModernNavWrapper>
       {/* Command Trigger */}
       <CommandTrigger
         onClick={() => setCommandPaletteOpen(true)}
-        onMouseEnter={(e) => handleMouseEnter(e, 'Szybka nawigacja (Cmd+K)')}
-        onMouseLeave={handleMouseLeave}
       >
-        ⚡ Szybka nawigacja
+        <CommandTriggerIcon>☰</CommandTriggerIcon>
+        <CommandText>⚡ Szybka nawigacja</CommandText>
         <KeyboardShortcut>⌘K</KeyboardShortcut>
       </CommandTrigger>
 
@@ -611,8 +600,6 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
               isActive={isActive}
               progress={Math.max(0, progress)}
               onClick={() => handleNavigation(`#${sectionId}`)}
-              onMouseEnter={(e) => handleMouseEnter(e, item?.label || sectionId)}
-              onMouseLeave={handleMouseLeave}
             />
           );
         })}
@@ -668,31 +655,14 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
 
       {/* Quick Actions Button */}
       <QuickActionsButton
-        isExpanded={quickActionsExpanded}
-        onClick={() => {
-          const newState = !quickActionsExpanded;
-          setQuickActionsExpanded(newState);
-          onQuickActionsToggle?.(newState);
-        }}
-        onMouseEnter={(e) => handleMouseEnter(e, 'Szybkie akcje')}
-        onMouseLeave={handleMouseLeave}
+        onClick={() => onQuickActionsToggle?.(true)}
       >
-        <QuickActionsIcon isExpanded={quickActionsExpanded}>
-          •••
+        <QuickActionsIcon>
+          ⚡
         </QuickActionsIcon>
-        <QuickActionsText isExpanded={quickActionsExpanded}>
-          Szybkie Akcje
-        </QuickActionsText>
       </QuickActionsButton>
 
-      {/* Smart Tooltip */}
-      <SmartTooltip
-        show={tooltip.show}
-        x={tooltip.x}
-        y={tooltip.y}
-      >
-        {tooltip.text}
-      </SmartTooltip>
+
 
       {/* Click outside to close */}
       {commandPaletteOpen && (

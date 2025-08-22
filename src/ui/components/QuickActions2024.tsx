@@ -171,137 +171,9 @@ const ProgressText = styled.span`
   font-size: 12px;
 `;
 
-// Smart Suggestions
-const SmartSuggestions = styled.div<{ isVisible: boolean }>`
-  position: fixed;
-  top: 100px;
-  left: 30px;
-  width: 300px;
-  background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(40px);
-  border: 1px solid ${colors.primary.gold}30;
-  border-radius: 16px;
-  padding: 20px;
-  transform: ${({ isVisible }) => 
-    isVisible 
-      ? 'translateX(0) scale(1)' 
-      : 'translateX(-20px) scale(0.95)'
-  };
-  opacity: ${({ isVisible }) => isVisible ? 1 : 0};
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  pointer-events: ${({ isVisible }) => isVisible ? 'all' : 'none'};
-  z-index: 9997;
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.6),
-    0 0 30px ${colors.primary.gold}20;
-    
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, ${colors.primary.gold}60, transparent);
-    border-radius: 16px 16px 0 0;
-  }
-`;
 
-const SuggestionTitle = styled.h4`
-  color: ${colors.primary.gold};
-  font-family: ${fonts.mulish.Bold};
-  font-size: 14px;
-  margin: 0 0 12px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-`;
 
-const SuggestionCloseButton = styled.button`
-  background: none;
-  border: none;
-  color: ${colors.neutrals.N300};
-  font-size: 16px;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  transition: all 0.2s ease;
-  
-  &:hover {
-    color: ${colors.primary.white};
-    background: rgba(255, 255, 255, 0.1);
-    transform: scale(1.1);
-  }
-  
-  &:active {
-    transform: scale(0.95);
-  }
-`;
 
-const SuggestionItem = styled.div`
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  margin-bottom: 8px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-      transparent, 
-      ${colors.primary.gold}10, 
-      transparent
-    );
-    transition: left 0.6s ease;
-  }
-  
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: ${colors.primary.gold}40;
-    transform: translateX(4px) scale(1.02);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    
-    &::before {
-      left: 100%;
-    }
-  }
-  
-  &:active {
-    transform: translateX(2px) scale(0.98);
-  }
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-const SuggestionText = styled.p`
-  color: ${colors.primary.white};
-  font-family: ${fonts.mulish.Medium};
-  font-size: 13px;
-  margin: 0 0 4px 0;
-`;
-
-const SuggestionMeta = styled.span`
-  color: ${colors.neutrals.N300};
-  font-family: ${fonts.mulish.Regular};
-  font-size: 11px;
-`;
 
 interface QuickActions2024Props {
   isVisible: boolean;
@@ -311,7 +183,7 @@ interface QuickActions2024Props {
 export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) {
 
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [showSuggestions, setShowSuggestions] = useState(false);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -325,25 +197,7 @@ export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    // Show smart suggestions after 3 seconds of inactivity
-    const timer = setTimeout(() => {
-      setShowSuggestions(true);
-    }, 3000);
 
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Re-show suggestions after being closed for 30 seconds
-  useEffect(() => {
-    if (!showSuggestions) {
-      const reShowTimer = setTimeout(() => {
-        setShowSuggestions(true);
-      }, 30000); // 30 seconds
-
-      return () => clearTimeout(reShowTimer);
-    }
-  }, [showSuggestions]);
 
 
 
@@ -394,23 +248,7 @@ export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) 
     }
   ];
 
-  const suggestions = [
-    {
-      text: 'Chcesz nas usłyszeć?',
-      meta: 'Sprawdź nasze nagrania na Spotify',
-      action: () => document.getElementById('albumy')?.scrollIntoView({ behavior: 'smooth' })
-    },
-    {
-      text: 'Organizujesz event?',
-      meta: 'Zobacz naszą ofertę koncertową',
-      action: () => document.getElementById('uslugi')?.scrollIntoView({ behavior: 'smooth' })
-    },
-    {
-      text: 'Poznaj naszą historię',
-      meta: 'Od Piwnicy pod Baranami do dzisiaj',
-      action: () => document.getElementById('o-nas')?.scrollIntoView({ behavior: 'smooth' })
-    }
-  ];
+
 
   return (
     <>
@@ -449,24 +287,7 @@ export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) 
         <ProgressText>{Math.round(scrollProgress)}%</ProgressText>
       </ProgressRing>
 
-      {/* Smart Suggestions */}
-      <SmartSuggestions isVisible={showSuggestions}>
-        <SuggestionTitle>
-          <span>Może Cię zainteresuje</span>
-          <SuggestionCloseButton 
-            onClick={() => setShowSuggestions(false)}
-            title="Zamknij sugestie"
-          >
-            ×
-          </SuggestionCloseButton>
-        </SuggestionTitle>
-        {suggestions.map((suggestion, index) => (
-          <SuggestionItem key={index} onClick={suggestion.action}>
-            <SuggestionText>{suggestion.text}</SuggestionText>
-            <SuggestionMeta>{suggestion.meta}</SuggestionMeta>
-          </SuggestionItem>
-        ))}
-      </SmartSuggestions>
+
     </>
   );
 }
