@@ -1,3 +1,23 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap
+Sitemap: https://lazyswingband.com/sitemap.xml
+
+# Allow all crawlers access to CSS and JS files
+User-agent: *
+Allow: /static/
+
+# Disallow admin areas if any
+Disallow: /admin/
+Disallow: /.git/
+
+# Allow social media crawlers
+User-agent: facebookexternalhit/*
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /

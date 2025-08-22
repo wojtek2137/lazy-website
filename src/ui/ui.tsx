@@ -8,6 +8,7 @@ import { ListenUsView } from "ui/pages/ListenUsView/ListenUsView";
 import { colors, fonts } from "config/theme";
 import { YouTubeView } from "ui/pages/YouTubeView/YouTubeView";
 import { SquadSection } from "ui/pages/SquadSection/SquadSection";
+import { LatoZRadiemSection } from "ui/pages/LatoZRadiemSection/LatoZRadiemSection";
 import { Navigation } from "ui/components/Navigation";
 import {
   ContactSection,
@@ -102,6 +103,8 @@ export function Ui() {
             </TextWrapper>
           </SectionWrapper>
         </section>
+        
+        <LatoZRadiemSection />
         <ListenUsView />
         
         <section id="festiwale" aria-labelledby="festivals-heading">
