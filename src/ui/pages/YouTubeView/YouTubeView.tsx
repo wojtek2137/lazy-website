@@ -31,7 +31,7 @@ export function YouTubeView() {
             <ListenUsSection>
                 <header>
                     <h2 id="video-heading">
-                        <ListenUsHeader>YouTube Music</ListenUsHeader>
+                        <ListenUsHeader>YouTube</ListenUsHeader>
                     </h2>
                 </header>
                 <YouTubeIFramesWrapper role="list" aria-label="Lista filmów zespołu na YouTube">

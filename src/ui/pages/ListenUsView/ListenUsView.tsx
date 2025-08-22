@@ -96,7 +96,7 @@ export function ListenUsView() {
       <ListenUsSection>
         <header>
           <h2 id="albums-heading">
-            <ListenUsHeader>Albums</ListenUsHeader>
+            <ListenUsHeader>Albumy</ListenUsHeader>
           </h2>
         </header>
         <ListenAlbumsWrapper role="list" aria-label="Lista albumów zespołu Lazy Swing Band">

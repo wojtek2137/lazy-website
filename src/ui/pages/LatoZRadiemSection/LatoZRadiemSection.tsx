@@ -45,7 +45,7 @@ const cities = [
     url: 'https://jedynka.polskieradio.pl/artykul/3562277,Lato-z-Radiem-i-Telewizja-Polska-w-Lublinie-Jakie-atrakcje-zaplanowano'
   },
   {
-    name: 'Jeruzal',
+    name: 'Mrozy',
     url: 'https://jedynka.polskieradio.pl/artykul/3563339,Lato-z-Radiem-w-uniwersum-Rancza-Co-wydarzy-sie-w-Jeruzalu-i-Mrozach'
   },
   {
