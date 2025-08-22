@@ -1,10 +1,10 @@
 import React from "react";
 import {
   ContentWrapper,
-  Header,
   HeaderWrapper,
   Logo,
   MainContainer,
+  MainTitle,
   SubHeader,
   VideoWrapper,
 } from "./MainView.style";
@@ -27,7 +27,7 @@ export function MainView() {
   // const [isMuted, setIsMuted] = useState<boolean>(true);
 
   return (
-    <>
+    <section id="glowna" aria-labelledby="main-title">
       <MainContainer>
         <VideoWrapper
           src={dragonVideo2022}
@@ -35,17 +35,21 @@ export function MainView() {
           loop
           muted={true}
           playsInline
+          aria-label="Wideo z występu zespołu Lazy Swing Band na Dragon Swing Festival 2022"
+          poster="/logo-color.png"
         ></VideoWrapper>
         <ContentWrapper>
-          <Logo />
+          <Logo role="img" aria-label="Logo zespołu Lazy Swing Band" />
           <HeaderWrapper>
             <SubHeader>zespół zawodowych muzyków jazzowych z Krakowa</SubHeader>
 
-            <Header>Swingowa muzyka do tańca </Header>
+            <MainTitle id="main-title">
+              Swingowa muzyka do tańca
+            </MainTitle>
             <SubHeader>i nie tylko</SubHeader>
           </HeaderWrapper>
         </ContentWrapper>
       </MainContainer>
-    </>
+    </section>
   );
 }

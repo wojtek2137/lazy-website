@@ -4,9 +4,9 @@ import { colors, fonts } from "config/theme";
 export const CardContainer = styled("div")`
   display: flex;
   position: relative;
-  width: 100%;
-  justify-content: space-around;
-  padding: 20px 0;
+  width: auto;
+  justify-content: center;
+  align-items: center;
 `;
 export const CardWrapper = styled("div")`
   display: flex;
@@ -57,10 +57,9 @@ export const CardContentWrapper = styled("div")`
   position: relative;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: start;
   height: 100%;
   width: 100%;
-  padding: 15px;
 `;
 
 export const CardHeader = styled("h3")`
@@ -83,6 +82,7 @@ export const StreamingList = styled("ul")`
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  padding: 0;
 `;
 
 export const StreamingTagWrapper = styled("li")`

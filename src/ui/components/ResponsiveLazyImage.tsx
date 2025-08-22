@@ -6,7 +6,6 @@ interface ResponsiveLazyImageProps {
   alt: string;
   loading?: 'lazy' | 'eager';
   useResponsive?: boolean;
-  style?: React.CSSProperties;
 }
 
 const ImageContainer = styled.div`
@@ -16,12 +15,13 @@ const ImageContainer = styled.div`
   overflow: hidden;
 `;
 
-const Image = styled.img`
+const Image = styled.img<{ $isLoaded: boolean }>`
   width: 100%;
   height: 100%;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(20px);
   filter: blur(5px);
+  opacity: ${props => props.$isLoaded ? 1 : 0};
   
   &.loaded {
     transform: translateY(0);
@@ -76,7 +76,6 @@ export const ResponsiveLazyImage: React.FC<ResponsiveLazyImageProps> = ({
   alt,
   loading = 'lazy',
   useResponsive = false,
-  style,
 }) => {
   const [inView, setInView] = useState(loading === 'eager');
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -140,10 +139,7 @@ export const ResponsiveLazyImage: React.FC<ResponsiveLazyImageProps> = ({
           onLoad={handleImageLoad}
           onError={handleImageError}
           className={imageLoaded ? 'loaded' : ''}
-          style={{
-            opacity: imageLoaded ? 1 : 0,
-            ...style,
-          }}
+          $isLoaded={imageLoaded}
         />
       )}
       {!imageLoaded && !imageError && (
