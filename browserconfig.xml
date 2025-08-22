@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+    <msapplication>
+        <tile>
+            <square150x150logo src="/lsb_favicon.png"/>
+            <TileColor>#ccb379</TileColor>
+        </tile>
+    </msapplication>
+</browserconfig>
