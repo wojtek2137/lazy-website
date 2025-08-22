@@ -8,6 +8,7 @@ import { ListenUsView } from "ui/pages/ListenUsView/ListenUsView";
 import { colors, fonts } from "config/theme";
 import { YouTubeView } from "ui/pages/YouTubeView/YouTubeView";
 import { SquadSection } from "ui/pages/SquadSection/SquadSection";
+import { Navigation } from "ui/components/Navigation";
 import {
   ContactSection,
   SpanStyle,
@@ -82,73 +83,101 @@ export const ChristmasSection = styled("section")`
 export function Ui() {
   return (
     <>
-      <MainView />
-      <SectionWrapper imageUrl={About}>
-        <TextWrapper>
-          <TextMedium>
-            Jesteśmy młodą i dynamiczną grupą, która kocha muzykę i kulturę
-            swingową. Nasz zespół powstał w Krakowie, gdzie w 2016 roku
-            zaczęliśmy naszą przygodę od małych swingowych potańcówek w{" "}
-            <SpanStyle> Piwnicy pod Baranami.</SpanStyle>
-          </TextMedium>
-        </TextWrapper>
-      </SectionWrapper>
-      <ListenUsView />
-      <SectionWrapper imageUrl={About2}>
-        <TextWrapper>
-          <TextMedium>
-            Nasza pasja do muzyki swingowej prowadzi nas nie tylko po całej
-            Polsce, ale także poza jej granice. <br />
-            <SpanStyle>
-              Zawitaliśmy między innymi na takie festiwale jak:
-            </SpanStyle>
-            <ListWrapper>
-              <li>Dragon Swing Festival,</li>
-              <li>Transvingvania Lindy Exchange,</li>
-              <li>Letni Festiwal Jazzowy w Krakowie,</li>
-              <li>Lindy Hop Non Stop,</li>
-              <li>Kraków Lindy Invasion</li>
-              <br />i wiele innych...
-            </ListWrapper>
-          </TextMedium>
-        </TextWrapper>
-      </SectionWrapper>
-      <YouTubeView />
-      <SectionWrapper imageUrl={About3}>
-        <TextWrapper>
-          <TextMedium>
-            Jeśli organizujecie Państwo wszelakie wydarzenia kulturalne,
-            <ListWrapper>
-              <li>
-                festiwale jazzowe, retro-festiwale, festiwale tańca swingowego
-              </li>
-              <li>targi,</li>
-              <li>pikniki,</li>
-              <li>bankiety,</li>
-              <li>imprezy dla zróżnicowanej publiczności,</li>
-            </ListWrapper>
-            a może poszukują klimatycznego zespołu, rodem z Ojca Chrzestnego, do
-            swojego filmu...
-            <SpanStyle> - JESTEŚMY IDEALNYM WYBOREM!</SpanStyle>
-          </TextMedium>
-        </TextWrapper>
-      </SectionWrapper>
-      <ChristmasSection>
-        <TextWrapper>
-          <TextMedium>
-            W okresie około-świątecznym mamy także przygotowany repertuar
-            x-masowy: <br />
-            <SpanStyle> Lazy Christmas! </SpanStyle>
-            ze standardami amerykańskich, swingowych przebojów <br /> <br />
-            <SpanStyle>
-              - To doskonała oferta na wigilie firmowe i inne podobne
-              wydarzenia, w klimacie bożonarodzeniowym.
-            </SpanStyle>
-          </TextMedium>
-        </TextWrapper>
-      </ChristmasSection>
-      <SquadSection />
-      <ContactSection />
+      <Navigation />
+      <main id="main-content">
+        <MainView />
+        
+        <section id="o-nas" aria-labelledby="about-heading">
+          <SectionWrapper imageUrl={About}>
+            <TextWrapper>
+              <header>
+                <h2 id="about-heading" className="sr-only">O zespole Lazy Swing Band</h2>
+              </header>
+              <TextMedium>
+                Jesteśmy młodą i dynamiczną grupą, która kocha muzykę i kulturę
+                swingową. Nasz zespół powstał w Krakowie, gdzie w 2016 roku
+                zaczęliśmy naszą przygodę od małych swingowych potańcówek w{" "}
+                <SpanStyle> Piwnicy pod Baranami.</SpanStyle>
+              </TextMedium>
+            </TextWrapper>
+          </SectionWrapper>
+        </section>
+        <ListenUsView />
+        
+        <section id="festiwale" aria-labelledby="festivals-heading">
+          <SectionWrapper imageUrl={About2}>
+            <TextWrapper>
+              <header>
+                <h2 id="festivals-heading" className="sr-only">Nasze występy na festiwalach</h2>
+              </header>
+              <TextMedium>
+                Nasza pasja do muzyki swingowej prowadzi nas nie tylko po całej
+                Polsce, ale także poza jej granice. <br />
+                <SpanStyle>
+                  Zawitaliśmy między innymi na takie festiwale jak:
+                </SpanStyle>
+                <ListWrapper>
+                  <li>Dragon Swing Festival,</li>
+                  <li>Transvingvania Lindy Exchange,</li>
+                  <li>Letni Festiwal Jazzowy w Krakowie,</li>
+                  <li>Lindy Hop Non Stop,</li>
+                  <li>Kraków Lindy Invasion</li>
+                  <br />i wiele innych...
+                </ListWrapper>
+              </TextMedium>
+            </TextWrapper>
+          </SectionWrapper>
+        </section>
+        <YouTubeView />
+        
+        <section id="uslugi" aria-labelledby="services-heading">
+          <SectionWrapper imageUrl={About3}>
+            <TextWrapper>
+              <header>
+                <h2 id="services-heading" className="sr-only">Nasze usługi i oferta</h2>
+              </header>
+              <TextMedium>
+                Jeśli organizujecie Państwo wszelakie wydarzenia kulturalne,
+                <ListWrapper>
+                  <li>
+                    festiwale jazzowe, retro-festiwale, festiwale tańca swingowego
+                  </li>
+                  <li>targi,</li>
+                  <li>pikniki,</li>
+                  <li>bankiety,</li>
+                  <li>imprezy dla zróżnicowanej publiczności,</li>
+                </ListWrapper>
+                a może poszukują klimatycznego zespołu, rodem z Ojca Chrzestnego, do
+                swojego filmu...
+                <SpanStyle> - JESTEŚMY IDEALNYM WYBOREM!</SpanStyle>
+              </TextMedium>
+            </TextWrapper>
+          </SectionWrapper>
+        </section>
+        
+        <section id="swieta" aria-labelledby="christmas-heading">
+          <ChristmasSection>
+            <TextWrapper>
+              <header>
+                <h2 id="christmas-heading" className="sr-only">Lazy Christmas - Oferta świąteczna</h2>
+              </header>
+              <TextMedium>
+                W okresie około-świątecznym mamy także przygotowany repertuar
+                x-masowy: <br />
+                <SpanStyle> Lazy Christmas! </SpanStyle>
+                ze standardami amerykańskich, swingowych przebojów <br /> <br />
+                <SpanStyle>
+                  - To doskonała oferta na wigilie firmowe i inne podobne
+                  wydarzenia, w klimacie bożonarodzeniowym.
+                </SpanStyle>
+              </TextMedium>
+            </TextWrapper>
+          </ChristmasSection>
+        </section>
+        
+        <SquadSection />
+        <ContactSection />
+      </main>
     </>
   );
 }

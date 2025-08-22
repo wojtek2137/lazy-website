@@ -19,8 +19,17 @@ export const ListenAlbumsWrapper = styled('div')`
   justify-content: center;
   align-items: flex-end;
   width: 100%;
+  gap: 30px;
+  flex-wrap: wrap;
+  
+  ${mq[2]} {
+    gap: 20px;
+  }
+  
   ${mq[1]} {
     flex-direction: column;
+    align-items: center;
+    gap: 40px;
   }
 `;
 

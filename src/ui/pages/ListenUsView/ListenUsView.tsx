@@ -92,15 +92,19 @@ const cards: Array<CardConfigType> = [
 
 export function ListenUsView() {
   return (
-    <ListenUsSection id="albums">
-      <ListenUsHeader>Albums</ListenUsHeader>
-      <ListenAlbumsWrapper>
-        {cards.map((card) => {
-          return (
-            <Card name={card.name} coverSrc={card.cover} tags={card.data} />
-          );
-        })}
-      </ListenAlbumsWrapper>
-    </ListenUsSection>
+    <section id="albumy" aria-labelledby="albums-heading">
+      <ListenUsSection>
+        <header>
+          <h2 id="albums-heading">
+            <ListenUsHeader>Albums</ListenUsHeader>
+          </h2>
+        </header>
+        <ListenAlbumsWrapper role="list" aria-label="Lista albumów zespołu Lazy Swing Band">
+          {cards.map((card, index) => (
+            <Card key={index} name={card.name} coverSrc={card.cover} tags={card.data} />
+          ))}
+        </ListenAlbumsWrapper>
+      </ListenUsSection>
+    </section>
   );
 }

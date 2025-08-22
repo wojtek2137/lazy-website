@@ -48,6 +48,21 @@ export const TextParagraph = styled("p")`
   font-size: 20px;
   color: ${colors.primary.white};
 `;
+
+export const ContactLink = styled("a")`
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+  
+  &:focus {
+    outline: 2px solid ${colors.primary.sandy};
+    outline-offset: 2px;
+  }
+`;
 interface SocialMediaPropsType {
   isHover: boolean;
 }
@@ -64,53 +79,77 @@ export function ContactSection() {
   const [isIgHover, setIsIgHover] = useState<boolean>(false);
 
   return (
-    <ContactSectionWrapper>
-      <BoxSide>
-        <ContactHeader>
-          Napisz do nas <br />
-          na <br />
-          Facebooku
-        </ContactHeader>
-        <a href={facebookHref}>
-          <SocialMediaImg
-            onMouseEnter={() => setIsFbHover(true)}
-            onMouseLeave={() => setIsFbHover(false)}
-            src={TagFacebookIcon}
-            isHover={isFbHover}
-          />
-        </a>
-      </BoxSide>
-      <BoxMiddle>
-        <ContactHeader>Dane Kontaktowe</ContactHeader>
-        <List>
-          <SpanStyle>
-            Manager:
-            <TextParagraph>Sylwia Buchalska-Augustyn</TextParagraph>
-          </SpanStyle>
-          <SpanStyle>
-            Telefon:
-            <TextParagraph>+48 794 210 665, +48 732 661 109</TextParagraph>
-          </SpanStyle>
-          <SpanStyle>
-            Email: <TextParagraph>lazyswingband@gmail.com</TextParagraph>
-          </SpanStyle>
-        </List>
-      </BoxMiddle>
-      <BoxSide>
-        <ContactHeader>
-          Obserwuj nas <br />
-          na <br />
-          Instagramie
-        </ContactHeader>
-        <a href={instagramHref}>
-          <SocialMediaImg
-            onMouseEnter={() => setIsIgHover(true)}
-            onMouseLeave={() => setIsIgHover(false)}
-            src={TagInstagramIcon}
-            isHover={isIgHover}
-          />
-        </a>
-      </BoxSide>
-    </ContactSectionWrapper>
+    <section id="kontakt" aria-labelledby="contact-heading">
+      <ContactSectionWrapper>
+        <BoxSide>
+          <ContactHeader id="facebook-heading">
+            Napisz do nas <br />
+            na <br />
+            Facebooku
+          </ContactHeader>
+          <a 
+            href={facebookHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Kontakt przez Facebook - Lazy Swing Band"
+          >
+            <SocialMediaImg
+              onMouseEnter={() => setIsFbHover(true)}
+              onMouseLeave={() => setIsFbHover(false)}
+              src={TagFacebookIcon}
+              isHover={isFbHover}
+              alt="Logo Facebook - napisz wiadomość do zespołu"
+            />
+          </a>
+        </BoxSide>
+        
+        <BoxMiddle>
+          <ContactHeader id="contact-data-heading">Dane Kontaktowe</ContactHeader>
+          <List>
+            <SpanStyle>
+              Manager:
+              <TextParagraph>Sylwia Buchalska-Augustyn</TextParagraph>
+            </SpanStyle>
+            <SpanStyle>
+              Telefon:
+              <TextParagraph>
+                <ContactLink href="tel:+48794210665" aria-label="Zadzwoń do managera">+48 794 210 665</ContactLink>, 
+                <ContactLink href="tel:+48732661109" aria-label="Zadzwoń do zespołu">+48 732 661 109</ContactLink>
+              </TextParagraph>
+            </SpanStyle>
+            <SpanStyle>
+              Email: 
+              <TextParagraph>
+                <ContactLink href="mailto:lazyswingband@gmail.com" aria-label="Wyślij email do zespołu">
+                  lazyswingband@gmail.com
+                </ContactLink>
+              </TextParagraph>
+            </SpanStyle>
+          </List>
+        </BoxMiddle>
+        
+        <BoxSide>
+          <ContactHeader id="instagram-heading">
+            Obserwuj nas <br />
+            na <br />
+            Instagramie
+          </ContactHeader>
+          <a 
+            href={instagramHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Obserwuj Lazy Swing Band na Instagram"
+          >
+            <SocialMediaImg
+              onMouseEnter={() => setIsIgHover(true)}
+              onMouseLeave={() => setIsIgHover(false)}
+              src={TagInstagramIcon}
+              isHover={isIgHover}
+              alt="Logo Instagram - obserwuj nasz profil"
+            />
+          </a>
+        </BoxSide>
+      </ContactSectionWrapper>
+    </section>
   );
 }

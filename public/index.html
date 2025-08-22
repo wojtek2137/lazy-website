@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/lsb_favicon.png"/>
@@ -7,26 +7,51 @@
     <meta name="theme-color" content="#ccb379" />
     <meta
       name="description"
-      content="Lazy Swing Band - zespół zawodowych muzyków jazzowych z Krakowa. Swingowa muzyka do tańca i nie tylko."
+      content="🎷 Lazy Swing Band - profesjonalny zespół jazzowy z Krakowa. Swingowa muzyka do tańca, koncerty, wesela, eventy firmowe. Sprawdź nasze albumy na Spotify i YouTube! 🎺"
     />
-    <meta name="keywords" content="jazz, swing, Kraków, muzyka, zespół, koncerty, taniec, swing dance" />
+    <meta name="keywords" content="jazz, swing, Kraków, muzyka, zespół, koncerty, taniec, swing dance, lazy swing band, jazz kraków, zespół jazzowy, muzyka swingowa, koncerty jazzowe, eventy muzyczne, wesela jazz, imprezy firmowe" />
     <meta name="author" content="Lazy Swing Band" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    
+    <!-- Geographic targeting -->
+    <meta name="geo.region" content="PL-12" />
+    <meta name="geo.placename" content="Kraków" />
+    <meta name="geo.position" content="50.0647;19.9450" />
+    <meta name="ICBM" content="50.0647, 19.9450" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://lazyswingband.com/" />
-    <meta property="og:title" content="Lazy Swing Band - Jazz & Swing z Krakowa" />
-    <meta property="og:description" content="Zespół zawodowych muzyków jazzowych z Krakowa. Swingowa muzyka do tańca i nie tylko." />
-    <meta property="og:image" content="%PUBLIC_URL%/logo-color.png" />
+    <meta property="og:title" content="🎷 Lazy Swing Band - Profesjonalny Zespół Jazzowy z Krakowa 🎺" />
+    <meta property="og:description" content="🎵 Zawodowi muzycy jazzowi z Krakowa grający swingową muzykę do tańca. Koncerty, wesela, eventy firmowe. Sprawdź nasze albumy na Spotify! 🎶" />
+    <meta property="og:image" content="https://lazyswingband.com/logo-color.png" />
+    <meta property="og:image:alt" content="Lazy Swing Band - Logo zespołu jazzowego z Krakowa" />
+    <meta property="og:image:width" content="709" />
+    <meta property="og:image:height" content="709" />
     <meta property="og:locale" content="pl_PL" />
     <meta property="og:site_name" content="Lazy Swing Band" />
+    <meta property="music:musician" content="https://lazyswingband.com" />
+    <meta property="fb:admins" content="lazyswingersband" />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lazyswingband" />
+    <meta name="twitter:creator" content="@lazyswingband" />
     <meta name="twitter:url" content="https://lazyswingband.com/" />
-    <meta name="twitter:title" content="Lazy Swing Band - Jazz & Swing z Krakowa" />
-    <meta name="twitter:description" content="Zespół zawodowych muzyków jazzowych z Krakowa. Swingowa muzyka do tańca i nie tylko." />
-    <meta name="twitter:image" content="%PUBLIC_URL%/logo-color.png" />
+    <meta name="twitter:title" content="🎷 Lazy Swing Band - Profesjonalny Zespół Jazzowy z Krakowa" />
+    <meta name="twitter:description" content="🎵 Zawodowi muzycy jazzowi z Krakowa grający swingową muzykę do tańca. Koncerty, wesela, eventy firmowe. Sprawdź nasze albumy na Spotify! 🎶" />
+    <meta name="twitter:image" content="https://lazyswingband.com/logo-color.png" />
+    <meta name="twitter:image:alt" content="Lazy Swing Band - Logo zespołu jazzowego z Krakowa" />
+    
+    <!-- Music specific -->
+    <meta name="music:album" content="https://open.spotify.com/album/5XkBiCPt7nEQUnGjLSjG3P" />
+    <meta name="music:song" content="https://music.youtube.com/playlist?list=OLAK5uy_lkk1xPxBViBc6BJV15Z1go2wJyJRYvNQI" />
+    
+    <!-- Additional SEO -->
+    <meta name="application-name" content="Lazy Swing Band" />
+    <meta name="msapplication-TileColor" content="#ccb379" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
     
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/lsb_favicon.png" />
     <!--
@@ -43,11 +68,178 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Lazy Swing Band</title>
+    <title>🎷 Lazy Swing Band - Profesjonalny Zespół Jazzowy z Krakowa | Koncerty, Wesela, Eventy</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://lazyswingband.com/" />
+    
+    <!-- Preload critical resources for Core Web Vitals -->
+    <link rel="preload" href="%PUBLIC_URL%/logo-color.png" as="image" />
+    <link rel="preload" href="/static/js/main.96baa8d1.js" as="script" />
+    <link rel="preload" href="/static/css/main.css" as="style" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Critical CSS inlined for faster FCP -->
+    <style>
+      /* Critical above-the-fold styles */
+      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; }
+      #root { min-height: 100vh; }
+      .loading-indicator { 
+        position: fixed; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        z-index: 9999;
+        color: #ccb379;
+        font-size: 18px;
+      }
+    </style>
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="https://open.spotify.com" />
+    <link rel="dns-prefetch" href="https://music.youtube.com" />
+    <link rel="dns-prefetch" href="https://www.facebook.com" />
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicGroup",
+      "name": "Lazy Swing Band",
+      "alternateName": "LSB",
+      "description": "Profesjonalny zespół jazzowy z Krakowa grający swingową muzykę do tańca. Koncerty, wesela, eventy firmowe.",
+      "url": "https://lazyswingband.com",
+      "logo": "https://lazyswingband.com/logo-color.png",
+      "image": "https://lazyswingband.com/logo-color.png",
+      "genre": ["Jazz", "Swing", "Big Band"],
+      "foundingDate": "2016",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Kraków",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kraków",
+          "addressCountry": "PL"
+        }
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Kraków",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kraków",
+          "addressRegion": "Małopolskie",
+          "addressCountry": "PL"
+        }
+      },
+      "sameAs": [
+        "https://www.facebook.com/lazyswingersband",
+        "https://open.spotify.com/album/5XkBiCPt7nEQUnGjLSjG3P",
+        "https://music.youtube.com/playlist?list=OLAK5uy_lkk1xPxBViBc6BJV15Z1go2wJyJRYvNQI"
+      ],
+      "album": [
+        {
+          "@type": "MusicAlbum",
+          "name": "Lazy Swingers",
+          "url": "https://open.spotify.com/album/5XkBiCPt7nEQUnGjLSjG3P"
+        },
+        {
+          "@type": "MusicAlbum", 
+          "name": "Lazy Christmas",
+          "genre": "Christmas Jazz"
+        },
+        {
+          "@type": "MusicAlbum",
+          "name": "Polish Standards", 
+          "genre": "Polish Jazz"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "category": "Usługi muzyczne",
+        "description": "Koncerty, wesela, eventy firmowe, festiwale jazzowe, bankiety",
+        "areaServed": {
+          "@type": "Country",
+          "name": "Polska"
+        }
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Booking",
+        "url": "https://lazyswingband.com#kontakt"
+      }
+    }
+    </script>
+    
+    <!-- Accessibility styles -->
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      
+      /* Skip navigation link */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: #ccb379;
+        color: #000;
+        padding: 8px;
+        text-decoration: none;
+        border-radius: 4px;
+        z-index: 9999;
+        font-weight: bold;
+      }
+      
+      .skip-link:focus {
+        top: 6px;
+      }
+      
+      /* Focus indicators */
+      *:focus {
+        outline: 2px solid #ccb379;
+        outline-offset: 2px;
+      }
+      
+      /* High contrast mode support */
+      @media (prefers-contrast: high) {
+        * {
+          text-shadow: none !important;
+          box-shadow: none !important;
+        }
+      }
+      
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <!-- Skip navigation for accessibility -->
+    <a href="#main-content" class="skip-link">Przejdź do głównej treści</a>
+    
+    <noscript>
+      <p style="background: #ccb379; color: #000; padding: 20px; text-align: center; font-weight: bold;">
+        🎷 Lazy Swing Band - Profesjonalny zespół jazzowy z Krakowa<br/>
+        Aby w pełni doświadczyć naszej strony, włącz JavaScript w przeglądarce.
+      </p>
+    </noscript>
+    
+    <div id="root" role="application" aria-label="Strona internetowa zespołu Lazy Swing Band"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

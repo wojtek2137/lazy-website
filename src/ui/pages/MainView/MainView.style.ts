@@ -60,11 +60,25 @@ export const Header = styled('span')`
         font-size: 30px;
     }
 `;
-export const SubHeader = styled('span')`
+
+export const MainTitle = styled('h1')`
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-family: ${fonts.mulish.ExtraBold};
+    letter-spacing: 3px;
+    font-size: 2.8em;
+    color: ${colors.primary.sandy};
+    margin: 0;
+    @media  (max-width: 420px){
+        font-size: 30px;
+    }
+`;
+export const SubHeader = styled('p')`
     letter-spacing: 5px;
     font-size: 24px;
     font-family: ${fonts.mulish.Regular};
     color: ${colors.primary.white};
+    margin: 0;
     @media  (max-width: 420px){
         font-size: 20px;
     }

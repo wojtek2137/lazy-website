@@ -21,35 +21,59 @@ export function Card(props: PropsType) {
         return [<span key="1">{firstPart}</span>, <br key="2" />, <span key="3">{secondPart}</span>];
     }
     return (
-        <CardContainer>
-            <CardWrapper
-                onMouseEnter={() => setIsHover(true)}
-                onMouseLeave={() => setIsHover(false)}
-            >
-                <ImgBox isHover={isHover}>
-                    <Img src={coverSrc} isHover={isHover} />
-                </ImgBox>
-                <CardContentWrapper>
-                    <CardHeader>
+        <article aria-labelledby={`album-${name.replace(/\s+/g, '-').toLowerCase()}`}>
+            <CardContainer>
+                <CardWrapper
+                    onMouseEnter={() => setIsHover(true)}
+                    onMouseLeave={() => setIsHover(false)}
+                >
+                    <figure>
+                        <ImgBox isHover={isHover}>
+                            <Img src={coverSrc} isHover={isHover} alt={`Okładka albumu ${name} zespołu Lazy Swing Band`} />
+                        </ImgBox>
+                        <figcaption className="sr-only">Okładka albumu {name}</figcaption>
+                    </figure>
+                    
+                    <CardContentWrapper>
+                        <header>
+                            <h3 id={`album-${name.replace(/\s+/g, '-').toLowerCase()}`}>
+                                <CardHeader>
+                                    {insertBreak(name, 2)}
+                                </CardHeader>
+                            </h3>
+                            <p>
+                                <ListenSpan>listen album: </ListenSpan>
+                            </p>
+                        </header>
 
-                        {insertBreak(name, 2)}
-                        <ListenSpan>listen album: </ListenSpan>
+                        <nav aria-label={`Platformy do słuchania albumu ${name}`}>
+                            <StreamingList role="list">
+                                {tags.map((tag, index) => {
+                                    const platformName = new URL(tag.src).hostname.includes('spotify') ? 'Spotify' :
+                                                       new URL(tag.src).hostname.includes('tidal') ? 'Tidal' :
+                                                       new URL(tag.src).hostname.includes('youtube') ? 'YouTube Music' :
+                                                       new URL(tag.src).hostname.includes('apple') ? 'Apple Music' : 'Platforma muzyczna';
+                                    
+                                    return <StreamingTagWrapper key={index} role="listitem">
+                                        <a 
+                                          href={tag.src}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          aria-label={`Słuchaj ${name} na ${platformName}`}
+                                        >
+                                            <StreamingTag 
+                                              src={tag.imageUrl} 
+                                              alt={`Logo ${platformName}`}
+                                            />
+                                        </a>
+                                    </StreamingTagWrapper>
+                                })}
+                            </StreamingList>
+                        </nav>
 
-                    </CardHeader>
-
-
-                    <StreamingList>
-                        {tags.map(tag => {
-                            return <StreamingTagWrapper>
-                                <a href={tag.src}>
-                                    <StreamingTag src={tag.imageUrl} />
-                                </a>
-                            </StreamingTagWrapper>
-                        })}
-                    </StreamingList>
-
-                </CardContentWrapper>
-            </CardWrapper>
-        </CardContainer >
+                    </CardContentWrapper>
+                </CardWrapper>
+            </CardContainer>
+        </article>
     );
 };

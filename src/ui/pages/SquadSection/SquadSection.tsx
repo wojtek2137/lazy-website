@@ -7,7 +7,8 @@ import {
   SquadHeader,
   SquadName,
   SquadInstrument,
-  SquadHeaderMain
+  SquadHeaderMain,
+  SquadResponsiveImage
 } from "./SquadSection.style";
 
 // Squad member images
@@ -53,32 +54,30 @@ const squadData = [
 
 export function SquadSection() {
   return (
-    <SquadSectionWrapper>
-      <SquadHeaderMain>
-        <span>Skład zespołu</span>
-      </SquadHeaderMain>
-      {squadData.map((squad, index) => (
-        <ImageBox key={index}>
-          <ImageWrapper>
-            <ResponsiveLazyImage 
-              src={squad.imageSrc} 
-              alt={squad.person}
-              loading="lazy"
-              useResponsive={true}
-              style={{ 
-                width: '100%', 
-                height: '100%', 
-                objectFit: 'cover',
-                objectPosition: 'center top'
-              }}
-            />
-          </ImageWrapper>
-          <SquadHeader>
-            <SquadName>{squad.person}</SquadName>
-            <SquadInstrument>{squad.description}</SquadInstrument>
-          </SquadHeader>
-        </ImageBox>
-      ))}
-    </SquadSectionWrapper>
+    <section id="zespol" aria-labelledby="squad-heading">
+      <SquadSectionWrapper>
+        <SquadHeaderMain id="squad-heading">
+          <span>Skład zespołu</span>
+        </SquadHeaderMain>
+        {squadData.map((squad, index) => (
+          <ImageBox key={index}>
+            <ImageWrapper>
+              <SquadResponsiveImage>
+                <ResponsiveLazyImage 
+                  src={squad.imageSrc} 
+                  alt={`Zdjęcie ${squad.person}, ${squad.description} w zespole Lazy Swing Band`}
+                  loading="lazy"
+                  useResponsive={true}
+                />
+              </SquadResponsiveImage>
+            </ImageWrapper>
+            <SquadHeader>
+              <SquadName>{squad.person}</SquadName>
+              <SquadInstrument>{squad.description}</SquadInstrument>
+            </SquadHeader>
+          </ImageBox>
+        ))}
+      </SquadSectionWrapper>
+    </section>
   );
 }
