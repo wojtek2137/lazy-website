@@ -2,22 +2,22 @@
   "about2": {
     "mobile": {
       "path": "./responsive/about_2_mobile.webp",
-      "size": "40.6KB",
+      "size": "31.8KB",
       "format": "webp"
     },
     "tablet": {
       "path": "./responsive/about_2_tablet.webp",
-      "size": "120.4KB",
+      "size": "108.1KB",
       "format": "webp"
     },
     "desktop": {
       "path": "./responsive/about_2_desktop.webp",
-      "size": "294.1KB",
+      "size": "259.7KB",
       "format": "webp"
     },
     "thumb": {
       "path": "./responsive/about_2_thumb.webp",
-      "size": "6.5KB",
+      "size": "2.0KB",
       "format": "webp"
     }
   },

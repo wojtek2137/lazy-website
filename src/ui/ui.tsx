@@ -177,7 +177,7 @@ export function Ui() {
         
         <SectionTransition />
         <section id="festiwale" aria-labelledby="festivals-heading">
-          <ModernSectionWrapper backgroundImage={About2} parallaxEffect>
+          <ModernSectionWrapper backgroundImage={About3} parallaxEffect>
             <CSSParticleSystem />
             <ModernContentContainer glassmorphism enhanced>
               <ModernTextWrapper centerAlign enhanced>
@@ -213,7 +213,7 @@ export function Ui() {
         
         <SectionTransition />
         <section id="uslugi" aria-labelledby="services-heading">
-          <ModernSectionWrapper backgroundImage={About3} parallaxEffect>
+          <ModernSectionWrapper backgroundImage={About2} parallaxEffect>
             <CSSParticleSystem />
             <ModernContentContainer glassmorphism enhanced>
               <ModernTextWrapper centerAlign enhanced>
