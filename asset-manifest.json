@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.js": "/static/js/main.44cfceb0.js",
+    "main.js": "/static/js/main.49e5186e.js",
     "static/media/dragon2022.mp4": "/static/media/dragon2022.77b5b2f9471a4ecb01cc.mp4",
-    "static/media/about3.jpg": "/static/media/about3.e545ec6d7aba2116d563.jpg",
+    "static/media/about_3.jpg": "/static/media/about_3.76c772ecb00881072643.jpg",
+    "static/media/about_2.jpg": "/static/media/about_2.b25c08213429b2e16733.jpg",
+    "static/media/about.jpg": "/static/media/about.e545ec6d7aba2116d563.jpg",
     "static/media/lato_z_radiem_2.jpg": "/static/media/lato_z_radiem_2.b8e94cd4bd1b5d969efe.jpg",
     "static/media/lato_z_radiem_3.jpg": "/static/media/lato_z_radiem_3.d44fc4b56d4944318b81.jpg",
-    "static/media/about.jpg": "/static/media/about.6552369896107135a7a9.jpg",
     "static/media/sylwia.jpg": "/static/media/sylwia.fe629d1d8bdc5bc95737.jpg",
     "static/media/lato_z_radiem.jpg": "/static/media/lato_z_radiem.48a563f276363904bc26.jpg",
     "static/media/wojtek.jpg": "/static/media/wojtek.064b73b4e4cd5c3bd90b.jpg",
@@ -17,7 +18,6 @@
     "static/media/christmas.webp": "/static/media/christmas.f51846da4a336cc24ffe.webp",
     "static/media/lato_z_radiem_1.jpg": "/static/media/lato_z_radiem_1.6112b4635c01634f6f42.jpg",
     "static/media/polish.webp": "/static/media/polish.684972faf0e26acb26f7.webp",
-    "static/media/about2.jpg": "/static/media/about2.49036dd268a2cf154bfd.jpg",
     "static/media/lazy.webp": "/static/media/lazy.18a36d949ef1ff83cc36.webp",
     "static/media/mulish-medium.woff2": "/static/media/mulish-medium.97952bebc179d0479bfe.woff2",
     "static/media/mulish-extra-bold.woff2": "/static/media/mulish-extra-bold.cf994c3a1130a30f0964.woff2",
@@ -27,9 +27,9 @@
     "static/media/instagram-icon.png": "/static/media/instagram-icon.00f9ab659d4e62520af0.png",
     "static/media/logo-color.webp": "/static/media/logo-color.b653918752da596e4155.webp",
     "index.html": "/index.html",
-    "main.44cfceb0.js.map": "/static/js/main.44cfceb0.js.map"
+    "main.49e5186e.js.map": "/static/js/main.49e5186e.js.map"
   },
   "entrypoints": [
-    "static/js/main.44cfceb0.js"
+    "static/js/main.49e5186e.js"
   ]
 }
