@@ -1,67 +1,67 @@
 {
   "about2": {
-    "desktop": {
-      "path": "./responsive/about2_desktop.webp",
-      "size": "115.1KB",
-      "format": "webp"
-    },
     "mobile": {
-      "path": "./responsive/about2_mobile.webp",
-      "size": "13.9KB",
+      "path": "./responsive/about_2_mobile.webp",
+      "size": "40.6KB",
       "format": "webp"
     },
     "tablet": {
-      "path": "./responsive/about2_tablet.webp",
-      "size": "48.3KB",
+      "path": "./responsive/about_2_tablet.webp",
+      "size": "120.4KB",
+      "format": "webp"
+    },
+    "desktop": {
+      "path": "./responsive/about_2_desktop.webp",
+      "size": "294.1KB",
       "format": "webp"
     },
     "thumb": {
-      "path": "./responsive/about2_thumb.webp",
-      "size": "2.9KB",
+      "path": "./responsive/about_2_thumb.webp",
+      "size": "6.5KB",
       "format": "webp"
     }
   },
   "about3": {
-    "desktop": {
-      "path": "./responsive/about3_desktop.webp",
-      "size": "88.8KB",
-      "format": "webp"
-    },
     "mobile": {
-      "path": "./responsive/about3_mobile.webp",
-      "size": "15.9KB",
+      "path": "./responsive/about_3_mobile.webp",
+      "size": "31.5KB",
       "format": "webp"
     },
     "tablet": {
-      "path": "./responsive/about3_tablet.webp",
-      "size": "45.7KB",
+      "path": "./responsive/about_3_tablet.webp",
+      "size": "108.1KB",
+      "format": "webp"
+    },
+    "desktop": {
+      "path": "./responsive/about_3_desktop.webp",
+      "size": "323.4KB",
       "format": "webp"
     },
     "thumb": {
-      "path": "./responsive/about3_thumb.webp",
-      "size": "3.1KB",
+      "path": "./responsive/about_3_thumb.webp",
+      "size": "4.9KB",
       "format": "webp"
     }
   },
   "about": {
-    "desktop": {
-      "path": "./responsive/about_desktop.webp",
-      "size": "179.4KB",
-      "format": "webp"
-    },
     "mobile": {
       "path": "./responsive/about_mobile.webp",
-      "size": "29.2KB",
+      "size": "21.1KB",
       "format": "webp"
     },
     "tablet": {
       "path": "./responsive/about_tablet.webp",
-      "size": "90.9KB",
+      "size": "62.1KB",
+      "format": "webp"
+    },
+    "desktop": {
+      "path": "./responsive/about_desktop.webp",
+      "size": "168.3KB",
       "format": "webp"
     },
     "thumb": {
       "path": "./responsive/about_thumb.webp",
-      "size": "4.8KB",
+      "size": "3.3KB",
       "format": "webp"
     }
   },
