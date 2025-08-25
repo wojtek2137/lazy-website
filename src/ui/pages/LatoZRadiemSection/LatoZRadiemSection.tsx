@@ -16,12 +16,7 @@ import {
   RadioLogo
 } from './LatoZRadiemSection.style';
 
-// Import images from assets
-import LatoZRadiemMain from 'assets/images/lato_z_radiem.jpg';
-import LatoZRadiem1 from 'assets/images/lato_z_radiem_1.jpg';
-import LatoZRadiem2 from 'assets/images/lato_z_radiem_2.jpg';
-import LatoZRadiem3 from 'assets/images/lato_z_radiem_3.jpg';
-import PolskieRadioLogo from 'assets/images/polskie_radio_jedynka.png';
+// Use responsive images from public folder
 
 const cities = [
   {
@@ -60,22 +55,22 @@ const cities = [
 
 const collageImages = [
   {
-    src: LatoZRadiemMain,
+    src: '/images/responsive/lato_z_radiem.webp',
     alt: 'Lazy Swing Band podczas Lata z Radiem',
     position: 'side' as const
   },
   {
-    src: LatoZRadiem1, 
+    src: '/images/responsive/lato_z_radiem_1.webp', 
     alt: 'Występ zespołu podczas potańcówki',
     position: 'main' as const
   },
   {
-    src: LatoZRadiem2,
+    src: '/images/responsive/lato_z_radiem_2.webp',
     alt: 'Z Panią redaktor Sławą Bieńczycką podczas wydarzenia Lato z Radiem',
     position: 'bottom' as const
   },
   {
-    src: LatoZRadiem3,
+    src: '/images/responsive/lato_z_radiem_3.webp',
     alt: 'Z Panem redaktorem Marianem Czejarkiem podczas koncertu Lazy Swing Band w trakcie Lata z Radiem',
     position: 'top' as const
   }
@@ -164,7 +159,7 @@ export function LatoZRadiemSection() {
                 title="Kliknij, aby przeczytać artykuł o naszym udziale w programie Lato z Radiem"
               >
                 <ResponsiveLazyImage
-                  src={PolskieRadioLogo}
+                  src="/images/responsive/polskie_radio_jedynka.webp"
                   alt="Logo Polskiego Radia Jedynka"
                   loading="lazy"
                   useResponsive={true}

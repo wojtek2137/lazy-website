@@ -11,43 +11,35 @@ import {
   SquadResponsiveImage
 } from "./SquadSection.style";
 
-// Squad member images
-import Wojtek from "assets/images/wojtek.jpg";
-import Michal from "assets/images/michal.jpg";
-import Lukasz from "assets/images/lukasz.jpg";
-import Sylwia from "assets/images/sylwia.jpg";
-import Dominik from "assets/images/dominik.jpg";
-import Milosz from "assets/images/milosz.jpg";
-
 const squadData = [
   {
     person: "Sylwia Buchalska",
-    imageSrc: Sylwia,
+    imageSrc: "/images/responsive/sylwia.webp",
     description: "Wokal",
   },
   {
     person: "Wojciech Rejdych",
-    imageSrc: Wojtek,
+    imageSrc: "/images/responsive/wojtek.webp",
     description: "Saksofon",
   },
   {
     person: "Dominik Borek",
-    imageSrc: Dominik,
+    imageSrc: "/images/responsive/dominik.webp",
     description: "Trąbka",
   },
   {
     person: "Michał Biel",
-    imageSrc: Michal,
+    imageSrc: "/images/responsive/michal.webp",
     description: "Kontrabas",
   },
   {
     person: "Łukasz Giergiel",
-    imageSrc: Lukasz,
+    imageSrc: "/images/responsive/lukasz.webp",
     description: "Perkusja",
   },
   {
     person: "Miłosz Bazarnik",
-    imageSrc: Milosz,
+    imageSrc: "/images/responsive/milosz.webp",
     description: "Fortepian",
   },
 ];

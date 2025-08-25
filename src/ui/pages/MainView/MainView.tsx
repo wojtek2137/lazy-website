@@ -6,9 +6,9 @@ import {
   MainContainer,
   MainTitle,
   SubHeader,
-  VideoWrapper,
+  HeroImageWrapper,
 } from "./MainView.style";
-import dragonVideo2022 from "assets/video/dragon2022.mp4";
+import { ResponsiveLazyImage } from "ui/components/ResponsiveLazyImage";
 
 // export const MuteButton = styled('a')`
 //    color: ${colors.primary.sandy};
@@ -47,15 +47,14 @@ export function MainView() {
   return (
     <section id="glowna" aria-labelledby="main-title">
       <MainContainer>
-        <VideoWrapper
-          src={dragonVideo2022}
-          autoPlay
-          loop
-          muted={true}
-          playsInline
-          aria-label="Wideo z występu zespołu Lazy Swing Band na Dragon Swing Festival 2022"
-          poster="/logo-color.png"
-        ></VideoWrapper>
+        <HeroImageWrapper>
+          <ResponsiveLazyImage
+            src="/images/responsive/homepage-hero.webp"
+            alt="Zespół Lazy Swing Band podczas występu - zdjęcie główne strony"
+            loading="eager"
+            useResponsive={true}
+          />
+        </HeroImageWrapper>
         <ContentWrapper>
           <Logo role="img" aria-label="Logo zespołu Lazy Swing Band" />
           <HeaderWrapper>

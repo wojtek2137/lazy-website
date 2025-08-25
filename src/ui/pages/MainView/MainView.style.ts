@@ -238,17 +238,45 @@ export const ExtraSmallHeader = styled('span')`
     font-family: ${fonts.mulish.Medium};
 `;
 
-export const VideoWrapper = styled('video')`
+export const HeroImageWrapper = styled('div')`
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    filter: 
-      brightness(0.8) 
-      contrast(1.1) 
-      saturate(0.9);
-    transition: filter 0.8s ease;
+    position: relative;
+    overflow: hidden;
     
-    /* Subtle overlay effect that works with video */
+    /* Ken Burns effect - subtle zoom and pan animation */
+    img {
+      width: 110%;
+      height: 110%;
+      object-fit: cover;
+      transform: scale(1) translate(-2%, -2%);
+      filter: 
+        brightness(0.8) 
+        contrast(1.1) 
+        saturate(0.9);
+      transition: filter 0.8s ease;
+      animation: kenBurns 20s ease-in-out infinite alternate;
+    }
+    
+    @keyframes kenBurns {
+      0% {
+        transform: scale(1) translate(-2%, -2%);
+      }
+      25% {
+        transform: scale(1.08) translate(-3%, -1%);
+      }
+      50% {
+        transform: scale(1.05) translate(-1%, -3%);
+      }
+      75% {
+        transform: scale(1.07) translate(-4%, -2%);
+      }
+      100% {
+        transform: scale(1.03) translate(-2%, -4%);
+      }
+    }
+    
+    /* Subtle overlay effect */
     &::after {
       content: '';
       position: absolute;
@@ -263,3 +291,5 @@ export const VideoWrapper = styled('video')`
       pointer-events: none;
     }
 `;
+
+
