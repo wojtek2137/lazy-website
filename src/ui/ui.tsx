@@ -12,7 +12,7 @@ import { LatoZRadiemSection } from "ui/pages/LatoZRadiemSection/LatoZRadiemSecti
 
 import { ModernNavigation2024 } from "ui/components/ModernNavigation2024";
 import { QuickActions2024 } from "ui/components/QuickActions2024";
-import { usePWAInstall } from '../hooks/usePWAInstall';
+
 
 import { ContactSection } from "ui/pages/ContactSection/ContactSection";
 import { 
@@ -264,31 +264,10 @@ export const VideoLabel = styled("div")`
 
 
 
-// Install Success Notification
-const InstallSuccessNotification = styled('div')`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: linear-gradient(135deg, ${colors.primary.gold} 0%, #d4c285 100%);
-  color: #000;
-  padding: 24px;
-  border-radius: 16px;
-  z-index: 10000;
-  font-family: ${fonts.mulish.Bold};
-  text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  animation: fadeInScale 0.3s ease;
-  
-  @keyframes fadeInScale {
-    from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-    to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-  }
-`;
+
 
 export function Ui() {
   const [quickActionsVisible, setQuickActionsVisible] = useState(false);
-  const { showInstallSuccess } = usePWAInstall();
 
   const toggleQuickActions = () => {
     setQuickActionsVisible(prev => !prev);
@@ -476,15 +455,6 @@ export function Ui() {
         <SectionTransition />
         <ContactSection />
       </main>
-      
-      {/* Install Success Notification */}
-      {showInstallSuccess && (
-        <InstallSuccessNotification>
-          <div style={{ fontSize: '24px', marginBottom: '8px' }}>🎵</div>
-          <strong>Aplikacja zainstalowana!</strong><br />
-          <small>Lazy Swing Band jest teraz dostępny na Twoim urządzeniu</small>
-        </InstallSuccessNotification>
-      )}
     </>
   );
 }
