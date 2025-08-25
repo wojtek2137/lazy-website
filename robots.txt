@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Crawl-delay: 1
 
 # Sitemap
 Sitemap: https://lazyswingband.com/sitemap.xml
@@ -7,17 +8,36 @@ Sitemap: https://lazyswingband.com/sitemap.xml
 # Allow all crawlers access to CSS and JS files
 User-agent: *
 Allow: /static/
+Allow: /images/
+Allow: /favicon.png
+Allow: /logo-color.png
+Allow: /manifest.json
 
 # Disallow admin areas if any
 Disallow: /admin/
 Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /build/
+Disallow: /*.json$
 
 # Allow social media crawlers
 User-agent: facebookexternalhit/*
 Allow: /
+Crawl-delay: 0
 
 User-agent: Twitterbot
 Allow: /
+Crawl-delay: 0
 
 User-agent: LinkedInBot
 Allow: /
+Crawl-delay: 0
+
+# Google specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /images/
+Crawl-delay: 0
