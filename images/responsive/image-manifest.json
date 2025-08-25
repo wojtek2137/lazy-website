@@ -398,5 +398,27 @@
       "size": "5KB",
       "format": "webp"
     }
+  },
+  "homepage-hero": {
+    "desktop": {
+      "path": "./responsive/homepage-hero_desktop.webp",
+      "size": "384.5KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/homepage-hero_tablet.webp",
+      "size": "111.3KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/homepage-hero_mobile.webp",
+      "size": "53.8KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/homepage-hero_thumb.webp",
+      "size": "7.5KB",
+      "format": "webp"
+    }
   }
 }
