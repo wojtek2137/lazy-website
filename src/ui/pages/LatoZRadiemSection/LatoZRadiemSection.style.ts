@@ -6,7 +6,7 @@ const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
 export const LatoZRadiemWrapper = styled("section")`
   background: linear-gradient(135deg, ${colors.primary.black} 0%, #1a1a1a 50%, ${colors.primary.black} 100%);
-  min-height: 100vh; /* Zmieniam z height na min-height żeby sekcja mogła się rozszerzyć */
+  min-height: 100vh;
   padding: 60px 20px;
   position: relative;
   overflow: hidden;
@@ -28,13 +28,13 @@ export const LatoZRadiemWrapper = styled("section")`
   }
   
   ${mq[1]} {
-    padding: 50px 15px; /* Zwiększam padding na tablet */
-    min-height: 100vh; /* Zmieniam na min-height dla elastyczności */
+    padding: 50px 15px;
+    min-height: 100vh;
   }
   
   ${mq[0]} {
-    padding: 40px 12px; /* Zwiększam padding na mobile żeby mapa miała więcej miejsca */
-    min-height: 100vh; /* Elastyczna wysokość na mobile */
+    padding: 40px 12px;
+    min-height: 100vh;
   }
 `;
 
@@ -132,18 +132,18 @@ export const ContentGrid = styled("div")`
   
   ${mq[2]} {
     grid-template-columns: 1fr;
-    gap: 40px; /* Zwiększam gap na tablet */
+    gap: 40px;
     text-align: center;
   }
   
   ${mq[1]} {
     flex: 1;
-    gap: 30px; /* Zwiększam gap na mobile żeby mapa miała więcej przestrzeni */
+    gap: 30px;
     align-items: stretch;
   }
   
   ${mq[0]} {
-    gap: 25px; /* Optymalne odstępy na małych ekranach */
+    gap: 25px;
   }
 `;
 
@@ -238,12 +238,12 @@ export const PolandMap = styled("div")`
   }
   
   ${mq[0]} {
-    padding: 20px; /* Zwiększam padding na mobile */
-    margin-top: 25px; /* Lepsze odstępy */
+    padding: 20px;
+    margin-top: 25px;
     
     h3 {
-      font-size: 16px; /* Większa czcionka nagłówka na mobile */
-      margin-bottom: 15px; /* Więcej miejsca pod nagłówkiem */
+      font-size: 16px;
+      margin-bottom: 15px;
     }
   }
 `;
@@ -347,12 +347,12 @@ export const CityMarker = styled("div")<{ $x: number; $y: number }>`
   
   ${mq[0]} {
     &::before {
-      width: 10px; /* Zwiększam rozmiar kropek na mobile dla lepszej widoczności */
+      width: 10px;
       height: 10px;
     }
     
     &:hover::before {
-      width: 14px; /* Większy rozmiar przy hover na mobile */
+      width: 14px;
       height: 14px;
     }
   }
@@ -387,8 +387,8 @@ export const CityLabel = styled("div")<{ $x: number; $y: number }>`
   }
   
   ${mq[0]} {
-    font-size: 10px; /* Zwiększam rozmiar czcionki na mobile dla lepszej czytelności */
-    padding: 2px 5px; /* Więcej paddingu dla lepszej widoczności */
+    font-size: 10px;
+    padding: 2px 5px;
   }
 `;
 
@@ -397,21 +397,21 @@ export const CityLabel = styled("div")<{ $x: number; $y: number }>`
 // Modern 2024 Mobile-First Card Carousel
 export const ImageCarousel = styled("div")`
   position: relative;
-  height: 520px; /* Zwiększam trochę wysokość dla bardziej zrównoważonych proporcji */
+  height: 520px;
   width: 100%;
   
   ${mq[2]} {
     order: 1;
-    height: 420px; /* Zwiększam na tablet */
+    height: 420px;
   }
   
   ${mq[1]} {
-    height: 360px; /* Zwiększam na mobile */
+    height: 360px;
     margin-bottom: 20px;
   }
   
   ${mq[0]} {
-    height: 300px; /* Zwiększam na małych ekranach */
+    height: 300px;
   }
 `;
 
@@ -462,8 +462,8 @@ export const CardImageWrapper = styled("div")`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center; /* Przywracam centrowanie */
-    transform: scale(0.7); /* Jeszcze bardziej oddalam zdjęcie dla szerszych proporcji */
+    object-position: center;
+    transform: scale(0.7);
     transition: transform 0.6s ease;
   }
   
@@ -518,7 +518,7 @@ export const CardContent = styled("div")`
   }
   
   ${mq[0]} {
-    padding: 15px;
+    padding: 15px 15px 35px 15px;
     
     h3 {
       font-size: 14px;
@@ -537,7 +537,15 @@ export const CarouselIndicators = styled("div")`
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
-  z-index: 3;
+  z-index: 4;
+  
+  ${mq[1]} {
+    bottom: 25px;
+  }
+  
+  ${mq[0]} {
+    bottom: 35px;
+  }
 `;
 
 export const IndicatorDot = styled("button")<{ $isActive: boolean }>`
@@ -556,8 +564,17 @@ export const IndicatorDot = styled("button")<{ $isActive: boolean }>`
   }
   
   ${mq[1]} {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
+  }
+  
+  ${mq[0]} {
+    width: 8px;
+    height: 8px;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 `;
 
