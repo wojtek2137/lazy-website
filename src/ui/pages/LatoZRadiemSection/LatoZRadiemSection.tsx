@@ -185,11 +185,10 @@ export function LatoZRadiemSection() {
               
               
               <p>
-                Program <strong>  <a href="https://www.latozradiem.pl/" target="_blank" rel="noopener noreferrer">"Lato z Radiem"</a></strong> to inicjatywa Polskiego Radia, 
-                która promuje najlepszą polską muzykę w całym kraju. 
-                Jesteśmy dumni, że możemy reprezentować swingową scenę 
-                i pokazywać, że jazz to muzyka ponadczasowa, która 
-                łączy wszystkich bez względu na wiek.
+                W trakcie trasy wykonaliśmy najpiękniejsze przeboje polskiej muzyki międzywojennej i powojennej 
+                <strong> Mieczysława Fogga, Adama Astona, Hanki Ordonówny, Ireny Santor, Kasi Sobczyk</strong> i wielu innych. 
+                Publiczność bawiła się w rytm kompozycji <strong>Henryka Warsa, Jerzego Petersburskiego czy Jerzego "Duduś" Mateuszkiewicza</strong> - 
+                pokazując, że ta muzyka wciąż łączy wszystkich bez względu na wiek.
               </p>
             </ArticleText>
             
