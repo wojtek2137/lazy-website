@@ -518,7 +518,7 @@ export const CardContent = styled("div")`
   }
   
   ${mq[0]} {
-    padding: 15px 15px 35px 15px;
+    padding: 15px 15px 25px 15px;
     
     h3 {
       font-size: 14px;
@@ -537,14 +537,14 @@ export const CarouselIndicators = styled("div")`
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
-  z-index: 4;
+  z-index: 5;
   
   ${mq[1]} {
-    bottom: 25px;
+    bottom: 8px;
   }
   
   ${mq[0]} {
-    bottom: 35px;
+    bottom: 5px;
   }
 `;
 
