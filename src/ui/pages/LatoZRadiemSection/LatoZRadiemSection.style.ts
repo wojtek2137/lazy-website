@@ -300,21 +300,21 @@ export const CitiesList = styled("div")`
 // Modern 2024 Mobile-First Card Carousel
 export const ImageCarousel = styled("div")`
   position: relative;
-  height: 650px;
+  height: 520px; /* Zwiększam trochę wysokość dla bardziej zrównoważonych proporcji */
   width: 100%;
   
   ${mq[2]} {
     order: 1;
-    height: 500px;
+    height: 420px; /* Zwiększam na tablet */
   }
   
   ${mq[1]} {
-    height: 400px;
+    height: 360px; /* Zwiększam na mobile */
     margin-bottom: 20px;
   }
   
   ${mq[0]} {
-    height: 350px;
+    height: 300px; /* Zwiększam na małych ekranach */
   }
 `;
 
@@ -365,6 +365,8 @@ export const CardImageWrapper = styled("div")`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center; /* Przywracam centrowanie */
+    transform: scale(0.7); /* Jeszcze bardziej oddalam zdjęcie dla szerszych proporcji */
     transition: transform 0.6s ease;
   }
   
