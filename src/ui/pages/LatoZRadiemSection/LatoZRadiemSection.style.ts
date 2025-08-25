@@ -6,7 +6,7 @@ const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
 export const LatoZRadiemWrapper = styled("section")`
   background: linear-gradient(135deg, ${colors.primary.black} 0%, #1a1a1a 50%, ${colors.primary.black} 100%);
-  height: 100vh;
+  min-height: 100vh; /* Zmieniam z height na min-height żeby sekcja mogła się rozszerzyć */
   padding: 60px 20px;
   position: relative;
   overflow: hidden;
@@ -28,12 +28,13 @@ export const LatoZRadiemWrapper = styled("section")`
   }
   
   ${mq[1]} {
-    padding: 40px 15px;
-    height: 100vh; /* Ensure 100vh on mobile too */
+    padding: 50px 15px; /* Zwiększam padding na tablet */
+    min-height: 100vh; /* Zmieniam na min-height dla elastyczności */
   }
   
   ${mq[0]} {
-    padding: 30px 10px;
+    padding: 40px 12px; /* Zwiększam padding na mobile żeby mapa miała więcej miejsca */
+    min-height: 100vh; /* Elastyczna wysokość na mobile */
   }
 `;
 
@@ -127,18 +128,22 @@ export const ContentGrid = styled("div")`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  align-items: center;
+  align-items: start;
   
   ${mq[2]} {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 40px; /* Zwiększam gap na tablet */
     text-align: center;
   }
   
   ${mq[1]} {
     flex: 1;
-    gap: 20px;
+    gap: 30px; /* Zwiększam gap na mobile żeby mapa miała więcej przestrzeni */
     align-items: stretch;
+  }
+  
+  ${mq[0]} {
+    gap: 25px; /* Optymalne odstępy na małych ekranach */
   }
 `;
 
@@ -207,10 +212,10 @@ export const ArticleText = styled("div")`
   }
 `;
 
-export const CitiesList = styled("div")`
+// Interactive Poland Map with PNG background
+export const PolandMap = styled("div")`
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  border: 1px solid ${colors.primary.gold}30;
   border-radius: 15px;
   padding: 25px;
   margin-top: 30px;
@@ -219,83 +224,175 @@ export const CitiesList = styled("div")`
     font-family: ${fonts.mulish.Bold};
     color: ${colors.primary.gold};
     font-size: 18px;
-    margin: 0 0 15px 0;
+    margin: 0 0 20px 0;
     text-align: center;
   }
   
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
+  ${mq[1]} {
+    padding: 20px;
+    
+    h3 {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
   }
   
-  li {
-    font-family: ${fonts.mulish.Medium};
-    font-size: 14px;
-    background: rgba(245, 203, 92, 0.1);
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    overflow: hidden;
+  ${mq[0]} {
+    padding: 20px; /* Zwiększam padding na mobile */
+    margin-top: 25px; /* Lepsze odstępy */
     
-    &:hover {
-      background: rgba(245, 203, 92, 0.25);
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 8px 15px rgba(245, 203, 92, 0.3);
+    h3 {
+      font-size: 16px; /* Większa czcionka nagłówka na mobile */
+      margin-bottom: 15px; /* Więcej miejsca pod nagłówkiem */
     }
-    
-    a {
-      display: block;
-      color: ${colors.neutrals.N10};
-      text-decoration: none;
-      padding: 8px 15px;
-      text-align: center;
-      position: relative;
-      transition: all 0.3s ease;
-      
-      &:hover {
-        color: ${colors.primary.gold};
-        background: rgba(245, 203, 92, 0.1);
-        text-shadow: 0 0 8px ${colors.primary.gold}50;
-      }
-      
-      &:focus {
-        outline: 2px solid ${colors.primary.gold};
-        outline-offset: 2px;
-        border-radius: 4px;
-        background: rgba(245, 203, 92, 0.2);
-      }
-      
-      &::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, ${colors.primary.gold}, transparent);
-        transition: width 0.3s ease;
-      }
-      
-      &:hover::before {
-        width: 80%;
-      }
-      
-      &:active {
-        transform: scale(0.98);
-      }
+  }
+`;
+
+export const MapContainer = styled("div")`
+  position: relative;
+  width: 100%;
+  height: 320px; 
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2); 
+  
+  ${mq[1]} {
+    height: 300px;
+  }
+  
+  ${mq[0]} {
+    height: 280px;
+    border-radius: 8px;
+  }
+`;
+
+export const PolandMapImage = styled("img")`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: brightness(0.8) contrast(1.1) saturate(0.9);
+  transition: all 0.3s ease;
+`;
+
+export const CityOverlay = styled("div")`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+`;
+
+export const CityMarker = styled("div")<{ $x: number; $y: number }>`
+  position: absolute;
+  left: ${({ $x }) => $x}%;
+  top: ${({ $y }) => $y}%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  pointer-events: all;
+  z-index: 2;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: ${colors.primary.gold};
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 
+      0 0 0 4px rgba(245, 203, 92, 0.3),
+      0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: cityPulse 3s ease-in-out infinite;
+  }
+  
+  &:hover::before {
+    width: 16px;
+    height: 16px;
+    box-shadow: 
+      0 0 0 6px rgba(245, 203, 92, 0.4),
+      0 6px 20px rgba(0, 0, 0, 0.5);
+    animation-play-state: paused;
+  }
+  
+  @keyframes cityPulse {
+    0%, 100% {
+      box-shadow: 
+        0 0 0 4px rgba(245, 203, 92, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+    50% {
+      box-shadow: 
+        0 0 0 8px rgba(245, 203, 92, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.4);
     }
   }
   
   ${mq[1]} {
-    ul {
-      grid-template-columns: 1fr;
+    &::before {
+      width: 10px;
+      height: 10px;
+    }
+    
+    &:hover::before {
+      width: 14px;
+      height: 14px;
+    }
+  }
+  
+  ${mq[0]} {
+    &::before {
+      width: 10px; /* Zwiększam rozmiar kropek na mobile dla lepszej widoczności */
+      height: 10px;
+    }
+    
+    &:hover::before {
+      width: 14px; /* Większy rozmiar przy hover na mobile */
+      height: 14px;
     }
   }
 `;
+
+export const CityLabel = styled("div")<{ $x: number; $y: number }>`
+  position: absolute;
+  left: ${({ $x }) => $x}%;
+  top: ${({ $y }) => $y + 3}%;
+  transform: translateX(-50%);
+  color: ${colors.neutrals.N10};
+  font-family: ${fonts.mulish.Medium};
+  font-size: 11px;
+  text-align: center;
+  text-shadow: 
+    0 0 4px rgba(0, 0, 0, 0.8),
+    0 1px 2px rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(245, 203, 92, 0.3);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+  transition: all 0.3s ease;
+  opacity: 0.9;
+  
+  ${mq[1]} {
+    font-size: 10px;
+    padding: 2px 5px;
+  }
+  
+  ${mq[0]} {
+    font-size: 10px; /* Zwiększam rozmiar czcionki na mobile dla lepszej czytelności */
+    padding: 2px 5px; /* Więcej paddingu dla lepszej widoczności */
+  }
+`;
+
+
 
 // Modern 2024 Mobile-First Card Carousel
 export const ImageCarousel = styled("div")`
