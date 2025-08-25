@@ -29,60 +29,60 @@ import {
 
 // Use responsive images from public folder
 
-// Cities with realistic coordinates for Poland map PNG
+// Cities with coordinates adjusted for Poland map PNG borders
 const cities = [
   {
     name: 'Zakopane',
     url: 'https://jedynka.polskieradio.pl/artykul/3546524,Rusza-Trasa-Lata-z-Radiem-i-Telewizja-Polska-Co-wydarzy-sie-w-Zakopanem',
-    x: 50, // Południe Polski - Tatry
+    x: 50,
     y: 85
   },
   {
     name: 'Chorzów',
     url: 'https://jedynka.polskieradio.pl/artykul/3552975,Lato-z-Radiem-i-Telewizja-Polska-przystanek-trzeci-Superautopl-Stadion-Slaski',
-    x: 45, // Śląsk
+    x: 45,
     y: 75
   },
   {
     name: 'Giżycko',
     url: 'https://jedynka.polskieradio.pl/artykul/3556077,Lato-z-Radiem-i-Telewizja-Polska-w-Gizycku-Jakie-atrakcje-zaplanowano',
-    x: 70, // Mazury - północ-wschód
+    x: 70,
     y: 20
   },
   {
     name: 'Poddębice',
     url: 'https://jedynka.polskieradio.pl/artykul/3559214,Lato-z-Radiem-i-Telewizja-Polska-w-Poddebicach-Jakie-atrakcje-zaplanowano',
-    x: 42, // Łódzkie - centrum zachód
+    x: 42,
     y: 55
   },
   {
     name: 'Lublin',
     url: 'https://jedynka.polskieradio.pl/artykul/3562277,Lato-z-Radiem-i-Telewizja-Polska-w-Lublinie-Jakie-atrakcje-zaplanowano',
-    x: 75, // Lubelskie - wschód
+    x: 75,
     y: 60
   },
   {
     name: 'Mrozy',
     url: 'https://jedynka.polskieradio.pl/artykul/3563339,Lato-z-Radiem-w-uniwersum-Rancza-Co-wydarzy-sie-w-Jeruzalu-i-Mrozach',
-    x: 65, // Mazowieckie - centrum wschód
+    x: 65,
     y: 45
   },
   {
     name: 'Elbląg',
     url: 'https://jedynka.polskieradio.pl/artykul/3549480,Drugi-przystanek-na-trasie-Lata-z-Radiem-i-Telewizj%C4%85-Polsk%C4%85-Co-wydarzy%C5%82o-si%C4%99-w-Elbl%C4%85gu',
-    x: 52, // Warmińsko-mazurskie - północ
+    x: 52,
     y: 15
   },
   {
     name: 'Tarnów',
     url: 'https://jedynka.polskieradio.pl/artykul/3568543,Lato-z-Radiem-i-Telewizja-Polska-tym-razem-w-Tarnowie',
-    x: 58, // Małopolskie - południe wschód
+    x: 58,
     y: 78
   },
   {
     name: 'Grudziądz',
     url: 'https://jedynka.polskieradio.pl/artykul/3570215,Lato-z-Radiem-i-Telewizja-Polska-w-Grudziadzu',
-    x: 48, // Kujawsko-pomorskie - północ centrum
+    x: 48,
     y: 30
   }
 ];
@@ -98,7 +98,7 @@ const carouselSlides = [
     src: '/images/responsive/lato_z_radiem_2.webp',
     alt: 'Z Panią redaktor Sławą Bieńczycką podczas wydarzenia Lato z Radiem',
     title: 'Z Radiem w całej Polsce',
-    description: 'Gościnnie z Panią redaktor Sławą Bieńczycką - ambasadorką programu.'
+    description: 'Po jednym z koncertów z Panią redaktor Sławą Bieńczycką.'
   },
   {
     src: '/images/responsive/lato_z_radiem_3.webp',

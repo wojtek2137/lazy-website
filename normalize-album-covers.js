@@ -2,11 +2,11 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const TARGET_SIZE = 1000; // 1000x1000px - wysokiej jakości kwadrat
+const TARGET_SIZE = 1000;
 const INPUT_DIR = './src/assets/images';
 const OUTPUT_DIR = './src/assets/images/normalized';
 
-// Stwórz katalog wyjściowy
+
 if (!fs.existsSync(OUTPUT_DIR)) {
     fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 }
@@ -26,7 +26,7 @@ async function normalizeAlbumCover(filename) {
         console.log(`📐 Oryginalny rozmiar: ${width}x${height}`);
         
         if (width === height) {
-            // Obraz już kwadratowy - po prostu zmień rozmiar
+
             await image
                 .resize(TARGET_SIZE, TARGET_SIZE, {
                     fit: 'fill',
@@ -36,23 +36,23 @@ async function normalizeAlbumCover(filename) {
                 .toFile(outputPath);
             console.log(`✅ Kwadrat przeskalowany do ${TARGET_SIZE}x${TARGET_SIZE}`);
         } else {
-            // Obraz prostokątny - dodaj padding żeby był kwadratowy
+
             const maxDimension = Math.max(width, height);
             const scale = TARGET_SIZE / maxDimension;
             const newWidth = Math.round(width * scale);
             const newHeight = Math.round(height * scale);
             
-            // Stwórz kwadratowe tło
+
             const background = sharp({
                 create: {
                     width: TARGET_SIZE,
                     height: TARGET_SIZE,
                     channels: 4,
-                    background: { r: 240, g: 230, b: 210, alpha: 1 } // Beżowe tło pasujące do designu
+                    background: { r: 240, g: 230, b: 210, alpha: 1 }
                 }
             });
             
-            // Przeskaluj obraz i wkomponuj na środek
+
             const resizedImage = await image
                 .resize(newWidth, newHeight, {
                     fit: 'fill',

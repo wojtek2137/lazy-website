@@ -168,101 +168,7 @@ const CommandShortcut = styled.div`
   border-radius: 6px;
 `;
 
-// Floating Navigation Dots (Scroll Indicators)
-const FloatingDots = styled.div`
-  position: fixed;
-  right: 30px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  z-index: 9999;
-  
-  /* Entry animation */
-  animation: scaleInRight 0.3s ease forwards;
-  
-  @keyframes scaleInRight {
-    from {
-      transform: translateY(-50%) scale(0.8) translateX(20px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(-50%) scale(1) translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    right: 20px;
-    gap: 12px;
-  }
-  
-  @media (max-width: 480px) {
-    right: 15px;
-    gap: 8px;
-  }
-`;
 
-const NavigationDot = styled.button<{ isActive: boolean; progress: number }>`
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid ${({ isActive }) => isActive ? colors.primary.gold : colors.primary.gold}40;
-  background: ${({ isActive }) => isActive ? colors.primary.gold : 'transparent'};
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: ${({ progress }) => progress}%;
-    background: ${colors.primary.gold}60;
-    transition: height 0.3s ease;
-  }
-  
-  &:hover {
-    transform: scale(1.5);
-    box-shadow: 0 0 20px ${colors.primary.gold}60;
-  }
-  
-  &:active {
-    transform: scale(1.2);
-  }
-  
-  @media (max-width: 768px) {
-    width: 8px;
-    height: 8px;
-    border-width: 1px;
-    
-    &:hover {
-      transform: scale(1.3);
-    }
-    
-    &:active {
-      transform: scale(1.1);
-    }
-  }
-  
-  @media (max-width: 480px) {
-    width: 6px;
-    height: 6px;
-    border-width: 1px;
-    
-    &:hover {
-      transform: scale(1.2);
-    }
-    
-    &:active {
-      transform: scale(1.0);
-    }
-  }
-`;
 
 // Smart Breadcrumbs
 const BreadcrumbWrapper = styled.div`
@@ -441,8 +347,6 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [currentSection, setCurrentSection] = useState('glowna');
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [showFloatingDots, setShowFloatingDots] = useState(false);
 
   
   const commandInputRef = useRef<HTMLInputElement>(null);
@@ -628,13 +532,6 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
       if (!ticking) {
         requestAnimationFrame(() => {
           const scrollTop = window.pageYOffset;
-          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          const progress = (scrollTop / docHeight) * 100;
-          setScrollProgress(progress);
-
-          // Show floating dots after scrolling past main section (roughly 100vh)
-          const mainSectionHeight = window.innerHeight;
-          setShowFloatingDots(scrollTop > mainSectionHeight * 0.8);
 
           // Detect current section - throttled to reduce DOM queries
           const sectionElements = sections.map(id => document.getElementById(id)).filter(Boolean);
@@ -709,24 +606,7 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
         </BreadcrumbItem>
       </BreadcrumbWrapper>
 
-      {/* Floating Navigation Dots */}
-      {showFloatingDots && (
-        <FloatingDots>
-          {sections.map((sectionId, index) => {
-            const isActive = currentSection === sectionId;
-            const progress = isActive ? Math.min((scrollProgress - (index * 10)) * 10, 100) : 0;
-            
-            return (
-              <NavigationDot
-                key={sectionId}
-                isActive={isActive}
-                progress={Math.max(0, progress)}
-                onClick={() => handleNavigation(`#${sectionId}`)}
-              />
-            );
-          })}
-        </FloatingDots>
-      )}
+
 
       {/* Command Palette */}
       {commandPaletteOpen && (
