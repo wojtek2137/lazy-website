@@ -13,7 +13,6 @@ import { LatoZRadiemSection } from "ui/pages/LatoZRadiemSection/LatoZRadiemSecti
 import { ModernNavigation2024 } from "ui/components/ModernNavigation2024";
 import { QuickActions2024 } from "ui/components/QuickActions2024";
 
-import { MicroInteractions2024 } from "ui/components/MicroInteractions2024";
 import { ContactSection } from "ui/pages/ContactSection/ContactSection";
 import { 
   ModernSectionWrapper, 
@@ -25,9 +24,7 @@ import {
   ModernList
 } from "ui/components/SharedStyles";
 import { 
-  SectionTransition, 
-  FloatingParticles,
-  CSSParticleSystem 
+  SectionTransition
 } from "ui/components/ScrollTransitions";
 interface SectionWrapperPropsType {
   imageUrl: string;
@@ -126,8 +123,7 @@ export function Ui() {
 
   return (
     <>
-      <FloatingParticles />
-      <MicroInteractions2024 />
+
       
 
       
@@ -147,7 +143,6 @@ export function Ui() {
         
         <section id="o-nas" aria-labelledby="about-heading">
           <ModernSectionWrapper backgroundImage={About} parallaxEffect>
-            <CSSParticleSystem />
             <ModernContentContainer glassmorphism enhanced>
               <ModernTextWrapper centerAlign enhanced>
                 <header>
@@ -178,8 +173,7 @@ export function Ui() {
         
         <SectionTransition />
         <section id="festiwale" aria-labelledby="festivals-heading">
-          <ModernSectionWrapper backgroundImage={About3} parallaxEffect>
-            <CSSParticleSystem />
+          <ModernSectionWrapper backgroundImage={About3} parallaxEffect data-bg="about3">
             <ModernContentContainer glassmorphism enhanced>
               <ModernTextWrapper centerAlign enhanced>
                 <header>
@@ -214,8 +208,7 @@ export function Ui() {
         
         <SectionTransition />
         <section id="uslugi" aria-labelledby="services-heading">
-          <ModernSectionWrapper backgroundImage={About2} parallaxEffect>
-            <CSSParticleSystem />
+          <ModernSectionWrapper backgroundImage={About2} parallaxEffect data-bg="about2">
             <ModernContentContainer glassmorphism enhanced>
               <ModernTextWrapper centerAlign enhanced>
                 <header>

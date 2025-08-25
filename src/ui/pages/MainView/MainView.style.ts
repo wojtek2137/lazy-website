@@ -141,7 +141,8 @@ export const MainTitle = styled('h1')`
       0 0 40px ${colors.primary.gold}40,
       0 4px 8px rgba(0,0,0,0.5);
     position: relative;
-    animation: titleGlow 3s ease-in-out infinite alternate;
+    /* Reduced animation frequency for performance */
+    animation: titleGlow 6s ease-in-out infinite alternate;
     
     &::before {
       content: '';
@@ -244,27 +245,24 @@ export const HeroImageWrapper = styled('div')`
         contrast(1.1) 
         saturate(0.9);
       transition: filter 0.8s ease;
-      animation: kenBurns 25s ease-in-out infinite alternate;
+      /* Optimized Ken Burns animation - reduced complexity and frequency */
+      animation: kenBurnsOptimized 45s ease-in-out infinite alternate;
+      will-change: transform;
     }
     
-    @keyframes kenBurns {
+    /* Optimized Ken Burns keyframes - fewer transitions, longer duration */
+    @keyframes kenBurnsOptimized {
       0% {
-        transform: scale(1) translate(-3%, -3%);
+        transform: scale(1.05) translate(0%, 0%);
       }
-      20% {
-        transform: scale(1.15) translate(-6%, -2%);
+      33% {
+        transform: scale(1.12) translate(-3%, -2%);
       }
-      40% {
-        transform: scale(1.12) translate(-2%, -7%);
-      }
-      60% {
-        transform: scale(1.18) translate(-8%, -4%);
-      }
-      80% {
-        transform: scale(1.10) translate(-4%, -8%);
+      66% {
+        transform: scale(1.08) translate(-1%, -4%);
       }
       100% {
-        transform: scale(1.20) translate(-5%, -6%);
+        transform: scale(1.15) translate(-2%, -3%);
       }
     }
     
