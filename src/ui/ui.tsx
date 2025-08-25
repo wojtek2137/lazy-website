@@ -315,10 +315,10 @@ export function Ui() {
                     <a href="https://podcasty.polskieradio.pl/jedynka/audycje/lato-z-radiem-,166/odcinek/potancowka-lata-z-radiem-przy-dzwiekach-grupy-lazy-swing-band-maciej-walecki-sprawdza-jak-bawili-sie-uczestnicy-,54eb4a7e-6a45-4f5a-a3e1-540e3bc97f1b" target="_blank" rel="noopener noreferrer">
                       dziewięciu przystankach trasy „Lato z Radiem i Telewizją Polską"
                     </a>
-                  </ModernSpan>, a{" "}
+                  </ModernSpan>, a zespół został notowany w{" "}
                   <ModernSpan variant="highlight" enhanced>
                     <a href="https://www.facebook.com/photo/?fbid=878329507633646&set=a.438180431648558" target="_blank" rel="noopener noreferrer">
-                      nazwa naszej grupy figuruje w zestawieniu Jazz Forum w kategorii jazzu tradycyjnego
+                      zestawieniu Jazz Forum w kategorii jazzu tradycyjnego
                     </a>
                   </ModernSpan>. 
                   Nasza pasja do autentycznego brzmienia lat 20. i 30. XX wieku harmonijnie łączy się z nowoczesną energią sceniczną.
