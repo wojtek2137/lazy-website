@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts } from 'config/theme';
+import { usePWAInstall } from '../../hooks/usePWAInstall';
 
 // Quick Actions Panel - 2024 UX Trends
 const QuickActionsPanel = styled.div`
@@ -212,6 +213,7 @@ export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) 
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showProgressRing, setShowProgressRing] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
+  const { canInstall, handleInstall } = usePWAInstall();
 
   useEffect(() => {
     let ticking = false;
@@ -263,6 +265,22 @@ export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) 
   }, [isVisible, onClose]);
 
   const quickActions = [
+    // PWA Install action
+    {
+      icon: '🎵',
+      label: 'Zainstaluj aplikację',
+      description: 'Dodaj do ekranu głównego',
+      shortcut: 'Ctrl+I',
+      variant: 'primary' as const,
+      action: async () => {
+        if (canInstall) {
+          await handleInstall();
+        } else {
+          alert('Instalacja aplikacji nie jest obecnie dostępna. Sprawdź czy używasz obsługiwanej przeglądarki.');
+        }
+        onClose();
+      }
+    },
     {
       icon: '',
       label: 'Rezerwacja',

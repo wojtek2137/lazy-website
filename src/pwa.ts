@@ -68,116 +68,35 @@ class LazySwingBandPWA {
     }
   }
 
-  // Setup install prompt functionality
+  // Setup install prompt functionality (disabled - now handled by React components)
   private setupInstallPrompt(): void {
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      this.deferredPrompt = e as BeforeInstallPromptEvent;
-      
-      if (!this.isInstalled) {
-        this.showInstallButton();
-      }
-    });
-
-    // Listen for app installation
+    // Install prompt is now handled by React components
+    // Old implementation disabled to prevent conflicts
+    
+    // Still listen for app installation for analytics
     window.addEventListener('appinstalled', () => {
       console.log('🎵 PWA: Lazy Swing Band app installed successfully!');
       this.isInstalled = true;
-      this.hideInstallButton();
-      this.showInstalledNotification();
     });
   }
 
-  // Show install button
+  // Show install button (disabled - now handled by React components)
   private showInstallButton(): void {
-    // Create install button if it doesn't exist
-    let installButton = document.getElementById('pwa-install-button');
-    
-    if (!installButton) {
-      installButton = document.createElement('button');
-      installButton.id = 'pwa-install-button';
-      installButton.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 8px;">
-          🎵 <span>Zainstaluj aplikację</span>
-        </div>
-      `;
-      installButton.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: linear-gradient(135deg, #ccb379 0%, #d4c285 100%);
-        color: #000;
-        border: none;
-        padding: 12px 20px;
-        border-radius: 50px;
-        font-weight: bold;
-        cursor: pointer;
-        box-shadow: 0 4px 20px rgba(204, 179, 121, 0.4);
-        z-index: 9999;
-        font-family: inherit;
-        font-size: 14px;
-        transition: all 0.3s ease;
-        animation: pulse 2s infinite;
-      `;
-      
-      // Add hover effect
-      installButton.addEventListener('mouseenter', () => {
-        installButton!.style.transform = 'translateY(-2px) scale(1.05)';
-        installButton!.style.boxShadow = '0 6px 25px rgba(204, 179, 121, 0.6)';
-      });
-      
-      installButton.addEventListener('mouseleave', () => {
-        installButton!.style.transform = 'translateY(0) scale(1)';
-        installButton!.style.boxShadow = '0 4px 20px rgba(204, 179, 121, 0.4)';
-      });
-
-      installButton.addEventListener('click', () => this.promptInstall());
-      
-      document.body.appendChild(installButton);
-    }
-
-    // Add CSS animation
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes pulse {
-        0% { box-shadow: 0 4px 20px rgba(204, 179, 121, 0.4); }
-        50% { box-shadow: 0 4px 30px rgba(204, 179, 121, 0.7); }
-        100% { box-shadow: 0 4px 20px rgba(204, 179, 121, 0.4); }
-      }
-    `;
-    document.head.appendChild(style);
-
-    installButton.style.display = 'block';
+    // Install button is now handled by React components
+    // Old implementation disabled to prevent conflicts
+    console.log('🎵 PWA: Install button creation skipped - handled by React components');
   }
 
-  // Hide install button
+  // Hide install button (disabled - now handled by React components)
   private hideInstallButton(): void {
-    const installButton = document.getElementById('pwa-install-button');
-    if (installButton) {
-      installButton.style.display = 'none';
-    }
+    // Install button is now handled by React components
+    console.log('🎵 PWA: Install button hiding skipped - handled by React components');
   }
 
-  // Prompt installation
+  // Prompt installation (disabled - now handled by React components)
   private async promptInstall(): Promise<void> {
-    if (!this.deferredPrompt) return;
-
-    try {
-      await this.deferredPrompt.prompt();
-      const { outcome } = await this.deferredPrompt.userChoice;
-      
-      if (outcome === 'accepted') {
-        console.log('🎵 PWA: User accepted the install prompt');
-      } else {
-        console.log('📱 PWA: User dismissed the install prompt');
-      }
-      
-      this.deferredPrompt = null;
-      this.hideInstallButton();
-      
-    } catch (error) {
-      console.error('🚫 PWA: Error during installation:', error);
-    }
+    // Install prompt is now handled by React components
+    console.log('🎵 PWA: Install prompt skipped - handled by React components');
   }
 
   // Show update notification
@@ -267,48 +186,10 @@ class LazySwingBandPWA {
     }
   }
 
-  // Show installed notification
+  // Show installed notification (disabled - now handled by React components)
   private showInstalledNotification(): void {
-    const notification = document.createElement('div');
-    notification.innerHTML = `
-      <div style="text-align: center;">
-        <div style="font-size: 24px; margin-bottom: 8px;">🎵</div>
-        <strong>Aplikacja zainstalowana!</strong><br>
-        <small>Lazy Swing Band jest teraz dostępny na Twoim urządzeniu</small>
-      </div>
-    `;
-    
-    notification.style.cssText = `
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: linear-gradient(135deg, #ccb379 0%, #d4c285 100%);
-      color: #000;
-      padding: 24px;
-      border-radius: 16px;
-      z-index: 10000;
-      font-family: inherit;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      animation: fadeInScale 0.3s ease;
-    `;
-
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes fadeInScale {
-        from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-        to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-      }
-    `;
-    document.head.appendChild(style);
-
-    document.body.appendChild(notification);
-
-    // Auto-hide after 3 seconds
-    setTimeout(() => {
-      notification.style.animation = 'fadeInScale 0.3s ease reverse';
-      setTimeout(() => notification.remove(), 300);
-    }, 3000);
+    // Install success notification is now handled by React components
+    console.log('🎵 PWA: Install success notification skipped - handled by React components');
   }
 
   // Setup offline indicator
@@ -357,30 +238,26 @@ class LazySwingBandPWA {
     }
   }
 
-  // Public method to manually trigger install prompt
+  // Public method to manually trigger install prompt (disabled - now handled by React components)
   public triggerInstall(): void {
-    this.promptInstall();
+    console.log('🎵 PWA: Install trigger skipped - handled by React components');
   }
 
-  // Public method to check if app can be installed
+  // Public method to check if app can be installed (disabled - now handled by React components)
   public canInstall(): boolean {
-    return !!this.deferredPrompt && !this.isInstalled;
+    console.log('🎵 PWA: Install check skipped - handled by React components');
+    return false;
   }
 
-  // Public method to check if app is installed
+  // Public method to check if app is installed (disabled - now handled by React components)
   public getInstallStatus(): boolean {
     return this.isInstalled;
   }
 }
 
-// Initialize PWA when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    new LazySwingBandPWA();
-  });
-} else {
-  new LazySwingBandPWA();
-}
+// PWA initialization disabled - now handled by React components
+// The old initialization has been replaced with React-based PWA management
+console.log('🎵 PWA: Old PWA initialization skipped - using React components instead');
 
 // Export for potential manual usage
 (window as any).LazySwingBandPWA = LazySwingBandPWA;

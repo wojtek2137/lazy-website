@@ -28,42 +28,7 @@ const OfflineBanner = styled('div')`
   }
 `;
 
-const InstallButton = styled('button')`
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: linear-gradient(135deg, ${colors.primary.gold} 0%, #d4c285 100%);
-  color: #000;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 50px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 20px rgba(204, 179, 121, 0.4);
-  z-index: 9998;
-  font-family: ${fonts.mulish.Bold};
-  font-size: 14px;
-  transition: all 0.3s ease;
-  animation: pulse 2s infinite;
-  
-  &:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 25px rgba(204, 179, 121, 0.6);
-  }
-  
-  @keyframes pulse {
-    0% { box-shadow: 0 4px 20px rgba(204, 179, 121, 0.4); }
-    50% { box-shadow: 0 4px 30px rgba(204, 179, 121, 0.7); }
-    100% { box-shadow: 0 4px 20px rgba(204, 179, 121, 0.4); }
-  }
-  
-  @media (max-width: 768px) {
-    bottom: 16px;
-    right: 16px;
-    padding: 10px 16px;
-    font-size: 13px;
-  }
-`;
+
 
 const UpdateNotification = styled('div')`
   position: fixed;
@@ -127,72 +92,26 @@ const UpdateButtons = styled('div')`
   }
 `;
 
-const InstallSuccessNotification = styled('div')`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: linear-gradient(135deg, ${colors.primary.gold} 0%, #d4c285 100%);
-  color: #000;
-  padding: 24px;
-  border-radius: 16px;
-  z-index: 10000;
-  font-family: ${fonts.mulish.Bold};
-  text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  animation: fadeInScale 0.3s ease;
-  
-  @keyframes fadeInScale {
-    from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-    to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-  }
-`;
 
-interface BeforeInstallPromptEvent extends Event {
-  prompt(): Promise<void>;
-  userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
-}
 
 const PWAManager: React.FC = () => {
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
-  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
-  const [showInstallButton, setShowInstallButton] = useState(false);
   const [showUpdateNotification, setShowUpdateNotification] = useState(false);
-  const [showInstallSuccess, setShowInstallSuccess] = useState(false);
   const [swRegistration, setSwRegistration] = useState<ServiceWorkerRegistration | null>(null);
 
   useEffect(() => {
-    // Check if app is already installed
-    const isInstalled = window.matchMedia('(display-mode: standalone)').matches || 
-                       (window.navigator as any).standalone;
-
-    // Handle install prompt
-    const handleBeforeInstallPrompt = (e: Event) => {
-      e.preventDefault();
-      const event = e as BeforeInstallPromptEvent;
-      setDeferredPrompt(event);
-      
-      if (!isInstalled) {
-        setShowInstallButton(true);
-      }
-    };
-
-    // Handle app installation
-    const handleAppInstalled = () => {
-      setShowInstallButton(false);
-      setDeferredPrompt(null);
-      setShowInstallSuccess(true);
-      
-      setTimeout(() => setShowInstallSuccess(false), 3000);
-    };
-
     // Handle online/offline status
     const handleOnline = () => setIsOffline(false);
     const handleOffline = () => setIsOffline(true);
 
     // Register Service Worker and handle updates
     const registerServiceWorker = async () => {
-      if ('serviceWorker' in navigator) {
+      // Skip Service Worker registration in development to avoid caching issues
+      const isProduction = !window.location.hostname.includes('localhost') && 
+                          !window.location.hostname.includes('127.0.0.1') &&
+                          !window.location.hostname.includes('192.168.');
+      
+      if ('serviceWorker' in navigator && isProduction) {
         try {
           const registration = await navigator.serviceWorker.register('/sw.js');
           setSwRegistration(registration);
@@ -212,12 +131,12 @@ const PWAManager: React.FC = () => {
         } catch (error) {
           console.error('PWA: Service Worker registration failed:', error);
         }
+      } else {
+        console.log('PWA: Service Worker registration skipped in development mode (localhost detected)');
       }
     };
 
     // Add event listeners
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    window.addEventListener('appinstalled', handleAppInstalled);
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
 
@@ -226,33 +145,12 @@ const PWAManager: React.FC = () => {
 
     // Cleanup
     return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-      window.removeEventListener('appinstalled', handleAppInstalled);
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
     };
   }, []);
 
-  const handleInstallClick = async () => {
-    if (!deferredPrompt) return;
 
-    try {
-      await deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      
-      if (outcome === 'accepted') {
-        console.log('🎵 PWA: User accepted the install prompt');
-      } else {
-        console.log('📱 PWA: User dismissed the install prompt');
-      }
-      
-      setDeferredPrompt(null);
-      setShowInstallButton(false);
-      
-    } catch (error) {
-      console.error('🚫 PWA: Error during installation:', error);
-    }
-  };
 
   const handleUpdateClick = () => {
     if (swRegistration?.waiting) {
@@ -274,13 +172,6 @@ const PWAManager: React.FC = () => {
         </OfflineBanner>
       )}
 
-      {/* Install Button */}
-      {showInstallButton && (
-        <InstallButton onClick={handleInstallClick}>
-          🎵 Zainstaluj aplikację
-        </InstallButton>
-      )}
-
       {/* Update Notification */}
       {showUpdateNotification && (
         <UpdateNotification>
@@ -299,14 +190,7 @@ const PWAManager: React.FC = () => {
         </UpdateNotification>
       )}
 
-      {/* Install Success Notification */}
-      {showInstallSuccess && (
-        <InstallSuccessNotification>
-          <div style={{ fontSize: '24px', marginBottom: '8px' }}>🎵</div>
-          <strong>Aplikacja zainstalowana!</strong><br />
-          <small>Lazy Swing Band jest teraz dostępny na Twoim urządzeniu</small>
-        </InstallSuccessNotification>
-      )}
+
     </PWAContainer>
   );
 };

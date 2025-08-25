@@ -12,6 +12,7 @@ import { LatoZRadiemSection } from "ui/pages/LatoZRadiemSection/LatoZRadiemSecti
 
 import { ModernNavigation2024 } from "ui/components/ModernNavigation2024";
 import { QuickActions2024 } from "ui/components/QuickActions2024";
+import { usePWAInstall } from '../hooks/usePWAInstall';
 
 import { ContactSection } from "ui/pages/ContactSection/ContactSection";
 import { 
@@ -263,8 +264,31 @@ export const VideoLabel = styled("div")`
 
 
 
+// Install Success Notification
+const InstallSuccessNotification = styled('div')`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, ${colors.primary.gold} 0%, #d4c285 100%);
+  color: #000;
+  padding: 24px;
+  border-radius: 16px;
+  z-index: 10000;
+  font-family: ${fonts.mulish.Bold};
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: fadeInScale 0.3s ease;
+  
+  @keyframes fadeInScale {
+    from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+    to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  }
+`;
+
 export function Ui() {
   const [quickActionsVisible, setQuickActionsVisible] = useState(false);
+  const { showInstallSuccess } = usePWAInstall();
 
   const toggleQuickActions = () => {
     setQuickActionsVisible(prev => !prev);
@@ -307,8 +331,18 @@ export function Ui() {
                 </ModernText>
                 <ModernText size="medium" enhanced>
                   Od tamtej pory przeszliśmy długą drogę, stając się jednym z najbardziej 
-                  rozpoznawalnych zespołów swingowych w Polsce. Nasza pasja do autentycznego 
-                  brzmienia lat 20. i 30. XX wieku łączy się z nowoczesną energią sceny.
+                  rozpoznawalnych zespołów swingowych w Polsce. Wystąpiliśmy na{" "}
+                  <ModernSpan variant="accent" enhanced>
+                    <a href="https://podcasty.polskieradio.pl/jedynka/audycje/lato-z-radiem-,166/odcinek/potancowka-lata-z-radiem-przy-dzwiekach-grupy-lazy-swing-band-maciej-walecki-sprawdza-jak-bawili-sie-uczestnicy-,54eb4a7e-6a45-4f5a-a3e1-540e3bc97f1b" target="_blank" rel="noopener noreferrer">
+                      dziewięciu przystankach trasy „Lato z Radiem i Telewizją Polską"
+                    </a>
+                  </ModernSpan>, a{" "}
+                  <ModernSpan variant="highlight" enhanced>
+                    <a href="https://www.facebook.com/photo/?fbid=878329507633646&set=a.438180431648558" target="_blank" rel="noopener noreferrer">
+                      nazwa naszej grupy figuruje w zestawieniu Jazz Forum w kategorii jazzu tradycyjnego
+                    </a>
+                  </ModernSpan>. 
+                  Nasza pasja do autentycznego brzmienia lat 20. i 30. XX wieku harmonijnie łączy się z nowoczesną energią sceniczną.
                 </ModernText>
               </ModernTextWrapper>
             </ModernContentContainer>
@@ -340,11 +374,11 @@ export function Ui() {
                   </ModernSpan>
                 </ModernText>
                 <ModernList variant="grid" enhanced>
-                  <li>Dragon Swing Festival</li>
-                  <li>Transvingvania Lindy Exchange</li>
-                  <li>Letni Festiwal Jazzowy w Krakowie</li>
-                  <li>Lindy Hop Non Stop</li>
-                  <li>Kraków Lindy Invasion</li>
+                  <li><a href="https://dragonswing.pl/" target="_blank" rel="noopener noreferrer">Dragon Swing Festival</a></li>
+                  <li><a href="https://www.transwingvania.com/" target="_blank" rel="noopener noreferrer">Transwingvania Lindy Exchange</a></li>
+                  <li><a href="https://pl.wikipedia.org/wiki/Letni_Festiwal_Jazzowy_w_Piwnicy_pod_Baranami" target="_blank" rel="noopener noreferrer">Letni Festiwal Jazzowy w Piwnicy pod Baranami</a></li>
+                  <li><a href="https://jazzforum.com.pl/main/news/xii-jazz-zdroj-festiwal" target="_blank" rel="noopener noreferrer">Jazz Zdrój Festiwal</a></li>
+                  <li><a href="https://elegantspolek.cz/akce/retro-elegant-kravare/" target="_blank" rel="noopener noreferrer">Retro Elegant Kravaře</a></li>
                   <li>i wiele innych...</li>
                 </ModernList>
               </ModernTextWrapper>
@@ -400,15 +434,15 @@ export function Ui() {
                 <ChristmasContentGrid>
                   <ChristmasTextSection>
                     <ModernText size="large" emphasis>
-                      W okresie około-świątecznym mamy także przygotowany 
-                      <ModernSpan variant="glow"> repertuar świąteczny</ModernSpan>!
+                      W okresie bożonarodzeniowym mamy także przygotowany 
+                      <ModernSpan variant="glow"> wyjątkowy repertuar świąteczny</ModernSpan>!
                     </ModernText>
                     <ModernText size="medium">
                       <ModernSpan variant="highlight">Lazy Christmas!</ModernSpan> - 
-                      ze standardami amerykańskich, swingowych przebojów świątecznych
+                      ze standardami amerykańskich, swingowych przebojów bożonarodzeniowych
                       w niepowtarzalnym klimacie lat 20. i 30., takich jak 
                       <ModernSpan variant="glow"> "Let It Snow!"</ModernSpan> czy inne 
-                      utwory <ModernSpan variant="highlight">Franka Sinatry</ModernSpan>.
+                      klasyki <ModernSpan variant="highlight">Franka Sinatry</ModernSpan>.
                     </ModernText>
                     <ModernText size="large">
                       <ModernSpan variant="accent">
@@ -419,7 +453,7 @@ export function Ui() {
                   </ChristmasTextSection>
                   
                   <ChristmasVideoSection>
-                    <VideoLabel>Posłuchaj naszych świątecznych utworów</VideoLabel>
+                    <VideoLabel>Posłuchaj naszych bożonarodzeniowych hitów</VideoLabel>
                     <ResponsiveVideoWrapper>
                       <ResponsiveIframe 
                         src="https://www.youtube.com/embed/CLA-kpH-3Cs?si=a3orL4ns7sib6R4W" 
@@ -442,6 +476,15 @@ export function Ui() {
         <SectionTransition />
         <ContactSection />
       </main>
+      
+      {/* Install Success Notification */}
+      {showInstallSuccess && (
+        <InstallSuccessNotification>
+          <div style={{ fontSize: '24px', marginBottom: '8px' }}>🎵</div>
+          <strong>Aplikacja zainstalowana!</strong><br />
+          <small>Lazy Swing Band jest teraz dostępny na Twoim urządzeniu</small>
+        </InstallSuccessNotification>
+      )}
     </>
   );
 }

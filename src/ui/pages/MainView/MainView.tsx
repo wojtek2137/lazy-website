@@ -45,7 +45,7 @@ export function MainView() {
         <ContentWrapper>
           <Logo role="img" aria-label="Logo zespołu Lazy Swing Band" />
           <HeaderWrapper>
-            <SubHeader>zespół zawodowych muzyków jazzowych z Krakowa</SubHeader>
+            <SubHeader>Profesjonalny zespół Jazzowy rodowodem z Krakowa</SubHeader>
 
             <MainTitle id="main-title" key={textIndex}>
               {alternativeTexts[textIndex]}
