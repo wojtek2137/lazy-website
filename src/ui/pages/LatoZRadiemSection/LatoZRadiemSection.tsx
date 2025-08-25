@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ResponsiveLazyImage } from 'ui/components/ResponsiveLazyImage';
 import {
   LatoZRadiemWrapper,
@@ -10,10 +10,16 @@ import {
   TextContent,
   ArticleText,
   CitiesList,
-  ImageCollage,
-  CollageImage,
-  CollageImageWrapper,
-  RadioLogo
+  ImageCarousel,
+  CarouselContainer,
+  CarouselTrack,
+  CarouselCard,
+  CardImageWrapper,
+  CardContent,
+  CarouselIndicators,
+  IndicatorDot,
+  SwipeHint,
+  CarouselRadioLogo
 } from './LatoZRadiemSection.style';
 
 // Use responsive images from public folder
@@ -53,30 +59,75 @@ const cities = [
   }
 ];
 
-const collageImages = [
-  {
-    src: '/images/responsive/lato_z_radiem.webp',
-    alt: 'Lazy Swing Band podczas Lata z Radiem',
-    position: 'side' as const
-  },
+const carouselSlides = [
   {
     src: '/images/responsive/lato_z_radiem_1.webp', 
     alt: 'Występ zespołu podczas potańcówki',
-    position: 'main' as const
+    title: 'Potańcówki międzypokoleniowe',
+    description: 'Energia swingu łączy wszystkie pokolenia - babcie tańczą ze swoimi wnukami!'
   },
   {
     src: '/images/responsive/lato_z_radiem_2.webp',
     alt: 'Z Panią redaktor Sławą Bieńczycką podczas wydarzenia Lato z Radiem',
-    position: 'bottom' as const
+    title: 'Z Radiem w całej Polsce',
+    description: 'Gościnnie z Panią redaktor Sławą Bieńczycką - ambasadorką programu.'
   },
   {
     src: '/images/responsive/lato_z_radiem_3.webp',
     alt: 'Z Panem redaktorem Marianem Czejarkiem podczas koncertu Lazy Swing Band w trakcie Lata z Radiem',
-    position: 'top' as const
+    title: 'Radiowe wywiady',
+    description: 'Opowiadamy o pasji do jazzu z Panem redaktorem Marianem Czejarkiem.'
+  },
+  {
+    src: '/images/responsive/lato_z_radiem.webp',
+    alt: 'Lazy Swing Band podczas Lata z Radiem',
+    title: 'Lazy Swing Band',
+    description: 'Reprezentujemy swingową scenę na najważniejszych festiwalach w Polsce.'
   }
 ];
 
 export function LatoZRadiemSection() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  // Auto-advance carousel every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Handle touch gestures for mobile swipe
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
+    } else if (isRightSwipe) {
+      setCurrentSlide((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length);
+    }
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
   return (
     <LatoZRadiemWrapper id="lato-z-radiem" aria-labelledby="lato-z-radiem-heading">
       <ContentContainer>
@@ -136,37 +187,62 @@ export function LatoZRadiemSection() {
             </CitiesList>
           </TextContent>
           
-          <ImageCollage>
-            {collageImages.map((image, index) => (
-              <CollageImage key={index} $position={image.position}>
-                <CollageImageWrapper>
+          <ImageCarousel>
+            <CarouselContainer
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
+              <CarouselRadioLogo>
+                <a 
+                  href="https://jedynka.polskieradio.pl/artykul/3553019,Pota%C5%84c%C3%B3wki-Lata-z-Radiem-Jak%C4%85-muzyk%C4%99-gra-Lazy-Swing-Band" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Przeczytaj artykuł o Lazy Swing Band w programie Lato z Radiem"
+                  title="Kliknij, aby przeczytać artykuł o naszym udziale w programie Lato z Radiem"
+                >
                   <ResponsiveLazyImage
-                    src={image.src}
-                    alt={image.alt}
+                    src="/images/responsive/polskie_radio_jedynka.webp"
+                    alt="Logo Polskiego Radia Jedynka"
                     loading="lazy"
                     useResponsive={true}
                   />
-                </CollageImageWrapper>
-              </CollageImage>
-            ))}
-            
-            <RadioLogo>
-              <a 
-                href="https://jedynka.polskieradio.pl/artykul/3553019,Pota%C5%84c%C3%B3wki-Lata-z-Radiem-Jak%C4%85-muzyk%C4%99-gra-Lazy-Swing-Band" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="Przeczytaj artykuł o Lazy Swing Band w programie Lato z Radiem na stronie Polskiego Radia Jedynka"
-                title="Kliknij, aby przeczytać artykuł o naszym udziale w programie Lato z Radiem"
-              >
-                <ResponsiveLazyImage
-                  src="/images/responsive/polskie_radio_jedynka.webp"
-                  alt="Logo Polskiego Radia Jedynka"
-                  loading="lazy"
-                  useResponsive={true}
-                />
-              </a>
-            </RadioLogo>
-          </ImageCollage>
+                </a>
+              </CarouselRadioLogo>
+
+              <CarouselTrack $currentIndex={currentSlide}>
+                {carouselSlides.map((slide, index) => (
+                  <CarouselCard key={index}>
+                    <CardImageWrapper>
+                      <ResponsiveLazyImage
+                        src={slide.src}
+                        alt={slide.alt}
+                        loading="lazy"
+                        useResponsive={true}
+                      />
+                    </CardImageWrapper>
+                    <CardContent>
+                      <h3>{slide.title}</h3>
+                      <p>{slide.description}</p>
+                    </CardContent>
+                  </CarouselCard>
+                ))}
+              </CarouselTrack>
+
+              <CarouselIndicators>
+                {carouselSlides.map((_, index) => (
+                  <IndicatorDot
+                    key={index}
+                    $isActive={index === currentSlide}
+                    onClick={() => goToSlide(index)}
+                    aria-label={`Przejdź do slajdu ${index + 1}`}
+                  />
+                ))}
+              </CarouselIndicators>
+
+              <SwipeHint>Przesuń</SwipeHint>
+            </CarouselContainer>
+          </ImageCarousel>
         </ContentGrid>
       </ContentContainer>
     </LatoZRadiemWrapper>
