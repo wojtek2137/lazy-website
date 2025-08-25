@@ -145,10 +145,8 @@ export function LatoZRadiemSection() {
             <ArticleText>
               <p>
                 <strong>2025 rok</strong> oznacza dla nas szczególną przygodę! 
-                Lazy Swing Band dołączył do ekipy 
-                <strong> <a href="https://jedynka.polskieradio.pl/artykul/3553019,Pota%C5%84c%C3%B3wki-Lata-z-Radiem-Jak%C4%85-muzyk%C4%99-gra-Lazy-Swing-Band" target="_blank" rel="noopener noreferrer">"Lata z Radiem i Telewizją Polską"</a></strong>, 
-               występując na <strong>9 wyjątkowych potańcówkach międzypokoleniowych </strong> 
-                w najpiękniejszych zakątkach Polski.
+                <strong>Lazy Swing Band</strong> dołączył do ekipy <strong> <a href="https://www.latozradiem.pl/pikniki" target="_blank" rel="noopener noreferrer">"Lata z Radiem i Telewizją Polską"</a></strong> występując na
+                <strong> <a href="https://jedynka.polskieradio.pl/artykul/3553019,Pota%C5%84c%C3%B3wki-Lata-z-Radiem-Jak%C4%85-muzyk%C4%99-gra-Lazy-Swing-Band" target="_blank" rel="noopener noreferrer"> 9 wyjątkowych potańcówkach międzypokoleniowych w najpiękniejszych zakątkach Polski.</a></strong>, 
               </p>
               
               <p>
@@ -159,7 +157,7 @@ export function LatoZRadiemSection() {
               </p>
               
               <p>
-                Program <strong>"Lato z Radiem"</strong> to inicjatywa <a href="https://jedynka.polskieradio.pl/" target="_blank" rel="noopener noreferrer">Polskiego Radia</a>, 
+                Program <strong>  <a href="https://www.latozradiem.pl/" target="_blank" rel="noopener noreferrer">"Lato z Radiem"</a></strong> to inicjatywa Polskiego Radia, 
                 która promuje najlepszą polską muzykę w całym kraju. 
                 Jesteśmy dumni, że możemy reprezentować swingową scenę 
                 i pokazywać, że jazz to muzyka ponadczasowa, która 
