@@ -112,6 +112,155 @@ export const ChristmasSection = styled("section")`
   }
 `;
 
+// Responsive YouTube video wrapper
+export const ResponsiveVideoWrapper = styled("div")`
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px ${colors.primary.gold}20;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+      0 25px 50px rgba(0, 0, 0, 0.5),
+      0 0 0 2px ${colors.primary.gold}40,
+      0 0 30px ${colors.primary.gold}30;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+      45deg,
+      ${colors.primary.gold}40,
+      transparent,
+      ${colors.primary.sandy}30,
+      transparent,
+      ${colors.primary.gold}40
+    );
+    border-radius: 18px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+  
+  @media (max-width: 768px) {
+    max-width: 100%;
+    margin: 32px auto 0;
+    border-radius: 12px;
+    
+    &:hover {
+      transform: translateY(-4px) scale(1.01);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    margin: 24px auto 0;
+    border-radius: 8px;
+  }
+`;
+
+export const ResponsiveIframe = styled("iframe")`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: inherit;
+`;
+
+// Enhanced Christmas content layout
+export const ChristmasContentGrid = styled("div")`
+  display: grid;
+  gap: 48px;
+  grid-template-columns: 1fr;
+  align-items: start;
+  width: 100%;
+  
+  @media (min-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+`;
+
+export const ChristmasTextSection = styled("div")`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  
+  @media (min-width: 992px) {
+    gap: 32px;
+  }
+`;
+
+export const ChristmasVideoSection = styled("div")`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  
+  @media (min-width: 992px) {
+    order: -1; /* Video first on desktop */
+  }
+`;
+
+export const VideoLabel = styled("div")`
+  color: ${colors.primary.gold};
+  font-family: ${fonts.mulish.Medium};
+  font-size: 16px;
+  text-align: center;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+  
+  &::before,
+  &::after {
+    content: '♪';
+    margin: 0 8px;
+    animation: musicPulse 3s ease-in-out infinite;
+  }
+  
+  &::after {
+    animation-delay: 1.5s;
+  }
+  
+  @keyframes musicPulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 14px;
+    
+    &::before,
+    &::after {
+      margin: 0 4px;
+    }
+  }
+`;
+
+
+
+
+
 
 
 export function Ui() {
@@ -237,6 +386,8 @@ export function Ui() {
           </ModernSectionWrapper>
         </section>
         
+        <SectionTransition />
+        
         <section id="swieta" aria-labelledby="christmas-heading">
           <ModernSectionWrapper darkTheme>
             <ModernContentContainer glassmorphism maxWidth="1200px">
@@ -246,21 +397,41 @@ export function Ui() {
                     🎄 Lazy Christmas 🎄
                   </ModernHeading>
                 </header>
-                <ModernText size="large" emphasis>
-                  W okresie około-świątecznym mamy także przygotowany 
-                  <ModernSpan variant="glow"> repertuar x-masowy</ModernSpan>!
-                </ModernText>
-                <ModernText size="medium">
-                  <ModernSpan variant="highlight">Lazy Christmas!</ModernSpan> - 
-                  ze standardami amerykańskich, swingowych przebojów świątecznych
-                  w niepowtarzalnym klimacie lat 20. i 30.
-                </ModernText>
-                <ModernText size="large">
-                  <ModernSpan variant="accent">
-                    🎅 To doskonała oferta na wigilie firmowe i inne podobne
-                    wydarzenia, w magicznym klimacie bożonarodzeniowym. 🎁
-                  </ModernSpan>
-                </ModernText>
+                <ChristmasContentGrid>
+                  <ChristmasTextSection>
+                    <ModernText size="large" emphasis>
+                      W okresie około-świątecznym mamy także przygotowany 
+                      <ModernSpan variant="glow"> repertuar świąteczny</ModernSpan>!
+                    </ModernText>
+                    <ModernText size="medium">
+                      <ModernSpan variant="highlight">Lazy Christmas!</ModernSpan> - 
+                      ze standardami amerykańskich, swingowych przebojów świątecznych
+                      w niepowtarzalnym klimacie lat 20. i 30., takich jak 
+                      <ModernSpan variant="glow"> "Let It Snow!"</ModernSpan> czy inne 
+                      utwory <ModernSpan variant="highlight">Franka Sinatry</ModernSpan>.
+                    </ModernText>
+                    <ModernText size="large">
+                      <ModernSpan variant="accent">
+                        🎅 To doskonała oferta na wigilie firmowe i inne podobne
+                        wydarzenia, w magicznym klimacie bożonarodzeniowym. 🎁
+                      </ModernSpan>
+                    </ModernText>
+                  </ChristmasTextSection>
+                  
+                  <ChristmasVideoSection>
+                    <VideoLabel>Posłuchaj naszych świątecznych utworów</VideoLabel>
+                    <ResponsiveVideoWrapper>
+                      <ResponsiveIframe 
+                        src="https://www.youtube.com/embed/CLA-kpH-3Cs?si=a3orL4ns7sib6R4W" 
+                        title="Lazy Swing Band - Christmas Songs" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerPolicy="strict-origin-when-cross-origin" 
+                        allowFullScreen
+                        loading="lazy"
+                      />
+                    </ResponsiveVideoWrapper>
+                  </ChristmasVideoSection>
+                </ChristmasContentGrid>
               </ModernTextWrapper>
             </ModernContentContainer>
           </ModernSectionWrapper>
