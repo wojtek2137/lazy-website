@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts } from 'config/theme';
 
 // Quick Actions Panel - 2024 UX Trends
-const QuickActionsPanel = styled.div<{ isVisible: boolean }>`
+const QuickActionsPanel = styled.div`
   position: fixed;
   bottom: 120px;
   right: 30px;
@@ -13,15 +13,25 @@ const QuickActionsPanel = styled.div<{ isVisible: boolean }>`
   border: 1px solid ${colors.primary.gold}30;
   border-radius: 20px;
   overflow: hidden;
-  transform: translateY(${({ isVisible }) => isVisible ? '0' : '100px'});
-  opacity: ${({ isVisible }) => isVisible ? 1 : 0};
-  pointer-events: ${({ isVisible }) => isVisible ? 'all' : 'none'};
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: 9998;
   box-shadow: 
     0 40px 80px rgba(0, 0, 0, 0.8),
     0 0 60px ${colors.primary.gold}20,
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  /* Entry animation */
+  animation: slideInUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  
+  @keyframes slideInUp {
+    from {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 `;
 
 const QuickActionHeader = styled.div`
@@ -132,7 +142,7 @@ const ActionShortcut = styled.div`
 `;
 
 // Progress Ring Component
-const ProgressRing = styled.div<{ progress: number; isVisible: boolean }>`
+const ProgressRing = styled.div<{ progress: number }>`
   position: fixed;
   bottom: 30px;
   left: 30px;
@@ -155,25 +165,35 @@ const ProgressRing = styled.div<{ progress: number; isVisible: boolean }>`
     );
   background-origin: border-box;
   background-clip: content-box, border-box;
-  transition: all 0.3s ease;
   cursor: pointer;
   z-index: 10005;
-  opacity: ${({ isVisible }) => isVisible ? 1 : 0};
-  pointer-events: ${({ isVisible }) => isVisible ? 'all' : 'none'};
-  transform: ${({ isVisible }) => isVisible ? 'scale(1)' : 'scale(0.8)'};
   box-shadow: 
     0 8px 25px rgba(0, 0, 0, 0.4),
     0 0 20px ${colors.primary.gold}20;
   
+  /* Entry animation */
+  animation: scaleIn 0.3s ease forwards;
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
   &:hover {
-    transform: ${({ isVisible }) => isVisible ? 'scale(1.1)' : 'scale(0.8)'};
+    transform: scale(1.1);
     box-shadow: 
       0 12px 35px rgba(0, 0, 0, 0.5),
       0 0 30px ${colors.primary.gold}30;
   }
   
   &:active {
-    transform: ${({ isVisible }) => isVisible ? 'scale(1.05)' : 'scale(0.8)'};
+    transform: scale(1.05);
   }
 `;
 
@@ -191,6 +211,7 @@ interface QuickActions2024Props {
 export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showProgressRing, setShowProgressRing] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -209,6 +230,28 @@ export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) 
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Handle click outside to close
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      
+      // Check if click was on toggle button or its children
+      const isToggleButton = target.closest('[data-quick-actions-toggle="true"]');
+      
+      if (panelRef.current && !panelRef.current.contains(target as Node) && !isToggleButton) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isVisible, onClose]);
 
   const quickActions = [
     {
@@ -259,40 +302,43 @@ export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) 
 
   return (
     <>
-      {/* Quick Actions Panel */}
-      <QuickActionsPanel isVisible={isVisible}>
-        <QuickActionHeader>
-          <QuickActionTitle>Szybkie Akcje</QuickActionTitle>
-          <QuickActionSubtitle>Najczęściej używane funkcje</QuickActionSubtitle>
-        </QuickActionHeader>
-        
-        <QuickActionsList>
-          {quickActions.map((action, index) => (
-            <QuickActionItem
-              key={index}
-              variant={action.variant}
-              onClick={action.action}
-            >
-              {action.icon && <ActionIcon>{action.icon}</ActionIcon>}
-              <ActionContent>
-                <ActionLabel>{action.label}</ActionLabel>
-                <ActionDescription>{action.description}</ActionDescription>
-              </ActionContent>
-              <ActionShortcut>{action.shortcut}</ActionShortcut>
-            </QuickActionItem>
-          ))}
-        </QuickActionsList>
-      </QuickActionsPanel>
+      {/* Quick Actions Panel - conditional rendering */}
+      {isVisible && (
+        <QuickActionsPanel ref={panelRef}>
+          <QuickActionHeader>
+            <QuickActionTitle>Szybkie Akcje</QuickActionTitle>
+            <QuickActionSubtitle>Najczęściej używane funkcje</QuickActionSubtitle>
+          </QuickActionHeader>
+          
+          <QuickActionsList>
+            {quickActions.map((action, index) => (
+              <QuickActionItem
+                key={index}
+                variant={action.variant}
+                onClick={action.action}
+              >
+                {action.icon && <ActionIcon>{action.icon}</ActionIcon>}
+                <ActionContent>
+                  <ActionLabel>{action.label}</ActionLabel>
+                  <ActionDescription>{action.description}</ActionDescription>
+                </ActionContent>
+                <ActionShortcut>{action.shortcut}</ActionShortcut>
+              </QuickActionItem>
+            ))}
+          </QuickActionsList>
+        </QuickActionsPanel>
+      )}
 
-      {/* Scroll Progress Ring */}
-      <ProgressRing 
-        progress={scrollProgress}
-        isVisible={showProgressRing}
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        title={`Postęp czytania: ${Math.round(scrollProgress)}% - kliknij aby wrócić na górę`}
-      >
-        <ProgressText>{Math.round(scrollProgress)}%</ProgressText>
-      </ProgressRing>
+      {/* Scroll Progress Ring - conditional rendering */}
+      {showProgressRing && (
+        <ProgressRing 
+          progress={scrollProgress}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          title={`Postęp czytania: ${Math.round(scrollProgress)}% - kliknij aby wrócić na górę`}
+        >
+          <ProgressText>{Math.round(scrollProgress)}%</ProgressText>
+        </ProgressRing>
+      )}
     </>
   );
 }
