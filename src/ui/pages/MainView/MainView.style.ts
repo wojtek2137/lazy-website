@@ -15,7 +15,6 @@ export const Logo = styled('div')`
     background-size: cover;
     filter: drop-shadow(0 0 30px ${colors.primary.gold}40) drop-shadow(0 0 60px ${colors.primary.gold}20);
     transition: all 0.8s ease;
-    animation: logoFloat 6s ease-in-out infinite;
     position: relative;
     z-index: 3;
     
@@ -29,22 +28,12 @@ export const Logo = styled('div')`
       background: radial-gradient(circle, ${colors.primary.gold}20 0%, transparent 70%);
       border-radius: 50%;
       z-index: -1;
-      animation: logoGlow 4s ease-in-out infinite alternate;
+      opacity: 0.6;
     }
     
     &:hover {
       transform: scale(1.05) rotate(2deg);
       filter: drop-shadow(0 0 40px ${colors.primary.gold}60) drop-shadow(0 0 80px ${colors.primary.gold}30);
-    }
-    
-    @keyframes logoFloat {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-15px) rotate(1deg); }
-    }
-    
-    @keyframes logoGlow {
-      0% { opacity: 0.6; }
-      100% { opacity: 1; }
     }
     
     ${mq[0]} {
@@ -244,35 +233,38 @@ export const HeroImageWrapper = styled('div')`
     position: relative;
     overflow: hidden;
     
-    /* Ken Burns effect - subtle zoom and pan animation */
+    /* Ken Burns effect - dramatic zoom and pan animation */
     img {
-      width: 110%;
-      height: 110%;
+      width: 115%;
+      height: 115%;
       object-fit: cover;
-      transform: scale(1) translate(-2%, -2%);
+      transform: scale(1) translate(-3%, -3%);
       filter: 
         brightness(0.8) 
         contrast(1.1) 
         saturate(0.9);
       transition: filter 0.8s ease;
-      animation: kenBurns 20s ease-in-out infinite alternate;
+      animation: kenBurns 25s ease-in-out infinite alternate;
     }
     
     @keyframes kenBurns {
       0% {
-        transform: scale(1) translate(-2%, -2%);
+        transform: scale(1) translate(-3%, -3%);
       }
-      25% {
-        transform: scale(1.08) translate(-3%, -1%);
+      20% {
+        transform: scale(1.15) translate(-6%, -2%);
       }
-      50% {
-        transform: scale(1.05) translate(-1%, -3%);
+      40% {
+        transform: scale(1.12) translate(-2%, -7%);
       }
-      75% {
-        transform: scale(1.07) translate(-4%, -2%);
+      60% {
+        transform: scale(1.18) translate(-8%, -4%);
+      }
+      80% {
+        transform: scale(1.10) translate(-4%, -8%);
       }
       100% {
-        transform: scale(1.03) translate(-2%, -4%);
+        transform: scale(1.20) translate(-5%, -6%);
       }
     }
     

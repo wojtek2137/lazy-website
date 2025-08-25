@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { colors } from 'config/theme';
 
@@ -288,7 +288,6 @@ export function MicroInteractions2024() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isMouseMoving, setIsMouseMoving] = useState(false);
   const [ripples, setRipples] = useState<Array<{ id: number; x: number; y: number }>>([]);
-  const [magneticStrength, setMagneticStrength] = useState(0);
   
   // Mouse tracking
   useEffect(() => {
@@ -339,21 +338,7 @@ export function MicroInteractions2024() {
     return () => document.removeEventListener('click', handleClick);
   }, []);
 
-  // Magnetic button effect
-  const handleMagneticHover = useCallback((e: React.MouseEvent, isEntering: boolean) => {
-    if (isEntering) {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      const deltaX = e.clientX - centerX;
-      const deltaY = e.clientY - centerY;
-      const distance = Math.sqrt(deltaX ** 2 + deltaY ** 2);
-      const strength = Math.max(0, 1 - distance / 100);
-      setMagneticStrength(strength);
-    } else {
-      setMagneticStrength(0);
-    }
-  }, []);
+
 
   // Parallax elements data
   const parallaxElements = [

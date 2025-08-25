@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts } from 'config/theme';
 
@@ -508,7 +508,7 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
     }
   ];
 
-  const sections = ['glowna', 'o-nas', 'lato-z-radiem', 'albumy', 'festiwale', 'wideo', 'uslugi', 'swieta', 'zespol', 'kontakt'];
+  const sections = useMemo(() => ['glowna', 'o-nas', 'lato-z-radiem', 'albumy', 'festiwale', 'wideo', 'uslugi', 'swieta', 'zespol', 'kontakt'], []);
 
   // Filter items based on search
   const filteredItems = navigationItems.filter(item =>
@@ -516,6 +516,24 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
     item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
     item.keywords.some(keyword => keyword.toLowerCase().includes(searchQuery.toLowerCase()))
   );
+
+  // Navigation handler
+  const handleNavigation = useCallback((href: string) => {
+    const element = document.querySelector(href);
+    
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      setCommandPaletteOpen(false);
+      
+      // Haptic feedback simulation
+      if ('vibrate' in navigator) {
+        navigator.vibrate(50);
+      }
+    }
+  }, []);
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -525,7 +543,6 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
         e.preventDefault();
         setCommandPaletteOpen(true);
         setTimeout(() => {
-          console.log('Focusing command input, ref:', commandInputRef.current);
           commandInputRef.current?.focus();
         }, 150);
       }
@@ -554,7 +571,7 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [commandPaletteOpen, selectedIndex, filteredItems]);
+  }, [commandPaletteOpen, selectedIndex, filteredItems, handleNavigation]);
 
   // Reset search when palette closes
   useEffect(() => {
@@ -589,30 +606,7 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleNavigation = useCallback((href: string) => {
-    console.log('Navigating to:', href);
-    const element = document.querySelector(href);
-    console.log('Found element:', element);
-    
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-      setCommandPaletteOpen(false);
-      
-      // Haptic feedback simulation
-      if ('vibrate' in navigator) {
-        navigator.vibrate(50);
-      }
-    } else {
-      console.error('Element not found for href:', href);
-    }
-  }, []);
-
-
+  }, [sections]);
 
   return (
     <ModernNavWrapper>
@@ -637,7 +631,6 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
       {/* Floating Navigation Dots */}
       <FloatingDots isVisible={showFloatingDots}>
         {sections.map((sectionId, index) => {
-          const item = navigationItems.find(item => item.id === sectionId);
           const isActive = currentSection === sectionId;
           const progress = isActive ? Math.min((scrollProgress - (index * 10)) * 10, 100) : 0;
           
@@ -663,12 +656,9 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
           placeholder="Szukaj sekcji, wpisz komendę..."
           value={searchQuery}
           onChange={(e) => {
-            console.log('Input changed:', e.target.value);
             setSearchQuery(e.target.value);
             setSelectedIndex(0);
           }}
-          onFocus={() => console.log('Input focused')}
-          onBlur={() => console.log('Input blurred')}
         />
         <CommandResults>
           {filteredItems.map((item, index) => (
@@ -676,7 +666,6 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
               key={item.id}
               isSelected={index === selectedIndex}
               onClick={(e) => {
-                console.log('CommandItem clicked:', item.label, item.href);
                 e.stopPropagation();
                 handleNavigation(item.href);
               }}
