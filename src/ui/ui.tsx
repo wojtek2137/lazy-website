@@ -358,8 +358,10 @@ export function Ui() {
                   <li><a href="https://pl.wikipedia.org/wiki/Letni_Festiwal_Jazzowy_w_Piwnicy_pod_Baranami" target="_blank" rel="noopener noreferrer">Letni Festiwal Jazzowy w Piwnicy pod Baranami</a></li>
                   <li><a href="https://jazzforum.com.pl/main/news/xii-jazz-zdroj-festiwal" target="_blank" rel="noopener noreferrer">Jazz Zdrój Festiwal</a></li>
                   <li><a href="https://elegantspolek.cz/akce/retro-elegant-kravare/" target="_blank" rel="noopener noreferrer">Retro Elegant Kravaře</a></li>
-                  <li>i wiele innych...</li>
                 </ModernList>
+                <ModernText size="medium" enhanced>
+                  i wiele innych...
+                </ModernText>
               </ModernTextWrapper>
             </ModernContentContainer>
           </ModernSectionWrapper>
