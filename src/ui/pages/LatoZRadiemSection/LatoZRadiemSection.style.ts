@@ -6,10 +6,12 @@ const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
 export const LatoZRadiemWrapper = styled("section")`
   background: linear-gradient(135deg, ${colors.primary.black} 0%, #1a1a1a 50%, ${colors.primary.black} 100%);
-  min-height: 100vh;
+  height: 100vh;
   padding: 60px 20px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
   
   &::before {
     content: '';
@@ -27,6 +29,11 @@ export const LatoZRadiemWrapper = styled("section")`
   
   ${mq[1]} {
     padding: 40px 15px;
+    height: 100vh; /* Ensure 100vh on mobile too */
+  }
+  
+  ${mq[0]} {
+    padding: 30px 10px;
   }
 `;
 
@@ -35,6 +42,13 @@ export const ContentContainer = styled("div")`
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  width: 100%;
+  
+  ${mq[1]} {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const SectionHeader = styled("div")`
@@ -42,7 +56,12 @@ export const SectionHeader = styled("div")`
   margin-bottom: 60px;
   
   ${mq[1]} {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    flex-shrink: 0; /* Prevent header from shrinking */
+  }
+  
+  ${mq[0]} {
+    margin-bottom: 20px;
   }
 `;
 
@@ -112,7 +131,14 @@ export const ContentGrid = styled("div")`
   
   ${mq[2]} {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  ${mq[1]} {
+    flex: 1;
+    gap: 20px;
+    align-items: stretch;
   }
 `;
 
@@ -271,245 +297,224 @@ export const CitiesList = styled("div")`
   }
 `;
 
-export const ImageCollage = styled("div")`
+// Modern 2024 Mobile-First Card Carousel
+export const ImageCarousel = styled("div")`
   position: relative;
-  height: 850px;
+  height: 650px;
+  width: 100%;
   
   ${mq[2]} {
     order: 1;
-    height: 650px;
+    height: 500px;
   }
   
   ${mq[1]} {
-    height: 480px;
+    height: 400px;
+    margin-bottom: 20px;
+  }
+  
+  ${mq[0]} {
+    height: 350px;
   }
 `;
 
-export const CollageImage = styled("div")<{ $position: 'main' | 'top' | 'bottom' | 'side' }>`
-  position: absolute;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.5),
-    0 0 20px ${colors.primary.gold}20;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  
-  &:hover {
-    box-shadow: 
-      0 25px 50px rgba(0, 0, 0, 0.8),
-      0 0 40px ${colors.primary.gold}60,
-      inset 0 0 20px ${colors.primary.gold}20;
-    z-index: 10;
-    border: 2px solid ${colors.primary.gold}80;
-  }
-  
-  ${({ $position }) => {
-    switch ($position) {
-      case 'main':
-        return `
-          top: 55%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 480px;
-          height: 360px;
-          z-index: 5;
-          animation: float 6s ease-in-out infinite;
-          
-          &:hover {
-            transform: translate(-50%, -50%) scale(1.15) rotate(2deg);
-          }
-          
-          @media (max-width: 768px) {
-            width: 350px;
-            height: 263px;
-            top: 58%;
-            
-            &:hover {
-              transform: translate(-50%, -50%) scale(1.12) rotate(2deg);
-            }
-          }
-          
-          @media (max-width: 576px) {
-            width: 270px;
-            height: 203px;
-            top: 60%;
-            
-            &:hover {
-              transform: translate(-50%, -50%) scale(1.08) rotate(1deg);
-            }
-          }
-        `;
-      case 'top':
-        return `
-          top: 18%;
-          right: 15%;
-          width: 240px;
-          height: 320px;
-          z-index: 3;
-          animation: float 6s ease-in-out infinite 1s;
-          
-          &:hover {
-            transform: scale(1.25) rotate(4deg);
-          }
-          
-          @media (max-width: 768px) {
-            width: 170px;
-            height: 227px;
-            top: 15%;
-            right: 10%;
-            
-            &:hover {
-              transform: scale(1.18) rotate(3deg);
-            }
-          }
-          
-          @media (max-width: 576px) {
-            width: 120px;
-            height: 160px;
-            top: 12%;
-            
-            &:hover {
-              transform: scale(1.12) rotate(2deg);
-            }
-          }
-        `;
-      case 'bottom':
-        return `
-          bottom: 15%;
-          left: 12%;
-          width: 220px;
-          height: 293px;
-          z-index: 3;
-          animation: float 6s ease-in-out infinite 2s;
-          
-          &:hover {
-            transform: scale(1.28) rotate(-3deg);
-          }
-          
-          @media (max-width: 768px) {
-            width: 150px;
-            height: 200px;
-            bottom: 12%;
-            left: 8%;
-            
-            &:hover {
-              transform: scale(1.22) rotate(-2deg);
-            }
-          }
-          
-          @media (max-width: 576px) {
-            width: 110px;
-            height: 147px;
-            
-            &:hover {
-              transform: scale(1.15) rotate(-1deg);
-            }
-          }
-        `;
-      case 'side':
-        return `
-          top: 30%;
-          left: 5%;
-          width: 200px;
-          height: 267px;
-          z-index: 2;
-          animation: float 6s ease-in-out infinite 3s;
-          
-          &:hover {
-            transform: scale(1.25) rotate(5deg);
-          }
-          
-          @media (max-width: 768px) {
-            width: 130px;
-            height: 173px;
-            top: 28%;
-            left: 3%;
-            
-            &:hover {
-              transform: scale(1.18) rotate(4deg);
-            }
-          }
-          
-          @media (max-width: 576px) {
-            width: 95px;
-            height: 127px;
-            top: 25%;
-            
-            &:hover {
-              transform: scale(1.12) rotate(3deg);
-            }
-          }
-        `;
-      default:
-        return '';
-    }
-  }}
-  
-  @keyframes float {
-    0%, 100% {
-      transform: translate(-50%, -50%) translateY(0px) rotate(0deg);
-    }
-    50% {
-      transform: translate(-50%, -50%) translateY(-20px) rotate(2deg);
-    }
-  }
-`;
-
-export const CollageImageWrapper = styled("div")`
+export const CarouselContainer = styled("div")`
+  position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid ${colors.primary.gold}20;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 30px ${colors.primary.gold}10;
+`;
+
+export const CarouselTrack = styled("div")<{ $currentIndex: number }>`
+  display: flex;
+  width: 400%; /* 4 cards * 100% */
+  height: 100%;
+  transform: translateX(-${({ $currentIndex }) => $currentIndex * 25}%);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  ${mq[1]} {
+    transition: transform 0.4s ease-out;
+  }
+`;
+
+export const CarouselCard = styled("div")`
+  flex: 0 0 25%; /* Each card takes 25% of track width */
+  height: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  
+  ${mq[1]} {
+    flex-direction: column;
+  }
+`;
+
+export const CardImageWrapper = styled("div")`
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
   
   &::before {
     content: '';
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent 0%, ${colors.primary.gold}10 100%);
+    height: 40%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
     z-index: 1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  &:hover::before {
-    opacity: 1;
   }
 `;
 
-export const RadioLogo = styled("div")`
+export const CardContent = styled("div")`
   position: absolute;
-  bottom: 30px;
-  right: 30px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 25px;
+  z-index: 2;
+  color: white;
+  
+  h3 {
+    font-family: ${fonts.mulish.Bold};
+    font-size: 18px;
+    color: ${colors.primary.gold};
+    margin: 0 0 8px 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  }
+  
+  p {
+    font-family: ${fonts.mulish.Regular};
+    font-size: 14px;
+    color: ${colors.neutrals.N10};
+    line-height: 1.4;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  }
+  
+  ${mq[1]} {
+    padding: 20px;
+    
+    h3 {
+      font-size: 16px;
+    }
+    
+    p {
+      font-size: 13px;
+    }
+  }
+  
+  ${mq[0]} {
+    padding: 15px;
+    
+    h3 {
+      font-size: 14px;
+    }
+    
+    p {
+      font-size: 12px;
+    }
+  }
+`;
+
+export const CarouselIndicators = styled("div")`
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+`;
+
+export const IndicatorDot = styled("button")<{ $isActive: boolean }>`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: ${({ $isActive }) => 
+    $isActive ? colors.primary.gold : 'rgba(255, 255, 255, 0.3)'};
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: ${colors.primary.gold}80;
+    transform: scale(1.2);
+  }
+  
+  ${mq[1]} {
+    width: 12px;
+    height: 12px;
+  }
+`;
+
+export const SwipeHint = styled("div")`
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 3;
+  animation: fadeInOut 3s ease-in-out infinite;
+  
+  &::after {
+    content: '👆';
+    font-size: 16px;
+  }
+  
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+  
+  ${mq[2]} {
+    display: none; /* Hide on larger screens */
+  }
+`;
+
+// Radio Logo for carousel
+export const CarouselRadioLogo = styled("div")`
+  position: absolute;
+  top: 20px;
+  right: 20px;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  padding: 12px 18px;
-  border-radius: 18px;
+  padding: 8px 12px;
+  border-radius: 12px;
   box-shadow: 
-    0 8px 25px rgba(0, 0, 0, 0.4),
-    0 0 15px ${colors.primary.gold}30;
-  z-index: 10;
-  width: 180px;
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    0 0 10px ${colors.primary.gold}20;
+  z-index: 4;
+  width: 120px;
   height: auto;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
   border: 1px solid ${colors.primary.gold}20;
   cursor: pointer;
   
   &:hover {
-    transform: scale(1.08) rotate(1deg);
+    transform: scale(1.05);
     box-shadow: 
-      0 15px 40px rgba(0, 0, 0, 0.6),
-      0 0 30px ${colors.primary.gold}60,
-      inset 0 0 15px ${colors.primary.gold}10;
+      0 8px 25px rgba(0, 0, 0, 0.5),
+      0 0 20px ${colors.primary.gold}40;
     background: rgba(255, 255, 255, 1);
-    border: 2px solid ${colors.primary.gold}50;
-  }
-  
-  &:active {
-    transform: scale(1.05) rotate(0.5deg);
-    transition: all 0.2s ease;
   }
   
   a {
@@ -517,16 +522,11 @@ export const RadioLogo = styled("div")`
     text-decoration: none;
     width: 100%;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 8px;
     
     &:focus {
-      outline: 3px solid ${colors.primary.gold};
-      outline-offset: 3px;
-      border-radius: 4px;
-    }
-    
-    &:focus-visible {
-      box-shadow: 0 0 0 3px ${colors.primary.gold}50;
+      outline: 2px solid ${colors.primary.gold};
+      outline-offset: 2px;
     }
   }
   
@@ -538,40 +538,18 @@ export const RadioLogo = styled("div")`
   }
   
   &:hover img {
-    filter: brightness(1.2) contrast(1.2) saturate(1.1);
-  }
-  
-  /* Subtle pulsing effect to indicate clickability */
-  &::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, ${colors.primary.gold}30, transparent, ${colors.primary.gold}30);
-    border-radius: 17px;
-    opacity: 0;
-    animation: logoGlow 3s ease-in-out infinite;
-    z-index: -1;
-  }
-  
-  @keyframes logoGlow {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 0.3; }
+    filter: brightness(1.2) contrast(1.2);
   }
   
   ${mq[1]} {
-    bottom: 20px;
-    right: 20px;
-    width: 150px;
-    padding: 10px 14px;
+    width: 100px;
+    padding: 6px 10px;
   }
   
   ${mq[0]} {
-    width: 120px;
-    padding: 8px 12px;
-    bottom: 15px;
+    width: 80px;
+    padding: 5px 8px;
+    top: 15px;
     right: 15px;
   }
 `;
