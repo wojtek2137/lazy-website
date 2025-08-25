@@ -9,7 +9,12 @@ import {
   ContentGrid,
   TextContent,
   ArticleText,
-  CitiesList,
+  PolandMap,
+  MapContainer,
+  PolandMapImage,
+  CityOverlay,
+  CityMarker,
+  CityLabel,
   ImageCarousel,
   CarouselContainer,
   CarouselTrack,
@@ -24,38 +29,61 @@ import {
 
 // Use responsive images from public folder
 
+// Cities with realistic coordinates for Poland map PNG
 const cities = [
   {
     name: 'Zakopane',
-    url: 'https://jedynka.polskieradio.pl/artykul/3546524,Rusza-Trasa-Lata-z-Radiem-i-Telewizja-Polska-Co-wydarzy-sie-w-Zakopanem'
+    url: 'https://jedynka.polskieradio.pl/artykul/3546524,Rusza-Trasa-Lata-z-Radiem-i-Telewizja-Polska-Co-wydarzy-sie-w-Zakopanem',
+    x: 50, // Południe Polski - Tatry
+    y: 85
   },
   {
     name: 'Chorzów',
-    url: 'https://jedynka.polskieradio.pl/artykul/3552975,Lato-z-Radiem-i-Telewizja-Polska-przystanek-trzeci-Superautopl-Stadion-Slaski'
+    url: 'https://jedynka.polskieradio.pl/artykul/3552975,Lato-z-Radiem-i-Telewizja-Polska-przystanek-trzeci-Superautopl-Stadion-Slaski',
+    x: 45, // Śląsk
+    y: 75
   },
   {
     name: 'Giżycko',
-    url: 'https://jedynka.polskieradio.pl/artykul/3556077,Lato-z-Radiem-i-Telewizja-Polska-w-Gizycku-Jakie-atrakcje-zaplanowano'
+    url: 'https://jedynka.polskieradio.pl/artykul/3556077,Lato-z-Radiem-i-Telewizja-Polska-w-Gizycku-Jakie-atrakcje-zaplanowano',
+    x: 70, // Mazury - północ-wschód
+    y: 20
   },
   {
     name: 'Poddębice',
-    url: 'https://jedynka.polskieradio.pl/artykul/3559214,Lato-z-Radiem-i-Telewizja-Polska-w-Poddebicach-Jakie-atrakcje-zaplanowano'
+    url: 'https://jedynka.polskieradio.pl/artykul/3559214,Lato-z-Radiem-i-Telewizja-Polska-w-Poddebicach-Jakie-atrakcje-zaplanowano',
+    x: 42, // Łódzkie - centrum zachód
+    y: 55
   },
   {
     name: 'Lublin',
-    url: 'https://jedynka.polskieradio.pl/artykul/3562277,Lato-z-Radiem-i-Telewizja-Polska-w-Lublinie-Jakie-atrakcje-zaplanowano'
+    url: 'https://jedynka.polskieradio.pl/artykul/3562277,Lato-z-Radiem-i-Telewizja-Polska-w-Lublinie-Jakie-atrakcje-zaplanowano',
+    x: 75, // Lubelskie - wschód
+    y: 60
   },
   {
     name: 'Mrozy',
-    url: 'https://jedynka.polskieradio.pl/artykul/3563339,Lato-z-Radiem-w-uniwersum-Rancza-Co-wydarzy-sie-w-Jeruzalu-i-Mrozach'
+    url: 'https://jedynka.polskieradio.pl/artykul/3563339,Lato-z-Radiem-w-uniwersum-Rancza-Co-wydarzy-sie-w-Jeruzalu-i-Mrozach',
+    x: 65, // Mazowieckie - centrum wschód
+    y: 45
   },
   {
     name: 'Elbląg',
-    url: 'https://jedynka.polskieradio.pl/artykul/3549480,Drugi-przystanek-na-trasie-Lata-z-Radiem-i-Telewizj%C4%85-Polsk%C4%85-Co-wydarzy%C5%82o-si%C4%99-w-Elbl%C4%85gu'
+    url: 'https://jedynka.polskieradio.pl/artykul/3549480,Drugi-przystanek-na-trasie-Lata-z-Radiem-i-Telewizj%C4%85-Polsk%C4%85-Co-wydarzy%C5%82o-si%C4%99-w-Elbl%C4%85gu',
+    x: 52, // Warmińsko-mazurskie - północ
+    y: 15
   },
   {
     name: 'Tarnów',
-    url: 'https://jedynka.polskieradio.pl/artykul/3568543,Lato-z-Radiem-i-Telewizja-Polska-tym-razem-w-Tarnowie'
+    url: 'https://jedynka.polskieradio.pl/artykul/3568543,Lato-z-Radiem-i-Telewizja-Polska-tym-razem-w-Tarnowie',
+    x: 58, // Małopolskie - południe wschód
+    y: 78
+  },
+  {
+    name: 'Grudziądz',
+    url: 'https://jedynka.polskieradio.pl/artykul/3570215,Lato-z-Radiem-i-Telewizja-Polska-w-Grudziadzu',
+    x: 48, // Kujawsko-pomorskie - północ centrum
+    y: 30
   }
 ];
 
@@ -90,6 +118,7 @@ export function LatoZRadiemSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
 
   // Auto-advance carousel every 5 seconds
   useEffect(() => {
@@ -128,6 +157,11 @@ export function LatoZRadiemSection() {
     setCurrentSlide(index);
   };
 
+  // Map interaction handler
+  const handleCityClick = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <LatoZRadiemWrapper id="lato-z-radiem" aria-labelledby="lato-z-radiem-heading">
       <ContentContainer>
@@ -149,12 +183,6 @@ export function LatoZRadiemSection() {
                 <strong> <a href="https://jedynka.polskieradio.pl/artykul/3553019,Pota%C5%84c%C3%B3wki-Lata-z-Radiem-Jak%C4%85-muzyk%C4%99-gra-Lazy-Swing-Band" target="_blank" rel="noopener noreferrer"> 9 wyjątkowych potańcówkach międzypokoleniowych w najpiękniejszych zakątkach Polski.</a></strong>
               </p>
               
-              <p>
-                Każda potańcówka to nie tylko 
-                koncert, ale prawdziwe święto muzyki, gdzie babcie tańczą 
-                ze swoimi wnukami, a melodie lat 20. i 30. XX wieku 
-                ponownie ożywają.
-              </p>
               
               <p>
                 Program <strong>  <a href="https://www.latozradiem.pl/" target="_blank" rel="noopener noreferrer">"Lato z Radiem"</a></strong> to inicjatywa Polskiego Radia, 
@@ -165,24 +193,40 @@ export function LatoZRadiemSection() {
               </p>
             </ArticleText>
             
-            <CitiesList>
-              <h3>Miasta, które odwiedziliśmy:</h3>
-              <ul>
-                {cities.map((city, index) => (
-                  <li key={index}>
-                    <a 
-                      href={city.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      aria-label={`Przeczytaj artykuł o wydarzeniu Lato z Radiem w ${city.name}`}
-                      title={`Kliknij, aby przeczytać więcej o wydarzeniu w ${city.name}`}
-                    >
-                      {city.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </CitiesList>
+            <PolandMap>
+              <h3>Trasa "Lato z Radiem" - Miasta, które odwiedziliśmy:</h3>
+              <MapContainer>
+                <PolandMapImage 
+                  src="/images/responsive/poland_map.png"
+                  alt="Mapa Polski z trasą Lato z Radiem"
+                  loading="lazy"
+                />
+                <CityOverlay>
+                  {cities.map((city, index) => (
+                    <React.Fragment key={index}>
+                      <CityMarker
+                        $x={city.x}
+                        $y={city.y}
+                        onClick={() => handleCityClick(city.url)}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`Przeczytaj artykuł o wydarzeniu Lato z Radiem w ${city.name}`}
+                        title={`Kliknij, aby przeczytać więcej o wydarzeniu w ${city.name}`}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            handleCityClick(city.url);
+                          }
+                        }}
+                      />
+                      <CityLabel $x={city.x} $y={city.y}>
+                        {city.name}
+                      </CityLabel>
+                    </React.Fragment>
+                  ))}
+                </CityOverlay>
+              </MapContainer>
+            </PolandMap>
           </TextContent>
           
           <ImageCarousel>
