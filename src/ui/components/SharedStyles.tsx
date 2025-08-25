@@ -34,7 +34,7 @@ export const ModernSectionWrapper = styled("section")<{
           linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.8) 100%),
           radial-gradient(circle at 30% 30%, ${colors.primary.gold}15 0%, transparent 50%),
           radial-gradient(circle at 70% 70%, ${colors.primary.sandy}10 0%, transparent 40%);
-        backdrop-filter: blur(1px); /* Same as "o nas" section */
+        backdrop-filter: blur(1px);
         z-index: 1;
       }
     }
