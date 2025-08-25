@@ -236,33 +236,36 @@ export const HeroImageWrapper = styled('div')`
     
     /* Ken Burns effect - dramatic zoom and pan animation */
     img {
-      width: 115%;
-      height: 115%;
+      width: 150%; /* Increased for more intense Ken Burns effect */
+      height: 150%; /* Increased for more intense Ken Burns effect */
       object-fit: cover;
-      transform: scale(1) translate(-3%, -3%);
+      transform: scale(1.1) translate(-10%, -10%); /* Larger initial offset */
       filter: 
         brightness(0.8) 
         contrast(1.1) 
         saturate(0.9);
       transition: filter 0.8s ease;
-      /* Optimized Ken Burns animation - reduced complexity and frequency */
-      animation: kenBurnsOptimized 45s ease-in-out infinite alternate;
+      /* Intense Ken Burns animation with dramatic movement */
+      animation: kenBurnsOptimized 30s ease-in-out infinite alternate; /* Faster cycle */
       will-change: transform;
     }
     
-    /* Optimized Ken Burns keyframes - fewer transitions, longer duration */
+    /* Enhanced Ken Burns keyframes - more intense movement and zoom */
     @keyframes kenBurnsOptimized {
       0% {
-        transform: scale(1.05) translate(0%, 0%);
+        transform: scale(1.1) translate(0%, 0%);
       }
-      33% {
-        transform: scale(1.12) translate(-3%, -2%);
+      25% {
+        transform: scale(1.25) translate(-6%, -3%);
       }
-      66% {
-        transform: scale(1.08) translate(-1%, -4%);
+      50% {
+        transform: scale(1.20) translate(-2%, -8%);
+      }
+      75% {
+        transform: scale(1.30) translate(-10%, -5%);
       }
       100% {
-        transform: scale(1.15) translate(-2%, -3%);
+        transform: scale(1.35) translate(-4%, -10%);
       }
     }
     
