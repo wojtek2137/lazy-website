@@ -10,19 +10,6 @@ import {
 } from "./MainView.style";
 import { ResponsiveLazyImage } from "ui/components/ResponsiveLazyImage";
 
-// export const MuteButton = styled('a')`
-//    color: ${colors.primary.sandy};
-//    cursor: pointer;
-//    font-size: 20px;
-//    margin: 20px;
-//    text-align: center;
-//    text-transform: uppercase;
-//    &:hover{
-//    color: ${colors.primary.white};
-
-//    }
-// `;
-
 export function MainView() {
   const [textIndex, setTextIndex] = useState(0);
 

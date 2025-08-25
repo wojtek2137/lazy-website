@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { colors, fonts } from "config/theme";
-import { Global, css } from "@emotion/react";
+
 
 const breakpoints = [576, 768, 992, 1200];
 const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);

@@ -9,7 +9,7 @@ import { colors, fonts } from "config/theme";
 import { YouTubeView } from "ui/pages/YouTubeView/YouTubeView";
 import { SquadSection } from "ui/pages/SquadSection/SquadSection";
 import { LatoZRadiemSection } from "ui/pages/LatoZRadiemSection/LatoZRadiemSection";
-import { Navigation } from "ui/components/Navigation";
+
 import { ModernNavigation2024 } from "ui/components/ModernNavigation2024";
 import { QuickActions2024 } from "ui/components/QuickActions2024";
 
@@ -125,10 +125,7 @@ export function Ui() {
       <FloatingParticles />
       <MicroInteractions2024 />
       
-      {/* Legacy Navigation - Hidden for now */}
-      <div style={{ display: 'none' }}>
-        <Navigation />
-      </div>
+
       
       {/* Modern 2024 Navigation System */}
       <ModernNavigation2024 
