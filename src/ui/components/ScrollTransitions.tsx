@@ -64,6 +64,20 @@ export const SectionTransition = styled("div")`
       0 0 20px ${colors.primary.gold}40,
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
     z-index: 2;
+    white-space: nowrap;
+    
+    /* Mobile responsiveness for notes */
+    @media (max-width: 576px) {
+      font-size: 16px;
+      letter-spacing: 4px;
+      padding: 8px 16px;
+    }
+    
+    @media (max-width: 420px) {
+      font-size: 14px;
+      letter-spacing: 2px;
+      padding: 6px 12px;
+    }
   }
   
   @keyframes lineGlow {

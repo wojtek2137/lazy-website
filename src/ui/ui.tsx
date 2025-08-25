@@ -120,6 +120,10 @@ export const ChristmasSection = styled("section")`
 export function Ui() {
   const [quickActionsVisible, setQuickActionsVisible] = useState(false);
 
+  const toggleQuickActions = () => {
+    setQuickActionsVisible(prev => !prev);
+  };
+
   return (
     <>
       <FloatingParticles />
@@ -129,7 +133,7 @@ export function Ui() {
       
       {/* Modern 2024 Navigation System */}
       <ModernNavigation2024 
-        onQuickActionsToggle={setQuickActionsVisible}
+        onQuickActionsToggle={toggleQuickActions}
       />
       <QuickActions2024 
         isVisible={quickActionsVisible} 

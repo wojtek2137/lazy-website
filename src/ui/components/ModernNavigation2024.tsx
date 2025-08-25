@@ -24,9 +24,9 @@ const ModernNavWrapper = styled.nav`
 `;
 
 // Command Palette (VS Code style)
-const CommandPalette = styled.div<{ isOpen: boolean }>`
+const CommandPalette = styled.div`
   position: fixed;
-  top: ${({ isOpen }) => isOpen ? '20vh' : '-100vh'};
+  top: 20vh;
   left: 50%;
   transform: translateX(-50%);
   width: min(600px, 90vw);
@@ -35,13 +35,25 @@ const CommandPalette = styled.div<{ isOpen: boolean }>`
   border: 1px solid ${colors.primary.gold}30;
   border-radius: 20px;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: ${({ isOpen }) => isOpen ? 'all' : 'none'};
   z-index: 10002;
   box-shadow: 
     0 40px 80px rgba(0, 0, 0, 0.8),
     0 0 60px ${colors.primary.gold}20,
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  /* Entry animation */
+  animation: slideInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  
+  @keyframes slideInDown {
+    from {
+      transform: translateX(-50%) translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  }
   
   &::before {
     content: '';
@@ -54,7 +66,7 @@ const CommandPalette = styled.div<{ isOpen: boolean }>`
   }
 `;
 
-const CommandBackdrop = styled.div<{ isOpen: boolean }>`
+const CommandBackdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -63,9 +75,19 @@ const CommandBackdrop = styled.div<{ isOpen: boolean }>`
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
   z-index: 10001;
-  pointer-events: ${({ isOpen }) => isOpen ? 'all' : 'none'};
-  opacity: ${({ isOpen }) => isOpen ? 1 : 0};
-  transition: opacity 0.3s ease;
+  cursor: pointer;
+  
+  /* Entry animation */
+  animation: fadeIn 0.3s ease forwards;
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 const CommandInput = styled.input`
@@ -146,7 +168,7 @@ const CommandShortcut = styled.div`
 `;
 
 // Floating Navigation Dots (Scroll Indicators)
-const FloatingDots = styled.div<{ isVisible: boolean }>`
+const FloatingDots = styled.div`
   position: fixed;
   right: 30px;
   top: 50%;
@@ -154,12 +176,21 @@ const FloatingDots = styled.div<{ isVisible: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  pointer-events: all;
   z-index: 9999;
-  opacity: ${({ isVisible }) => isVisible ? 1 : 0};
-  pointer-events: ${({ isVisible }) => isVisible ? 'all' : 'none'};
-  transform: ${({ isVisible }) => isVisible ? 'translateY(-50%) scale(1)' : 'translateY(-50%) scale(0.8)'};
-  transition: all 0.3s ease;
+  
+  /* Entry animation */
+  animation: scaleInRight 0.3s ease forwards;
+  
+  @keyframes scaleInRight {
+    from {
+      transform: translateY(-50%) scale(0.8) translateX(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(-50%) scale(1) translateX(0);
+      opacity: 1;
+    }
+  }
   
   @media (max-width: 768px) {
     right: 20px;
@@ -399,7 +430,7 @@ const KeyboardShortcut = styled.span`
 
 // Props interface
 interface ModernNavigation2024Props {
-  onQuickActionsToggle?: (isVisible: boolean) => void;
+  onQuickActionsToggle?: () => void;
 }
 
 // Main Navigation Component
@@ -629,28 +660,29 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
       </BreadcrumbWrapper>
 
       {/* Floating Navigation Dots */}
-      <FloatingDots isVisible={showFloatingDots}>
-        {sections.map((sectionId, index) => {
-          const isActive = currentSection === sectionId;
-          const progress = isActive ? Math.min((scrollProgress - (index * 10)) * 10, 100) : 0;
-          
-          return (
-            <NavigationDot
-              key={sectionId}
-              isActive={isActive}
-              progress={Math.max(0, progress)}
-              onClick={() => handleNavigation(`#${sectionId}`)}
-            />
-          );
-        })}
-      </FloatingDots>
+      {showFloatingDots && (
+        <FloatingDots>
+          {sections.map((sectionId, index) => {
+            const isActive = currentSection === sectionId;
+            const progress = isActive ? Math.min((scrollProgress - (index * 10)) * 10, 100) : 0;
+            
+            return (
+              <NavigationDot
+                key={sectionId}
+                isActive={isActive}
+                progress={Math.max(0, progress)}
+                onClick={() => handleNavigation(`#${sectionId}`)}
+              />
+            );
+          })}
+        </FloatingDots>
+      )}
 
       {/* Command Palette */}
-      <CommandBackdrop 
-        isOpen={commandPaletteOpen} 
-        onClick={() => setCommandPaletteOpen(false)}
-      />
-      <CommandPalette isOpen={commandPaletteOpen}>
+      {commandPaletteOpen && (
+        <>
+          <CommandBackdrop onClick={() => setCommandPaletteOpen(false)} />
+          <CommandPalette>
         <CommandInput
           ref={commandInputRef}
           placeholder="Szukaj sekcji, wpisz komendę..."
@@ -687,11 +719,14 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
             </CommandItem>
           )}
         </CommandResults>
-      </CommandPalette>
+          </CommandPalette>
+        </>
+      )}
 
       {/* Quick Actions Button */}
       <QuickActionsButton
-        onClick={() => onQuickActionsToggle?.(true)}
+        data-quick-actions-toggle="true"
+        onClick={() => onQuickActionsToggle?.()}
       >
         <QuickActionsIcon>
           ⚡
