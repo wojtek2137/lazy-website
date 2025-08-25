@@ -42,7 +42,8 @@ export const SectionTransition = styled("div")`
     box-shadow: 
       0 0 20px ${colors.primary.gold}60,
       0 0 40px ${colors.primary.gold}30;
-    animation: lineGlow 4s ease-in-out infinite;
+    /* Reduced animation frequency for performance */
+    animation: lineGlow 8s ease-in-out infinite;
   }
   
   &::after {
@@ -54,7 +55,8 @@ export const SectionTransition = styled("div")`
     color: ${colors.primary.gold};
     font-size: 20px;
     letter-spacing: 8px;
-    animation: musicNotes 6s ease-in-out infinite;
+    /* Reduced animation frequency for performance */
+    animation: musicNotes 12s ease-in-out infinite;
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     padding: 12px 20px;
@@ -107,64 +109,7 @@ export const SectionTransition = styled("div")`
   }
 `;
 
-// Floating particles for background effect
-export const FloatingParticles = styled("div")`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-  
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: ${colors.primary.gold}40;
-    border-radius: 50%;
-    box-shadow: 
-      0 0 10px ${colors.primary.gold}60,
-      0 0 20px ${colors.primary.gold}40;
-  }
-  
-  &::before {
-    top: 20%;
-    left: 10%;
-    animation: floatParticle1 8s ease-in-out infinite;
-  }
-  
-  &::after {
-    top: 60%;
-    right: 15%;
-    animation: floatParticle2 10s ease-in-out infinite;
-  }
-  
-  @keyframes floatParticle1 {
-    0%, 100% { 
-      transform: translateY(0px) translateX(0px);
-      opacity: 0.3;
-    }
-    50% { 
-      transform: translateY(-100px) translateX(50px);
-      opacity: 0.8;
-    }
-  }
-  
-  @keyframes floatParticle2 {
-    0%, 100% { 
-      transform: translateY(0px) translateX(0px);
-      opacity: 0.4;
-    }
-    50% { 
-      transform: translateY(-80px) translateX(-30px);
-      opacity: 0.9;
-    }
-  }
-`;
+// Removed FloatingParticles component for performance optimization
 
 // Scroll indicator
 export const ScrollIndicator = styled("div")`
@@ -293,73 +238,4 @@ export const AdvancedParallaxBackground = styled("div")<{
   }
 `;
 
-// CSS-only particle system
-export const CSSParticleSystem = styled("div")`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
-  
-  /* Generate particles using pseudo-elements and box-shadow */
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: ${colors.primary.gold};
-    border-radius: 50%;
-    box-shadow:
-      /* First layer of particles */
-      10vw 10vh 0 ${colors.primary.gold}60,
-      20vw 30vh 0 ${colors.primary.sandy}40,
-      40vw 50vh 0 ${colors.primary.gold}50,
-      60vw 20vh 0 ${colors.primary.sandy}30,
-      80vw 70vh 0 ${colors.primary.gold}40,
-      90vw 40vh 0 ${colors.primary.sandy}60,
-      
-      /* Second layer */
-      15vw 80vh 0 ${colors.primary.gold}30,
-      35vw 60vh 0 ${colors.primary.sandy}50,
-      55vw 90vh 0 ${colors.primary.gold}35,
-      75vw 10vh 0 ${colors.primary.sandy}45,
-      85vw 85vh 0 ${colors.primary.gold}55,
-      25vw 25vh 0 ${colors.primary.sandy}35;
-    
-    animation: particleFloat 20s linear infinite;
-  }
-  
-  &::after {
-    animation-delay: -10s;
-    animation-duration: 25s;
-    width: 1px;
-    height: 1px;
-    box-shadow:
-      /* Smaller particles for depth */
-      5vw 15vh 0 ${colors.primary.gold}40,
-      25vw 45vh 0 ${colors.primary.sandy}25,
-      45vw 25vh 0 ${colors.primary.gold}35,
-      65vw 65vh 0 ${colors.primary.sandy}40,
-      85vw 35vh 0 ${colors.primary.gold}30,
-      95vw 75vh 0 ${colors.primary.sandy}45;
-  }
-  
-  @keyframes particleFloat {
-    0% {
-      transform: translateY(0) rotate(0deg);
-      opacity: 0.8;
-    }
-    50% {
-      transform: translateY(-100vh) rotate(180deg);
-      opacity: 0.4;
-    }
-    100% {
-      transform: translateY(-200vh) rotate(360deg);
-      opacity: 0;
-    }
-  }
-`;
+// Removed CSSParticleSystem component for performance optimization

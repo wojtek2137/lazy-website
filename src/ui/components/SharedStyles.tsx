@@ -27,6 +27,18 @@ export const ModernSectionWrapper = styled("section")<{
     background-attachment: ${parallaxEffect ? 'fixed' : 'scroll'};
     background-position: center;
     
+    /* Same blur effect as "o nas" section for consistency + image rotation */
+    &[data-bg="about2"], &[data-bg="about3"] {
+      &::before {
+        background: 
+          linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.8) 100%),
+          radial-gradient(circle at 30% 30%, ${colors.primary.gold}15 0%, transparent 50%),
+          radial-gradient(circle at 70% 70%, ${colors.primary.sandy}10 0%, transparent 40%);
+        backdrop-filter: blur(1px); /* Same as "o nas" section */
+        z-index: 1;
+      }
+    }
+    
     /* Enhanced image effects */
     &::before {
       content: '';
@@ -62,7 +74,7 @@ export const ModernSectionWrapper = styled("section")<{
       z-index: 1;
       pointer-events: none;
       opacity: 0.3;
-      animation: shimmer 20s linear infinite;
+      /* Removed shimmer animation for performance */
     }
   ` : `
     background: linear-gradient(135deg, #0a0a0a 0%, ${colors.primary.black} 30%, #1a1a1a 70%, ${colors.primary.black} 100%);
@@ -83,10 +95,7 @@ export const ModernSectionWrapper = styled("section")<{
     }
   `}
   
-  @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
+  /* Removed shimmer keyframes for performance */
   
   ${mq[1]} {
     background-attachment: scroll;

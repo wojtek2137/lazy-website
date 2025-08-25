@@ -36,6 +36,7 @@ const CommandPalette = styled.div`
   border-radius: 20px;
   overflow: hidden;
   z-index: 10002;
+  pointer-events: all; /* Ensure clicks work */
   box-shadow: 
     0 40px 80px rgba(0, 0, 0, 0.8),
     0 0 60px ${colors.primary.gold}20,
@@ -548,16 +549,23 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
     item.keywords.some(keyword => keyword.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
-  // Navigation handler
+  // Navigation handler with URL routing
   const handleNavigation = useCallback((href: string) => {
     const element = document.querySelector(href);
     
     if (element) {
+      // Update URL hash for better SEO and browser history
+      window.history.pushState(null, '', href);
+      
       element.scrollIntoView({ 
         behavior: 'smooth',
         block: 'start'
       });
       setCommandPaletteOpen(false);
+      
+      // Update current section state
+      const sectionId = href.replace('#', '');
+      setCurrentSection(sectionId);
       
       // Haptic feedback simulation
       if ('vibrate' in navigator) {
@@ -612,31 +620,73 @@ export function ModernNavigation2024({ onQuickActionsToggle }: ModernNavigation2
     }
   }, [commandPaletteOpen]);
 
-  // Scroll tracking
+  // Scroll tracking with throttling for performance
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
-      setScrollProgress(progress);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollTop = window.pageYOffset;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = (scrollTop / docHeight) * 100;
+          setScrollProgress(progress);
 
-      // Show floating dots after scrolling past main section (roughly 100vh)
-      const mainSectionHeight = window.innerHeight;
-      setShowFloatingDots(scrollTop > mainSectionHeight * 0.8);
+          // Show floating dots after scrolling past main section (roughly 100vh)
+          const mainSectionHeight = window.innerHeight;
+          setShowFloatingDots(scrollTop > mainSectionHeight * 0.8);
 
-      // Detect current section
-      const sectionElements = sections.map(id => document.getElementById(id)).filter(Boolean);
-      for (let i = sectionElements.length - 1; i >= 0; i--) {
-        const element = sectionElements[i];
-        if (element && element.offsetTop <= scrollTop + 100) {
-          setCurrentSection(sections[i]);
-          break;
-        }
+          // Detect current section - throttled to reduce DOM queries
+          const sectionElements = sections.map(id => document.getElementById(id)).filter(Boolean);
+          for (let i = sectionElements.length - 1; i >= 0; i--) {
+            const element = sectionElements[i];
+            if (element && element.offsetTop <= scrollTop + 100) {
+              const newSection = sections[i];
+              if (newSection !== currentSection) {
+                setCurrentSection(newSection);
+                // Update URL hash during scroll for SEO
+                const newHash = `#${newSection}`;
+                if (window.location.hash !== newHash) {
+                  window.history.replaceState(null, '', newHash);
+                }
+              }
+              break;
+            }
+          }
+          
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, [sections, currentSection]);
+
+  // Handle browser back/forward buttons and initial hash
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && sections.includes(hash)) {
+        setCurrentSection(hash);
+      }
+    };
+
+    // Set initial section from URL hash
+    const initialHash = window.location.hash.replace('#', '');
+    if (initialHash && sections.includes(initialHash)) {
+      setCurrentSection(initialHash);
+    } else if (!window.location.hash) {
+      // Set default hash if none exists
+      window.history.replaceState(null, '', '#glowna');
+      setCurrentSection('glowna');
+    }
+
+    // Listen for hash changes (back/forward buttons)
+    window.addEventListener('hashchange', handleHashChange);
+    
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, [sections]);
 
   return (

@@ -23,10 +23,10 @@ export function MainView() {
   // Removed isLoaded state as it was unused
 
   useEffect(() => {
-    // Cycle through different main titles
+    // Cycle through different main titles - reduced frequency for performance
     const interval = setInterval(() => {
       setTextIndex((prev) => (prev + 1) % alternativeTexts.length);
-    }, 4000);
+    }, 8000);
     
     return () => clearInterval(interval);
   }, [alternativeTexts.length]);

@@ -214,18 +214,27 @@ export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) 
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setScrollProgress(Math.min(100, Math.max(0, progress)));
-      
-      // Show progress ring after scrolling past main section (roughly 100vh)
-      const mainSectionHeight = window.innerHeight;
-      setShowProgressRing(scrollTop > mainSectionHeight * 0.8);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollTop = window.pageYOffset;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+          setScrollProgress(Math.min(100, Math.max(0, progress)));
+          
+          // Show progress ring after scrolling past main section (roughly 100vh)
+          const mainSectionHeight = window.innerHeight;
+          setShowProgressRing(scrollTop > mainSectionHeight * 0.8);
+          
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial calculation
     
     return () => window.removeEventListener('scroll', handleScroll);
