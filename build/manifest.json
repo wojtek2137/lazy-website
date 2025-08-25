@@ -1,25 +1,123 @@
 {
+    "name": "Lazy Swing Band - Profesjonalny Polski Zespół Jazzowy",
     "short_name": "Lazy Swing Band",
-    "name": "Lazy Swing Band Website",
+    "description": "Profesjonalny polski zespół jazzowy z Krakowa kultywujący tradycje muzyki swingowej lat 20. i 30. Specjalizujemy się w tworzeniu niezapomnianych doświadczeń muzycznych w stylu retro i Wielki Gatsby.",
+    "version": "1.0.0",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "theme_color": "#ccb379",
+    "background_color": "#000000",
+    "lang": "pl",
+    "dir": "ltr",
+    "categories": ["music", "entertainment", "business"],
+    "iarc_rating_id": "General",
+    
     "icons": [
+        {
+            "src": "favicon.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "any"
+        },
         {
             "src": "logo192.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         },
         {
             "src": "logo512.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         },
         {
             "src": "logo-color.png",
+            "sizes": "709x709",
             "type": "image/png",
-            "sizes": "709x709"
+            "purpose": "any"
         }
     ],
-    "start_url": ".",
-    "display": "standalone",
-    "theme_color": "#ccb379",
-    "background_color": "#000000"
+    
+    "shortcuts": [
+        {
+            "name": "Albumy",
+            "short_name": "Muzyka",
+            "description": "Posłuchaj naszych albumów",
+            "url": "/#albumy",
+            "icons": [
+                {
+                    "src": "logo192.png",
+                    "sizes": "192x192",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Kontakt",
+            "short_name": "Kontakt",
+            "description": "Skontaktuj się z zespołem",
+            "url": "/#kontakt",
+            "icons": [
+                {
+                    "src": "logo192.png", 
+                    "sizes": "192x192",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "O Nas",
+            "short_name": "Zespół",
+            "description": "Poznaj członków zespołu",
+            "url": "/#o-nas",
+            "icons": [
+                {
+                    "src": "logo192.png",
+                    "sizes": "192x192", 
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Usługi",
+            "short_name": "Oferta",
+            "description": "Nasza oferta muzyczna",
+            "url": "/#uslugi",
+            "icons": [
+                {
+                    "src": "logo192.png",
+                    "sizes": "192x192",
+                    "type": "image/png"
+                }
+            ]
+        }
+    ],
+    
+    "prefer_related_applications": false,
+    "related_applications": [
+        {
+            "platform": "web",
+            "url": "https://lazyswingband.com/"
+        }
+    ],
+    
+    "launch_handler": {
+        "client_mode": "navigate-existing"
+    },
+    
+    "edge_side_panel": {
+        "preferred_width": 400
+    },
+    
+    "display_override": ["window-controls-overlay", "standalone", "minimal-ui", "browser"],
+    
+    "protocol_handlers": [
+        {
+            "protocol": "mailto",
+            "url": "/#kontakt"
+        }
+    ]
 }

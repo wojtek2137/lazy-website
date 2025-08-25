@@ -102,9 +102,9 @@ const carouselSlides = [
   },
   {
     src: '/images/responsive/lato_z_radiem_3.webp',
-    alt: 'Z Panem redaktorem Marianem Czejarkiem podczas koncertu Lazy Swing Band w trakcie Lata z Radiem',
+    alt: 'Z Panem redaktorem Romanem Czejarkiem podczas koncertu Lazy Swing Band w trakcie Lata z Radiem',
     title: 'Radiowe wywiady',
-    description: 'Opowiadamy o pasji do jazzu z Panem redaktorem Marianem Czejarkiem.'
+    description: 'Opowiadamy o pasji do jazzu z Panem redaktorem Romanem Czejarkiem.'
   },
   {
     src: '/images/responsive/lato_z_radiem.webp',

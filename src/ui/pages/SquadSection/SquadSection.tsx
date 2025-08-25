@@ -13,7 +13,7 @@ import {
 
 const squadData = [
   {
-    person: "Sylwia Buchalska",
+    person: "Sylwia Buchalska-Augustyn",
     imageSrc: "/images/responsive/sylwia.webp",
     description: "Wokal",
   },

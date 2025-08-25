@@ -340,6 +340,25 @@ export const ModernSpan = styled("span")<{
         0 0 35px ${colors.primary.gold}70; 
     }
   }
+  
+  /* Style links inside ModernSpan */
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    
+    &:hover {
+      opacity: 0.8;
+      transform: translateY(-1px);
+    }
+    
+    &:focus {
+      outline: 2px solid ${colors.primary.gold}60;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
 `;
 
 // Modern list styling
@@ -416,6 +435,7 @@ export const ModernList = styled("ul")<{
       opacity: 0;
       transition: opacity 0.3s ease;
       box-shadow: 0 0 10px ${colors.primary.gold}60;
+      pointer-events: none;
     }
     
     &:hover::before {
@@ -432,10 +452,38 @@ export const ModernList = styled("ul")<{
       background: linear-gradient(135deg, transparent 0%, ${colors.primary.gold}05 50%, transparent 100%);
       opacity: 0;
       transition: opacity 0.3s ease;
+      pointer-events: none;
     }
     
     &:hover::after {
       opacity: 1;
+    }
+    
+    /* Style links inside list items */
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      cursor: pointer;
+      z-index: 10;
+      display: block;
+      width: 100%;
+      height: 100%;
+      
+      &:hover {
+        opacity: 0.9;
+      }
+      
+      &:focus {
+        outline: 2px solid ${colors.primary.gold}60;
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+      
+      &:active {
+        transform: scale(0.98);
+      }
     }
   }
 `;
