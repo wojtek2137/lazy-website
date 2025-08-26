@@ -439,7 +439,7 @@ export function Ui() {
                       <ResponsiveIframe 
                         src="https://www.youtube.com/embed/CLA-kpH-3Cs?si=a3orL4ns7sib6R4W" 
                         title="Lazy Swing Band - Christmas Songs" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         referrerPolicy="strict-origin-when-cross-origin" 
                         allowFullScreen
                         loading="lazy"
