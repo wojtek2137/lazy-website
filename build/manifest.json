@@ -117,7 +117,7 @@
     "protocol_handlers": [
         {
             "protocol": "mailto",
-            "url": "/#kontakt"
+            "url": "/#kontakt?email=%s"
         }
     ]
 }

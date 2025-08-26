@@ -63,7 +63,7 @@ export const CardContentWrapper = styled("div")`
   width: 100%;
 `;
 
-export const CardHeader = styled("h3")`
+export const CardHeader = styled("div")`
   font-family: ${fonts.mulish.Medium};
   color: ${colors.primary.sandy};
   font-size: 24px;

@@ -40,7 +40,7 @@ export const ListenAlbumsWrapper = styled('div')`
 //     width: 100%;
 // `;
 
-export const ListenUsHeader = styled('h2')`
+export const ListenUsHeader = styled('div')`
     font-family: ${fonts.mulish.Regular};
     text-align:center;
     font-size: 2em;
