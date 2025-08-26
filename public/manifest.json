@@ -1,7 +1,7 @@
 {
     "name": "Lazy Swing Band - Profesjonalny Polski Zespół Jazzowy",
     "short_name": "Lazy Swing Band",
-    "description": "Profesjonalny polski zespół jazzowy z Krakowa kultywujący tradycje muzyki swingowej lat 20. i 30. Specjalizujemy się w tworzeniu niezapomnianych doświadczeń muzycznych w stylu retro i Wielki Gatsby.",
+    "description": "Profesjonalny polski zespół jazzowy z Krakowa kultywujący tradycje muzyki swingowej lat 20. i 30., tworząc niezapomniane doświadczenia muzyczne w stylu retro i Wielki Gatsby. Specjalizujemy się w muzyce przedwojennej, świątecznych standardach jazzowych, tańcu swingowym i kulturze swingowej. Profesjonalny zespół na eleganckie imprezy VIP, gale, bankiety i eventy firmowe.",
     "version": "1.0.0",
     "start_url": "/",
     "scope": "/",
@@ -45,7 +45,7 @@
         {
             "name": "Albumy",
             "short_name": "Muzyka",
-            "description": "Posłuchaj naszych albumów",
+            "description": "Posłuchaj naszych albumów swingowych",
             "url": "/#albumy",
             "icons": [
                 {
@@ -84,7 +84,7 @@
         {
             "name": "Usługi",
             "short_name": "Oferta",
-            "description": "Nasza oferta muzyczna",
+            "description": "Nasza oferta - imprezy VIP, eventy firmowe, bankiety",
             "url": "/#uslugi",
             "icons": [
                 {
