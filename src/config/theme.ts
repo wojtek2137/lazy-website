@@ -82,10 +82,45 @@ export const colors: ColorPaletteTypes = {
 
 export const fonts: FontTypes = {
     mulish: {
-        Light: 'mulish_light',
-        Regular: 'mulish_regular',
-        Medium: 'mulish_medium',
-        Bold: 'mulish_bold',
-        ExtraBold: 'mulish_extra_bold',
+        Light: 'Mulish',
+        Regular: 'Mulish',
+        Medium: 'Mulish',
+        Bold: 'Mulish',
+        ExtraBold: 'Mulish',
     }
+};
+
+// Optimized font stack with proper fallbacks
+export const fontStacks = {
+    primary: `'Mulish', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif`,
+    fallback: `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif`
+};
+
+// Font mixins with proper weights and fallbacks
+export const fontMixins = {
+    light: `
+        font-family: ${fontStacks.primary};
+        font-weight: 300;
+        font-optical-sizing: auto;
+    `,
+    regular: `
+        font-family: ${fontStacks.primary};
+        font-weight: 400;
+        font-optical-sizing: auto;
+    `,
+    medium: `
+        font-family: ${fontStacks.primary};
+        font-weight: 500;
+        font-optical-sizing: auto;
+    `,
+    bold: `
+        font-family: ${fontStacks.primary};
+        font-weight: 700;
+        font-optical-sizing: auto;
+    `,
+    extraBold: `
+        font-family: ${fontStacks.primary};
+        font-weight: 800;
+        font-optical-sizing: auto;
+    `
 };

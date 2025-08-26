@@ -7,13 +7,15 @@ import mulishBold from 'assets/fonts/mulish-bold.woff2';
 import mulishExtraBold from 'assets/fonts/mulish-extra-bold.woff2';
 type FontType = 'mulish_light' | 'mulish_regular' | 'mulish_medium' | 'mulish_bold' | 'mulish_extra_bold';
 
-const getFont = (font: FontType, src: string): string => {
+const getFont = (font: FontType, src: string, weight: number): string => {
     return `
         @font-face {
-            font-family: '${font}';
+            font-family: 'Mulish';
             src: url(${src}) format('woff2');
-            font-weight: normal;
+            font-weight: ${weight};
             font-style: normal;
+            font-display: swap;
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
         }
     `;
 };
@@ -29,11 +31,11 @@ export const GlobalWrapper = (): JSX.Element => {
                     box-sizing: border-box;
                 }
 
-                ${getFont('mulish_light', mulishLight)};
-                ${getFont('mulish_regular', mulishRegular)};
-                ${getFont('mulish_medium', mulishMedium)};
-                ${getFont('mulish_bold', mulishBold)};
-                ${getFont('mulish_extra_bold', mulishExtraBold)};
+                ${getFont('mulish_light', mulishLight, 300)};
+                ${getFont('mulish_regular', mulishRegular, 400)};
+                ${getFont('mulish_medium', mulishMedium, 500)};
+                ${getFont('mulish_bold', mulishBold, 700)};
+                ${getFont('mulish_extra_bold', mulishExtraBold, 800)};
                 
                 html {
                     scroll-behavior: smooth;
