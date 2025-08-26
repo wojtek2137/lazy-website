@@ -36,7 +36,7 @@ const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
 // Highlighted text component for emphasis
 export const SpanStyle = styled("span")`
-  font-family: ${fonts.mulish.Bold};
+  font-family: ${fonts.outfit.Medium};
   font-size: 20px;
   color: ${colors.primary.gold};
   font-weight: 700;
@@ -87,7 +87,7 @@ export const TextWrapper = styled("div")`
 
 export const TextMedium = styled("p")`
   color: ${colors.neutrals.N10};
-  font-family: ${fonts.mulish.Regular};
+  font-family: ${fonts.outfit.Light};
   font-size: 1.2em;
   line-height: 2em;
   width: 100%;
@@ -226,7 +226,7 @@ export const ChristmasVideoSection = styled("div")`
 
 export const VideoLabel = styled("div")`
   color: ${colors.primary.gold};
-  font-family: ${fonts.mulish.Medium};
+  font-family: ${fonts.outfit.Medium};
   font-size: 16px;
   text-align: center;
   opacity: 0.9;

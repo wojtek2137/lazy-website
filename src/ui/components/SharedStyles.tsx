@@ -192,7 +192,7 @@ export const ModernHeading = styled("h2")<{
   color?: 'gold' | 'white' | 'sandy';
   enhanced?: boolean;
 }>`
-  font-family: ${fonts.mulish.Bold};
+  font-family: ${fonts.outfit.Medium};
   font-weight: 700;
   color: ${({ color }) => {
     switch (color) {
@@ -253,7 +253,7 @@ export const ModernText = styled("p")<{
   emphasis?: boolean;
   enhanced?: boolean;
 }>`
-  font-family: ${fonts.mulish.Regular};
+  font-family: ${fonts.outfit.Light};
   color: ${({ enhanced }) => enhanced ? colors.neutrals.N0 : colors.neutrals.N10};
   line-height: 1.8;
   margin-bottom: 20px;
@@ -272,7 +272,7 @@ export const ModernText = styled("p")<{
   }}
   
   ${({ emphasis, enhanced }) => emphasis && `
-    font-family: ${fonts.mulish.Medium};
+    font-family: ${fonts.outfit.Medium};
     color: ${enhanced ? colors.primary.sandy : colors.primary.sandy};
     text-shadow: 0 0 15px ${colors.primary.gold}40, ${enhanced ? '0 2px 4px rgba(0,0,0,0.8)' : 'none'};
   `}
@@ -283,7 +283,7 @@ export const ModernSpan = styled("span")<{
   variant?: 'highlight' | 'accent' | 'glow';
   enhanced?: boolean;
 }>`
-  font-family: ${fonts.mulish.Bold};
+  font-family: ${fonts.outfit.Medium};
   font-weight: 700;
   position: relative;
   
@@ -395,7 +395,7 @@ export const ModernList = styled("ul")<{
   }}
   
   li {
-    font-family: ${fonts.mulish.Medium};
+    font-family: ${fonts.outfit.Medium};
     color: ${({ enhanced }) => enhanced ? colors.neutrals.N0 : colors.neutrals.N20};
     padding: ${({ enhanced }) => enhanced ? '14px 22px' : '12px 20px'};
     background: ${({ enhanced }) => enhanced ? 

@@ -5,7 +5,7 @@ const breakpoints = [576, 768, 992, 1200];
 const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
 export const ContactHeader = styled('h2')`
-  font-family: ${fonts.mulish.Bold};
+  font-family: ${fonts.outfit.Medium};
   font-size: 36px;
   font-weight: 700;
   color: ${colors.primary.gold};

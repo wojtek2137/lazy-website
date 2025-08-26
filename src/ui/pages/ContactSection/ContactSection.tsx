@@ -43,7 +43,7 @@ export const ContentContainer = styled("div")`
 `;
 
 export const MainTitle = styled("h1")`
-  font-family: ${fonts.mulish.Bold};
+  font-family: ${fonts.outfit.Medium};
   font-size: 48px;
   font-weight: 700;
   color: ${colors.primary.gold};
@@ -172,7 +172,7 @@ export const InfoItem = styled("div")`
 `;
 
 export const InfoLabel = styled("div")`
-  font-family: ${fonts.mulish.Bold};
+  font-family: ${fonts.outfit.Medium};
   font-size: 16px;
   color: ${colors.primary.gold};
   margin-bottom: 8px;
@@ -181,7 +181,7 @@ export const InfoLabel = styled("div")`
 `;
 
 export const InfoValue = styled("div")`
-  font-family: ${fonts.mulish.Medium};
+  font-family: ${fonts.outfit.Medium};
   font-size: 18px;
   color: ${colors.primary.white};
   line-height: 1.6;

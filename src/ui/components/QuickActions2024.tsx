@@ -42,7 +42,7 @@ const QuickActionHeader = styled.div`
 
 const QuickActionTitle = styled.h3`
   color: ${colors.primary.gold};
-  font-family: ${fonts.mulish.Bold};
+  font-family: ${fonts.outfit.Medium};
   font-size: 16px;
   margin: 0 0 8px 0;
   letter-spacing: 1px;
@@ -50,7 +50,7 @@ const QuickActionTitle = styled.h3`
 
 const QuickActionSubtitle = styled.p`
   color: ${colors.neutrals.N300};
-  font-family: ${fonts.mulish.Regular};
+  font-family: ${fonts.outfit.Light};
   font-size: 14px;
   margin: 0;
 `;
@@ -84,7 +84,7 @@ const QuickActionItem = styled.button<{ variant?: 'primary' | 'secondary' | 'dan
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   color: ${colors.primary.white};
-  font-family: ${fonts.mulish.Medium};
+  font-family: ${fonts.outfit.Medium};
   
   &:hover {
     transform: translateY(-2px) scale(1.02);
@@ -130,7 +130,7 @@ const ActionLabel = styled.div`
 const ActionDescription = styled.div`
   font-size: 12px;
   color: ${colors.neutrals.N300};
-  font-family: ${fonts.mulish.Regular};
+  font-family: ${fonts.outfit.Light};
 `;
 
 const ActionShortcut = styled.div`
@@ -139,7 +139,7 @@ const ActionShortcut = styled.div`
   border-radius: 6px;
   font-size: 11px;
   color: ${colors.neutrals.N300};
-  font-family: ${fonts.mulish.Regular};
+  font-family: ${fonts.outfit.Light};
 `;
 
 // Progress Ring Component
@@ -200,7 +200,7 @@ const ProgressRing = styled.div<{ progress: number }>`
 
 const ProgressText = styled.span`
   color: ${colors.primary.white};
-  font-family: ${fonts.mulish.Bold};
+  font-family: ${fonts.outfit.Medium};
   font-size: 12px;
 `;
 

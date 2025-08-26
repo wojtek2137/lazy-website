@@ -41,7 +41,7 @@ export const ListenAlbumsWrapper = styled('div')`
 // `;
 
 export const ListenUsHeader = styled('div')`
-    font-family: ${fonts.mulish.Regular};
+    font-family: ${fonts.outfit.Light};
     text-align:center;
     font-size: 2em;
     letter-spacing: 3px;

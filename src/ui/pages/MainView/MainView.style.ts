@@ -120,7 +120,7 @@ export const Header = styled('span')`
     /* font-size: 3em; */
     margin-top: 10px;
     text-transform: uppercase;
-    font-family: ${fonts.mulish.ExtraBold};
+    font-family: ${fonts.outfit.SemiBold};
     letter-spacing: 3px;
     font-size: 2.8em;
     color: ${colors.primary.sandy};
@@ -132,7 +132,7 @@ export const Header = styled('span')`
 export const MainTitle = styled('h1')`
     margin: 20px 0;
     text-transform: uppercase;
-    font-family: ${fonts.mulish.ExtraBold};
+    font-family: ${fonts.outfit.SemiBold};
     letter-spacing: 4px;
     font-size: 3.2em;
     color: ${colors.primary.sandy};
@@ -190,7 +190,7 @@ export const MainTitle = styled('h1')`
 export const SubHeader = styled('p')`
     letter-spacing: 6px;
     font-size: 26px;
-    font-family: ${fonts.mulish.Medium};
+    font-family: ${fonts.outfit.Medium};
     color: ${colors.primary.white};
     margin: 15px 0;
     text-shadow: 0 2px 4px rgba(0,0,0,0.8);
@@ -225,7 +225,7 @@ export const ExtraSmallHeader = styled('span')`
     /* margin-top: 10px; */
     font-size: 16px;
     text-transform: none;
-    font-family: ${fonts.mulish.Medium};
+    font-family: ${fonts.outfit.Medium};
 `;
 
 export const HeroImageWrapper = styled('div')`

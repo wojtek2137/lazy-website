@@ -81,46 +81,53 @@ export const colors: ColorPaletteTypes = {
 };
 
 export const fonts: FontTypes = {
-    mulish: {
-        Light: 'Mulish',
-        Regular: 'Mulish',
-        Medium: 'Mulish',
-        Bold: 'Mulish',
-        ExtraBold: 'Mulish',
+    outfit: {
+        ExtraLight: 'Outfit',
+        Light: 'Outfit',
+        Medium: 'Outfit',
+        SemiBold: 'Outfit',
     }
 };
 
-// Optimized font stack with proper fallbacks
+// Optimized font stack with proper fallbacks - Outfit 2024
 export const fontStacks = {
-    primary: `'Mulish', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif`,
-    fallback: `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif`
+    primary: `'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif`,
+    fallback: `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif`
 };
 
-// Font mixins with proper weights and fallbacks
+// Font mixins with proper weights and fallbacks - Only used weights
 export const fontMixins = {
+    extraLight: `
+        font-family: ${fontStacks.primary};
+        font-weight: 200;
+        font-optical-sizing: auto;
+        line-height: 1.7;
+        letter-spacing: 0.01em;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+    `,
     light: `
         font-family: ${fontStacks.primary};
         font-weight: 300;
         font-optical-sizing: auto;
-    `,
-    regular: `
-        font-family: ${fontStacks.primary};
-        font-weight: 400;
-        font-optical-sizing: auto;
+        line-height: 1.6;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
     `,
     medium: `
         font-family: ${fontStacks.primary};
         font-weight: 500;
         font-optical-sizing: auto;
+        line-height: 1.5;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
     `,
-    bold: `
+    semiBold: `
         font-family: ${fontStacks.primary};
-        font-weight: 700;
+        font-weight: 600;
         font-optical-sizing: auto;
-    `,
-    extraBold: `
-        font-family: ${fontStacks.primary};
-        font-weight: 800;
-        font-optical-sizing: auto;
+        line-height: 1.4;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
     `
 };
