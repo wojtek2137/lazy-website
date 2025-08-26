@@ -266,6 +266,69 @@ export const VideoLabel = styled("div")`
 
 
 
+// Footer Components
+export const Footer = styled("footer")`
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid ${colors.primary.gold}08;
+  padding: 20px 0;
+  margin-top: 60px;
+  position: relative;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      ${colors.primary.gold}20 50%, 
+      transparent 100%);
+  }
+`;
+
+export const FooterContent = styled("div")`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+`;
+
+export const FooterText = styled("p")`
+  color: ${colors.neutrals.N60};
+  font-family: ${fonts.outfit.ExtraLight};
+  font-size: 12px;
+  margin: 0;
+  opacity: 0.7;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  
+  &::before {
+    content: '♪';
+    margin-right: 6px;
+    color: ${colors.primary.gold};
+    opacity: 0.3;
+    font-size: 10px;
+  }
+  
+  &::after {
+    content: '♪';
+    margin-left: 6px;
+    color: ${colors.primary.gold};
+    opacity: 0.3;
+    font-size: 10px;
+  }
+`;
+
 export function Ui() {
   const [quickActionsVisible, setQuickActionsVisible] = useState(false);
 
@@ -456,6 +519,15 @@ export function Ui() {
         <SquadSection />
         <SectionTransition />
         <ContactSection />
+        
+        {/* Footer */}
+        <Footer>
+          <FooterContent>
+            <FooterText>
+              © Copyright {new Date().getFullYear()} - Lazy Swing
+            </FooterText>
+          </FooterContent>
+        </Footer>
       </main>
     </>
   );
