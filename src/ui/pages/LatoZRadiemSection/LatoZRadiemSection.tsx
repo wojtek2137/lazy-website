@@ -185,7 +185,7 @@ export function LatoZRadiemSection() {
               
               
               <p>
-                W trakcie trasy wykonaliśmy najpiękniejsze przeboje polskiej muzyki międzywojennej i powojennej 
+                W trakcie trasy wykonaliśmy największe przeboje polskiej muzyki międzywojennej i powojennej 
                 <strong> Mieczysława Fogga, Adama Astona, Hanki Ordonówny, Ireny Santor, Kasi Sobczyk</strong> i wielu innych. 
                 Publiczność bawiła się w rytm kompozycji <strong>Henryka Warsa, Jerzego Petersburskiego czy Jerzego "Dudusia" Mateuszkiewicza</strong> - 
                 pokazując, że ta muzyka wciąż łączy wszystkich bez względu na wiek.
