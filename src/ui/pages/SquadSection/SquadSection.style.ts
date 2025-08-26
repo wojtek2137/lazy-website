@@ -59,7 +59,7 @@ export const SquadHeader = styled("div")`
 
 export const SquadName = styled("h3")`
   font-size: 18px;
-  font-family: ${fonts.mulish.Bold};
+  font-family: ${fonts.outfit.Medium};
   color: ${colors.primary.white};
   margin: 0 0 5px 0;
   
@@ -70,7 +70,7 @@ export const SquadName = styled("h3")`
 
 export const SquadInstrument = styled("p")`
   font-size: 14px;
-  font-family: ${fonts.mulish.Medium};
+  font-family: ${fonts.outfit.Medium};
   color: #ccb379;
   margin: 0;
   
@@ -80,7 +80,7 @@ export const SquadInstrument = styled("p")`
 `;
 
 export const SquadHeaderMain = styled("h2")`
-  font-family: ${fonts.mulish.Bold};
+  font-family: ${fonts.outfit.Medium};
   font-size: 36px;
   font-weight: 700;
   letter-spacing: 3px;

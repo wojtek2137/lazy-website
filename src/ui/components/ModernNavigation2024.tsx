@@ -97,7 +97,7 @@ const CommandInput = styled.input`
   border: none;
   padding: 20px 24px;
   color: ${colors.primary.white};
-  font-family: ${fonts.mulish.Medium};
+  font-family: ${fonts.outfit.Medium};
   font-size: 18px;
   outline: none;
   border-bottom: 1px solid ${colors.primary.gold}20;
@@ -148,20 +148,20 @@ const CommandContent = styled.div`
 
 const CommandLabel = styled.div`
   color: ${colors.primary.white};
-  font-family: ${fonts.mulish.Medium};
+  font-family: ${fonts.outfit.Medium};
   font-size: 16px;
   margin-bottom: 4px;
 `;
 
 const CommandDescription = styled.div`
   color: ${colors.neutrals.N300};
-  font-family: ${fonts.mulish.Regular};
+  font-family: ${fonts.outfit.Light};
   font-size: 14px;
 `;
 
 const CommandShortcut = styled.div`
   color: ${colors.neutrals.N300};
-  font-family: ${fonts.mulish.Regular};
+  font-family: ${fonts.outfit.Light};
   font-size: 12px;
   padding: 4px 8px;
   background: rgba(255, 255, 255, 0.1);
@@ -196,7 +196,7 @@ const BreadcrumbWrapper = styled.div`
 
 const BreadcrumbItem = styled.span<{ isActive: boolean }>`
   color: ${({ isActive }) => isActive ? colors.primary.gold : colors.neutrals.N300};
-  font-family: ${fonts.mulish.Medium};
+  font-family: ${fonts.outfit.Medium};
   font-size: 14px;
   transition: color 0.3s ease;
   cursor: ${({ isActive }) => isActive ? 'default' : 'pointer'};
@@ -263,7 +263,7 @@ const CommandTrigger = styled.button`
   border-radius: 12px;
   padding: 12px 20px;
   color: ${colors.primary.white};
-  font-family: ${fonts.mulish.Medium};
+  font-family: ${fonts.outfit.Medium};
   font-size: 14px;
   cursor: pointer;
   pointer-events: all;

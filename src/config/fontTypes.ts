@@ -1,11 +1,10 @@
 
 export interface FontTypes {
-    mulish: {
+    outfit: {
+        ExtraLight: string,
         Light: string,
-        Regular: string,
         Medium: string,
-        Bold: string,
-        ExtraBold: string,
+        SemiBold: string,
     };
 };
 

@@ -67,7 +67,7 @@ export const SectionHeader = styled("div")`
 `;
 
 export const MainTitle = styled("h2")`
-  font-family: ${fonts.mulish.Bold};
+  font-family: ${fonts.outfit.Medium};
   font-size: 48px;
   font-weight: 700;
   color: ${colors.primary.gold};
@@ -112,7 +112,7 @@ export const MainTitle = styled("h2")`
 `;
 
 export const Subtitle = styled("p")`
-  font-family: ${fonts.mulish.Medium};
+  font-family: ${fonts.outfit.Medium};
   font-size: 18px;
   color: ${colors.neutrals.N10};
   margin: 0 0 40px 0;
@@ -156,7 +156,7 @@ export const TextContent = styled("div")`
 `;
 
 export const ArticleText = styled("div")`
-  font-family: ${fonts.mulish.Regular};
+  font-family: ${fonts.outfit.ExtraLight};
   font-size: 16px;
   line-height: 1.8;
   color: ${colors.neutrals.N20};
@@ -168,7 +168,7 @@ export const ArticleText = styled("div")`
   
   strong {
     color: ${colors.primary.gold};
-    font-family: ${fonts.mulish.Bold};
+    font-family: ${fonts.outfit.Medium};
   }
   
   a {
@@ -221,7 +221,7 @@ export const PolandMap = styled("div")`
   margin-top: 30px;
   
   h3 {
-    font-family: ${fonts.mulish.Bold};
+    font-family: ${fonts.outfit.Medium};
     color: ${colors.primary.gold};
     font-size: 18px;
     margin: 0 0 20px 0;
@@ -364,7 +364,7 @@ export const CityLabel = styled("div")<{ $x: number; $y: number }>`
   top: ${({ $y }) => $y + 3}%;
   transform: translateX(-50%);
   color: ${colors.neutrals.N10};
-  font-family: ${fonts.mulish.Medium};
+  font-family: ${fonts.outfit.Medium};
   font-size: 11px;
   text-align: center;
   text-shadow: 
@@ -489,7 +489,7 @@ export const CardContent = styled("div")`
   color: white;
   
   h3 {
-    font-family: ${fonts.mulish.Bold};
+    font-family: ${fonts.outfit.Medium};
     font-size: 18px;
     color: ${colors.primary.gold};
     margin: 0 0 8px 0;
@@ -497,7 +497,7 @@ export const CardContent = styled("div")`
   }
   
   p {
-    font-family: ${fonts.mulish.Regular};
+    font-family: ${fonts.outfit.ExtraLight};
     font-size: 14px;
     color: ${colors.neutrals.N10};
     line-height: 1.4;

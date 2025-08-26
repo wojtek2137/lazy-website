@@ -1,21 +1,20 @@
 import React from 'react';
 import { Global, css } from '@emotion/react';
-import mulishLight from 'assets/fonts/mulish-light.woff2';
-import mulishRegular from 'assets/fonts/mulish-regular.woff2';
-import mulishMedium from 'assets/fonts/mulish-medium.woff2';
-import mulishBold from 'assets/fonts/mulish-bold.woff2';
-import mulishExtraBold from 'assets/fonts/mulish-extra-bold.woff2';
-type FontType = 'mulish_light' | 'mulish_regular' | 'mulish_medium' | 'mulish_bold' | 'mulish_extra_bold';
+import outfitExtraLight from 'assets/fonts/Outfit-ExtraLight.woff2';
+import outfitLight from 'assets/fonts/Outfit-Light.woff2';
+import outfitMedium from 'assets/fonts/Outfit-Medium.woff2';
+import outfitSemiBold from 'assets/fonts/Outfit-SemiBold.woff2';
+type FontType = 'outfit_extralight' | 'outfit_light' | 'outfit_medium' | 'outfit_semibold';
 
 const getFont = (font: FontType, src: string, weight: number): string => {
     return `
         @font-face {
-            font-family: 'Mulish';
+            font-family: 'Outfit';
             src: url(${src}) format('woff2');
             font-weight: ${weight};
             font-style: normal;
             font-display: swap;
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            unicode-range: U+0020-00FF, U+0100-017F, U+0180-024F, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
         }
     `;
 };
@@ -31,11 +30,10 @@ export const GlobalWrapper = (): JSX.Element => {
                     box-sizing: border-box;
                 }
 
-                ${getFont('mulish_light', mulishLight, 300)};
-                ${getFont('mulish_regular', mulishRegular, 400)};
-                ${getFont('mulish_medium', mulishMedium, 500)};
-                ${getFont('mulish_bold', mulishBold, 700)};
-                ${getFont('mulish_extra_bold', mulishExtraBold, 800)};
+                ${getFont('outfit_extralight', outfitExtraLight, 200)};
+                ${getFont('outfit_light', outfitLight, 300)};
+                ${getFont('outfit_medium', outfitMedium, 500)};
+                ${getFont('outfit_semibold', outfitSemiBold, 600)};
                 
                 html {
                     scroll-behavior: smooth;
@@ -49,6 +47,12 @@ export const GlobalWrapper = (): JSX.Element => {
                     margin: 0;
                     background: #000000;
                     overflow-x: hidden;
+                    /* Optymalizacje dla polskich znaków */
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    text-rendering: optimizeLegibility;
+                    font-feature-settings: "liga", "kern";
+                    font-variant-ligatures: common-ligatures;
                 }
                 
                 /* Enhanced scrollbar styling */

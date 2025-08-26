@@ -135,7 +135,7 @@ export const ModernYouTubeIFrame = styled('iframe')`
 
 export const VideoTitle = styled('h3')`
   color: ${colors.primary.gold};
-  font-family: ${fonts.mulish.Medium};
+  font-family: ${fonts.outfit.Medium};
   font-size: 16px;
   margin: 12px 0 0 0;
   text-align: center;
@@ -176,7 +176,7 @@ const ModernYouTubeSection = styled('section')`
 
 // Original YouTube header styling
 const YouTubeHeader = styled('h2')`
-  font-family: ${fonts.mulish.Regular};
+  font-family: ${fonts.outfit.Light};
   text-align: center;
   font-size: 2em;
   letter-spacing: 3px;
