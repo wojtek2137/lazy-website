@@ -76,4 +76,36 @@
     <priority>0.7</priority>
     <lastmod>2025-08-26</lastmod>
   </url>
+  <url>
+    <loc>https://lazyswingband.com/rider-pl/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2025-01-06</lastmod>
+    <image:image>
+      <image:loc>https://lazyswingband.com/images/responsive/lazy-rider_desktop.webp</image:loc>
+      <image:title>Lazy Swing Band - Rider Techniczny</image:title>
+      <image:caption>Zespół Lazy Swing Band - rider techniczny z wymaganiami na występy i imprezy firmowe</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lazyswingband.com/images/responsive/stage-layout_desktop.webp</image:loc>
+      <image:title>Układ sceny - Lazy Swing Band</image:title>
+      <image:caption>Schemat rozmieszczenia instrumentów zespołu Lazy Swing Band na scenie</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://lazyswingband.com/rider-en/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2025-01-06</lastmod>
+    <image:image>
+      <image:loc>https://lazyswingband.com/images/responsive/lazy-rider_desktop.webp</image:loc>
+      <image:title>Lazy Swing Band - Technical Rider</image:title>
+      <image:caption>Lazy Swing Band - technical rider with performance requirements for corporate events</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lazyswingband.com/images/responsive/stage-layout_desktop.webp</image:loc>
+      <image:title>Stage Layout - Lazy Swing Band</image:title>
+      <image:caption>Stage layout diagram showing instrument placement for Lazy Swing Band</image:caption>
+    </image:image>
+  </url>
 </urlset>
