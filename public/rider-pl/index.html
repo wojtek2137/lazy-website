@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rider Techniczny - Lazy Swing Band | Wymagania Techniczne na Występy</title>
+    <meta name="description" content="Rider techniczny zespołu Lazy Swing Band - wymagania techniczne, organizacyjne i sceniczne dla występów. Kontakt, sprzęt, nagłośnienie, układ sceny.">
+    <meta name="keywords" content="rider techniczny, Lazy Swing Band, wymagania techniczne, zespół jazzowy, występy, nagłośnienie, scena">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://lazyswingband.com/rider-pl/">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png"/>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Rider Techniczny - Lazy Swing Band">
+    <meta property="og:description" content="Wymagania techniczne i organizacyjne dla występów zespołu Lazy Swing Band">
+    <meta property="og:image" content="https://lazyswingband.com/images/responsive/lazy-rider_desktop.webp">
+    <meta property="og:url" content="https://lazyswingband.com/rider-pl/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rider Techniczny - Lazy Swing Band">
+    <meta name="twitter:description" content="Wymagania techniczne i organizacyjne dla występów zespołu Lazy Swing Band">
+    <meta name="twitter:image" content="https://lazyswingband.com/images/responsive/lazy-rider_desktop.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1410 50%, #0a0a0a 100%);
+            color: #d4af37;
+            line-height: 1.8;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        #app-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 100px 20px;
+            background: rgba(212, 175, 55, 0.03);
+            border-radius: 20px 20px 0 0;
+            margin-bottom: 0;
+            position: relative;
+            overflow: visible;
+            z-index: 10;
+        }
+
+        header .music-note {
+            position: absolute;
+            font-size: 120px;
+            color: rgba(212, 175, 55, 0.05);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: serif;
+        }
+
+        .band-photo {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            margin: 0 auto;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 5;
+        }
+
+        .photo-container {
+            text-align: center;
+            padding: 0 20px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 5;
+            background: rgba(212, 175, 55, 0.02);
+            padding-bottom: 60px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .photo-container::before {
+            content: '♫';
+            position: absolute;
+            font-size: 180px;
+            color: rgba(212, 175, 55, 0.08);
+            top: -40px;
+            left: 10%;
+            font-family: serif;
+            z-index: 1;
+        }
+
+        .photo-container::after {
+            content: '♪';
+            position: absolute;
+            font-size: 120px;
+            color: rgba(255, 215, 0, 0.06);
+            top: 50%;
+            right: 8%;
+            font-family: serif;
+            z-index: 1;
+        }
+
+        .header-photo-bridge {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 100px;
+            z-index: 6;
+            pointer-events: none;
+        }
+
+        .header-photo-bridge::before {
+            content: '♫ ♪ ♬';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 215, 0, 0.5);
+            font-size: 24px;
+            letter-spacing: 15px;
+        }
+
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            font-weight: 900;
+            color: #ffd700;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header > p:first-of-type {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3em;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: #c9a961;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        header > p:last-of-type {
+            font-size: 1.1em;
+            color: #b8956f;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(255, 215, 0, 0.03) 100%);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffd700;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .contact-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6em;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .contact-card p {
+            color: #c9a961;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .contact-card a {
+            display: inline-block;
+            margin-top: 15px;
+            color: #ffd700;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 60px 0;
+            opacity: 0.3;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .info-card {
+            background: rgba(212, 175, 55, 0.05);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            background: rgba(212, 175, 55, 0.08);
+            border-color: #d4af37;
+            transform: scale(1.02);
+        }
+
+        .info-card > div:first-child {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .info-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3em;
+            color: #ffd700;
+            margin: 15px 0;
+            font-weight: 600;
+        }
+
+        .info-card p {
+            color: #b8956f;
+            font-size: 1.05em;
+        }
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin: 40px 0;
+        }
+
+        .equipment-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.06) 0%, rgba(0, 0, 0, 0.3) 100%);
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .equipment-card:hover {
+            border-color: #d4af37;
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.15);
+        }
+
+        .equipment-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6em;
+            color: #ffd700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .equipment-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .equipment-card li {
+            color: #c9a961;
+            margin: 12px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 1.05em;
+        }
+
+        .equipment-card li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+        }
+
+        .equipment-card > p {
+            color: #b8956f;
+            font-style: italic;
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+
+        .sound-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .sound-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(212, 175, 55, 0.03) 100%);
+            padding: 45px;
+            border-radius: 15px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .sound-card:hover {
+            transform: translateY(-8px);
+            border-color: #ffd700;
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.25);
+        }
+
+        .sound-card > p:first-child {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            color: #ffd700;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .sound-card span {
+            font-size: 0.6em;
+            color: #c9a961;
+        }
+
+        .sound-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4em;
+            color: #c9a961;
+            margin: 15px 0;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .sound-card > p:last-child {
+            color: #b8956f;
+            font-size: 1em;
+        }
+
+        #stage-plot {
+            background: rgba(212, 175, 55, 0.03);
+            padding: 50px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .stage-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .stage-layout-image {
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .stage-layout-image:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            #stage-plot {
+                padding: 30px 20px;
+            }
+            
+            .stage-container {
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #stage-plot {
+                padding: 20px 15px;
+            }
+            
+            .stage-layout-image {
+                border-radius: 10px;
+            }
+        }
+
+        #additional-info ul {
+            list-style: none;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        #additional-info li {
+            background: rgba(212, 175, 55, 0.05);
+            padding: 25px 30px;
+            margin: 20px 0;
+            border-left: 4px solid #d4af37;
+            border-radius: 8px;
+            color: #c9a961;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        #additional-info li:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(10px);
+            border-left-color: #ffd700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 80px;
+            border-top: 2px solid rgba(212, 175, 55, 0.2);
+            background: linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.03) 100%);
+        }
+
+        footer p:first-child {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        footer p:last-child {
+            color: #b8956f;
+            font-size: 1em;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            #app-content {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            header {
+                padding: 60px 15px 80px 15px;
+            }
+
+            .photo-container {
+                margin-top: -40px;
+                padding: 0 15px 40px;
+            }
+
+            .photo-container::before {
+                font-size: 100px;
+                left: 5%;
+            }
+
+            .photo-container::after {
+                font-size: 80px;
+                right: 5%;
+            }
+
+            .header-photo-bridge {
+                width: 150px;
+                height: 80px;
+                top: -30px;
+            }
+
+            .header-photo-bridge::before {
+                font-size: 18px;
+                letter-spacing: 10px;
+            }
+
+            .contact-grid,
+            .info-grid,
+            .equipment-grid,
+            .sound-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app-content">
+        <header>
+            <div class="music-note">♪</div>
+            <h1>Lazy Swing Band</h1>
+            <p>Rider Techniczny</p>
+            <p>Poniższy rider należy traktować elastycznie. W razie pytań jesteśmy do dyspozycji.</p>
+        </header>
+
+        <div class="photo-container">
+            <div class="header-photo-bridge"></div>
+            <picture>
+                <source media="(min-width: 768px)" srcset="../images/responsive/lazy-rider_desktop.webp">
+                <source media="(min-width: 480px)" srcset="../images/responsive/lazy-rider_tablet.webp">
+                <img src="../images/responsive/lazy-rider_mobile.webp" alt="Zespół Lazy Swing Band podczas występu - zdjęcie zespołu jazzowego" class="band-photo" loading="lazy" width="600" height="600">
+            </picture>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>Kwestie Organizacyjne</h3>
+                <p>Sylwia Buchalska-Augustyn</p>
+                <p>Wokalistka / Manager</p>
+                <a href="tel:+48794210665">+48 794 210 665</a>
+            </div>
+            <div class="contact-card">
+                <h3>Kwestie Techniczne</h3>
+                <p>Wojciech Rejdych</p>
+                <p>Saksofonista</p>
+                <a href="tel:+48732661109">+48 732 661 109</a>
+            </div>
+        </div>
+
+        <main>
+            <hr>
+            <section id="general">
+                <h2>Informacje Ogólne</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div>💧</div>
+                        <h4>Woda</h4>
+                        <p>0,5l na osobę na każdy set.</p>
+                    </div>
+                    <div class="info-card">
+                        <div>🗝️</div>
+                        <h4>Garderoba</h4>
+                        <p>Zamykane pomieszczenie.</p>
+                    </div>
+                    <div class="info-card">
+                        <div>🅿️</div>
+                        <h4>Parking</h4>
+                        <p>Dla aut osobowych.</p>
+                    </div>
+                     <div class="info-card">
+                        <div>😊</div>
+                        <h4>Przekąski</h4>
+                        <p>Miły gest.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <hr>
+            <section id="equipment">
+                <h2>Lista Sprzętu / Instrumentów</h2>
+                <div class="equipment-grid">
+                    <div class="equipment-card">
+                        <h4>🎤 Wokal</h4>
+                        <ul>
+                            <li>Jeden mikrofon wokalny</li>
+                            <li>Statyw mikrofonowy</li>
+                            <li>Pulpit na nuty</li>
+                        </ul>
+                    </div>
+                    <div class="equipment-card">
+                        <h4>🎹 Piano</h4>
+                        <ul>
+                           <li>Pianino/fortepian lub stage piano 88 klawiszy (ważona klawiatura)</li>
+                            <li>Krzesło</li>
+                            <li>Pulpit na nuty</li>
+                        </ul>
+                         <p>*W razie problemów prosimy o kontakt.</p>
+                    </div>
+                    <div class="equipment-card">
+                        <h4>🥁 Perkusja</h4>
+                        <ul>
+                            <li>Pełny zestaw (talerze, hi-hat, werbel, tomy, stopa)</li>
+                            <li>Krzesło perkusyjne i dywan</li>
+                            <li>Statywy perkusyjne</li>
+                            <li>Pulpit na nuty</li>
+                        </ul>
+                        <p>*W razie problemów prosimy o kontakt.</p>
+                    </div>
+                    <div class="equipment-card">
+                        <h4>🎻 Kontrabas</h4>
+                         <ul>
+                            <li>Podpięcie przez wyjście liniowe</li>
+                            <li>Krzesło</li>
+                            <li>Pulpit na nuty</li>
+                        </ul>
+                    </div>
+                    <div class="equipment-card">
+                        <h4>🎺 Trąbka</h4>
+                         <ul>
+                            <li>Mikrofon na klipsie lub statywie</li>
+                            <li>Pulpit na nuty</li>
+                        </ul>
+                    </div>
+                    <div class="equipment-card">
+                        <h4>🎷 Saksofon</h4>
+                         <ul>
+                            <li>Mikrofon na klipsie lub statywie</li>
+                            <li>Pulpit na nuty</li>
+                             <li>Mikrofon do chórków</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+            <section id="sound">
+                <h2>Nagłośnienie i Scena</h2>
+                <div class="sound-grid">
+                    <div class="sound-card">
+                        <p>4x6<span>m</span></p>
+                        <h4>Wymiar sceny</h4>
+                        <p>(Minimum, zadaszona w plenerze)</p>
+                    </div>
+                    <div class="sound-card">
+                        <p>4</p>
+                        <h4>Monitory Odsłuchowe</h4>
+                        <p>(Na scenie)</p>
+                    </div>
+                    <div class="sound-card">
+                        <p>1<span>h</span></p>
+                        <h4>Soundcheck</h4>
+                        <p>(Dostęp 3h przed)</p>
+                    </div>
+                </div>
+            </section>
+            
+            <hr>
+            <section id="stage-plot">
+                <h2>Układ na Scenie</h2>
+                <div class="stage-container">
+                    <picture>
+                        <source media="(min-width: 768px)" srcset="../images/responsive/stage-layout_desktop.webp">
+                        <source media="(min-width: 480px)" srcset="../images/responsive/stage-layout_tablet.webp">
+                        <img src="../images/responsive/stage-layout_mobile.webp" 
+                             alt="Schemat układu zespołu Lazy Swing Band na scenie - rozmieszczenie instrumentów: piano z monitorem M4, perkusja, kontrabas, wokal z monitorem M3, saksofon i trąbka z mikrofonem do chórków oraz monitor M2, monitor M1 w centrum sceny"
+                             class="stage-layout-image" 
+                             loading="lazy" 
+                             width="800" 
+                             height="600">
+                    </picture>
+                </div>
+            </section>
+
+             <hr>
+             <section id="additional-info">
+                <h2>Dodatkowe Informacje</h2>
+                 <div>
+                    <ul>
+                        <li>Zespół jest w stanie przywieźć ze sobą część instrumentów/sprzętu, jeśli tylko nie staną na przeszkodzie ograniczenia transportowe.</li>
+                        <li>W razie problemów z zapewnieniem któregokolwiek z elementów ridera prosimy o pilny kontakt.</li>
+                        <li>Opłaty licencyjne (ZAiKS) ponosi Organizator.</li>
+                        <li>Organizator zobowiązany jest do zapewnienia wszelkich zezwoleń i ewentualnej ochrony.</li>
+                    </ul>
+                 </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Dziękujemy za współpracę!</p>
+            <p>Rider jest wzorem i może ulec zmianie w zależności od konkretnych potrzeb. © Lazy Swing Band</p>
+        </footer>
+    </div>
+</body>
+</html>

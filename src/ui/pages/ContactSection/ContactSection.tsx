@@ -93,11 +93,12 @@ export const MainTitle = styled("h1")`
 
 export const ContactGrid = styled("div")`
   display: grid;
-  grid-template-columns: 1fr 1.2fr 1fr;
+  grid-template-columns: 1fr 1.2fr 1fr 1fr;
   gap: 40px;
   align-items: start;
   
   ${mq[2]} {
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
   }
   
@@ -345,6 +346,91 @@ export function ContactSection() {
             </SocialIcon>
             <InfoValue style={{ marginTop: '20px', fontSize: '16px' }}>
               Obserwuj nasze występy
+            </InfoValue>
+          </ContactCard>
+          
+          {/* Rider Card */}
+          <ContactCard>
+            <ContactHeader id="rider-heading">
+              Rider Techniczny
+            </ContactHeader>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '15px', marginTop: '20px' }}>
+              <a 
+                href="/rider-pl/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'rgba(245, 203, 92, 0.2)',
+                  border: '2px solid rgb(245, 203, 92)',
+                  color: 'rgb(245, 203, 92)',
+                  padding: '12px 20px',
+                  borderRadius: '25px',
+                  textDecoration: 'none',
+                  fontFamily: 'inherit',
+                  fontWeight: '500',
+                  fontSize: '0.95em',
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  transition: 'all 0.3s ease',
+                  width: 'fit-content'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgb(245, 203, 92)';
+                  e.currentTarget.style.color = '#000';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(245, 203, 92, 0.2)';
+                  e.currentTarget.style.color = 'rgb(245, 203, 92)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+                aria-label="Pobierz rider techniczny w języku polskim"
+              >
+                📄 Polski
+              </a>
+              
+              <a 
+                href="/rider-en/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'rgba(245, 203, 92, 0.2)',
+                  border: '2px solid rgb(245, 203, 92)',
+                  color: 'rgb(245, 203, 92)',
+                  padding: '12px 20px',
+                  borderRadius: '25px',
+                  textDecoration: 'none',
+                  fontFamily: 'inherit',
+                  fontWeight: '500',
+                  fontSize: '0.95em',
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  transition: 'all 0.3s ease',
+                  width: 'fit-content'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgb(245, 203, 92)';
+                  e.currentTarget.style.color = '#000';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(245, 203, 92, 0.2)';
+                  e.currentTarget.style.color = 'rgb(245, 203, 92)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+                aria-label="Download technical rider in English"
+              >
+                📄 English
+              </a>
+            </div>
+            <InfoValue style={{ marginTop: '20px', fontSize: '16px' }}>
+              Wymagania techniczne
             </InfoValue>
           </ContactCard>
         </ContactGrid>
