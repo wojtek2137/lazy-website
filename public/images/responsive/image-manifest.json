@@ -420,5 +420,27 @@
       "size": "7.5KB",
       "format": "webp"
     }
+  },
+  "stage-layout": {
+    "desktop": {
+      "path": "./responsive/stage-layout_desktop.webp",
+      "size": "108.4KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/stage-layout_tablet.webp",
+      "size": "61.2KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/stage-layout_mobile.webp",
+      "size": "24.8KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/stage-layout_thumb.webp",
+      "size": "3.5KB",
+      "format": "webp"
+    }
   }
 }

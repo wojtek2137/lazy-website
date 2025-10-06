@@ -58,18 +58,31 @@ async function updateManifest(imageName, imageData) {
 }
 
 async function main() {
-  const inputImage = 'src/assets/images/homepage-hero.JPG';
+  const images = [
+    {
+      inputImage: 'src/assets/images/homepage-hero.JPG',
+      imageName: 'homepage-hero'
+    },
+    {
+      inputImage: 'public/images/stage-layout.png',
+      imageName: 'stage-layout'
+    }
+  ];
+  
   const outputDir = 'public/images/responsive';
-  const imageName = 'homepage-hero';
 
-  try {
-    console.log(`Processing ${inputImage}...`);
-    const imageData = await generateResponsiveImages(inputImage, outputDir, imageName);
-    await updateManifest(imageName, imageData);
-    console.log('Done!');
-  } catch (error) {
-    console.error('Error:', error);
+  for (const { inputImage, imageName } of images) {
+    try {
+      console.log(`Processing ${inputImage}...`);
+      const imageData = await generateResponsiveImages(inputImage, outputDir, imageName);
+      await updateManifest(imageName, imageData);
+      console.log(`Done with ${imageName}!`);
+    } catch (error) {
+      console.error(`Error processing ${imageName}:`, error);
+    }
   }
+  
+  console.log('All images processed!');
 }
 
 main();

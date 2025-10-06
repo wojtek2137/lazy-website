@@ -349,6 +349,49 @@ export function ContactSection() {
             </InfoValue>
           </ContactCard>
           
+          {/* Christmas Services Card */}
+          <ContactCard>
+            <ContactHeader id="christmas-services">
+              🎄 Wigilie Firmowe 2025
+            </ContactHeader>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '15px', marginTop: '20px' }}>
+              <a 
+                href="/wigilie-firmowe/"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'rgba(255, 215, 0, 0.15)',
+                  color: '#ffd700',
+                  padding: '12px 20px',
+                  textDecoration: 'none',
+                  borderRadius: '25px',
+                  border: '1px solid rgba(255, 215, 0, 0.3)',
+                  transition: 'all 0.3s ease',
+                  fontFamily: 'inherit',
+                  fontSize: '1em',
+                  fontWeight: 500,
+                  width: '100%',
+                  justifyContent: 'center',
+                  maxWidth: '200px'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 215, 0, 0.25)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(255, 215, 0, 0.2)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 215, 0, 0.15)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+                aria-label="Zobacz ofertę zespołu na wigilie firmowe 2025"
+              >
+                🎅 Wigilie Firmowe
+              </a>
+            </div>
+          </ContactCard>
+          
           {/* Rider Card */}
           <ContactCard>
             <ContactHeader id="rider-heading">
