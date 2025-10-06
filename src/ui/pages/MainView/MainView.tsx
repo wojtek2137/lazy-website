@@ -14,10 +14,12 @@ export function MainView() {
   const [textIndex, setTextIndex] = useState(0);
 
   const alternativeTexts = [
-    "Swingowa muzyka do tańca",
-    "Prawdziwy jazz", 
-    "Muzyka z duszą i pasją",
-    "Swing który porusza"
+    "Świąteczny Jazz na Żywo 🎄",
+    "Kolędy Swingowe 2025 🎅", 
+    "Zespół na Wigilie Firmowe",
+    "Muzyka z Duszą na Święta",
+    "Sinatra & Bublé Style 🎵",
+    "Swing który Porusza Serca ❄️"
   ];
 
   // Removed isLoaded state as it was unused
@@ -45,12 +47,12 @@ export function MainView() {
         <ContentWrapper>
           <Logo role="img" aria-label="Logo zespołu Lazy Swing Band" />
           <HeaderWrapper>
-            <SubHeader>Polski zespół jazzowy rodowodem z Krakowa</SubHeader>
+            <SubHeader>🎄 Polski zespół jazzowy na sezon świąteczny 2025 🎷</SubHeader>
 
             <MainTitle id="main-title" key={textIndex}>
               {alternativeTexts[textIndex]}
             </MainTitle>
-            <SubHeader>i nie tylko</SubHeader>
+            <SubHeader>🎅 Wigilie firmowe • Sinatra & Bublé • Kraków • Małopolska • Cała Polska ❄️</SubHeader>
           </HeaderWrapper>
         </ContentWrapper>
       </MainContainer>
