@@ -7,6 +7,7 @@ import {
   MainTitle,
   SubHeader,
   HeroImageWrapper,
+  CTAButton,
 } from "./MainView.style";
 import { ResponsiveLazyImage } from "ui/components/ResponsiveLazyImage";
 
@@ -53,6 +54,10 @@ export function MainView() {
               {alternativeTexts[textIndex]}
             </MainTitle>
             <SubHeader>🎅 Wigilie firmowe • Sinatra & Bublé • Kraków • Małopolska • Cała Polska ❄️</SubHeader>
+            
+            <CTAButton href="/wigilie-firmowe/" aria-label="Dowiedz się więcej o wigiliach firmowych">
+              🎄 Dowiedz się więcej
+            </CTAButton>
           </HeaderWrapper>
         </ContentWrapper>
       </MainContainer>
