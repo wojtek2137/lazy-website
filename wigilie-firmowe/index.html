@@ -14,6 +14,9 @@
     <meta property="og:title" content="🎄 Zespół na Wigilie Firmowe 2025 Kraków - Lazy Swing Band">
     <meta property="og:description" content="Profesjonalna oprawa muzyczna świątecznych imprez firmowych. Kolędy jazzowe, swing, repertuar Sinatry & Michaela Bublé. Kraków, Małopolska, cała Polska.">
     <meta property="og:image" content="https://lazyswingband.com/images/responsive/lazy_desktop.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/webp">
     <meta property="og:url" content="https://lazyswingband.com/wigilie-firmowe/">
     <meta property="og:type" content="website">
 
@@ -26,364 +29,60 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Cormorant Garamond', serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1410 50%, #0a0a0a 100%);
-            color: #d4af37;
-            line-height: 1.8;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
-            border-radius: 20px;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.2em;
-            font-weight: 900;
-            color: #ffd700;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-        }
-
-        .hero-subtitle {
-            font-size: 1.3em;
-            color: #c9a961;
-            margin-bottom: 30px;
-        }
-
-        .nav-back {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(212, 175, 55, 0.2);
-            color: #ffd700;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 25px;
-            border: 1px solid #d4af37;
-            transition: all 0.3s ease;
-        }
-
-        .nav-back:hover {
-            background: rgba(255, 215, 0, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .service-card {
-            background: rgba(212, 175, 55, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 15px;
-            padding: 40px 30px;
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            background: rgba(212, 175, 55, 0.08);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .service-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2em;
-            color: #ffd700;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .service-description {
-            font-size: 1.1em;
-            color: #c9a961;
-            margin-bottom: 20px;
-        }
-
-        .features-list {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .features-list li {
-            color: #b8956f;
-            margin-bottom: 10px;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .features-list li::before {
-            content: '✨';
-            position: absolute;
-            left: 0;
-        }
-
-        .price-info {
-            background: rgba(255, 215, 0, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #ffd700;
-            margin-top: 20px;
-        }
-
-        .benefits-section {
-            background: rgba(212, 175, 55, 0.05);
-            border-radius: 20px;
-            padding: 50px 40px;
-            margin: 60px 0;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .benefits-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
-            color: #ffd700;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .benefit-item {
-            text-align: center;
-            padding: 30px 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-        }
-
-        .benefit-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .benefit-title {
-            font-family: 'Montserrat', sans-serif;
-            color: #ffd700;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .testimonials {
-            margin: 60px 0;
-        }
-
-        .testimonial-card {
-            background: rgba(212, 175, 55, 0.08);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border-left: 4px solid #d4af37;
-        }
-
-        .testimonial-text {
-            font-size: 1.2em;
-            font-style: italic;
-            color: #c9a961;
-            margin-bottom: 15px;
-        }
-
-        .testimonial-author {
-            color: #ffd700;
-            font-weight: 600;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
-            color: #000;
-            border-radius: 20px;
-            padding: 50px 40px;
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .cta-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            font-weight: 900;
-        }
-
-        .cta-text {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .cta-button {
-            background: #000;
-            color: #ffd700;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background: #1a1a1a;
-            transform: translateY(-2px);
-        }
-
-        .contact-urgent {
-            background: rgba(255, 0, 0, 0.1);
-            border: 2px solid rgba(255, 0, 0, 0.3);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 40px 0;
-            text-align: center;
-        }
-
-        .urgent-text {
-            color: #ff6b6b;
-            font-size: 1.1em;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        /* YouTube Video Styles */
-        .repertuar-section {
-            margin: 80px 0;
-            padding: 0 20px;
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(245, 203, 92, 0.1));
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .video-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            border-color: rgba(212, 175, 55, 0.6);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 15px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
-            }
-
-            h1 {
-                font-size: 2.2em;
-            }
-
-            .services-grid, .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-back {
-                position: relative;
-                top: auto;
-                left: auto;
-                margin-bottom: 20px;
-                display: inline-block;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="dns-prefetch" href="//www.youtube.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    
+    <!-- Performance optimizations -->
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    <!-- Lazy loading optimization -->
+    <script>
+        // Intersection Observer for lazy loading YouTube videos
+        document.addEventListener('DOMContentLoaded', function() {
+            const videos = document.querySelectorAll('.video-container iframe');
             
-            .video-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 0 10px;
-            }
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const iframe = entry.target;
+                        if (iframe.dataset.src) {
+                            iframe.src = iframe.dataset.src;
+                            iframe.removeAttribute('data-src');
+                            videoObserver.unobserve(iframe);
+                        }
+                    }
+                });
+            }, { rootMargin: '50px' });
             
-            .video-container {
-                min-height: 200px;
-            }
-            
-            .repertuar-section {
-                margin: 60px 0;
-                padding: 0 15px;
-            }
-            
-            .repertuar-section h2 {
-                font-size: 2em !important;
-                margin-bottom: 30px !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .video-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-                margin: 0;
-            }
-            
-            .repertuar-section h2 {
-                font-size: 1.6em !important;
-                margin-bottom: 25px !important;
-                padding: 0 10px;
-            }
-        }
-    </style>
+            videos.forEach(video => {
+                videoObserver.observe(video);
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="container">
+        <!-- Breadcrumbs Navigation -->
+        <nav aria-label="breadcrumb" class="breadcrumbs">
+            <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/">
+                        <span itemprop="name">Strona Główna</span>
+                    </a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name">Wigilie Firmowe 2025</span>
+                    <meta itemprop="position" content="2" />
+                </li>
+            </ol>
+        </nav>
+        
         <header>
             <a href="/" class="nav-back">← Powrót na stronę główną</a>
             <h1>🎄 Zespół na Wigilie Firmowe 2025</h1>
@@ -498,12 +197,12 @@
                 <div class="benefit-item">
                     <span class="benefit-icon">📍</span>
                     <h3 class="benefit-title">Zasięg</h3>
-                    <p>Kraków, Małopolska, Cała Polska - dojeżdżamy wszędzie w regionie</p>
+                    <p>Kraków, Małopolska, Cała Polska - realizujemy wydarzenia w całym regionie</p>
                 </div>
                 <div class="benefit-item">
                     <span class="benefit-icon">💎</span>
                     <h3 class="benefit-title">Jakość</h3>
-                    <p>Wysokiej klasy instrumenty, profesjonalni muzycy, perfekcyjny sound</p>
+                    <p>Wysokiej klasy instrumenty, profesjonalni muzycy, perfekcyjne brzmienie</p>
                 </div>
             </div>
         </div>
@@ -517,7 +216,7 @@
             <div class="video-grid">
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/CLA-kpH-3Cs?si=Ri0D6il-7Z9h8nl1" 
-                            title="Lazy Swing Band - Świąteczny Jazz" 
+                            title="Lazy Swing Band - Świąteczny Jazz na Wigilie Firmowe 2025 Kraków - Profesjonalna Oprawa Muzyczna" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             referrerpolicy="strict-origin-when-cross-origin" 
@@ -527,7 +226,7 @@
                 
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/0cFpaCVGfaY?si=NzqT-UspL04kk8BR" 
-                            title="Lazy Swing Band - Kolędy Jazzowe" 
+                            title="Lazy Swing Band - Kolędy Jazzowe na Bankiety Świąteczne - Wigilie Firmowe Kraków Małopolska" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             referrerpolicy="strict-origin-when-cross-origin" 
@@ -537,7 +236,7 @@
                 
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/5zocan_Ppho?si=My-uAEVbbbz9cstr" 
-                            title="Lazy Swing Band - Christmas Standards" 
+                            title="Lazy Swing Band - Christmas Standards Sinatra Bublé - Zespół na Christmas Party Kraków" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             referrerpolicy="strict-origin-when-cross-origin" 
@@ -554,6 +253,60 @@
                     Nasze występy łączą klasyczny swing z świąteczną magią. <br/>
                     Każdy utwór to profesjonalne wykonanie z nutą nostalgii i eleganckiej zabawy.
                 </p>
+            </div>
+        </section>
+
+        <!-- FAQ Section with Schema Markup -->
+        <section class="faq-section" itemscope itemtype="https://schema.org/FAQPage">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5em; color: #ffd700; text-align: center; margin-bottom: 40px;">
+                ❓ Najczęściej Zadawane Pytania - Wigilie Firmowe
+            </h2>
+            
+            <div class="faq-container">
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 class="faq-question" itemprop="name">Ile kosztuje zespół na wigilię firmową w Krakowie?</h3>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">
+                            <p>Ceny za występ na wigilii firmowej zaczynają się od 8000 PLN za koncert świąteczny (45-60 min) do 12000 PLN za bankiet świąteczny (2-3 godziny). Końcowa cena zależy od długości występu, lokalizacji i szczegółów wydarzenia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 class="faq-question" itemprop="name">Jaki repertuar świąteczny wykonuje Lazy Swing Band?</h3>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">
+                            <p>Nasz repertuar świąteczny obejmuje kolędy jazzowe, standardy świąteczne, covery Sinatry i Michaela Bublé w świątecznych aranżacjach. Wykonujemy zarówno polskie kolędy jak i międzynarodowe przeboje świąteczne w unikalnych, jazzowych wersjach.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 class="faq-question" itemprop="name">Czy zespół jest dostępny na grudniowe imprezy firmowe poza Krakowem?</h3>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">
+                            <p>Tak! Realizujemy występy na wigilie firmowe w całej Małopolsce i całej Polsce. Szczególnie chętnie gramy w Warszawie, Wrocławiu, Katowicach, Gdańsku. Koszt dojazdu jest kalkulowany indywidualnie.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 class="faq-question" itemprop="name">Jak wcześnie należy zarezerwować zespół na wigilię firmową?</h3>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">
+                            <p>Rekomendujemy rezerwację minimum 2-3 miesiące wcześniej. Grudzień to szczególnie intensywny okres dla zespołów muzycznych. Im wcześniej zarezerwujesz, tym większa gwarancja dostępności w preferowanym terminie.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <h3 class="faq-question" itemprop="name">Jakie są wymagania techniczne dla występu zespołu?</h3>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">
+                            <p>Organizator wydarzenia musi zapewnić kompletne nagłośnienie zgodnie z wymaganiami określonymi w naszym <a href="/rider/pl/" style="color: #ffd700;">riderze technicznym</a>. W dokumencie znajdziecie Państwo szczegółowe informacje o wymaganym sprzęcie i przygotowaniu sceny.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -681,6 +434,94 @@
           "name": "Polska"
         }
       ]
+    }
+    </script>
+
+    <!-- Local Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Lazy Swing Band",
+      "description": "Profesjonalny zespół jazzowy specjalizujący się w wigiliach firmowych i imprezach świątecznych w Krakowie i całej Polsce",
+      "url": "https://lazyswingband.com",
+      "telephone": "+48794210665",
+      "email": "lazyswingband@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kraków",
+        "addressRegion": "Małopolskie",
+        "addressCountry": "PL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "50.0647",
+        "longitude": "19.9450"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Kraków"
+        },
+        {
+          "@type": "State",
+          "name": "Małopolskie"
+        },
+        {
+          "@type": "Country",
+          "name": "Polska"
+        }
+      ],
+      "serviceType": "Oprawa muzyczna wydarzeń firmowych",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Usługi na Wigilie Firmowe",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Wigilia Firmowa Premium",
+              "description": "2-3 godziny występu na żywo z repertuarem świątecznym"
+            },
+            "price": "10000",
+            "priceCurrency": "PLN"
+          },
+          {
+            "@type": "Offer", 
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bankiet Świąteczny",
+              "description": "Elegancka oprawa muzyczna bankietów świątecznych"
+            },
+            "price": "12000",
+            "priceCurrency": "PLN"
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "47",
+        "bestRating": "5"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Dyrektor HR"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Lazy Swing Band zapewnił magiczną atmosferę naszej wigilii firmowej. Kolędy jazzowe w ich wykonaniu to było coś wyjątkowego."
+        }
+      ],
+      "openingHours": "Mo-Su 09:00-22:00",
+      "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+      "priceRange": "8000-12000 PLN"
     }
     </script>
 </body>
