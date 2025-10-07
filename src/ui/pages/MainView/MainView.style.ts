@@ -221,6 +221,124 @@ export const SubHeader = styled('p')`
         letter-spacing: 3px;
     }
 `;
+
+export const CTAButton = styled('a')`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    padding: 16px 32px;
+    background: rgba(212, 175, 55, 0.12);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: ${colors.primary.gold};
+    text-decoration: none;
+    font-family: ${fonts.outfit.Medium};
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 60px;
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 4px 20px rgba(0, 0, 0, 0.15),
+        0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+    animation: subtleFadeIn 1.8s ease-out 2.2s both;
+    
+    /* Elegant inner glow effect */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+        transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        border-radius: 50%;
+    }
+    
+    /* Subtle shimmer effect */
+    &::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+            45deg,
+            transparent 30%,
+            rgba(255, 255, 255, 0.05) 50%,
+            transparent 70%
+        );
+        transform: translateX(-100%);
+        transition: transform 1.2s ease;
+    }
+    
+    &:hover {
+        transform: translateY(-2px);
+        background: rgba(212, 175, 55, 0.18);
+        border-color: rgba(212, 175, 55, 0.5);
+        box-shadow: 
+            inset 0 1px 0 rgba(255, 255, 255, 0.15),
+            0 8px 32px rgba(0, 0, 0, 0.25),
+            0 4px 16px rgba(212, 175, 55, 0.15);
+        color: ${colors.primary.sandy};
+        
+        &::before {
+            width: 200px;
+            height: 200px;
+        }
+        
+        &::after {
+            transform: translateX(100%);
+        }
+    }
+    
+    &:active {
+        transform: translateY(0px);
+        transition: transform 0.1s ease;
+    }
+    
+    /* Sophisticated fade-in animation */
+    @keyframes subtleFadeIn {
+        0% { 
+            opacity: 0; 
+            transform: translateY(15px) scale(0.95);
+            filter: blur(1px);
+        }
+        50% {
+            opacity: 0.7;
+        }
+        100% { 
+            opacity: 1; 
+            transform: translateY(0) scale(1);
+            filter: blur(0px);
+        }
+    }
+    
+    /* Elegant focus state for accessibility */
+    &:focus {
+        outline: none;
+        box-shadow: 
+            inset 0 1px 0 rgba(255, 255, 255, 0.15),
+            0 8px 32px rgba(0, 0, 0, 0.25),
+            0 0 0 3px rgba(212, 175, 55, 0.3);
+    }
+    
+    ${mq[0]} {
+        font-size: 14px;
+        padding: 14px 28px;
+        letter-spacing: 1px;
+        margin-top: 30px;
+    }
+`;
 export const ExtraSmallHeader = styled('span')`
     /* margin-top: 10px; */
     font-size: 16px;
