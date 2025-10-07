@@ -399,7 +399,7 @@ export function ContactSection() {
             </ContactHeader>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '15px', marginTop: '20px' }}>
               <a 
-                href="/rider-pl/"
+                href="/rider/pl/"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -436,7 +436,7 @@ export function ContactSection() {
               </a>
               
               <a 
-                href="/rider-en/"
+                href="/rider/en/"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
