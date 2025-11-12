@@ -1,16 +1,17 @@
 import styled from "@emotion/styled";
-import { colors, fonts } from "config/theme";
+import { colors, fonts, spacing, typography, shadows } from "config/theme";
 
 const breakpoints = [576, 768, 992, 1200];
 const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
 export const ContactHeader = styled('h2')`
-  font-family: ${fonts.outfit.Medium};
-  font-size: 36px;
-  font-weight: 700;
+  font-family: ${fonts.outfit.SemiBold};
+  font-size: ${typography.h3.size};
+  font-weight: ${typography.h3.weight};
+  line-height: ${typography.h3.lineHeight};
   color: ${colors.primary.gold};
-  margin: 0 0 40px 0;
-  letter-spacing: 3px;
+  margin: 0 0 ${spacing.xxl} 0;
+  letter-spacing: ${typography.h3.letterSpacing};
   text-transform: uppercase;
   text-align: center;
   position: relative;
@@ -20,19 +21,19 @@ export const ContactHeader = styled('h2')`
   &::before {
     content: '';
     position: absolute;
-    top: -15px;
+    top: -${spacing.md};
     left: 50%;
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
     background: linear-gradient(90deg, transparent, ${colors.primary.gold}, transparent);
-    box-shadow: 0 0 15px ${colors.primary.gold}50;
+    box-shadow: ${shadows.glow};
   }
   
   &::after {
     content: '';
     position: absolute;
-    bottom: -15px;
+    bottom: -${spacing.md};
     left: 50%;
     transform: translateX(-50%);
     width: 120px;
@@ -41,20 +42,18 @@ export const ContactHeader = styled('h2')`
   }
   
   ${mq[2]} {
-    font-size: 28px;
-    letter-spacing: 2px;
+    font-size: ${typography.h4.size};
   }
   
   ${mq[1]} {
-    font-size: 24px;
-    letter-spacing: 1px;
-    margin-bottom: 30px;
+    font-size: ${typography.h5.size};
+    margin-bottom: ${spacing.xl};
   }
 `;
 
 export const ContactHeaderCenter = styled(ContactHeader)`
   color: ${colors.primary.white};
-  margin-bottom: 50px;
+  margin-bottom: ${spacing.xxl};
   
   &::before {
     width: 100px;

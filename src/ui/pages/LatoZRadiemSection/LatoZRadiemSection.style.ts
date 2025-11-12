@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { colors, fonts } from "config/theme";
+import { colors, fonts, spacing, typography, shadows } from "config/theme";
 
 const breakpoints = [576, 768, 992, 1200];
 const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
@@ -67,12 +67,13 @@ export const SectionHeader = styled("div")`
 `;
 
 export const MainTitle = styled("h2")`
-  font-family: ${fonts.outfit.Medium};
-  font-size: 48px;
-  font-weight: 700;
+  font-family: ${fonts.outfit.SemiBold};
+  font-size: ${typography.h1.size};
+  font-weight: ${typography.h1.weight};
+  line-height: ${typography.h1.lineHeight};
   color: ${colors.primary.gold};
-  margin: 0 0 20px 0;
-  letter-spacing: 3px;
+  margin: 0 0 ${spacing.lg} 0;
+  letter-spacing: ${typography.h1.letterSpacing};
   text-transform: uppercase;
   position: relative;
   display: inline-block;
@@ -80,34 +81,32 @@ export const MainTitle = styled("h2")`
   &::before {
     content: '';
     position: absolute;
-    top: -15px;
+    top: -${spacing.md};
     left: 50%;
     transform: translateX(-50%);
     width: 100px;
     height: 3px;
     background: linear-gradient(90deg, transparent, ${colors.primary.gold}, transparent);
-    box-shadow: 0 0 15px ${colors.primary.gold}50;
+    box-shadow: ${shadows.glow};
   }
   
   &::after {
     content: '';
     position: absolute;
-    bottom: -15px;
+    bottom: -${spacing.md};
     left: 50%;
     transform: translateX(-50%);
     width: 150px;
-    height: 1px;
+    height: 2px;
     background: linear-gradient(90deg, transparent, ${colors.primary.gold}, transparent);
   }
   
   ${mq[2]} {
-    font-size: 36px;
-    letter-spacing: 2px;
+    font-size: ${typography.h2.size};
   }
   
   ${mq[1]} {
-    font-size: 28px;
-    letter-spacing: 1px;
+    font-size: ${typography.h3.size};
   }
 `;
 
@@ -397,28 +396,20 @@ export const CityLabel = styled("div")<{ $x: number; $y: number }>`
 // Modern 2024 Mobile-First Card Carousel
 export const ImageCarousel = styled("div")`
   position: relative;
-  height: 520px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.lg};
   
   ${mq[2]} {
     order: 1;
-    height: 420px;
-  }
-  
-  ${mq[1]} {
-    height: 360px;
-    margin-bottom: 20px;
-  }
-  
-  ${mq[0]} {
-    height: 300px;
   }
 `;
 
 export const CarouselContainer = styled("div")`
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 520px;
   overflow: hidden;
   border-radius: 25px;
   background: rgba(255, 255, 255, 0.05);
@@ -427,6 +418,18 @@ export const CarouselContainer = styled("div")`
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.3),
     0 0 30px ${colors.primary.gold}10;
+  
+  ${mq[2]} {
+    height: 420px;
+  }
+  
+  ${mq[1]} {
+    height: 360px;
+  }
+  
+  ${mq[0]} {
+    height: 300px;
+  }
 `;
 
 export const CarouselTrack = styled("div")<{ $currentIndex: number }>`
@@ -484,21 +487,21 @@ export const CardContent = styled("div")`
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 25px;
+  padding: ${spacing.lg};
   z-index: 2;
   color: white;
   
   h3 {
     font-family: ${fonts.outfit.Medium};
-    font-size: 18px;
+    font-size: ${typography.h6.size};
     color: ${colors.primary.gold};
-    margin: 0 0 8px 0;
+    margin: 0 0 ${spacing.sm} 0;
     text-shadow: 0 2px 4px rgba(0,0,0,0.8);
   }
   
   p {
     font-family: ${fonts.outfit.ExtraLight};
-    font-size: 14px;
+    font-size: ${typography.bodySmall.size};
     color: ${colors.neutrals.N10};
     line-height: 1.4;
     margin: 0;
@@ -506,74 +509,110 @@ export const CardContent = styled("div")`
   }
   
   ${mq[1]} {
-    padding: 20px;
+    padding: ${spacing.lg};
     
     h3 {
-      font-size: 16px;
+      font-size: ${typography.bodyLarge.size};
     }
     
     p {
-      font-size: 13px;
+      font-size: ${typography.caption.size};
     }
   }
   
   ${mq[0]} {
-    padding: 15px 15px 25px 15px;
+    padding: ${spacing.md};
     
     h3 {
-      font-size: 14px;
+      font-size: ${typography.body.size};
     }
     
     p {
-      font-size: 12px;
+      font-size: ${typography.caption.size};
     }
   }
 `;
 
 export const CarouselIndicators = styled("div")`
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
-  gap: 8px;
-  z-index: 5;
+  justify-content: center;
+  align-items: center;
+  gap: ${spacing.sm};
+  padding: ${spacing.md};
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  border: 1px solid ${colors.primary.gold}20;
+  width: fit-content;
+  margin: 0 auto;
   
   ${mq[1]} {
-    bottom: 8px;
+    padding: ${spacing.sm} ${spacing.md};
   }
   
   ${mq[0]} {
-    bottom: 5px;
+    padding: ${spacing.sm} ${spacing.md};
   }
 `;
 
 export const IndicatorDot = styled("button")<{ $isActive: boolean }>`
-  width: 10px;
-  height: 10px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  border: none;
+  border: 2px solid ${({ $isActive }) => 
+    $isActive ? colors.primary.gold : 'rgba(255, 255, 255, 0.4)'};
   background: ${({ $isActive }) => 
-    $isActive ? colors.primary.gold : 'rgba(255, 255, 255, 0.3)'};
+    $isActive ? colors.primary.gold : 'transparent'};
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  min-height: 44px; /* WCAG touch target */
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   
-  &:hover {
-    background: ${colors.primary.gold}80;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: inherit;
+    background: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  &:hover::before {
+    background: ${colors.primary.gold};
+    border-color: ${colors.primary.gold};
     transform: scale(1.2);
+    box-shadow: 0 0 16px ${colors.primary.gold}80;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid ${colors.primary.gold};
+    outline-offset: 4px;
   }
   
   ${mq[1]} {
-    width: 10px;
-    height: 10px;
+    min-height: 40px;
+    min-width: 40px;
+    
+    &::before {
+      width: 12px;
+      height: 12px;
+    }
   }
   
   ${mq[0]} {
-    width: 8px;
-    height: 8px;
+    min-height: 36px;
+    min-width: 36px;
     
-    &:hover {
-      transform: scale(1.1);
+    &::before {
+      width: 10px;
+      height: 10px;
     }
   }
 `;

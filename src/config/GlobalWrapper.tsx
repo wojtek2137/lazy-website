@@ -23,8 +23,17 @@ export const GlobalWrapper = (): JSX.Element => {
     return (
         <Global
             styles={css`
+                /* Remove default focus for mouse users, keep for keyboard */
                 *:focus {
-                outline: none;
+                    outline: none;
+                }
+                
+                /* WCAG 2.1 AAA compliant focus states for keyboard navigation */
+                *:focus-visible {
+                    outline: 3px solid #FFB800;
+                    outline-offset: 3px;
+                    border-radius: 4px;
+                    transition: outline 0.2s ease;
                 }
                 * {
                     box-sizing: border-box;
@@ -55,9 +64,9 @@ export const GlobalWrapper = (): JSX.Element => {
                     font-variant-ligatures: common-ligatures;
                 }
                 
-                /* Enhanced scrollbar styling */
+                /* Enhanced scrollbar styling with new color system */
                 ::-webkit-scrollbar {
-                    width: 8px;
+                    width: 10px;
                 }
                 
                 ::-webkit-scrollbar-track {
@@ -65,14 +74,14 @@ export const GlobalWrapper = (): JSX.Element => {
                 }
                 
                 ::-webkit-scrollbar-thumb {
-                    background: linear-gradient(180deg, #f5cb5c, #daa61d);
-                    border-radius: 4px;
-                    box-shadow: 0 0 10px rgba(245, 203, 92, 0.3);
+                    background: linear-gradient(180deg, #FFB800, #D4A017);
+                    border-radius: 5px;
+                    box-shadow: 0 0 12px rgba(255, 184, 0, 0.4);
                 }
                 
                 ::-webkit-scrollbar-thumb:hover {
-                    background: linear-gradient(180deg, #daa61d, #f5cb5c);
-                    box-shadow: 0 0 15px rgba(245, 203, 92, 0.5);
+                    background: linear-gradient(180deg, #D4A017, #FFB800);
+                    box-shadow: 0 0 16px rgba(255, 184, 0, 0.6);
                 }
                 
                 /* Screen reader only class */
@@ -93,11 +102,16 @@ export const GlobalWrapper = (): JSX.Element => {
                     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
                 }
                 
-                /* Focus improvements */
-                *:focus-visible {
-                    outline: 2px solid #f5cb5c;
-                    outline-offset: 2px;
-                    border-radius: 4px;
+                /* Interactive elements minimum size - WCAG 2.1 AAA */
+                button, a, input, select, textarea {
+                    min-height: 44px;
+                    min-width: 44px;
+                    
+                    @media (hover: hover) and (pointer: fine) {
+                        /* Desktop - slightly smaller acceptable */
+                        min-height: 40px;
+                        min-width: 40px;
+                    }
                 }
                 
                 /* Reduced motion for accessibility */

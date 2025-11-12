@@ -270,19 +270,19 @@ export function LatoZRadiemSection() {
                 ))}
               </CarouselTrack>
 
-              <CarouselIndicators>
-                {carouselSlides.map((_, index) => (
-                  <IndicatorDot
-                    key={index}
-                    $isActive={index === currentSlide}
-                    onClick={() => goToSlide(index)}
-                    aria-label={`Przejdź do slajdu ${index + 1}`}
-                  />
-                ))}
-              </CarouselIndicators>
-
               <SwipeHint>Przesuń</SwipeHint>
             </CarouselContainer>
+            
+            <CarouselIndicators>
+              {carouselSlides.map((_, index) => (
+                <IndicatorDot
+                  key={index}
+                  $isActive={index === currentSlide}
+                  onClick={() => goToSlide(index)}
+                  aria-label={`Przejdź do slajdu ${index + 1}`}
+                />
+              ))}
+            </CarouselIndicators>
           </ImageCarousel>
         </ContentGrid>
       </ContentContainer>

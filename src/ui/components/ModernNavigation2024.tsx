@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import styled from '@emotion/styled';
-import { colors, fonts } from 'config/theme';
+import { colors, fonts, spacing, typography, shadows } from 'config/theme';
 
 // Command Palette Interface
 interface NavigationItem {
@@ -30,24 +30,24 @@ const CommandPalette = styled.div`
   left: 50%;
   transform: translateX(-50%);
   width: min(600px, 90vw);
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.97);
   backdrop-filter: blur(40px);
-  border: 1px solid ${colors.primary.gold}30;
-  border-radius: 20px;
+  border: 2px solid ${colors.primary.gold};
+  border-radius: 16px;
   overflow: hidden;
   z-index: 10002;
-  pointer-events: all; /* Ensure clicks work */
+  pointer-events: all;
   box-shadow: 
-    0 40px 80px rgba(0, 0, 0, 0.8),
-    0 0 60px ${colors.primary.gold}20,
+    ${shadows.xl},
+    ${shadows.glowStrong},
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   
   /* Entry animation */
-  animation: slideInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: slideInDown 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   
   @keyframes slideInDown {
     from {
-      transform: translateX(-50%) translateY(-30px);
+      transform: translateX(-50%) translateY(-${spacing.lg});
       opacity: 0;
     }
     to {
@@ -62,8 +62,8 @@ const CommandPalette = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, ${colors.primary.gold}60, transparent);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, ${colors.primary.gold}, transparent);
   }
 `;
 
@@ -95,12 +95,17 @@ const CommandInput = styled.input`
   width: 100%;
   background: transparent;
   border: none;
-  padding: 20px 24px;
+  padding: ${spacing.lg} ${spacing.xl};
   color: ${colors.primary.white};
   font-family: ${fonts.outfit.Medium};
-  font-size: 18px;
+  font-size: ${typography.bodyLarge.size};
   outline: none;
-  border-bottom: 1px solid ${colors.primary.gold}20;
+  border-bottom: 2px solid ${colors.primary.gold}30;
+  transition: border-color 0.2s ease;
+  
+  &:focus {
+    border-bottom-color: ${colors.primary.gold};
+  }
   
   &::placeholder {
     color: ${colors.neutrals.N300};
@@ -173,36 +178,44 @@ const CommandShortcut = styled.div`
 // Smart Breadcrumbs
 const BreadcrumbWrapper = styled.div`
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: ${spacing.lg};
+  left: ${spacing.lg};
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: ${spacing.sm};
   pointer-events: all;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(20px);
-  padding: 12px 20px;
-  border-radius: 25px;
-  border: 1px solid ${colors.primary.gold}20;
-  transition: all 0.3s ease;
+  padding: ${spacing.md} ${spacing.lg};
+  border-radius: 50px;
+  border: 2px solid ${colors.primary.gold}40;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: ${shadows.md};
   
   &:hover {
-    background: rgba(0, 0, 0, 0.9);
-    border-color: ${colors.primary.gold}40;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.95);
+    border-color: ${colors.primary.gold};
+    transform: translateY(-${spacing.xs});
+    box-shadow: ${shadows.lg}, ${shadows.glow};
   }
 `;
 
 const BreadcrumbItem = styled.span<{ isActive: boolean }>`
   color: ${({ isActive }) => isActive ? colors.primary.gold : colors.neutrals.N300};
   font-family: ${fonts.outfit.Medium};
-  font-size: 14px;
-  transition: color 0.3s ease;
+  font-size: ${typography.bodySmall.size};
+  font-weight: 500;
+  transition: color 0.2s ease;
   cursor: ${({ isActive }) => isActive ? 'default' : 'pointer'};
   
   &:hover {
-    color: ${colors.primary.sandy};
+    color: ${({ isActive }) => isActive ? colors.primary.gold : colors.primary.sandy};
+  }
+  
+  &:focus-visible {
+    outline: 2px solid ${colors.primary.gold};
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 `;
 
@@ -255,46 +268,55 @@ const QuickActionsIcon = styled.span`
 // Command Trigger Button
 const CommandTrigger = styled.button`
   position: fixed;
-  top: 30px;
-  right: 30px;
-  background: rgba(0, 0, 0, 0.9);
+  top: ${spacing.xl};
+  right: ${spacing.xl};
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(20px);
-  border: 1px solid ${colors.primary.gold}30;
-  border-radius: 12px;
-  padding: 12px 20px;
+  border: 2px solid ${colors.primary.gold};
+  border-radius: 50px;
+  padding: ${spacing.md} ${spacing.lg};
+  min-height: 48px; /* WCAG touch target */
   color: ${colors.primary.white};
   font-family: ${fonts.outfit.Medium};
-  font-size: 14px;
+  font-size: ${typography.bodySmall.size};
+  font-weight: 500;
   cursor: pointer;
   pointer-events: all;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: ${spacing.sm};
+  box-shadow: ${shadows.md};
   
   &:hover {
-    background: rgba(0, 0, 0, 0.95);
-    border-color: ${colors.primary.gold}50;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, ${colors.primary.gold} 0%, ${colors.primary.yellow} 100%);
+    color: ${colors.primary.black};
+    border-color: ${colors.primary.gold};
+    transform: translateY(-${spacing.xs});
+    box-shadow: ${shadows.lg}, ${shadows.glow};
+  }
+  
+  &:focus-visible {
+    outline: 3px solid ${colors.primary.gold};
+    outline-offset: 3px;
   }
   
   @media (max-width: 768px) {
-    width: 50px;
-    height: 50px;
+    width: 52px;
+    height: 52px;
     padding: 0;
-    border-radius: 25px;
-    top: 20px;
-    right: 20px;
+    border-radius: 26px;
+    top: ${spacing.lg};
+    right: ${spacing.lg};
     justify-content: center;
   }
   
   @media (max-width: 480px) {
-    width: 45px;
-    height: 45px;
-    border-radius: 22px;
-    top: 15px;
-    right: 15px;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    top: ${spacing.md};
+    right: ${spacing.md};
   }
 `;
 

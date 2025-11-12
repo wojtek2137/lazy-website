@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { colors, fonts } from 'config/theme';
+import { colors, fonts, spacing, typography, shadows } from 'config/theme';
 import LogoImage from 'assets/images/logo-color.webp';
 
 const breakpoints = [576, 768, 992, 1200];
@@ -13,27 +13,27 @@ export const Logo = styled('div')`
     background: url('${LogoImage}');
     background-repeat: no-repeat;
     background-size: cover;
-    filter: drop-shadow(0 0 30px ${colors.primary.gold}40) drop-shadow(0 0 60px ${colors.primary.gold}20);
-    transition: all 0.8s ease;
+    filter: drop-shadow(${shadows.glow});
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 3;
     
     &::before {
       content: '';
       position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
-      background: radial-gradient(circle, ${colors.primary.gold}20 0%, transparent 70%);
+      top: -${spacing.md};
+      left: -${spacing.md};
+      right: -${spacing.md};
+      bottom: -${spacing.md};
+      background: radial-gradient(circle, ${colors.primary.gold}15 0%, transparent 70%);
       border-radius: 50%;
       z-index: -1;
-      opacity: 0.6;
+      opacity: 0.5;
     }
     
     &:hover {
-      transform: scale(1.05) rotate(2deg);
-      filter: drop-shadow(0 0 40px ${colors.primary.gold}60) drop-shadow(0 0 80px ${colors.primary.gold}30);
+      transform: scale(1.03) rotate(1deg);
+      filter: drop-shadow(${shadows.glowStrong});
     }
     
     ${mq[0]} {
@@ -130,77 +130,62 @@ export const Header = styled('span')`
 `;
 
 export const MainTitle = styled('h1')`
-    margin: 20px 0;
+    margin: ${spacing.lg} 0;
     text-transform: uppercase;
     font-family: ${fonts.outfit.SemiBold};
-    letter-spacing: 4px;
-    font-size: 3.2em;
-    color: ${colors.primary.sandy};
+    font-size: ${typography.h1.size};
+    font-weight: ${typography.h1.weight};
+    line-height: ${typography.h1.lineHeight};
+    letter-spacing: ${typography.h1.letterSpacing};
+    color: ${colors.primary.white};
     text-shadow: 
-      0 0 20px ${colors.primary.gold}60,
-      0 0 40px ${colors.primary.gold}40,
-      0 4px 8px rgba(0,0,0,0.5);
+      0 ${spacing.xs} ${spacing.md} rgba(0,0,0,0.8),
+      0 0 ${spacing.xl} ${colors.primary.gold}50;
     position: relative;
-    /* Reduced animation frequency for performance */
-    animation: titleGlow 6s ease-in-out infinite alternate;
     
     &::before {
       content: '';
       position: absolute;
-      top: -20px;
+      top: -${spacing.lg};
       left: 50%;
       transform: translateX(-50%);
       width: 200px;
-      height: 2px;
+      height: 3px;
       background: linear-gradient(90deg, transparent, ${colors.primary.gold}, transparent);
-      box-shadow: 0 0 20px ${colors.primary.gold}80;
+      box-shadow: ${shadows.glow};
     }
     
     &::after {
       content: '';
       position: absolute;
-      bottom: -20px;
+      bottom: -${spacing.lg};
       left: 50%;
       transform: translateX(-50%);
       width: 300px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, ${colors.primary.sandy}, transparent);
-    }
-    
-    @keyframes titleGlow {
-      0% { 
-        text-shadow: 
-          0 0 20px ${colors.primary.gold}60,
-          0 0 40px ${colors.primary.gold}40,
-          0 4px 8px rgba(0,0,0,0.5);
-      }
-      100% { 
-        text-shadow: 
-          0 0 30px ${colors.primary.gold}80,
-          0 0 60px ${colors.primary.gold}60,
-          0 4px 8px rgba(0,0,0,0.5);
-      }
+      height: 2px;
+      background: linear-gradient(90deg, transparent, ${colors.primary.gold}80, transparent);
     }
     
     ${mq[0]} {
-        font-size: 32px;
-        letter-spacing: 2px;
+        font-size: ${typography.h3.size};
+        letter-spacing: 0;
     }
 `;
 export const SubHeader = styled('p')`
-    letter-spacing: 6px;
-    font-size: 26px;
-    font-family: ${fonts.outfit.Medium};
-    color: ${colors.primary.white};
-    margin: 15px 0;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    font-family: ${fonts.outfit.Light};
+    font-size: ${typography.h5.size};
+    font-weight: ${typography.h5.weight};
+    line-height: ${typography.h5.lineHeight};
+    letter-spacing: 0.05em;
+    color: ${colors.neutrals.N20};
+    margin: ${spacing.md} 0;
+    text-shadow: 0 ${spacing.xs} ${spacing.sm} rgba(0,0,0,0.8);
     opacity: 0.95;
     transition: all 0.3s ease;
     
     &:hover {
       opacity: 1;
-      color: ${colors.neutrals.N10};
-      text-shadow: 0 0 15px ${colors.primary.white}30;
+      color: ${colors.primary.sandy};
     }
     
     &:first-of-type {
@@ -217,8 +202,8 @@ export const SubHeader = styled('p')`
     }
     
     ${mq[0]} {
-        font-size: 20px;
-        letter-spacing: 3px;
+        font-size: ${typography.h6.size};
+        letter-spacing: 0.03em;
     }
 `;
 
@@ -226,42 +211,29 @@ export const CTAButton = styled('a')`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
-    padding: 16px 32px;
-    background: rgba(212, 175, 55, 0.12);
+    margin-top: ${spacing.xxl};
+    padding: ${spacing.md} ${spacing.xl};
+    min-height: 56px; /* WCAG 2.1 AAA - touch target size */
+    background: linear-gradient(135deg, ${colors.primary.gold} 0%, ${colors.primary.yellow} 100%);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    color: ${colors.primary.gold};
+    border: 2px solid ${colors.primary.gold};
+    color: ${colors.primary.black};
     text-decoration: none;
-    font-family: ${fonts.outfit.Medium};
-    font-size: 16px;
-    letter-spacing: 1.5px;
+    font-family: ${fonts.outfit.SemiBold};
+    font-size: ${typography.h6.size};
+    font-weight: 600;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    border-radius: 60px;
+    border-radius: 50px;
     box-shadow: 
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        0 4px 20px rgba(0, 0, 0, 0.15),
-        0 1px 3px rgba(0, 0, 0, 0.2);
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        ${shadows.lg},
+        ${shadows.glow},
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 5;
     overflow: hidden;
     animation: subtleFadeIn 1.8s ease-out 2.2s both;
-    
-    /* Elegant inner glow effect */
-    &::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
-        transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
-        transform: translate(-50%, -50%);
-        z-index: -1;
-        border-radius: 50%;
-    }
     
     /* Subtle shimmer effect */
     &::after {
@@ -274,27 +246,21 @@ export const CTAButton = styled('a')`
         background: linear-gradient(
             45deg,
             transparent 30%,
-            rgba(255, 255, 255, 0.05) 50%,
+            rgba(255, 255, 255, 0.2) 50%,
             transparent 70%
         );
         transform: translateX(-100%);
-        transition: transform 1.2s ease;
+        transition: transform 1s ease;
     }
     
     &:hover {
-        transform: translateY(-2px);
-        background: rgba(212, 175, 55, 0.18);
-        border-color: rgba(212, 175, 55, 0.5);
+        transform: translateY(-4px) scale(1.02);
+        background: linear-gradient(135deg, ${colors.primary.yellow} 0%, ${colors.primary.gold} 100%);
+        border-color: ${colors.primary.yellow};
         box-shadow: 
-            inset 0 1px 0 rgba(255, 255, 255, 0.15),
-            0 8px 32px rgba(0, 0, 0, 0.25),
-            0 4px 16px rgba(212, 175, 55, 0.15);
-        color: ${colors.primary.sandy};
-        
-        &::before {
-            width: 200px;
-            height: 200px;
-        }
+            ${shadows.xl},
+            ${shadows.glowStrong},
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
         
         &::after {
             transform: translateX(100%);
@@ -302,7 +268,7 @@ export const CTAButton = styled('a')`
     }
     
     &:active {
-        transform: translateY(0px);
+        transform: translateY(-2px) scale(1);
         transition: transform 0.1s ease;
     }
     
@@ -310,7 +276,7 @@ export const CTAButton = styled('a')`
     @keyframes subtleFadeIn {
         0% { 
             opacity: 0; 
-            transform: translateY(15px) scale(0.95);
+            transform: translateY(${spacing.md}) scale(0.95);
             filter: blur(1px);
         }
         50% {
@@ -323,20 +289,22 @@ export const CTAButton = styled('a')`
         }
     }
     
-    /* Elegant focus state for accessibility */
-    &:focus {
-        outline: none;
+    /* WCAG 2.1 AAA focus state for accessibility */
+    &:focus-visible {
+        outline: 3px solid ${colors.primary.gold};
+        outline-offset: 4px;
         box-shadow: 
-            inset 0 1px 0 rgba(255, 255, 255, 0.15),
-            0 8px 32px rgba(0, 0, 0, 0.25),
-            0 0 0 3px rgba(212, 175, 55, 0.3);
+            ${shadows.xl},
+            ${shadows.glowStrong},
+            0 0 0 4px rgba(0, 0, 0, 0.8);
     }
     
     ${mq[0]} {
-        font-size: 14px;
-        padding: 14px 28px;
-        letter-spacing: 1px;
-        margin-top: 30px;
+        font-size: ${typography.bodyLarge.size};
+        padding: ${spacing.md} ${spacing.lg};
+        letter-spacing: 0.03em;
+        margin-top: ${spacing.xl};
+        min-height: 48px;
     }
 `;
 export const ExtraSmallHeader = styled('span')`
