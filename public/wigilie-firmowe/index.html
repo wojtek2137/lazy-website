@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎄 Zespół na Wigilie Firmowe 2025 Kraków - Lazy Swing Band | Profesjonalna Oprawa Świąteczna</title>
-    <meta name="description" content="🎅 Zespół jazzowy na wigilie firmowe 2025 Kraków - Lazy Swing Band. Profesjonalna oprawa muzyczna świątecznych imprez firmowych + koncerty świąteczne dla firm. Kolędy jazzowe, swing, repertuar Sinatry & Michaela Bublé. Kraków, Małopolska, cała Polska. Od 7000 PLN!">
+    <title>Zespół na Wigilie Firmowe 2025 Kraków - Lazy Swing Band | Profesjonalna Oprawa Świąteczna</title>
+    <meta name="description" content="Zespół jazzowy na wigilie firmowe 2025 Kraków - Lazy Swing Band. Profesjonalna oprawa muzyczna świątecznych imprez firmowych + koncerty świąteczne dla firm. Kolędy jazzowe, swing, repertuar Sinatry & Michaela Bublé. Kraków, Małopolska, cała Polska. Od 7000 PLN!">
     <meta name="keywords" content="zespół na wigilię firmową kraków 2025, wigilia firmowa zespół jazzowy, koncert świąteczny dla firm, oprawa muzyczna wydarzenia świąteczne, zespół na święta firmowe, świąteczna impreza firmowa kraków, zespół jazzowy wigilia małopolska, oprawa muzyczna wigilia firmowa, zespół na bankiet świąteczny, christmas party band kraków, zespół na grudniowe imprezy firmowe, sinatra bublé christmas kraków, cała polska">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://lazyswingband.com/wigilie-firmowe/">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png"/>
 
     <!-- Open Graph -->
-    <meta property="og:title" content="🎄 Zespół na Wigilie Firmowe 2025 Kraków - Lazy Swing Band">
+    <meta property="og:title" content="Zespół na Wigilie Firmowe 2025 Kraków - Lazy Swing Band">
     <meta property="og:description" content="Profesjonalna oprawa muzyczna świątecznych imprez firmowych + koncerty świąteczne dla firm. Kolędy jazzowe, swing, repertuar Sinatry & Michaela Bublé. Kraków, Małopolska, cała Polska. Od 7000 PLN!">
     <meta property="og:image" content="https://lazyswingband.com/images/responsive/lazy_desktop.webp">
     <meta property="og:image:width" content="1200">
@@ -22,13 +22,14 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="🎄 Zespół na Wigilie Firmowe 2025 Kraków - Lazy Swing Band">
+    <meta name="twitter:title" content="Zespół na Wigilie Firmowe 2025 Kraków - Lazy Swing Band">
     <meta name="twitter:description" content="Profesjonalna oprawa muzyczna świątecznych imprez firmowych + koncerty świąteczne dla firm. Kolędy jazzowe, swing, repertuar Sinatry & Michaela Bublé. Kraków, Małopolska, cała Polska. Od 7000 PLN!">
     <meta name="twitter:image" content="https://lazyswingband.com/images/responsive/lazy_desktop.webp">
     
+    <!-- Modern Font Stack - Brand Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     
     <!-- Preload critical resources -->
@@ -62,158 +63,271 @@
             videos.forEach(video => {
                 videoObserver.observe(video);
             });
+            
+            // FAQ Accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                        }
+                    });
+                    
+                    // Toggle current item
+                    if (!isActive) {
+                        item.classList.add('active');
+                        const answer = item.querySelector('.faq-answer');
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    } else {
+                        item.classList.remove('active');
+                        item.querySelector('.faq-answer').style.maxHeight = null;
+                    }
+                });
+            });
         });
     </script>
 </head>
 <body>
-    <div class="container">
+    <!-- Skip to content for accessibility -->
+    <a href="#main-content" class="skip-to-content">Przejdź do treści głównej</a>
+    
+    <!-- Sticky CTA Bar -->
+    <div class="sticky-cta" role="banner">
+        <div class="sticky-cta-content">
+            <span class="sticky-cta-text">Ostatnie wolne terminy Grudzień 2025</span>
+            <div class="sticky-cta-buttons">
+                <a href="tel:+48794210665" class="btn btn-primary btn-sm" aria-label="Zadzwoń teraz pod numer 794 210 665">
+                    <span aria-hidden="true">📞</span> Zadzwoń
+                </a>
+                <a href="mailto:lazyswingband@gmail.com" class="btn btn-secondary btn-sm" aria-label="Wyślij e-mail na adres lazyswingband@gmail.com">
+                    <span aria-hidden="true">✉️</span> E-mail
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="main-content">
         <!-- Breadcrumbs Navigation -->
         <nav aria-label="breadcrumb" class="breadcrumbs">
             <ol itemscope itemtype="https://schema.org/BreadcrumbList">
                 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a itemprop="item" href="/">
+                    <a itemprop="item" href="/" aria-label="Wróć do strony głównej">
                         <span itemprop="name">Strona Główna</span>
                     </a>
                     <meta itemprop="position" content="1" />
                 </li>
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
                     <span itemprop="name">Wigilie Firmowe 2025</span>
                     <meta itemprop="position" content="2" />
                 </li>
             </ol>
         </nav>
         
-        <header>
-            <a href="/" class="nav-back">← Powrót na stronę główną</a>
-            <h1>🎄 Zespół na Wigilie Firmowe 2025</h1>
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-badge" aria-label="Sezon 2025">
+                <span class="badge-icon" aria-hidden="true">🎄</span>
+                <span>Sezon 2025</span>
+            </div>
+            <h1 class="hero-title">
+                Zespół na Wigilie Firmowe 2025
+            </h1>
             <p class="hero-subtitle">
-                Profesjonalna oprawa muzyczna świątecznych imprez firmowych<br/>
-                🎷 <strong>Lazy Swing Band</strong> - Kraków • Małopolska • Cała Polska 🎅
+                Profesjonalna oprawa muzyczna świątecznych imprez firmowych
             </p>
+            <p class="hero-description">
+                <strong>Lazy Swing Band</strong> • Kraków • Małopolska • Cała Polska
+            </p>
+            
+            <div class="hero-cta">
+                <a href="tel:+48794210665" class="btn btn-primary btn-lg" aria-label="Zadzwoń teraz pod numer 794 210 665">
+                    Zarezerwuj Termin
+                </a>
+                <a href="#oferta" class="btn btn-outline btn-lg">
+                    Zobacz Ofertę
+                </a>
+            </div>
+            
+            <div class="hero-trust">
+                <div class="trust-item">
+                    <span class="trust-number">250+</span>
+                    <span class="trust-label">Wydarzeń</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">10</span>
+                    <span class="trust-label">Lat doświadczenia</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">4.9/5</span>
+                    <span class="trust-label">Średnia ocena</span>
+                </div>
+            </div>
         </header>
 
-        <div class="services-grid">
-            <div class="service-card">
-                <h2 class="service-title">🎄 Oprawa Muzyczna na Firmowe Wydarzenia Świąteczne</h2>
-                <p class="service-description">
-                    Elegancja, profesjonalizm i świąteczna atmosfera w jednym.<br/>
-                    Muzyka na żywo w wykonaniu profesjonalnego zespołu z doświadczeniem m.in. w Polskim Radiu - idealna na firmową Wigilię, bankiet, koncert świąteczny czy Christmas Party.
-                </p>
-                <div class="features-section">
-                    <h3>Co oferujemy:</h3>
-                    <ul class="features-list">
-                        <li>✨ Występ na żywo - 2 lub 3 godziny</li>
-                        <li>🎵 Repertuar świąteczny w wysmakowanych aranżacjach</li>
-                        <li>🎷 Jazzowe standardy, swing, covery Franka Sinatry, Deana Martina, Michaela Bublé i innych</li>
-                        <li>🎼 Możliwość wykonania dedykowanych utworów</li>
-                        <li>👔 Elegancki dress code dostosowany do rangi wydarzenia</li>
-                        <li>🍽️ Live background music podczas kolacji lub bankietu</li>
-                        <li>🎺 Opcja występu instrumentalnego (bez wokalu)</li>
-                        <li>🎤 Interakcja z publicznością, wspólne śpiewanie, prezentacja historii utworów</li>
-                        <li>💃 Energetyczne sety taneczne - świąteczne hity w swingowych i dancingowych wersjach</li>
-                        <li>📸 Foto i video friendly</li>
-                        <li>🤝 Ścisła koordynacja z organizatorem</li>
-                    </ul>
-                </div>
-                <div class="features-section">
-                    <h3>Dla kogo:</h3>
-                    <ul class="features-list">
-                        <li>🏢 Firmowe Wigilie i spotkania świąteczne</li>
-                        <li>🥂 Bankiety VIP i eleganckie kolacje</li>
-                        <li>🎉 Christmas Party z muzyką do tańca</li>
-                        <li>🎊 Integracyjne koncerty świąteczne dla pracowników</li>
-                    </ul>
-                </div>
-                <div class="price-info">
-                    <strong>🎁 Pakiet już od 8 000 PLN</strong><br/>
-                    <small>Ostateczna wycena zależna od lokalizacji, charakteru wydarzenia i długości występu</small>
-                </div>
+        <!-- Services Grid -->
+        <section id="oferta" class="services-section" aria-labelledby="services-heading">
+            <div class="section-header">
+                <span class="section-badge">Nasza Oferta</span>
+                <h2 id="services-heading" class="section-title">Wybierz Pakiet dla Swojej Firmy</h2>
             </div>
 
-            <div class="service-card">
-                <h2 class="service-title">🎼 Koncert Świąteczny dla Firm</h2>
-                <p class="service-description">
-                    Wyjątkowy muzyczny prezent dla Twojego zespołu - święta z klasą i emocjami.<br/>
-                    Stwórz niezapomnianą atmosferę w swojej firmie dzięki dedykowanemu koncertowi świątecznemu w wykonaniu profesjonalnego zespołu z doświadczeniem scenicznym i radiowym.<br/>
-                    <strong>To nie tylko występ - to spotkanie z muzyką, opowieściami i wspólnym świętowaniem.</strong>
-                </p>
-                <div class="features-section">
-                    <h3>Co zawiera koncert:</h3>
-                    <ul class="features-list">
-                        <li>⏱️ 45-60 minut występu na żywo</li>
-                        <li>🎤 Prezentacja utworów świątecznych z komentarzami i historią</li>
-                        <li>🗣️ Interakcja z publicznością - lekka, nienachalna konferansjerka</li>
-                        <li>🎵 Możliwość wspólnego śpiewania wybranych kolęd lub piosenek</li>
-                        <li>📹 Program foto i video friendly - idealny do dokumentacji wydarzenia</li>
-                        <li>✨ Stylowe i eleganckie aranżacje muzyczne w klimacie świąt</li>
-                    </ul>
-                </div>
-                <div class="features-section">
-                    <h3>Dla kogo?</h3>
-                    <p>Koncert świąteczny idealnie sprawdzi się:</p>
-                    <ul class="features-list">
-                        <li>🍽️ Podczas spotkań firmowych z zespołem (wigilie pracownicze, świąteczne lunche i kolacje)</li>
-                        <li>🤝 Na eventach integracyjnych, gdzie zależy Ci na cieplejszej, lżejszej atmosferze</li>
-                        <li>📈 Jako część wewnętrznego wydarzenia HR lub employer brandingowego</li>
-                        <li>🙏 Dla firm, które chcą podziękować swoim pracownikom w wyjątkowy sposób</li>
-                        <li>🏢 W przestrzeniach biurowych, salach konferencyjnych lub klubach firmowych</li>
-                    </ul>
-                </div>
-                <div class="price-info">
-                    <strong>🎺 Pakiet już od 7 000 PLN</strong><br/>
-                    <small>Ostateczna wycena zależy od lokalizacji oraz charakteru wydarzenia</small>
-                </div>
+            <div class="services-grid">
+                <article class="service-card featured" aria-labelledby="service-1-title">
+                    <div class="service-header">
+                        <span class="service-icon" aria-hidden="true">🎄</span>
+                        <h3 id="service-1-title" class="service-title">Oprawa Muzyczna na Wydarzenia Świąteczne</h3>
+                    </div>
+                    <p class="service-description">
+                        Elegancja, profesjonalizm i świąteczna atmosfera w jednym.
+                        Muzyka na żywo w wykonaniu profesjonalnego zespołu z doświadczeniem m.in. w Polskim Radiu - idealna na firmową Wigilię, bankiet, koncert świąteczny czy Christmas Party.
+                    </p>
+                    
+                    <div class="features-section">
+                        <h4 class="features-heading">Co oferujemy:</h4>
+                        <ul class="features-list">
+                            <li>Występ na żywo - 2 lub 3 godziny</li>
+                            <li>Repertuar świąteczny w wysmakowanych aranżacjach</li>
+                            <li>Jazzowe standardy, swing, covery Franka Sinatry, Deana Martina, Michaela Bublé i innych</li>
+                            <li>Możliwość wykonania dedykowanych utworów</li>
+                            <li>Elegancki dress code dostosowany do rangi wydarzenia</li>
+                            <li>Live background music podczas kolacji lub bankietu</li>
+                            <li>Opcja występu instrumentalnego (bez wokalu)</li>
+                            <li>Interakcja z publicznością, wspólne śpiewanie, prezentacja historii utworów</li>
+                            <li>Energetyczne sety taneczne - świąteczne hity w swingowych i dancingowych wersjach</li>
+                            <li>Foto i video friendly</li>
+                            <li>Ścisła koordynacja z organizatorem</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="features-section">
+                        <h4 class="features-heading">Dla kogo:</h4>
+                        <ul class="features-list compact">
+                            <li>Firmowe Wigilie i spotkania świąteczne</li>
+                            <li>Bankiety VIP i eleganckie kolacje</li>
+                            <li>Christmas Party z muzyką do tańca</li>
+                            <li>Integracyjne koncerty świąteczne dla pracowników</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="price-box">
+                        <div class="price-label">Cena pakietu</div>
+                        <div class="price-value">od 8 000 PLN</div>
+                        <div class="price-note">Ostateczna wycena zależna od lokalizacji, charakteru wydarzenia i długości występu</div>
+                    </div>
+                    
+                    <a href="tel:+48794210665" class="btn btn-primary btn-block" aria-label="Skontaktuj się aby zarezerwować oprawę muzyczną">
+                        Skontaktuj się
+                    </a>
+                </article>
+
+                <article class="service-card" aria-labelledby="service-2-title">
+                    <div class="service-header">
+                        <span class="service-icon" aria-hidden="true">🎼</span>
+                        <h3 id="service-2-title" class="service-title">Koncert Świąteczny dla Firm</h3>
+                    </div>
+                    <p class="service-description">
+                        Wyjątkowy muzyczny prezent dla Twojego zespołu - święta z klasą i emocjami.
+                        Stwórz niezapomnianą atmosferę w swojej firmie dzięki dedykowanemu koncertowi świątecznemu w wykonaniu profesjonalnego zespołu z doświadczeniem scenicznym i radiowym.
+                        <strong>To nie tylko występ - to spotkanie z muzyką, opowieściami i wspólnym świętowaniem.</strong>
+                    </p>
+                    
+                    <div class="features-section">
+                        <h4 class="features-heading">Co zawiera koncert:</h4>
+                        <ul class="features-list">
+                            <li>45-60 minut występu na żywo</li>
+                            <li>Prezentacja utworów świątecznych z komentarzami i historią</li>
+                            <li>Interakcja z publicznością - lekka, nienachalna konferansjerka</li>
+                            <li>Możliwość wspólnego śpiewania wybranych kolęd lub piosenek</li>
+                            <li>Program foto i video friendly - idealny do dokumentacji wydarzenia</li>
+                            <li>Stylowe i eleganckie aranżacje muzyczne w klimacie świąt</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="features-section">
+                        <h4 class="features-heading">Dla kogo?</h4>
+                        <p>Koncert świąteczny idealnie sprawdzi się:</p>
+                        <ul class="features-list compact">
+                            <li>Podczas spotkań firmowych z zespołem (wigilie pracownicze, świąteczne lunche i kolacje)</li>
+                            <li>Na eventach integracyjnych, gdzie zależy Ci na cieplejszej, lżejszej atmosferze</li>
+                            <li>Jako część wewnętrznego wydarzenia HR lub employer brandingowego</li>
+                            <li>Dla firm, które chcą podziękować swoim pracownikom w wyjątkowy sposób</li>
+                            <li>W przestrzeniach biurowych, salach konferencyjnych lub klubach firmowych</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="price-box">
+                        <div class="price-label">Cena pakietu</div>
+                        <div class="price-value">od 7 000 PLN</div>
+                        <div class="price-note">Ostateczna wycena zależy od lokalizacji oraz charakteru wydarzenia</div>
+                    </div>
+                    
+                    <a href="tel:+48794210665" class="btn btn-primary btn-block" aria-label="Skontaktuj się aby zarezerwować koncert świąteczny">
+                        Skontaktuj się
+                    </a>
+                </article>
             </div>
-        </div>
 
-        <div class="service-summary">
-            <p style="text-align: center; font-size: 1.1em; color: #c9a961; margin: 40px 0; line-height: 1.6;">
-                <strong>🎷 Zapewniamy pełną oprawę muzyczną, która nada Twojemu wydarzeniu świątecznemu wyjątkowy klimat, klasę i niezapomniane emocje.</strong><br/>
-                <em>Skontaktuj się z nami, aby omówić szczegóły i zarezerwować termin.</em>
-            </p>
-        </div>
+            <div class="service-summary">
+                <p>
+                    Zapewniamy pełną oprawę muzyczną, która nada Twojemu wydarzeniu świątecznemu wyjątkowy klimat, klasę i niezapomniane emocje.
+                    Skontaktuj się z nami, aby omówić szczegóły i zarezerwować termin.
+                </p>
+            </div>
+        </section>
 
-        <div class="benefits-section">
-            <h2 class="benefits-title">🌟 Dlaczego Lazy Swing Band na Wigilię Firmową?</h2>
+        <!-- Benefits Section -->
+        <section class="benefits-section" aria-labelledby="benefits-heading">
+            <div class="section-header">
+                <span class="section-badge">Dlaczego My</span>
+                <h2 id="benefits-heading" class="section-title">Dlaczego Lazy Swing Band na Wigilię Firmową?</h2>
+            </div>
+            
             <div class="benefits-grid">
                 <div class="benefit-item">
-                    <span class="benefit-icon">🎷</span>
+                    <span class="benefit-icon" aria-hidden="true">🎷</span>
                     <h3 class="benefit-title">Doświadczenie</h3>
-                    <p>prawie 10 lat na scenie, współpraca z Polskim Radiem, setki wydarzeń firmowych</p>
+                    <p class="benefit-text">prawie 10 lat na scenie, współpraca z Polskim Radiem, setki wydarzeń firmowych</p>
                 </div>
                 <div class="benefit-item">
-                    <span class="benefit-icon">🎵</span>
+                    <span class="benefit-icon" aria-hidden="true">🎵</span>
                     <h3 class="benefit-title">Unikalny Repertuar</h3>
-                    <p>Autorskie aranżacje kolęd, covery Sinatry, polskie i światowe standardy</p>
+                    <p class="benefit-text">Autorskie aranżacje kolęd, covery Sinatry, polskie i światowe standardy</p>
                 </div>
                 <div class="benefit-item">
-                    <span class="benefit-icon">🎯</span>
+                    <span class="benefit-icon" aria-hidden="true">🎯</span>
                     <h3 class="benefit-title">Profesjonalizm</h3>
-                    <p>Punktualność, elegancki dress code, wykształceni muzycy</p>
+                    <p class="benefit-text">Punktualność, elegancki dress code, wykształceni muzycy</p>
                 </div>
                 <div class="benefit-item">
-                    <span class="benefit-icon">🎭</span>
+                    <span class="benefit-icon" aria-hidden="true">🎭</span>
                     <h3 class="benefit-title">Atmosfera</h3>
-                    <p>Tworzenie magicznej świątecznej atmosfery, zaangażowanie publiczności</p>
+                    <p class="benefit-text">Tworzenie magicznej świątecznej atmosfery, zaangażowanie publiczności</p>
                 </div>
                 <div class="benefit-item">
-                    <span class="benefit-icon">📍</span>
+                    <span class="benefit-icon" aria-hidden="true">📍</span>
                     <h3 class="benefit-title">Zasięg</h3>
-                    <p>Kraków, Małopolska, Cała Polska - realizujemy wydarzenia w całym regionie</p>
+                    <p class="benefit-text">Kraków, Małopolska, Cała Polska - realizujemy wydarzenia w całym regionie</p>
                 </div>
                 <div class="benefit-item">
-                    <span class="benefit-icon">💎</span>
+                    <span class="benefit-icon" aria-hidden="true">💎</span>
                     <h3 class="benefit-title">Jakość</h3>
-                    <p>Wysokiej klasy instrumenty, profesjonalni muzycy, perfekcyjne brzmienie</p>
+                    <p class="benefit-text">Wysokiej klasy instrumenty, profesjonalni muzycy, perfekcyjne brzmienie</p>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- YouTube Repertuar Section -->
-        <section class="repertuar-section">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5em; color: #ffd700; text-align: center; margin-bottom: 40px;">
-                🎵 Nasz Świąteczny Repertuar na YouTube
-            </h2>
+        <section class="repertuar-section" aria-labelledby="repertuar-heading">
+            <div class="section-header">
+                <span class="section-badge">Zobacz & Posłuchaj</span>
+                <h2 id="repertuar-heading" class="section-title">Nasz Świąteczny Repertuar na YouTube</h2>
+            </div>
             
             <div class="video-grid">
                 <div class="video-container">
@@ -247,26 +361,78 @@
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 40px;">
-                <p style="color: #c9a961; font-size: 1.1em; margin-bottom: 20px;">
-                    🎷 <strong>Zobacz jak brzmimy na żywo!</strong> 🎄
+            <div class="repertuar-description">
+                <p class="repertuar-text-main">
+                    <strong>Zobacz jak brzmimy na żywo!</strong>
                 </p>
-                <p style="color: #b8956f; font-size: 0.95em; line-height: 1.6;">
-                    Nasze występy łączą klasyczny swing z świąteczną magią. <br/>
+                <p class="repertuar-text-secondary">
+                    Nasze występy łączą klasyczny swing z świąteczną magią. 
                     Każdy utwór to profesjonalne wykonanie z nutą nostalgii i eleganckiej zabawy.
                 </p>
             </div>
         </section>
 
+        <!-- Testimonials Section -->
+        <section class="testimonials-section" aria-labelledby="testimonials-heading">
+            <div class="section-header">
+                <span class="section-badge">Opinie Klientów</span>
+                <h2 id="testimonials-heading" class="section-title">Zaufali Nam Liderzy Branży</h2>
+            </div>
+            
+            <div class="testimonials-grid">
+                <article class="testimonial-card">
+                    <div class="testimonial-rating" aria-label="Ocena 5 na 5 gwiazdek">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        Lazy Swing Band zapewnił magiczną atmosferę naszej wigilii firmowej. Kolędy jazzowe w ich wykonaniu to było coś wyjątkowego. Wszyscy goście byli zachwyceni!
+                    </p>
+                    <div class="testimonial-author">
+                        <strong>Dyrektor HR</strong>
+                        <span>Międzynarodowa korporacja IT, Kraków</span>
+                    </div>
+                </article>
+
+                <article class="testimonial-card">
+                    <div class="testimonial-rating" aria-label="Ocena 5 na 5 gwiazdek">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        Profesjonalizm na najwyższym poziomie. Punktualni, eleganccy, a muzyka po prostu magiczna. Nasze święta firmowe nigdy nie były tak udane.
+                    </p>
+                    <div class="testimonial-author">
+                        <strong>Event Manager</strong>
+                        <span>Bank komercyjny, Katowice</span>
+                    </div>
+                </article>
+
+                <article class="testimonial-card">
+                    <div class="testimonial-rating" aria-label="Ocena 5 na 5 gwiazdek">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        Repertuar świąteczny dopasowany do naszej eleganckiej gali. White Christmas w ich wykonaniu to był szczyt wieczoru. Będziemy zapraszać co roku!
+                    </p>
+                    <div class="testimonial-author">
+                        <strong>Prezes</strong>
+                        <span>Firma consultingowa, Warszawa</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
         <!-- FAQ Section with Schema Markup -->
-        <section class="faq-section" itemscope itemtype="https://schema.org/FAQPage">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5em; color: #ffd700; text-align: center; margin-bottom: 40px;">
-                ❓ Najczęściej Zadawane Pytania - Wigilie Firmowe
-            </h2>
+        <section class="faq-section" itemscope itemtype="https://schema.org/FAQPage" aria-labelledby="faq-heading">
+            <div class="section-header">
+                <span class="section-badge">FAQ</span>
+                <h2 id="faq-heading" class="section-title">Najczęściej Zadawane Pytania</h2>
+            </div>
             
             <div class="faq-container">
                 <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <h3 class="faq-question" itemprop="name">Ile kosztuje zespół na wigilię firmową w Krakowie?</h3>
+                    <button class="faq-question" aria-expanded="false" itemprop="name">
+                        Ile kosztuje zespół na wigilię firmową w Krakowie?
+                    </button>
                     <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div itemprop="text">
                             <p>Ceny za występ na wigilii firmowej zaczynają się już od 7000 PLN za koncert świąteczny (45-60 min) do 8000 PLN za pełną oprawę muzyczną wydarzeń świątecznych (2-3 godziny). Końcowa cena zależy od długości występu, lokalizacji i szczegółów wydarzenia.</p>
@@ -275,7 +441,9 @@
                 </div>
 
                 <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <h3 class="faq-question" itemprop="name">Jaki repertuar świąteczny wykonuje Lazy Swing Band?</h3>
+                    <button class="faq-question" aria-expanded="false" itemprop="name">
+                        Jaki repertuar świąteczny wykonuje Lazy Swing Band?
+                    </button>
                     <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div itemprop="text">
                             <p>Nasz repertuar świąteczny obejmuje kolędy jazzowe, standardy świąteczne, covery Sinatry i Michaela Bublé w świątecznych aranżacjach. Wykonujemy zarówno polskie kolędy jak i międzynarodowe przeboje świąteczne w unikalnych, jazzowych wersjach.</p>
@@ -284,7 +452,9 @@
                 </div>
 
                 <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <h3 class="faq-question" itemprop="name">Czy zespół jest dostępny na grudniowe imprezy firmowe poza Krakowem?</h3>
+                    <button class="faq-question" aria-expanded="false" itemprop="name">
+                        Czy zespół jest dostępny na grudniowe imprezy firmowe poza Krakowem?
+                    </button>
                     <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div itemprop="text">
                             <p>Tak! Realizujemy występy na wigilie firmowe w całej Małopolsce i całej Polsce. Szczególnie chętnie gramy w Warszawie, Wrocławiu, Katowicach, Gdańsku. Koszt dojazdu jest kalkulowany indywidualnie.</p>
@@ -293,7 +463,9 @@
                 </div>
 
                 <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <h3 class="faq-question" itemprop="name">Jak wcześnie należy zarezerwować zespół na wigilię firmową?</h3>
+                    <button class="faq-question" aria-expanded="false" itemprop="name">
+                        Jak wcześnie należy zarezerwować zespół na wigilię firmową?
+                    </button>
                     <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div itemprop="text">
                             <p>Rekomendujemy rezerwację minimum 2-3 miesiące wcześniej. Grudzień to szczególnie intensywny okres dla zespołów muzycznych. Im wcześniej zarezerwujesz, tym większa gwarancja dostępności w preferowanym terminie.</p>
@@ -302,71 +474,68 @@
                 </div>
 
                 <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <h3 class="faq-question" itemprop="name">Jakie są wymagania techniczne dla występu zespołu?</h3>
+                    <button class="faq-question" aria-expanded="false" itemprop="name">
+                        Jakie są wymagania techniczne dla występu zespołu?
+                    </button>
                     <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div itemprop="text">
-                            <p>Organizator wydarzenia musi zapewnić kompletne nagłośnienie zgodnie z wymaganiami określonymi w naszym <a href="/rider/pl/" style="color: #ffd700;">riderze technicznym</a>. W dokumencie znajdziecie Państwo szczegółowe informacje o wymaganym sprzęcie i przygotowaniu sceny.</p>
+                            <p>Organizator wydarzenia musi zapewnić kompletne nagłośnienie zgodnie z wymaganiami określonymi w naszym <a href="/rider/pl/">riderze technicznym</a>. W dokumencie znajdziecie Państwo szczegółowe informacje o wymaganym sprzęcie i przygotowaniu sceny.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="contact-urgent">
-            <p class="urgent-text">⚡ UWAGA: Grudzień 2025 - ostatnie wolne terminy!</p>
-            <p>Wigilie firmowe cieszą się ogromną popularnością. Zarezerwuj swój termin już dziś, 
-            żeby nie zostać bez profesjonalnej oprawy muzycznej na święta.</p>
+        <!-- Urgency Banner -->
+        <div class="urgency-banner" role="alert">
+            <div class="urgency-icon" aria-hidden="true">⚡</div>
+            <div class="urgency-content">
+                <p class="urgency-title">UWAGA: Grudzień 2025 - ostatnie wolne terminy!</p>
+                <p class="urgency-text">Wigilie firmowe cieszą się ogromną popularnością. Zarezerwuj swój termin już dziś, 
+                żeby nie zostać bez profesjonalnej oprawy muzycznej na święta.</p>
+            </div>
         </div>
 
-        <section class="testimonials">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5em; color: #ffd700; text-align: center; margin-bottom: 40px;">
-                💬 Opinie Klientów Korporacyjnych
-            </h2>
-            
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "Lazy Swing Band zapewnił magiczną atmosferę naszej wigilii firmowej. Kolędy jazzowe w ich wykonaniu to było coś wyjątkowego. Wszyscy goście byli zachwyceni!"
+        <!-- Final CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Zarezerwuj Termin na Grudzień 2025!</h2>
+                <p class="cta-text">
+                    Nie czekaj do ostatniej chwili - najlepsze terminy na wigilie firmowe rozchodzą się błyskawicznie. 
+                    Skontaktuj się z nami już dziś i zapewnij swojej firmie niezapomniane święta!
                 </p>
-                <p class="testimonial-author">— Dyrektor HR, międzynarodowa korporacja IT, Kraków</p>
-            </div>
-
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "Profesjonalizm na najwyższym poziomie. Punktualni, eleganccy, a muzyka po prostu magiczna. Nasze święta firmowe nigdy nie były tak udane."
+                <div class="cta-buttons">
+                    <a href="tel:+48794210665" class="btn btn-cta" aria-label="Zadzwoń teraz pod numer 794 210 665">
+                        <span class="btn-icon" aria-hidden="true">📞</span>
+                        <span class="btn-text">
+                            <span class="btn-label">Zadzwoń</span>
+                            <span class="btn-value">+48 794 210 665</span>
+                        </span>
+                    </a>
+                    <a href="mailto:lazyswingband@gmail.com" class="btn btn-cta" aria-label="Wyślij e-mail na adres lazyswingband@gmail.com">
+                        <span class="btn-icon" aria-hidden="true">✉️</span>
+                        <span class="btn-text">
+                            <span class="btn-label">E-mail</span>
+                            <span class="btn-value">lazyswingband@gmail.com</span>
+                        </span>
+                    </a>
+                </div>
+                <p class="cta-guarantee">
+                    <strong>Szybka odpowiedź gwarantowana!</strong>
                 </p>
-                <p class="testimonial-author">— Event Manager, bank komercyjny, Katowice</p>
-            </div>
-
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "Repertuar świąteczny dopasowany do naszej eleganckiej gali. White Christmas w ich wykonaniu to był szczyt wieczoru. Będziemy zapraszać co roku!"
-                </p>
-                <p class="testimonial-author">— Prezes, firma consultingowa, Warszawa</p>
             </div>
         </section>
 
-        <div class="cta-section">
-            <h2 class="cta-title">🎄 Zarezerwuj Termin na Grudzień 2025!</h2>
-            <p class="cta-text">
-                Nie czekaj do ostatniej chwili - najlepsze terminy na wigilie firmowe rozchodzą się błyskawicznie. 
-                Skontaktuj się z nami już dziś i zapewnij swojej firmie niezapomniane święta!
-            </p>
-            <div class="cta-buttons">
-                <a href="tel:+48794210665" class="cta-button">📞 Zadzwoń: +48 794 210 665</a>
-                <a href="mailto:lazyswingband@gmail.com" class="cta-button">✉️ E-mail: lazyswingband@gmail.com</a>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-brand">
+                    <strong>Lazy Swing Band</strong> - Wigilie Firmowe Kraków 2025
+                </p>
+                <p class="footer-description">
+                    Profesjonalna oprawa • Świąteczny jazz • Sinatra & Bublé • Kraków • Małopolska • Cała Polska
+                </p>
             </div>
-            <p style="margin-top: 20px; font-size: 0.9em;">
-                <strong>⏰ Szybka odpowiedź gwarantowana!</strong>
-            </p>
-        </div>
-
-        <footer style="text-align: center; padding: 40px 0; margin-top: 60px; border-top: 1px solid rgba(212, 175, 55, 0.2);">
-            <p style="color: #c9a961; font-size: 1.1em; margin-bottom: 10px;">
-                🎷 <strong>Lazy Swing Band</strong> - Wigilie Firmowe Kraków 2025 🎄
-            </p>
-            <p style="color: #b8956f; font-size: 0.9em;">
-                Profesjonalna oprawa • Świąteczny jazz • Sinatra & Bublé • Kraków • Małopolska • Cała Polska
-            </p>
         </footer>
     </div>
 
@@ -512,3 +681,4 @@
     </script>
 </body>
 </html>
+
