@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { colors, fonts, spacing, typography } from "config/theme";
+import { colors, fonts, typography } from "config/theme";
 
 export const CardContainer = styled("div")`
   display: flex;
@@ -94,7 +94,7 @@ export const StreamingList = styled("ul")`
   justify-content: center;
   align-items: center;
   padding: 0;
-  gap: ${spacing.sm}; /* Mniejszy gap - 8px zamiast 16px */
+  gap: 5px; /* Minimalny gap - 5px */
 `;
 
 export const StreamingTagWrapper = styled("li")`
@@ -106,15 +106,15 @@ export const StreamingTagWrapper = styled("li")`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4px 6px; /* Znacznie mniejszy padding */
-    border-radius: 8px;
+    padding: 2px 3px; /* Bardzo minimalny padding */
+    border-radius: 4px;
     background: ${colors.primary.white};
     transition: all 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
       background: ${colors.neutrals.N10};
     }
     
@@ -126,8 +126,8 @@ export const StreamingTagWrapper = styled("li")`
 `;
 
 export const StreamingTag = styled("img")`
-  width: 28px;  /* Stały rozmiar dla kontroli */
-  height: 28px;
+  width: 22px;  /* Mniejszy rozmiar */
+  height: 22px;
   object-fit: contain;
   opacity: 0.8;
   background: transparent !important; /* Override global img background for icons */
