@@ -97,8 +97,15 @@ export const GlobalWrapper = (): JSX.Element => {
                     border: 0;
                 }
                 
-                /* Image loading background - no more checkerboard */
+                /* Image loading background - only for photos, not icons */
                 img {
+                    background: transparent;
+                }
+                
+                /* Background only for large album cover images */
+                img[src*="lazy.webp"],
+                img[src*="christmas.webp"], 
+                img[src*="polish.webp"] {
                     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
                 }
                 

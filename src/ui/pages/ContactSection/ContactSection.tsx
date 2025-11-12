@@ -234,6 +234,7 @@ export const SocialMediaImg = styled("img")<SocialMediaPropsType>`
   cursor: pointer;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   filter: ${(props) => props.isHover ? 'brightness(1.1) saturate(1.2)' : 'brightness(0.9)'};
+  background: transparent !important; /* No background for social icons */
   
   &:hover {
     transform: scale(1.1) rotate(5deg);

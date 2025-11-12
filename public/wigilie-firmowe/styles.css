@@ -299,9 +299,7 @@ body {
     box-shadow: 0 4px 20px rgba(245, 203, 92, 0.3);
 }
 
-.badge-icon {
-    font-size: 1.2em;
-}
+/* Removed .badge-icon - no longer using emoji icons */
 
 .hero-title {
     font-family: var(--font-family-display);
@@ -460,9 +458,7 @@ body {
     box-shadow: 0 12px 40px rgba(245, 203, 92, 0.5);
 }
 
-.btn-icon {
-    font-size: 1.5em;
-}
+/* Removed .btn-icon - cleaner button design without emojis */
 
 .btn-text {
     display: flex;
@@ -558,10 +554,7 @@ body {
     margin-bottom: var(--space-4);
 }
 
-.service-icon {
-    font-size: 2.5rem;
-    flex-shrink: 0;
-}
+/* Removed .service-icon - cleaner service cards without emojis */
 
 .service-title {
     font-family: var(--font-family-display);
@@ -701,12 +694,7 @@ body {
         var(--color-surface-elevated) 100%);
 }
 
-.benefit-icon {
-    font-size: 3rem;
-    display: block;
-    margin-bottom: var(--space-3);
-    line-height: 1;
-}
+/* Removed .benefit-icon - text-focused design without emojis */
 
 .benefit-title {
     font-size: var(--font-size-lg);
@@ -955,10 +943,7 @@ body {
     box-shadow: 0 0 30px rgba(245, 203, 92, 0.15);
 }
 
-.urgency-icon {
-    font-size: 2rem;
-    flex-shrink: 0;
-}
+/* Removed .urgency-icon - cleaner urgency banner */
 
 .urgency-content {
     flex: 1;
