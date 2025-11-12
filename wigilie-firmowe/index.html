@@ -28,7 +28,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@200;300;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     
     <!-- Preload critical resources -->
@@ -61,6 +61,48 @@
             
             videos.forEach(video => {
                 videoObserver.observe(video);
+            });
+        });
+        
+        // FAQ Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                
+                // Add ARIA attributes for accessibility
+                question.setAttribute('aria-expanded', 'false');
+                question.setAttribute('aria-controls', `faq-answer-${Array.from(faqItems).indexOf(item)}`);
+                answer.setAttribute('id', `faq-answer-${Array.from(faqItems).indexOf(item)}`);
+                question.setAttribute('tabindex', '0');
+                
+                const toggleFAQ = () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all items
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                        question.setAttribute('aria-expanded', 'true');
+                    }
+                };
+                
+                question.addEventListener('click', toggleFAQ);
+                
+                // Keyboard accessibility
+                question.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleFAQ();
+                    }
+                });
             });
         });
     </script>
