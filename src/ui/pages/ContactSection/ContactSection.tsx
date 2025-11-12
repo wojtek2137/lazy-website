@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { ContactHeader, ContactHeaderCenter } from "ui/pages/ContactSection/ContactSection.style";
-import { colors, fonts } from "config/theme";
+import { colors, fonts, spacing, typography, shadows } from "config/theme";
 import TagFacebookIcon from "assets/images/facebook-icon.png";
 import TagInstagramIcon from "assets/images/instagram-icon.png";
 
@@ -42,13 +42,14 @@ export const ContentContainer = styled("div")`
   z-index: 2;
 `;
 
-export const MainTitle = styled("h1")`
-  font-family: ${fonts.outfit.Medium};
-  font-size: 48px;
-  font-weight: 700;
+export const MainTitle = styled("h2")`
+  font-family: ${fonts.outfit.SemiBold};
+  font-size: ${typography.h1.size};
+  font-weight: ${typography.h1.weight};
+  line-height: ${typography.h1.lineHeight};
   color: ${colors.primary.gold};
-  margin: 0 0 80px 0;
-  letter-spacing: 3px;
+  margin: 0 0 ${spacing.huge} 0;
+  letter-spacing: ${typography.h1.letterSpacing};
   text-transform: uppercase;
   text-align: center;
   position: relative;
@@ -58,19 +59,19 @@ export const MainTitle = styled("h1")`
   &::before {
     content: '';
     position: absolute;
-    top: -20px;
+    top: -${spacing.lg};
     left: 50%;
     transform: translateX(-50%);
     width: 120px;
     height: 4px;
     background: linear-gradient(90deg, transparent, ${colors.primary.gold}, transparent);
-    box-shadow: 0 0 20px ${colors.primary.gold}60;
+    box-shadow: ${shadows.glow};
   }
   
   &::after {
     content: '';
     position: absolute;
-    bottom: -20px;
+    bottom: -${spacing.lg};
     left: 50%;
     transform: translateX(-50%);
     width: 180px;
@@ -79,15 +80,13 @@ export const MainTitle = styled("h1")`
   }
   
   ${mq[2]} {
-    font-size: 36px;
-    letter-spacing: 2px;
-    margin-bottom: 60px;
+    font-size: ${typography.h2.size};
+    margin-bottom: ${spacing.xxxl};
   }
   
   ${mq[1]} {
-    font-size: 28px;
-    letter-spacing: 1px;
-    margin-bottom: 50px;
+    font-size: ${typography.h3.size};
+    margin-bottom: ${spacing.xxl};
   }
 `;
 
@@ -111,15 +110,13 @@ export const ContactGrid = styled("div")`
 export const ContactCard = styled("div")`
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(245, 203, 92, 0.2);
+  border: 2px solid ${colors.primary.gold}30;
   border-radius: 24px;
-  padding: 50px 30px;
+  padding: ${spacing.xxl} ${spacing.xl};
   text-align: center;
   position: relative;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    0 0 20px rgba(245, 203, 92, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: ${shadows.lg};
   
   &::before {
     content: '';
@@ -128,35 +125,35 @@ export const ContactCard = styled("div")`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(145deg, rgba(245, 203, 92, 0.05) 0%, transparent 100%);
+    background: linear-gradient(145deg, ${colors.primary.gold}05 0%, transparent 100%);
     border-radius: 24px;
     pointer-events: none;
   }
   
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: 
-      0 20px 60px rgba(0, 0, 0, 0.4),
-      0 0 40px rgba(245, 203, 92, 0.3);
-    border-color: rgba(245, 203, 92, 0.4);
+    transform: translateY(-${spacing.sm});
+    box-shadow: ${shadows.xl}, ${shadows.glow};
+    border-color: ${colors.primary.gold}60;
     
     &::before {
-      background: linear-gradient(145deg, rgba(245, 203, 92, 0.1) 0%, transparent 100%);
+      background: linear-gradient(145deg, ${colors.primary.gold}10 0%, transparent 100%);
     }
   }
   
   ${mq[1]} {
-    padding: 40px 25px;
+    padding: ${spacing.xxl} ${spacing.lg};
   }
 `;
 
 export const CenterCard = styled(ContactCard)`
-  background: rgba(245, 203, 92, 0.08);
-  border-color: rgba(245, 203, 92, 0.3);
+  background: ${colors.primary.gold}08;
+  border-color: ${colors.primary.gold}50;
+  box-shadow: ${shadows.lg}, ${shadows.glow};
   
   &:hover {
-    background: rgba(245, 203, 92, 0.12);
-    border-color: rgba(245, 203, 92, 0.5);
+    background: ${colors.primary.gold}12;
+    border-color: ${colors.primary.gold};
+    box-shadow: ${shadows.xl}, ${shadows.glowStrong};
   }
 `;
 

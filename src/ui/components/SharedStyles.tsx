@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { colors, fonts } from "config/theme";
+import { colors, fonts, spacing, typography, shadows } from "config/theme";
 
 
 const breakpoints = [576, 768, 992, 1200];
@@ -114,7 +114,7 @@ export const ModernContentContainer = styled("div")<{
   width: 100%;
   max-width: ${({ maxWidth }) => maxWidth || '1400px'};
   margin: 0 auto;
-  padding: 60px 40px;
+  padding: ${spacing.xxxl} ${spacing.xxl};
   
   ${({ glassmorphism, enhanced }) => glassmorphism && `
     background: ${enhanced ? 
@@ -123,13 +123,12 @@ export const ModernContentContainer = styled("div")<{
     };
     backdrop-filter: blur(${enhanced ? '25px' : '20px'});
     border: 1px solid ${colors.primary.gold}${enhanced ? '30' : '20'};
-    border-radius: ${enhanced ? '30px' : '25px'};
+    border-radius: ${enhanced ? '30px' : '24px'};
     box-shadow: 
-      0 25px 50px rgba(0, 0, 0, ${enhanced ? '0.6' : '0.4'}),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1),
-      ${enhanced ? `0 0 40px ${colors.primary.gold}10,` : ''}
-      ${enhanced ? `inset 0 0 60px ${colors.primary.gold}05` : ''};
-    transition: all 0.3s ease;
+      ${enhanced ? shadows.xl : shadows.lg},
+      ${enhanced ? shadows.glow : ''},
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     
     &:hover {
       background: ${enhanced ? 
@@ -137,18 +136,17 @@ export const ModernContentContainer = styled("div")<{
         'rgba(255, 255, 255, 0.08)'
       };
       border-color: ${colors.primary.gold}${enhanced ? '50' : '40'};
-      transform: translateY(-5px);
+      transform: translateY(-${spacing.sm});
       box-shadow: 
-        0 35px 70px rgba(0, 0, 0, ${enhanced ? '0.8' : '0.6'}),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15),
-        0 0 60px ${colors.primary.gold}20,
-        inset 0 0 80px ${colors.primary.gold}08;
+        ${shadows.xl},
+        ${enhanced ? shadows.glowStrong : shadows.glow},
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
     }
   `}
   
   ${mq[1]} {
-    padding: 40px 20px;
-    margin: 0 15px;
+    padding: ${spacing.xxl} ${spacing.lg};
+    margin: 0 ${spacing.md};
   }
 `;
 
@@ -192,8 +190,7 @@ export const ModernHeading = styled("h2")<{
   color?: 'gold' | 'white' | 'sandy';
   enhanced?: boolean;
 }>`
-  font-family: ${fonts.outfit.Medium};
-  font-weight: 700;
+  font-family: ${fonts.outfit.SemiBold};
   color: ${({ color }) => {
     switch (color) {
       case 'white': return colors.primary.white;
@@ -201,49 +198,66 @@ export const ModernHeading = styled("h2")<{
       default: return colors.primary.gold;
     }
   }};
-  margin: 0 0 30px 0;
-  letter-spacing: 3px;
+  margin: 0 0 ${spacing.xl} 0;
   text-transform: uppercase;
   position: relative;
   display: inline-block;
   text-shadow: ${({ enhanced }) => enhanced ? 
-    '0 0 20px rgba(0,0,0,0.9), 0 2px 4px rgba(0,0,0,0.8), 0 0 40px rgba(245, 203, 92, 0.3)' :
+    `0 0 ${spacing.lg} rgba(0,0,0,0.9), 0 ${spacing.xs} ${spacing.sm} rgba(0,0,0,0.8), 0 0 ${spacing.xxl} ${colors.primary.gold}30` :
     'none'
   };
   
   ${({ size }) => {
     switch (size) {
       case 'small':
-        return `font-size: 28px; ${mq[1]} { font-size: 24px; }`;
+        return `
+          font-size: ${typography.h4.size}; 
+          font-weight: ${typography.h4.weight}; 
+          line-height: ${typography.h4.lineHeight}; 
+          letter-spacing: ${typography.h4.letterSpacing};
+          ${mq[1]} { font-size: ${typography.h5.size}; }
+        `;
       case 'large':
-        return `font-size: 56px; ${mq[1]} { font-size: 36px; }`;
+        return `
+          font-size: ${typography.h1.size}; 
+          font-weight: ${typography.h1.weight}; 
+          line-height: ${typography.h1.lineHeight}; 
+          letter-spacing: ${typography.h1.letterSpacing};
+          ${mq[1]} { font-size: ${typography.h2.size}; }
+        `;
       default:
-        return `font-size: 42px; ${mq[1]} { font-size: 32px; }`;
+        return `
+          font-size: ${typography.h2.size}; 
+          font-weight: ${typography.h2.weight}; 
+          line-height: ${typography.h2.lineHeight}; 
+          letter-spacing: ${typography.h2.letterSpacing};
+          ${mq[1]} { font-size: ${typography.h3.size}; }
+        `;
     }
   }}
   
   &::before {
     content: '';
     position: absolute;
-    top: -15px;
+    top: -${spacing.md};
     left: 50%;
     transform: translateX(-50%);
     width: 100px;
     height: 3px;
     background: linear-gradient(90deg, transparent, ${colors.primary.gold}, transparent);
-    box-shadow: 0 0 15px ${colors.primary.gold}${({ enhanced }) => enhanced ? '80' : '50'};
+    box-shadow: ${({ enhanced }) => enhanced ? shadows.glow : shadows.sm};
   }
   
   &::after {
     content: '';
     position: absolute;
-    bottom: -15px;
+    bottom: -${spacing.md};
     left: 50%;
     transform: translateX(-50%);
     width: 150px;
-    height: 1px;
+    height: 2px;
     background: linear-gradient(90deg, transparent, ${colors.primary.gold}, transparent);
-    box-shadow: ${({ enhanced }) => enhanced ? `0 0 10px ${colors.primary.gold}60` : 'none'};
+    box-shadow: ${({ enhanced }) => enhanced ? shadows.md : 'none'};
   }
 `;
 
@@ -255,26 +269,37 @@ export const ModernText = styled("p")<{
 }>`
   font-family: ${fonts.outfit.Light};
   color: ${({ enhanced }) => enhanced ? colors.neutrals.N0 : colors.neutrals.N10};
-  line-height: 1.8;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-  text-shadow: ${({ enhanced }) => enhanced ? '0 2px 4px rgba(0,0,0,0.8)' : 'none'};
+  margin-bottom: ${spacing.lg};
+  text-shadow: ${({ enhanced }) => enhanced ? `0 ${spacing.xs} ${spacing.sm} rgba(0,0,0,0.8)` : 'none'};
   
   ${({ size }) => {
     switch (size) {
       case 'small':
-        return `font-size: 14px;`;
+        return `
+          font-size: ${typography.bodySmall.size};
+          line-height: ${typography.bodySmall.lineHeight};
+          letter-spacing: ${typography.bodySmall.letterSpacing};
+        `;
       case 'large':
-        return `font-size: 20px; ${mq[1]} { font-size: 18px; }`;
+        return `
+          font-size: ${typography.bodyLarge.size}; 
+          line-height: ${typography.bodyLarge.lineHeight};
+          letter-spacing: ${typography.bodyLarge.letterSpacing};
+          ${mq[1]} { font-size: ${typography.body.size}; }
+        `;
       default:
-        return `font-size: 16px; ${mq[1]} { font-size: 15px; }`;
+        return `
+          font-size: ${typography.body.size};
+          line-height: ${typography.body.lineHeight};
+          letter-spacing: ${typography.body.letterSpacing};
+        `;
     }
   }}
   
   ${({ emphasis, enhanced }) => emphasis && `
     font-family: ${fonts.outfit.Medium};
     color: ${enhanced ? colors.primary.sandy : colors.primary.sandy};
-    text-shadow: 0 0 15px ${colors.primary.gold}40, ${enhanced ? '0 2px 4px rgba(0,0,0,0.8)' : 'none'};
+    text-shadow: 0 0 ${spacing.md} ${colors.primary.gold}40, ${enhanced ? `0 ${spacing.xs} ${spacing.sm} rgba(0,0,0,0.8)` : 'none'};
   `}
 `;
 

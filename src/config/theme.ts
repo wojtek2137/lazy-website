@@ -6,9 +6,10 @@ export const colors: ColorPaletteTypes = {
         white: '#FFFFFF',
         black: '#000000',
         darkGrey: '#242424',
-        gold: '#f5cb5c',
-        yellow: '#daa61d',
-        sandy: '#e7d197',
+        // Redesigned color palette with better contrast and hierarchy
+        gold: '#FFB800',        // Stronger, more saturated gold for better contrast (was #f5cb5c)
+        yellow: '#D4A017',      // Refined golden yellow for accents
+        sandy: '#E8D5B7',       // Softer sandy tone for better readability
         P75: '#C8A0FF',
         P100: '#B178FF',
         P200: '#8F3EFF',
@@ -130,4 +131,105 @@ export const fontMixins = {
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
     `
+};
+
+// Professional 8pt spacing system for consistent layout
+export const spacing = {
+    xs: '4px',      // 0.5 units
+    sm: '8px',      // 1 unit
+    md: '16px',     // 2 units
+    lg: '24px',     // 3 units
+    xl: '32px',     // 4 units
+    xxl: '48px',    // 6 units
+    xxxl: '64px',   // 8 units
+    huge: '96px',   // 12 units
+};
+
+// Modular typographic scale (1.250 - Major Third)
+export const typography = {
+    display: {
+        size: '72px',
+        lineHeight: '1.1',
+        letterSpacing: '-0.02em',
+        weight: 600
+    },
+    h1: {
+        size: '56px',
+        lineHeight: '1.2',
+        letterSpacing: '-0.01em',
+        weight: 600
+    },
+    h2: {
+        size: '44px',
+        lineHeight: '1.3',
+        letterSpacing: '0',
+        weight: 600
+    },
+    h3: {
+        size: '36px',
+        lineHeight: '1.3',
+        letterSpacing: '0',
+        weight: 500
+    },
+    h4: {
+        size: '28px',
+        lineHeight: '1.4',
+        letterSpacing: '0',
+        weight: 500
+    },
+    h5: {
+        size: '22px',
+        lineHeight: '1.4',
+        letterSpacing: '0.01em',
+        weight: 500
+    },
+    h6: {
+        size: '18px',
+        lineHeight: '1.5',
+        letterSpacing: '0.01em',
+        weight: 500
+    },
+    body: {
+        size: '16px',
+        lineHeight: '1.6',
+        letterSpacing: '0.01em',
+        weight: 300
+    },
+    bodyLarge: {
+        size: '18px',
+        lineHeight: '1.6',
+        letterSpacing: '0.01em',
+        weight: 300
+    },
+    bodySmall: {
+        size: '14px',
+        lineHeight: '1.5',
+        letterSpacing: '0.01em',
+        weight: 300
+    },
+    caption: {
+        size: '12px',
+        lineHeight: '1.4',
+        letterSpacing: '0.02em',
+        weight: 300
+    }
+};
+
+// Breakpoints for responsive design
+export const breakpoints = {
+    mobile: '576px',
+    tablet: '768px',
+    desktop: '992px',
+    wide: '1200px',
+    ultraWide: '1440px'
+};
+
+// Professional shadow system
+export const shadows = {
+    sm: '0 2px 8px rgba(0, 0, 0, 0.15)',
+    md: '0 4px 16px rgba(0, 0, 0, 0.2)',
+    lg: '0 8px 32px rgba(0, 0, 0, 0.25)',
+    xl: '0 16px 48px rgba(0, 0, 0, 0.3)',
+    glow: '0 0 24px rgba(255, 184, 0, 0.4)',
+    glowStrong: '0 0 32px rgba(255, 184, 0, 0.6)'
 };

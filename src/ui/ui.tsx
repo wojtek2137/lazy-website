@@ -362,7 +362,7 @@ export function Ui() {
               <ModernTextWrapper centerAlign enhanced>
                 <header>
                   <ModernHeading id="about-heading" size="medium" color="gold" enhanced>
-                    O zespole Lazy Swing Band
+                    O Zespole
                   </ModernHeading>
                 </header>
                 <ModernText size="large" emphasis enhanced>
@@ -403,7 +403,7 @@ export function Ui() {
               <ModernTextWrapper centerAlign enhanced>
                 <header>
                   <ModernHeading id="festivals-heading" size="medium" color="gold" enhanced>
-                    Nasze występy na festiwalach
+                    Występy na Festiwalach
                   </ModernHeading>
                 </header>
                 <ModernText size="large" emphasis enhanced>
@@ -440,7 +440,7 @@ export function Ui() {
               <ModernTextWrapper centerAlign enhanced>
                 <header>
                   <ModernHeading id="services-heading" size="medium" color="gold" enhanced>
-                    Nasze usługi i oferta
+                    Nasza Oferta
                   </ModernHeading>
                 </header>
                 <ModernText size="large" enhanced>
@@ -472,7 +472,7 @@ export function Ui() {
               <ModernTextWrapper centerAlign>
                 <header>
                   <ModernHeading id="christmas-heading" size="medium" color="gold">
-                    🎄 Lazy Christmas 🎄
+                    Lazy Christmas
                   </ModernHeading>
                 </header>
                 <ChristmasContentGrid>
@@ -490,8 +490,8 @@ export function Ui() {
                     </ModernText>
                     <ModernText size="large">
                       <ModernSpan variant="accent">
-                        🎅 To doskonała oferta na wigilie firmowe i inne podobne
-                        wydarzenia, w magicznym klimacie bożonarodzeniowym. 🎁
+                        To doskonała oferta na wigilie firmowe i inne podobne
+                        wydarzenia, w magicznym klimacie bożonarodzeniowym.
                       </ModernSpan>
                     </ModernText>
                   </ChristmasTextSection>

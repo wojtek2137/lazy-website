@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   ContentWrapper,
   HeaderWrapper,
@@ -12,28 +12,7 @@ import {
 import { ResponsiveLazyImage } from "ui/components/ResponsiveLazyImage";
 
 export function MainView() {
-  const [textIndex, setTextIndex] = useState(0);
-
-  const alternativeTexts = [
-    "Świąteczny Jazz na Żywo 🎄",
-    "Kolędy Swingowe 2025 🎅", 
-    "Zespół na Wigilie Firmowe",
-    "Muzyka z Duszą na Święta",
-    "Sinatra & Bublé Style 🎵",
-    "Swing który Porusza Serca ❄️"
-  ];
-
-  // Removed isLoaded state as it was unused
-
-  useEffect(() => {
-    // Cycle through different main titles - reduced frequency for performance
-    const interval = setInterval(() => {
-      setTextIndex((prev) => (prev + 1) % alternativeTexts.length);
-    }, 8000);
-    
-    return () => clearInterval(interval);
-  }, [alternativeTexts.length]);
-
+  // Removed rotating text animation for better UX - single, clear message is more effective
   return (
     <section id="glowna" aria-labelledby="main-title">
       <MainContainer>
@@ -48,15 +27,15 @@ export function MainView() {
         <ContentWrapper>
           <Logo role="img" aria-label="Logo zespołu Lazy Swing Band" />
           <HeaderWrapper>
-            <SubHeader>🎄 Polski zespół jazzowy na sezon świąteczny 2025 🎷</SubHeader>
+            <SubHeader>Polski zespół jazzowy na sezon świąteczny 2025</SubHeader>
 
-            <MainTitle id="main-title" key={textIndex}>
-              {alternativeTexts[textIndex]}
+            <MainTitle id="main-title">
+              Świąteczny Jazz na Żywo
             </MainTitle>
-            <SubHeader>🎅 Wigilie firmowe • Sinatra & Bublé • Kraków • Małopolska • Cała Polska ❄️</SubHeader>
+            <SubHeader>Wigilie firmowe • Sinatra & Bublé • Kraków • Małopolska • Cała Polska</SubHeader>
             
             <CTAButton href="/wigilie-firmowe/" aria-label="Dowiedz się więcej o wigiliach firmowych">
-              🎄 Dowiedz się więcej
+              Sprawdź naszą ofertę świąteczną
             </CTAButton>
           </HeaderWrapper>
         </ContentWrapper>
