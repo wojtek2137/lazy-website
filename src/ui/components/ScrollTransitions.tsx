@@ -5,7 +5,7 @@ import { colors } from "config/theme";
 export const SectionTransition = styled("div")`
   position: relative;
   height: 120px;
-  background: 
+  background:
     linear-gradient(
       180deg,
       transparent 0%,
@@ -22,9 +22,9 @@ export const SectionTransition = styled("div")`
       ${colors.primary.gold}02 102px
     );
   overflow: hidden;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -39,15 +39,15 @@ export const SectionTransition = styled("div")`
       ${colors.primary.gold}40,
       transparent
     );
-    box-shadow: 
+    box-shadow:
       0 0 20px ${colors.primary.gold}60,
       0 0 40px ${colors.primary.gold}30;
     /* Reduced animation frequency for performance */
     animation: lineGlow 8s ease-in-out infinite;
   }
-  
+
   &::after {
-    content: '♪ ♫ ♪';
+    content: "♪ ♫ ♪";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -62,39 +62,41 @@ export const SectionTransition = styled("div")`
     padding: 12px 20px;
     border-radius: 25px;
     border: 1px solid ${colors.primary.gold}40;
-    box-shadow: 
+    box-shadow:
       0 0 20px ${colors.primary.gold}40,
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
     z-index: 2;
     white-space: nowrap;
-    
+
     /* Mobile responsiveness for notes */
     @media (max-width: 576px) {
       font-size: 16px;
       letter-spacing: 4px;
       padding: 8px 16px;
     }
-    
+
     @media (max-width: 420px) {
       font-size: 14px;
       letter-spacing: 2px;
       padding: 6px 12px;
     }
   }
-  
+
   @keyframes lineGlow {
-    0%, 100% { 
+    0%,
+    100% {
       width: 300px;
       opacity: 0.6;
     }
-    50% { 
+    50% {
       width: 400px;
       opacity: 1;
     }
   }
-  
+
   @keyframes musicNotes {
-    0%, 100% { 
+    0%,
+    100% {
       opacity: 0.7;
       transform: translate(-50%, -50%) scale(1) rotate(0deg);
     }
@@ -120,9 +122,9 @@ export const ScrollIndicator = styled("div")`
   height: 3px;
   background: rgba(0, 0, 0, 0.1);
   z-index: 9999;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -141,21 +143,29 @@ export const ScrollIndicator = styled("div")`
 export const InteractiveSection = styled("div")`
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  
+
   &:hover {
     transform: translateY(-8px) scale(1.01);
   }
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-      radial-gradient(circle at 30% 30%, ${colors.primary.gold}08 0%, transparent 60%),
-      radial-gradient(circle at 70% 70%, ${colors.primary.sandy}06 0%, transparent 50%),
+    background:
+      radial-gradient(
+        circle at 30% 30%,
+        ${colors.primary.gold}08 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        circle at 70% 70%,
+        ${colors.primary.sandy}06 0%,
+        transparent 50%
+      ),
       linear-gradient(
         135deg,
         ${colors.primary.gold}03 0%,
@@ -167,14 +177,14 @@ export const InteractiveSection = styled("div")`
     pointer-events: none;
     border-radius: inherit;
   }
-  
+
   &:hover::before {
     opacity: 1;
   }
-  
+
   /* Subtle border effect on hover */
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -1px;
     left: -1px;
@@ -194,7 +204,7 @@ export const InteractiveSection = styled("div")`
     z-index: -1;
     pointer-events: none;
   }
-  
+
   &:hover::after {
     opacity: 0.6;
   }
@@ -210,24 +220,20 @@ export const AdvancedParallaxBackground = styled("div")<{
   left: -10%;
   width: 120%;
   height: 140%;
-  background: url('${({ imageUrl }) => imageUrl}');
+  background: url("${({ imageUrl }) => imageUrl}");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   z-index: -3;
   will-change: transform;
-  
+
   /* Enhanced filter effects */
-  filter: 
-    brightness(0.7) 
-    contrast(1.2) 
-    saturate(0.9)
-    blur(0.5px);
-  
+  filter: brightness(0.7) contrast(1.2) saturate(0.9) blur(0.5px);
+
   /* Parallax effect - controlled by JavaScript for better performance */
   transform: translate3d(0, 0, 0) scale(1.1);
   transition: transform 0.1s ease-out;
-  
+
   @media (max-width: 768px) {
     position: fixed;
     top: 0;

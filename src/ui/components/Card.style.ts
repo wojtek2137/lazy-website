@@ -16,7 +16,7 @@ export const CardWrapper = styled("div")`
   border-radius: 24px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
@@ -55,7 +55,12 @@ export const Img = styled("img")<PropsType>`
   cursor: pointer;
   max-height: 190px;
   transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%) !important;
+  background: linear-gradient(
+    135deg,
+    #1a1a1a 0%,
+    #2d2d2d 50%,
+    #1a1a1a 100%
+  ) !important;
   border-radius: 12px;
   ${(props): string | null =>
     props.isHover === true ? "max-width: 75px;" : null}
@@ -101,7 +106,7 @@ export const StreamingTagWrapper = styled("li")`
   list-style: none;
   margin: 0;
   padding: 0;
-  
+
   a {
     display: flex;
     align-items: center;
@@ -111,13 +116,13 @@ export const StreamingTagWrapper = styled("li")`
     background: ${colors.primary.white};
     transition: all 0.3s ease;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    
+
     &:hover {
       transform: translateY(-1px);
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
       background: ${colors.neutrals.N10};
     }
-    
+
     &:focus-visible {
       outline: 2px solid ${colors.primary.gold};
       outline-offset: 2px;
@@ -126,7 +131,7 @@ export const StreamingTagWrapper = styled("li")`
 `;
 
 export const StreamingTag = styled("img")`
-  width: 22px;  /* Mniejszy rozmiar */
+  width: 22px; /* Mniejszy rozmiar */
   height: 22px;
   object-fit: contain;
   opacity: 0.8;

@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled from '@emotion/styled';
-import { colors, fonts } from 'config/theme';
-
+import React, { useState, useEffect, useRef } from "react";
+import styled from "@emotion/styled";
+import { colors, fonts } from "config/theme";
 
 // Quick Actions Panel - 2024 UX Trends
 const QuickActionsPanel = styled.div`
@@ -15,14 +14,14 @@ const QuickActionsPanel = styled.div`
   border-radius: 20px;
   overflow: hidden;
   z-index: 9998;
-  box-shadow: 
+  box-shadow:
     0 40px 80px rgba(0, 0, 0, 0.8),
     0 0 60px ${colors.primary.gold}20,
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  
+
   /* Entry animation */
   animation: slideInUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  
+
   @keyframes slideInUp {
     from {
       transform: translateY(100px);
@@ -62,49 +61,64 @@ const QuickActionsList = styled.div`
   gap: 12px;
 `;
 
-const QuickActionItem = styled.button<{ variant?: 'primary' | 'secondary' | 'danger' }>`
+const QuickActionItem = styled.button<{
+  variant?: "primary" | "secondary" | "danger";
+}>`
   display: flex;
   align-items: center;
   padding: 16px;
   background: ${({ variant }) => {
     switch (variant) {
-      case 'primary': return `linear-gradient(135deg, ${colors.primary.gold}20, ${colors.primary.gold}10)`;
-      case 'danger': return 'linear-gradient(135deg, #ff174420, #ff174410)';
-      default: return 'rgba(255, 255, 255, 0.05)';
+      case "primary":
+        return `linear-gradient(135deg, ${colors.primary.gold}20, ${colors.primary.gold}10)`;
+      case "danger":
+        return "linear-gradient(135deg, #ff174420, #ff174410)";
+      default:
+        return "rgba(255, 255, 255, 0.05)";
     }
   }};
-  border: 1px solid ${({ variant }) => {
-    switch (variant) {
-      case 'primary': return `${colors.primary.gold}40`;
-      case 'danger': return '#ff174440';
-      default: return 'rgba(255, 255, 255, 0.1)';
-    }
-  }};
+  border: 1px solid
+    ${({ variant }) => {
+      switch (variant) {
+        case "primary":
+          return `${colors.primary.gold}40`;
+        case "danger":
+          return "#ff174440";
+        default:
+          return "rgba(255, 255, 255, 0.1)";
+      }
+    }};
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   color: ${colors.primary.white};
   font-family: ${fonts.outfit.Medium};
-  
+
   &:hover {
     transform: translateY(-2px) scale(1.02);
     background: ${({ variant }) => {
       switch (variant) {
-        case 'primary': return `linear-gradient(135deg, ${colors.primary.gold}30, ${colors.primary.gold}15)`;
-        case 'danger': return 'linear-gradient(135deg, #ff174430, #ff174415)';
-        default: return 'rgba(255, 255, 255, 0.1)';
+        case "primary":
+          return `linear-gradient(135deg, ${colors.primary.gold}30, ${colors.primary.gold}15)`;
+        case "danger":
+          return "linear-gradient(135deg, #ff174430, #ff174415)";
+        default:
+          return "rgba(255, 255, 255, 0.1)";
       }
     }};
     border-color: ${({ variant }) => {
       switch (variant) {
-        case 'primary': return `${colors.primary.gold}60`;
-        case 'danger': return '#ff174460';
-        default: return 'rgba(255, 255, 255, 0.2)';
+        case "primary":
+          return `${colors.primary.gold}60`;
+        case "danger":
+          return "#ff174460";
+        default:
+          return "rgba(255, 255, 255, 0.2)";
       }
     }};
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   }
-  
+
   &:active {
     transform: translateY(0) scale(0.98);
   }
@@ -156,7 +170,7 @@ const ProgressRing = styled.div<{ progress: number }>`
   align-items: center;
   justify-content: center;
   border: 3px solid transparent;
-  background-image: 
+  background-image:
     linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
     conic-gradient(
       ${colors.primary.gold} 0deg,
@@ -168,13 +182,13 @@ const ProgressRing = styled.div<{ progress: number }>`
   background-clip: content-box, border-box;
   cursor: pointer;
   z-index: 10005;
-  box-shadow: 
+  box-shadow:
     0 8px 25px rgba(0, 0, 0, 0.4),
     0 0 20px ${colors.primary.gold}20;
-  
+
   /* Entry animation */
   animation: scaleIn 0.3s ease forwards;
-  
+
   @keyframes scaleIn {
     from {
       transform: scale(0.8);
@@ -185,14 +199,14 @@ const ProgressRing = styled.div<{ progress: number }>`
       opacity: 1;
     }
   }
-  
+
   &:hover {
     transform: scale(1.1);
-    box-shadow: 
+    box-shadow:
       0 12px 35px rgba(0, 0, 0, 0.5),
       0 0 30px ${colors.primary.gold}30;
   }
-  
+
   &:active {
     transform: scale(1.05);
   }
@@ -209,36 +223,40 @@ interface QuickActions2024Props {
   onClose: () => void;
 }
 
-export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) {
+export function QuickActions2024({
+  isVisible,
+  onClose,
+}: QuickActions2024Props) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showProgressRing, setShowProgressRing] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let ticking = false;
-    
+
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const scrollTop = window.pageYOffset;
-          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const docHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
           const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
           setScrollProgress(Math.min(100, Math.max(0, progress)));
-          
+
           // Show progress ring after scrolling past main section (roughly 100vh)
           const mainSectionHeight = window.innerHeight;
           setShowProgressRing(scrollTop > mainSectionHeight * 0.8);
-          
+
           ticking = false;
         });
         ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Initial calculation
-    
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Handle click outside to close
@@ -247,67 +265,81 @@ export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) 
 
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element;
-      
+
       // Check if click was on toggle button or its children
-      const isToggleButton = target.closest('[data-quick-actions-toggle="true"]');
-      
-      if (panelRef.current && !panelRef.current.contains(target as Node) && !isToggleButton) {
+      const isToggleButton = target.closest(
+        '[data-quick-actions-toggle="true"]'
+      );
+
+      if (
+        panelRef.current &&
+        !panelRef.current.contains(target as Node) &&
+        !isToggleButton
+      ) {
         onClose();
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isVisible, onClose]);
 
   const quickActions = [
     {
-      icon: '',
-      label: 'Rezerwacja',
-      description: 'Zarezerwuj występ',
-      shortcut: 'Ctrl+R',
-      variant: 'primary' as const,
+      icon: "",
+      label: "Rezerwacja",
+      description: "Zarezerwuj występ",
+      shortcut: "Ctrl+R",
+      variant: "primary" as const,
       action: () => {
-        document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' });
+        document
+          .getElementById("kontakt")
+          ?.scrollIntoView({ behavior: "smooth" });
         onClose();
-      }
+      },
     },
     {
-      icon: '',
-      label: 'Posłuchaj',
-      description: 'Nasza muzyka',
-      shortcut: 'Ctrl+M',
-      variant: 'secondary' as const,
+      icon: "",
+      label: "Posłuchaj",
+      description: "Nasza muzyka",
+      shortcut: "Ctrl+M",
+      variant: "secondary" as const,
       action: () => {
-        document.getElementById('albumy')?.scrollIntoView({ behavior: 'smooth' });
+        document
+          .getElementById("albumy")
+          ?.scrollIntoView({ behavior: "smooth" });
         onClose();
-      }
+      },
     },
     {
-      icon: '',
-      label: 'Wideo',
-      description: 'Zobacz występy',
-      shortcut: 'Ctrl+V',
-      variant: 'secondary' as const,
+      icon: "",
+      label: "Wideo",
+      description: "Zobacz występy",
+      shortcut: "Ctrl+V",
+      variant: "secondary" as const,
       action: () => {
-        document.getElementById('wideo')?.scrollIntoView({ behavior: 'smooth' });
+        document
+          .getElementById("wideo")
+          ?.scrollIntoView({ behavior: "smooth" });
         onClose();
-      }
+      },
     },
     {
-      icon: '',
-      label: 'Festiwale',
-      description: 'Nasze występy',
-      shortcut: 'Ctrl+F',
-      variant: 'secondary' as const,
+      icon: "",
+      label: "Festiwale",
+      description: "Nasze występy",
+      shortcut: "Ctrl+F",
+      variant: "secondary" as const,
       action: () => {
-        document.getElementById('festiwale')?.scrollIntoView({ behavior: 'smooth' });
+        document
+          .getElementById("festiwale")
+          ?.scrollIntoView({ behavior: "smooth" });
         onClose();
-      }
-    }
+      },
+    },
   ];
 
   return (
@@ -317,9 +349,11 @@ export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) 
         <QuickActionsPanel ref={panelRef}>
           <QuickActionHeader>
             <QuickActionTitle>Szybkie Akcje</QuickActionTitle>
-            <QuickActionSubtitle>Najczęściej używane funkcje</QuickActionSubtitle>
+            <QuickActionSubtitle>
+              Najczęściej używane funkcje
+            </QuickActionSubtitle>
           </QuickActionHeader>
-          
+
           <QuickActionsList>
             {quickActions.map((action, index) => (
               <QuickActionItem
@@ -341,9 +375,9 @@ export function QuickActions2024({ isVisible, onClose }: QuickActions2024Props) 
 
       {/* Scroll Progress Ring - conditional rendering */}
       {showProgressRing && (
-        <ProgressRing 
+        <ProgressRing
           progress={scrollProgress}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           title={`Postęp czytania: ${Math.round(scrollProgress)}% - kliknij aby wrócić na górę`}
         >
           <ProgressText>{Math.round(scrollProgress)}%</ProgressText>

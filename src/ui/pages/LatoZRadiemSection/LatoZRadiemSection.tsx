@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ResponsiveLazyImage } from 'ui/components/ResponsiveLazyImage';
+import React, { useState, useEffect } from "react";
+import { ResponsiveLazyImage } from "ui/components/ResponsiveLazyImage";
 import {
   LatoZRadiemWrapper,
   ContentContainer,
@@ -24,101 +24,102 @@ import {
   CarouselIndicators,
   IndicatorDot,
   SwipeHint,
-  CarouselRadioLogo
-} from './LatoZRadiemSection.style';
+  CarouselRadioLogo,
+} from "./LatoZRadiemSection.style";
 
 // Use responsive images from public folder
 
 // Cities with coordinates adjusted for Poland map PNG borders
 const cities = [
   {
-    name: 'Zakopane',
-    url: 'https://jedynka.polskieradio.pl/artykul/3546524,Rusza-Trasa-Lata-z-Radiem-i-Telewizja-Polska-Co-wydarzy-sie-w-Zakopanem',
+    name: "Zakopane",
+    url: "https://jedynka.polskieradio.pl/artykul/3546524,Rusza-Trasa-Lata-z-Radiem-i-Telewizja-Polska-Co-wydarzy-sie-w-Zakopanem",
     x: 50,
-    y: 85
+    y: 85,
   },
   {
-    name: 'Chorzów',
-    url: 'https://jedynka.polskieradio.pl/artykul/3552975,Lato-z-Radiem-i-Telewizja-Polska-przystanek-trzeci-Superautopl-Stadion-Slaski',
+    name: "Chorzów",
+    url: "https://jedynka.polskieradio.pl/artykul/3552975,Lato-z-Radiem-i-Telewizja-Polska-przystanek-trzeci-Superautopl-Stadion-Slaski",
     x: 45,
-    y: 75
+    y: 75,
   },
   {
-    name: 'Giżycko',
-    url: 'https://jedynka.polskieradio.pl/artykul/3556077,Lato-z-Radiem-i-Telewizja-Polska-w-Gizycku-Jakie-atrakcje-zaplanowano',
+    name: "Giżycko",
+    url: "https://jedynka.polskieradio.pl/artykul/3556077,Lato-z-Radiem-i-Telewizja-Polska-w-Gizycku-Jakie-atrakcje-zaplanowano",
     x: 70,
-    y: 20
+    y: 20,
   },
   {
-    name: 'Poddębice',
-    url: 'https://jedynka.polskieradio.pl/artykul/3559214,Lato-z-Radiem-i-Telewizja-Polska-w-Poddebicach-Jakie-atrakcje-zaplanowano',
+    name: "Poddębice",
+    url: "https://jedynka.polskieradio.pl/artykul/3559214,Lato-z-Radiem-i-Telewizja-Polska-w-Poddebicach-Jakie-atrakcje-zaplanowano",
     x: 42,
-    y: 55
+    y: 55,
   },
   {
-    name: 'Lublin',
-    url: 'https://jedynka.polskieradio.pl/artykul/3562277,Lato-z-Radiem-i-Telewizja-Polska-w-Lublinie-Jakie-atrakcje-zaplanowano',
+    name: "Lublin",
+    url: "https://jedynka.polskieradio.pl/artykul/3562277,Lato-z-Radiem-i-Telewizja-Polska-w-Lublinie-Jakie-atrakcje-zaplanowano",
     x: 75,
-    y: 60
+    y: 60,
   },
   {
-    name: 'Mrozy',
-    url: 'https://jedynka.polskieradio.pl/artykul/3563339,Lato-z-Radiem-w-uniwersum-Rancza-Co-wydarzy-sie-w-Jeruzalu-i-Mrozach',
+    name: "Mrozy",
+    url: "https://jedynka.polskieradio.pl/artykul/3563339,Lato-z-Radiem-w-uniwersum-Rancza-Co-wydarzy-sie-w-Jeruzalu-i-Mrozach",
     x: 65,
-    y: 45
+    y: 45,
   },
   {
-    name: 'Elbląg',
-    url: 'https://jedynka.polskieradio.pl/artykul/3549480,Drugi-przystanek-na-trasie-Lata-z-Radiem-i-Telewizj%C4%85-Polsk%C4%85-Co-wydarzy%C5%82o-si%C4%99-w-Elbl%C4%85gu',
+    name: "Elbląg",
+    url: "https://jedynka.polskieradio.pl/artykul/3549480,Drugi-przystanek-na-trasie-Lata-z-Radiem-i-Telewizj%C4%85-Polsk%C4%85-Co-wydarzy%C5%82o-si%C4%99-w-Elbl%C4%85gu",
     x: 52,
-    y: 15
+    y: 15,
   },
   {
-    name: 'Tarnów',
-    url: 'https://jedynka.polskieradio.pl/artykul/3568543,Lato-z-Radiem-i-Telewizja-Polska-tym-razem-w-Tarnowie',
+    name: "Tarnów",
+    url: "https://jedynka.polskieradio.pl/artykul/3568543,Lato-z-Radiem-i-Telewizja-Polska-tym-razem-w-Tarnowie",
     x: 58,
-    y: 78
+    y: 78,
   },
   {
-    name: 'Grudziądz',
-    url: 'https://jedynka.polskieradio.pl/artykul/3570215,Lato-z-Radiem-i-Telewizja-Polska-w-Grudziadzu',
+    name: "Grudziądz",
+    url: "https://jedynka.polskieradio.pl/artykul/3570215,Lato-z-Radiem-i-Telewizja-Polska-w-Grudziadzu",
     x: 48,
-    y: 30
-  }
+    y: 30,
+  },
 ];
 
 const carouselSlides = [
   {
-    src: '/images/responsive/lato_z_radiem_1.webp', 
-    alt: 'Występ zespołu podczas potańcówki',
-    title: 'Potańcówki międzypokoleniowe',
-    description: 'Energia swingu łączy wszystkie pokolenia'
+    src: "/images/responsive/lato_z_radiem_1.webp",
+    alt: "Występ zespołu podczas potańcówki",
+    title: "Potańcówki międzypokoleniowe",
+    description: "Energia swingu łączy wszystkie pokolenia",
   },
   {
-    src: '/images/responsive/lato_z_radiem_2.webp',
-    alt: 'Z Panią redaktor Sławą Bieńczycką podczas wydarzenia Lato z Radiem',
-    title: 'Z Radiem w całej Polsce',
-    description: 'Po jednym z koncertów z Panią redaktor Sławą Bieńczycką.'
+    src: "/images/responsive/lato_z_radiem_2.webp",
+    alt: "Z Panią redaktor Sławą Bieńczycką podczas wydarzenia Lato z Radiem",
+    title: "Z Radiem w całej Polsce",
+    description: "Po jednym z koncertów z Panią redaktor Sławą Bieńczycką.",
   },
   {
-    src: '/images/responsive/lato_z_radiem_3.webp',
-    alt: 'Z Panem redaktorem Romanem Czejarkiem podczas koncertu Lazy Swing Band w trakcie Lata z Radiem',
-    title: 'Radiowe wywiady',
-    description: 'Opowiadamy o pasji do jazzu z Panem redaktorem Romanem Czejarkiem.'
+    src: "/images/responsive/lato_z_radiem_3.webp",
+    alt: "Z Panem redaktorem Romanem Czejarkiem podczas koncertu Lazy Swing Band w trakcie Lata z Radiem",
+    title: "Radiowe wywiady",
+    description:
+      "Opowiadamy o pasji do jazzu z Panem redaktorem Romanem Czejarkiem.",
   },
   {
-    src: '/images/responsive/lato_z_radiem.webp',
-    alt: 'Lazy Swing Band podczas Lata z Radiem',
-    title: 'Lazy Swing Band',
-    description: 'Reprezentujemy swingową scenę na najważniejszych festiwalach w Polsce.'
-  }
+    src: "/images/responsive/lato_z_radiem.webp",
+    alt: "Lazy Swing Band podczas Lata z Radiem",
+    title: "Lazy Swing Band",
+    description:
+      "Reprezentujemy swingową scenę na najważniejszych festiwalach w Polsce.",
+  },
 ];
 
 export function LatoZRadiemSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-
 
   // Auto-advance carousel every 5 seconds
   useEffect(() => {
@@ -141,7 +142,7 @@ export function LatoZRadiemSection() {
 
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
@@ -149,7 +150,9 @@ export function LatoZRadiemSection() {
     if (isLeftSwipe) {
       setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
     } else if (isRightSwipe) {
-      setCurrentSlide((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length);
+      setCurrentSlide(
+        (prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length
+      );
     }
   };
 
@@ -159,43 +162,73 @@ export function LatoZRadiemSection() {
 
   // Map interaction handler
   const handleCityClick = (url: string) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <LatoZRadiemWrapper id="lato-z-radiem" aria-labelledby="lato-z-radiem-heading">
+    <LatoZRadiemWrapper
+      id="lato-z-radiem"
+      aria-labelledby="lato-z-radiem-heading"
+    >
       <ContentContainer>
         <SectionHeader>
-          <MainTitle id="lato-z-radiem-heading">
-            Lato z Radiem
-          </MainTitle>
-          <Subtitle>
-            Międzypokoleniowe potańcówki z Lazy Swing Band
-          </Subtitle>
+          <MainTitle id="lato-z-radiem-heading">Lato z Radiem</MainTitle>
+          <Subtitle>Międzypokoleniowe potańcówki z Lazy Swing Band</Subtitle>
         </SectionHeader>
-        
+
         <ContentGrid>
           <TextContent>
             <ArticleText>
               <p>
-                <strong>2025 rok</strong> oznacza dla nas szczególną przygodę! 
-                <strong> Lazy Swing Band</strong> dołączył do ekipy <strong> <a href="https://www.latozradiem.pl/pikniki" target="_blank" rel="noopener noreferrer">"Lata z Radiem i Telewizją Polską"</a></strong> występując na
-                <strong> <a href="https://jedynka.polskieradio.pl/artykul/3553019,Pota%C5%84c%C3%B3wki-Lata-z-Radiem-Jak%C4%85-muzyk%C4%99-gra-Lazy-Swing-Band" target="_blank" rel="noopener noreferrer"> 9 wyjątkowych potańcówkach międzypokoleniowych w najpiękniejszych zakątkach Polski.</a></strong>
+                <strong>2025 rok</strong> oznacza dla nas szczególną przygodę!
+                <strong> Lazy Swing Band</strong> dołączył do ekipy{" "}
+                <strong>
+                  {" "}
+                  <a
+                    href="https://www.latozradiem.pl/pikniki"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    "Lata z Radiem i Telewizją Polską"
+                  </a>
+                </strong>{" "}
+                występując na
+                <strong>
+                  {" "}
+                  <a
+                    href="https://jedynka.polskieradio.pl/artykul/3553019,Pota%C5%84c%C3%B3wki-Lata-z-Radiem-Jak%C4%85-muzyk%C4%99-gra-Lazy-Swing-Band"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {" "}
+                    9 wyjątkowych potańcówkach międzypokoleniowych w
+                    najpiękniejszych zakątkach Polski.
+                  </a>
+                </strong>
               </p>
-              
-              
+
               <p>
-                W trakcie trasy wykonaliśmy największe przeboje polskiej muzyki międzywojennej i powojennej 
-                <strong> Mieczysława Fogga, Adama Astona, Hanki Ordonówny, Ireny Santor, Kasi Sobczyk</strong> i wielu innych. 
-                Publiczność bawiła się w rytm kompozycji <strong>Henryka Warsa, Jerzego Petersburskiego czy Jerzego "Dudusia" Mateuszkiewicza</strong> - 
-                pokazując, że ta muzyka wciąż łączy wszystkich bez względu na wiek.
+                W trakcie trasy wykonaliśmy największe przeboje polskiej muzyki
+                międzywojennej i powojennej
+                <strong>
+                  {" "}
+                  Mieczysława Fogga, Adama Astona, Hanki Ordonówny, Ireny
+                  Santor, Kasi Sobczyk
+                </strong>{" "}
+                i wielu innych. Publiczność bawiła się w rytm kompozycji{" "}
+                <strong>
+                  Henryka Warsa, Jerzego Petersburskiego czy Jerzego "Dudusia"
+                  Mateuszkiewicza
+                </strong>{" "}
+                - pokazując, że ta muzyka wciąż łączy wszystkich bez względu na
+                wiek.
               </p>
             </ArticleText>
-            
+
             <PolandMap>
               <h3>Trasa "Lato z Radiem" - Miasta, które odwiedziliśmy:</h3>
               <MapContainer>
-                <PolandMapImage 
+                <PolandMapImage
                   src="/images/responsive/poland_map.png"
                   alt="Mapa Polski z trasą Lato z Radiem"
                   loading="lazy"
@@ -212,7 +245,7 @@ export function LatoZRadiemSection() {
                         aria-label={`Przeczytaj artykuł o wydarzeniu Lato z Radiem w ${city.name}`}
                         title={`Kliknij, aby przeczytać więcej o wydarzeniu w ${city.name}`}
                         onKeyDown={(e) => {
-                          if (e.key === 'Enter' || e.key === ' ') {
+                          if (e.key === "Enter" || e.key === " ") {
                             e.preventDefault();
                             handleCityClick(city.url);
                           }
@@ -227,7 +260,7 @@ export function LatoZRadiemSection() {
               </MapContainer>
             </PolandMap>
           </TextContent>
-          
+
           <ImageCarousel>
             <CarouselContainer
               onTouchStart={onTouchStart}
@@ -235,9 +268,9 @@ export function LatoZRadiemSection() {
               onTouchEnd={onTouchEnd}
             >
               <CarouselRadioLogo>
-                <a 
-                  href="https://jedynka.polskieradio.pl/artykul/3553019,Pota%C5%84c%C3%B3wki-Lata-z-Radiem-Jak%C4%85-muzyk%C4%99-gra-Lazy-Swing-Band" 
-                  target="_blank" 
+                <a
+                  href="https://jedynka.polskieradio.pl/artykul/3553019,Pota%C5%84c%C3%B3wki-Lata-z-Radiem-Jak%C4%85-muzyk%C4%99-gra-Lazy-Swing-Band"
+                  target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Przeczytaj artykuł o Lazy Swing Band w programie Lato z Radiem"
                   title="Kliknij, aby przeczytać artykuł o naszym udziale w programie Lato z Radiem"
@@ -272,7 +305,7 @@ export function LatoZRadiemSection() {
 
               <SwipeHint>Przesuń</SwipeHint>
             </CarouselContainer>
-            
+
             <CarouselIndicators>
               {carouselSlides.map((_, index) => (
                 <IndicatorDot

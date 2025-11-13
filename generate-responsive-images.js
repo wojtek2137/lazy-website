@@ -1,6 +1,6 @@
-const sharp = require('sharp');
-const fs = require('fs');
-const path = require('path');
+const sharp = require("sharp");
+const fs = require("fs");
+const path = require("path");
 
 async function generateResponsiveImages(inputPath, outputDir, imageName) {
   if (!fs.existsSync(outputDir)) {
@@ -8,33 +8,36 @@ async function generateResponsiveImages(inputPath, outputDir, imageName) {
   }
 
   const formats = [
-    { suffix: 'desktop', width: 1920, quality: 85 },
-    { suffix: 'tablet', width: 768, quality: 85 },
-    { suffix: 'mobile', width: 480, quality: 85 },
-    { suffix: 'thumb', width: 150, quality: 80 }
+    { suffix: "desktop", width: 1920, quality: 85 },
+    { suffix: "tablet", width: 768, quality: 85 },
+    { suffix: "mobile", width: 480, quality: 85 },
+    { suffix: "thumb", width: 150, quality: 80 },
   ];
 
   const results = {};
 
   for (const format of formats) {
-    const outputPath = path.join(outputDir, `${imageName}_${format.suffix}.webp`);
-    
+    const outputPath = path.join(
+      outputDir,
+      `${imageName}_${format.suffix}.webp`
+    );
+
     await sharp(inputPath)
       .resize(format.width, null, {
-        fit: 'inside',
-        withoutEnlargement: true
+        fit: "inside",
+        withoutEnlargement: true,
       })
       .webp({ quality: format.quality })
       .toFile(outputPath);
 
     // Get file stats for manifest
     const stats = fs.statSync(outputPath);
-    const sizeInKB = Math.round(stats.size / 1024 * 10) / 10;
+    const sizeInKB = Math.round((stats.size / 1024) * 10) / 10;
 
     results[format.suffix] = {
       path: `./responsive/${imageName}_${format.suffix}.webp`,
       size: `${sizeInKB}KB`,
-      format: 'webp'
+      format: "webp",
     };
 
     console.log(`Generated: ${outputPath} (${sizeInKB}KB)`);
@@ -44,11 +47,14 @@ async function generateResponsiveImages(inputPath, outputDir, imageName) {
 }
 
 async function updateManifest(imageName, imageData) {
-  const manifestPath = path.join(__dirname, 'public/images/responsive/image-manifest.json');
+  const manifestPath = path.join(
+    __dirname,
+    "public/images/responsive/image-manifest.json"
+  );
   let manifest = {};
 
   if (fs.existsSync(manifestPath)) {
-    manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
   }
 
   manifest[imageName] = imageData;
@@ -60,29 +66,33 @@ async function updateManifest(imageName, imageData) {
 async function main() {
   const images = [
     {
-      inputImage: 'src/assets/images/homepage-hero.JPG',
-      imageName: 'homepage-hero'
+      inputImage: "src/assets/images/homepage-hero.JPG",
+      imageName: "homepage-hero",
     },
     {
-      inputImage: 'public/images/stage-layout.png',
-      imageName: 'stage-layout'
-    }
+      inputImage: "public/images/stage-layout.png",
+      imageName: "stage-layout",
+    },
   ];
-  
-  const outputDir = 'public/images/responsive';
+
+  const outputDir = "public/images/responsive";
 
   for (const { inputImage, imageName } of images) {
     try {
       console.log(`Processing ${inputImage}...`);
-      const imageData = await generateResponsiveImages(inputImage, outputDir, imageName);
+      const imageData = await generateResponsiveImages(
+        inputImage,
+        outputDir,
+        imageName
+      );
       await updateManifest(imageName, imageData);
       console.log(`Done with ${imageName}!`);
     } catch (error) {
       console.error(`Error processing ${imageName}:`, error);
     }
   }
-  
-  console.log('All images processed!');
+
+  console.log("All images processed!");
 }
 
 main();
