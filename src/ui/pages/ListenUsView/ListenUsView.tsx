@@ -99,9 +99,17 @@ export function ListenUsView() {
             <ListenUsHeader>Albumy</ListenUsHeader>
           </h2>
         </header>
-        <ListenAlbumsWrapper role="list" aria-label="Lista albumów zespołu Lazy Swing Band">
+        <ListenAlbumsWrapper
+          role="list"
+          aria-label="Lista albumów zespołu Lazy Swing Band"
+        >
           {cards.map((card, index) => (
-            <Card key={index} name={card.name} coverSrc={card.cover} tags={card.data} />
+            <Card
+              key={index}
+              name={card.name}
+              coverSrc={card.cover}
+              tags={card.data}
+            />
           ))}
         </ListenAlbumsWrapper>
       </ListenUsSection>

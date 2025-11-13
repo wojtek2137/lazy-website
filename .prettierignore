@@ -1,0 +1,28 @@
+# Dependencies
+node_modules
+package-lock.json
+yarn.lock
+
+# Build outputs
+build
+dist
+.next
+out
+
+# Cache
+.cache
+.parcel-cache
+.eslintcache
+
+# Generated files
+coverage
+*.log
+.DS_Store
+
+# Don't format generated files
+*.min.js
+*.min.css
+
+# Keep build artifacts as-is
+build/**/*
+

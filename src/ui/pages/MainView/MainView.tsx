@@ -27,14 +27,20 @@ export function MainView() {
         <ContentWrapper>
           <Logo role="img" aria-label="Logo zespołu Lazy Swing Band" />
           <HeaderWrapper>
-            <SubHeader>Polski zespół jazzowy na sezon świąteczny 2025</SubHeader>
+            <SubHeader>
+              Polski zespół jazzowy na sezon świąteczny 2025
+            </SubHeader>
 
-            <MainTitle id="main-title">
-              Świąteczny Jazz na Żywo
-            </MainTitle>
-            <SubHeader>Wigilie firmowe • Sinatra & Bublé • Kraków • Małopolska • Cała Polska</SubHeader>
-            
-            <CTAButton href="/wigilie-firmowe/" aria-label="Dowiedz się więcej o wigiliach firmowych">
+            <MainTitle id="main-title">Świąteczny Jazz na Żywo</MainTitle>
+            <SubHeader>
+              Wigilie firmowe • Sinatra & Bublé • Kraków • Małopolska • Cała
+              Polska
+            </SubHeader>
+
+            <CTAButton
+              href="/wigilie-firmowe/"
+              aria-label="Dowiedz się więcej o wigiliach firmowych"
+            >
               Sprawdź naszą ofertę świąteczną
             </CTAButton>
           </HeaderWrapper>

@@ -13,20 +13,17 @@ import { LatoZRadiemSection } from "ui/pages/LatoZRadiemSection/LatoZRadiemSecti
 import { ModernNavigation2024 } from "ui/components/ModernNavigation2024";
 import { QuickActions2024 } from "ui/components/QuickActions2024";
 
-
 import { ContactSection } from "ui/pages/ContactSection/ContactSection";
-import { 
-  ModernSectionWrapper, 
-  ModernContentContainer, 
+import {
+  ModernSectionWrapper,
+  ModernContentContainer,
   ModernTextWrapper,
   ModernHeading,
   ModernText,
   ModernSpan,
-  ModernList
+  ModernList,
 } from "ui/components/SharedStyles";
-import { 
-  SectionTransition
-} from "ui/components/ScrollTransitions";
+import { SectionTransition } from "ui/components/ScrollTransitions";
 interface SectionWrapperPropsType {
   imageUrl: string;
 }
@@ -42,15 +39,20 @@ export const SpanStyle = styled("span")`
   font-weight: 700;
   text-shadow: 0 0 10px ${colors.primary.gold}30;
   position: relative;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -2px;
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, ${colors.primary.gold}, transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      ${colors.primary.gold},
+      transparent
+    );
     opacity: 0.6;
   }
 `;
@@ -123,22 +125,22 @@ export const ResponsiveVideoWrapper = styled("div")`
   height: 0;
   overflow: hidden;
   border-radius: 16px;
-  box-shadow: 
+  box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.4),
     0 0 0 1px ${colors.primary.gold}20;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
-  
+
   &:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 
+    box-shadow:
       0 25px 50px rgba(0, 0, 0, 0.5),
       0 0 0 2px ${colors.primary.gold}40,
       0 0 30px ${colors.primary.gold}30;
   }
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -2px;
     left: -2px;
@@ -157,21 +159,21 @@ export const ResponsiveVideoWrapper = styled("div")`
     opacity: 0;
     transition: opacity 0.4s ease;
   }
-  
+
   &:hover::before {
     opacity: 1;
   }
-  
+
   @media (max-width: 768px) {
     max-width: 100%;
     margin: 32px auto 0;
     border-radius: 12px;
-    
+
     &:hover {
       transform: translateY(-4px) scale(1.01);
     }
   }
-  
+
   @media (max-width: 480px) {
     margin: 24px auto 0;
     border-radius: 8px;
@@ -195,7 +197,7 @@ export const ChristmasContentGrid = styled("div")`
   grid-template-columns: 1fr;
   align-items: start;
   width: 100%;
-  
+
   @media (min-width: 992px) {
     grid-template-columns: 1fr 1fr;
     gap: 64px;
@@ -207,7 +209,7 @@ export const ChristmasTextSection = styled("div")`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  
+
   @media (min-width: 992px) {
     gap: 32px;
   }
@@ -218,7 +220,7 @@ export const ChristmasVideoSection = styled("div")`
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  
+
   @media (min-width: 992px) {
     order: -1; /* Video first on desktop */
   }
@@ -231,40 +233,39 @@ export const VideoLabel = styled("div")`
   text-align: center;
   opacity: 0.9;
   letter-spacing: 0.5px;
-  
+
   &::before,
   &::after {
-    content: '♪';
+    content: "♪";
     margin: 0 8px;
     animation: musicPulse 3s ease-in-out infinite;
   }
-  
+
   &::after {
     animation-delay: 1.5s;
   }
-  
+
   @keyframes musicPulse {
-    0%, 100% { opacity: 0.6; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.1); }
+    0%,
+    100% {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
   }
-  
+
   @media (max-width: 768px) {
     font-size: 14px;
-    
+
     &::before,
     &::after {
       margin: 0 4px;
     }
   }
 `;
-
-
-
-
-
-
-
-
 
 // Footer Components
 export const Footer = styled("footer")`
@@ -276,23 +277,25 @@ export const Footer = styled("footer")`
   position: relative;
   opacity: 0.6;
   transition: opacity 0.3s ease;
-  
+
   &:hover {
     opacity: 0.8;
   }
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 100px;
     height: 1px;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      ${colors.primary.gold}20 50%, 
-      transparent 100%);
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      ${colors.primary.gold}20 50%,
+      transparent 100%
+    );
   }
 `;
 
@@ -311,17 +314,17 @@ export const FooterText = styled("p")`
   opacity: 0.7;
   letter-spacing: 1px;
   text-transform: uppercase;
-  
+
   &::before {
-    content: '♪';
+    content: "♪";
     margin-right: 6px;
     color: ${colors.primary.gold};
     opacity: 0.3;
     font-size: 10px;
   }
-  
+
   &::after {
-    content: '♪';
+    content: "♪";
     margin-left: 6px;
     color: ${colors.primary.gold};
     opacity: 0.3;
@@ -333,82 +336,112 @@ export function Ui() {
   const [quickActionsVisible, setQuickActionsVisible] = useState(false);
 
   const toggleQuickActions = () => {
-    setQuickActionsVisible(prev => !prev);
+    setQuickActionsVisible((prev) => !prev);
   };
 
   return (
     <>
-
-      
-
-      
       {/* Modern 2024 Navigation System */}
-      <ModernNavigation2024 
-        onQuickActionsToggle={toggleQuickActions}
+      <ModernNavigation2024 onQuickActionsToggle={toggleQuickActions} />
+      <QuickActions2024
+        isVisible={quickActionsVisible}
+        onClose={() => setQuickActionsVisible(false)}
       />
-      <QuickActions2024 
-        isVisible={quickActionsVisible} 
-        onClose={() => setQuickActionsVisible(false)} 
-      />
-      
+
       <main id="main-content">
         <MainView />
-        
+
         <SectionTransition />
-        
+
         <section id="o-nas" aria-labelledby="about-heading">
           <ModernSectionWrapper backgroundImage={About} parallaxEffect>
             <ModernContentContainer glassmorphism enhanced>
               <ModernTextWrapper centerAlign enhanced>
                 <header>
-                  <ModernHeading id="about-heading" size="medium" color="gold" enhanced>
+                  <ModernHeading
+                    id="about-heading"
+                    size="medium"
+                    color="gold"
+                    enhanced
+                  >
                     O Zespole
                   </ModernHeading>
                 </header>
                 <ModernText size="large" emphasis enhanced>
-                  Jesteśmy <ModernSpan variant="highlight" enhanced>młodą i dynamiczną grupą</ModernSpan>, która kocha muzykę i kulturę
-                  swingową. Nasz zespół powstał w Krakowie, gdzie w 2016 roku
-                  zaczęliśmy naszą przygodę od małych swingowych potańcówek w{" "}
-                  <ModernSpan variant="glow" enhanced>Piwnicy pod Baranami.</ModernSpan>
+                  Jesteśmy{" "}
+                  <ModernSpan variant="highlight" enhanced>
+                    młodą i dynamiczną grupą
+                  </ModernSpan>
+                  , która kocha muzykę i kulturę swingową. Nasz zespół powstał w
+                  Krakowie, gdzie w 2016 roku zaczęliśmy naszą przygodę od
+                  małych swingowych potańcówek w{" "}
+                  <ModernSpan variant="glow" enhanced>
+                    Piwnicy pod Baranami.
+                  </ModernSpan>
                 </ModernText>
                 <ModernText size="medium" enhanced>
-                  Od tamtej pory przeszliśmy długą drogę, stając się jednym z najbardziej 
-                  rozpoznawalnych zespołów swingowych w Polsce. Wystąpiliśmy na{" "}
+                  Od tamtej pory przeszliśmy długą drogę, stając się jednym z
+                  najbardziej rozpoznawalnych zespołów swingowych w Polsce.
+                  Wystąpiliśmy na{" "}
                   <ModernSpan variant="accent" enhanced>
-                    <a href="https://podcasty.polskieradio.pl/jedynka/audycje/lato-z-radiem-,166/odcinek/potancowka-lata-z-radiem-przy-dzwiekach-grupy-lazy-swing-band-maciej-walecki-sprawdza-jak-bawili-sie-uczestnicy-,54eb4a7e-6a45-4f5a-a3e1-540e3bc97f1b" target="_blank" rel="noopener noreferrer">
-                      dziewięciu przystankach trasy „Lato z Radiem i Telewizją Polską"
+                    <a
+                      href="https://podcasty.polskieradio.pl/jedynka/audycje/lato-z-radiem-,166/odcinek/potancowka-lata-z-radiem-przy-dzwiekach-grupy-lazy-swing-band-maciej-walecki-sprawdza-jak-bawili-sie-uczestnicy-,54eb4a7e-6a45-4f5a-a3e1-540e3bc97f1b"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      dziewięciu przystankach trasy „Lato z Radiem i Telewizją
+                      Polską"
                     </a>
-                  </ModernSpan>, a zespół został notowany w{" "}
+                  </ModernSpan>
+                  , a zespół został notowany w{" "}
                   <ModernSpan variant="highlight" enhanced>
-                    <a href="https://www.facebook.com/photo/?fbid=878329507633646&set=a.438180431648558" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.facebook.com/photo/?fbid=878329507633646&set=a.438180431648558"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       zestawieniu Jazz Forum w kategorii jazzu tradycyjnego
                     </a>
-                  </ModernSpan>. 
-                  Nasza pasja do autentycznego brzmienia lat 20. i 30. XX wieku harmonijnie łączy się z nowoczesną energią sceniczną.
+                  </ModernSpan>
+                  . Nasza pasja do autentycznego brzmienia lat 20. i 30. XX
+                  wieku harmonijnie łączy się z nowoczesną energią sceniczną.
                 </ModernText>
               </ModernTextWrapper>
             </ModernContentContainer>
           </ModernSectionWrapper>
         </section>
-        
+
         <SectionTransition />
         <LatoZRadiemSection />
         <SectionTransition />
         <ListenUsView />
-        
+
         <SectionTransition />
         <section id="festiwale" aria-labelledby="festivals-heading">
-          <ModernSectionWrapper backgroundImage={About3} parallaxEffect data-bg="about3">
+          <ModernSectionWrapper
+            backgroundImage={About3}
+            parallaxEffect
+            data-bg="about3"
+          >
             <ModernContentContainer glassmorphism enhanced>
               <ModernTextWrapper centerAlign enhanced>
                 <header>
-                  <ModernHeading id="festivals-heading" size="medium" color="gold" enhanced>
+                  <ModernHeading
+                    id="festivals-heading"
+                    size="medium"
+                    color="gold"
+                    enhanced
+                  >
                     Występy na Festiwalach
                   </ModernHeading>
                 </header>
                 <ModernText size="large" emphasis enhanced>
-                  Nasza pasja do muzyki swingowej prowadzi nas nie tylko po całej
-                  Polsce, ale także <ModernSpan variant="accent" enhanced>poza jej granice</ModernSpan>.
+                  Nasza pasja do muzyki swingowej prowadzi nas nie tylko po
+                  całej Polsce, ale także{" "}
+                  <ModernSpan variant="accent" enhanced>
+                    poza jej granice
+                  </ModernSpan>
+                  .
                 </ModernText>
                 <ModernText size="medium" enhanced>
                   <ModernSpan variant="highlight" enhanced>
@@ -416,11 +449,51 @@ export function Ui() {
                   </ModernSpan>
                 </ModernText>
                 <ModernList variant="grid" enhanced>
-                  <li><a href="https://dragonswing.pl/" target="_blank" rel="noopener noreferrer">Dragon Swing Festival</a></li>
-                  <li><a href="https://www.transwingvania.com/" target="_blank" rel="noopener noreferrer">Transwingvania Lindy Exchange</a></li>
-                  <li><a href="https://pl.wikipedia.org/wiki/Letni_Festiwal_Jazzowy_w_Piwnicy_pod_Baranami" target="_blank" rel="noopener noreferrer">Letni Festiwal Jazzowy w Piwnicy pod Baranami</a></li>
-                  <li><a href="https://jazzforum.com.pl/main/news/xii-jazz-zdroj-festiwal" target="_blank" rel="noopener noreferrer">Jazz Zdrój Festiwal</a></li>
-                  <li><a href="https://elegantspolek.cz/akce/retro-elegant-kravare/" target="_blank" rel="noopener noreferrer">Retro Elegant Kravaře</a></li>
+                  <li>
+                    <a
+                      href="https://dragonswing.pl/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Dragon Swing Festival
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.transwingvania.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Transwingvania Lindy Exchange
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://pl.wikipedia.org/wiki/Letni_Festiwal_Jazzowy_w_Piwnicy_pod_Baranami"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Letni Festiwal Jazzowy w Piwnicy pod Baranami
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://jazzforum.com.pl/main/news/xii-jazz-zdroj-festiwal"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Jazz Zdrój Festiwal
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://elegantspolek.cz/akce/retro-elegant-kravare/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Retro Elegant Kravaře
+                    </a>
+                  </li>
                 </ModernList>
                 <ModernText size="medium" enhanced>
                   i wiele innych...
@@ -429,23 +502,39 @@ export function Ui() {
             </ModernContentContainer>
           </ModernSectionWrapper>
         </section>
-        
+
         <SectionTransition />
         <YouTubeView />
-        
+
         <SectionTransition />
         <section id="uslugi" aria-labelledby="services-heading">
-          <ModernSectionWrapper backgroundImage={About2} parallaxEffect data-bg="about2">
+          <ModernSectionWrapper
+            backgroundImage={About2}
+            parallaxEffect
+            data-bg="about2"
+          >
             <ModernContentContainer glassmorphism enhanced>
               <ModernTextWrapper centerAlign enhanced>
                 <header>
-                  <ModernHeading id="services-heading" size="medium" color="gold" enhanced>
+                  <ModernHeading
+                    id="services-heading"
+                    size="medium"
+                    color="gold"
+                    enhanced
+                  >
                     Nasza Oferta
                   </ModernHeading>
                 </header>
                 <ModernText size="large" enhanced>
-                  Jeśli organizujecie Państwo <ModernSpan variant="highlight" enhanced>wszelakie wydarzenia kulturalne</ModernSpan>,
-                  a może poszukują <ModernSpan variant="accent" enhanced>klimatycznego zespołu</ModernSpan>, rodem z Ojca Chrzestnego...
+                  Jeśli organizujecie Państwo{" "}
+                  <ModernSpan variant="highlight" enhanced>
+                    wszelakie wydarzenia kulturalne
+                  </ModernSpan>
+                  , a może poszukują{" "}
+                  <ModernSpan variant="accent" enhanced>
+                    klimatycznego zespołu
+                  </ModernSpan>
+                  , rodem z Ojca Chrzestnego...
                 </ModernText>
                 <ModernList variant="grid" enhanced>
                   <li>Festiwale jazzowe i retro-festiwale</li>
@@ -457,36 +546,56 @@ export function Ui() {
                   <li>Projekty filmowe i teatralne</li>
                 </ModernList>
                 <ModernText size="large" emphasis enhanced>
-                  <ModernSpan variant="glow" enhanced>- JESTEŚMY IDEALNYM WYBOREM!</ModernSpan>
+                  <ModernSpan variant="glow" enhanced>
+                    - JESTEŚMY IDEALNYM WYBOREM!
+                  </ModernSpan>
                 </ModernText>
               </ModernTextWrapper>
             </ModernContentContainer>
           </ModernSectionWrapper>
         </section>
-        
+
         <SectionTransition />
-        
+
         <section id="swieta" aria-labelledby="christmas-heading">
           <ModernSectionWrapper darkTheme>
             <ModernContentContainer glassmorphism maxWidth="1200px">
               <ModernTextWrapper centerAlign>
                 <header>
-                  <ModernHeading id="christmas-heading" size="medium" color="gold">
+                  <ModernHeading
+                    id="christmas-heading"
+                    size="medium"
+                    color="gold"
+                  >
                     Lazy Christmas
                   </ModernHeading>
                 </header>
                 <ChristmasContentGrid>
                   <ChristmasTextSection>
                     <ModernText size="large" emphasis>
-                      W okresie bożonarodzeniowym mamy także przygotowany 
-                      <ModernSpan variant="glow"> wyjątkowy repertuar świąteczny</ModernSpan>!
+                      W okresie bożonarodzeniowym mamy także przygotowany
+                      <ModernSpan variant="glow">
+                        {" "}
+                        wyjątkowy repertuar świąteczny
+                      </ModernSpan>
+                      !
                     </ModernText>
                     <ModernText size="medium">
-                      <ModernSpan variant="highlight">Lazy Christmas!</ModernSpan> - 
-                      ze standardami amerykańskich, swingowych przebojów bożonarodzeniowych
-                      w niepowtarzalnym klimacie lat 20. i 30., takich jak 
-                      <ModernSpan variant="glow"> "Let It Snow!"</ModernSpan> czy inne 
-                      klasyki <ModernSpan variant="highlight">Franka Sinatry</ModernSpan>.
+                      <ModernSpan variant="highlight">
+                        Lazy Christmas!
+                      </ModernSpan>{" "}
+                      - ze standardami amerykańskich, swingowych przebojów
+                      bożonarodzeniowych w niepowtarzalnym klimacie lat 20. i
+                      30., takich jak
+                      <ModernSpan variant="glow">
+                        {" "}
+                        "Let It Snow!"
+                      </ModernSpan>{" "}
+                      czy inne klasyki{" "}
+                      <ModernSpan variant="highlight">
+                        Franka Sinatry
+                      </ModernSpan>
+                      .
                     </ModernText>
                     <ModernText size="large">
                       <ModernSpan variant="accent">
@@ -495,15 +604,17 @@ export function Ui() {
                       </ModernSpan>
                     </ModernText>
                   </ChristmasTextSection>
-                  
+
                   <ChristmasVideoSection>
-                    <VideoLabel>Posłuchaj naszych bożonarodzeniowych hitów</VideoLabel>
+                    <VideoLabel>
+                      Posłuchaj naszych bożonarodzeniowych hitów
+                    </VideoLabel>
                     <ResponsiveVideoWrapper>
-                      <ResponsiveIframe 
-                        src="https://www.youtube.com/embed/CLA-kpH-3Cs?si=a3orL4ns7sib6R4W" 
-                        title="Lazy Swing Band - Christmas Songs" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        referrerPolicy="strict-origin-when-cross-origin" 
+                      <ResponsiveIframe
+                        src="https://www.youtube.com/embed/CLA-kpH-3Cs?si=a3orL4ns7sib6R4W"
+                        title="Lazy Swing Band - Christmas Songs"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        referrerPolicy="strict-origin-when-cross-origin"
                         allowFullScreen
                         loading="lazy"
                       />
@@ -514,12 +625,12 @@ export function Ui() {
             </ModernContentContainer>
           </ModernSectionWrapper>
         </section>
-        
+
         <SectionTransition />
         <SquadSection />
         <SectionTransition />
         <ContactSection />
-        
+
         {/* Footer */}
         <Footer>
           <FooterContent>

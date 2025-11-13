@@ -8,7 +8,7 @@ import {
   SquadName,
   SquadInstrument,
   SquadHeaderMain,
-  SquadResponsiveImage
+  SquadResponsiveImage,
 } from "./SquadSection.style";
 
 const squadData = [
@@ -55,8 +55,8 @@ export function SquadSection() {
           <ImageBox key={index}>
             <ImageWrapper>
               <SquadResponsiveImage>
-                <ResponsiveLazyImage 
-                  src={squad.imageSrc} 
+                <ResponsiveLazyImage
+                  src={squad.imageSrc}
                   alt={`Zdjęcie ${squad.person}, ${squad.description} w zespole Lazy Swing Band`}
                   loading="lazy"
                   useResponsive={true}

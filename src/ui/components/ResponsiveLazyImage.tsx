@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
-import styled from '@emotion/styled';
+import React, { useState, useRef, useEffect } from "react";
+import styled from "@emotion/styled";
 
 interface ResponsiveLazyImageProps {
   src: string;
   alt: string;
-  loading?: 'lazy' | 'eager';
+  loading?: "lazy" | "eager";
   useResponsive?: boolean;
 }
 
@@ -21,8 +21,8 @@ const Image = styled.img<{ $isLoaded: boolean }>`
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(20px);
   filter: blur(5px);
-  opacity: ${props => props.$isLoaded ? 1 : 0};
-  
+  opacity: ${(props) => (props.$isLoaded ? 1 : 0)};
+
   &.loaded {
     transform: translateY(0);
     filter: blur(0);
@@ -42,42 +42,56 @@ const Placeholder = styled.div`
   color: #666;
   font-size: 12px;
   animation: shimmer 2s ease-in-out infinite;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
     animation: loading-sweep 1.5s ease-in-out infinite;
   }
-  
+
   @keyframes shimmer {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.5; }
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.5;
+    }
   }
-  
+
   @keyframes loading-sweep {
-    0% { left: -100%; }
-    100% { left: 100%; }
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
   }
 `;
 
 export const ResponsiveLazyImage: React.FC<ResponsiveLazyImageProps> = ({
   src,
   alt,
-  loading = 'lazy',
+  loading = "lazy",
   useResponsive = false,
 }) => {
-  const [inView, setInView] = useState(loading === 'eager');
+  const [inView, setInView] = useState(loading === "eager");
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (loading === 'eager' || inView) return;
+    if (loading === "eager" || inView) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -99,18 +113,18 @@ export const ResponsiveLazyImage: React.FC<ResponsiveLazyImageProps> = ({
   }, [loading, inView]);
 
   const generateSrcSet = (originalSrc: string): string => {
-    if (!useResponsive) return '';
-    
-    const filename = originalSrc.split('/').pop()?.split('.')[0];
-    const extension = originalSrc.split('.').pop();
-    
-    if (!filename || !extension) return '';
+    if (!useResponsive) return "";
+
+    const filename = originalSrc.split("/").pop()?.split(".")[0];
+    const extension = originalSrc.split(".").pop();
+
+    if (!filename || !extension) return "";
 
     return [
       `/images/responsive/${filename}_mobile.${extension} 400w`,
       `/images/responsive/${filename}_tablet.${extension} 768w`,
       `/images/responsive/${filename}_desktop.${extension} 1200w`,
-    ].join(', ');
+    ].join(", ");
   };
 
   const handleImageLoad = () => {
@@ -129,17 +143,19 @@ export const ResponsiveLazyImage: React.FC<ResponsiveLazyImageProps> = ({
           src={src}
           alt={alt}
           srcSet={useResponsive ? generateSrcSet(src) : undefined}
-          sizes={useResponsive ? "(max-width: 400px) 100vw, (max-width: 768px) 50vw, 33vw" : undefined}
+          sizes={
+            useResponsive
+              ? "(max-width: 400px) 100vw, (max-width: 768px) 50vw, 33vw"
+              : undefined
+          }
           onLoad={handleImageLoad}
           onError={handleImageError}
-          className={imageLoaded ? 'loaded' : ''}
+          className={imageLoaded ? "loaded" : ""}
           $isLoaded={imageLoaded}
         />
       )}
       {!imageLoaded && !imageError && (
-        <Placeholder>
-          {inView ? 'Loading...' : '📷'}
-        </Placeholder>
+        <Placeholder>{inView ? "Loading..." : "📷"}</Placeholder>
       )}
     </ImageContainer>
   );

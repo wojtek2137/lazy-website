@@ -20,12 +20,12 @@ export const ImageBox = styled("div")`
   display: flex;
   flex-direction: column;
   position: relative;
-  
+
   /* Tablet: 2 per row */
   ${mq[2]} {
     flex: 1 1 50%;
   }
-  
+
   /* Mobile: 1 per row */
   ${mq[1]} {
     flex: 1 1 100%;
@@ -37,11 +37,11 @@ export const ImageWrapper = styled("div")`
   width: 100%;
   height: 60vh;
   overflow: hidden;
-  
+
   ${mq[2]} {
     height: 50vh;
   }
-  
+
   ${mq[1]} {
     height: 40vh;
   }
@@ -62,7 +62,7 @@ export const SquadName = styled("h3")`
   font-family: ${fonts.outfit.Medium};
   color: ${colors.primary.white};
   margin: 0 0 5px 0;
-  
+
   ${mq[1]} {
     font-size: 16px;
   }
@@ -73,7 +73,7 @@ export const SquadInstrument = styled("p")`
   font-family: ${fonts.outfit.Medium};
   color: #ccb379;
   margin: 0;
-  
+
   ${mq[1]} {
     font-size: 12px;
   }
@@ -91,12 +91,16 @@ export const SquadHeaderMain = styled("h2")`
   margin: 40px 0 0 0;
   padding: 25px 40px;
   position: relative;
-  background-size: 100% 1px, 100% 100%;
-  background-position: center top, center;
+  background-size:
+    100% 1px,
+    100% 100%;
+  background-position:
+    center top,
+    center;
   background-repeat: no-repeat;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 50%;
@@ -106,9 +110,9 @@ export const SquadHeaderMain = styled("h2")`
     background: linear-gradient(90deg, transparent, #ccb379, transparent);
     box-shadow: 0 0 10px #ccb379;
   }
-  
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -117,18 +121,18 @@ export const SquadHeaderMain = styled("h2")`
     height: 1px;
     background: linear-gradient(90deg, transparent, #ccb379, transparent);
   }
-  
+
   /* Art Deco geometric patterns */
   & > span::before,
   & > span::after {
-    content: '◆';
+    content: "◆";
     color: #ccb379;
     font-size: 16px;
     margin: 0 15px;
     opacity: 0.8;
     animation: artDecoGlow 4s ease-in-out infinite alternate;
   }
-  
+
   @keyframes artDecoGlow {
     0% {
       opacity: 0.6;
@@ -136,23 +140,25 @@ export const SquadHeaderMain = styled("h2")`
     }
     100% {
       opacity: 1;
-      text-shadow: 0 0 15px #ccb379, 0 0 25px #ccb379;
+      text-shadow:
+        0 0 15px #ccb379,
+        0 0 25px #ccb379;
     }
   }
-  
+
   ${mq[2]} {
     font-size: 28px;
     letter-spacing: 2px;
     padding: 20px 30px;
     margin: 30px 0 0 0;
   }
-  
+
   ${mq[1]} {
     font-size: 22px;
     letter-spacing: 1px;
     padding: 18px 20px;
     margin: 25px 0 0 0;
-    
+
     & > span::before,
     & > span::after {
       margin: 0 8px;
@@ -164,7 +170,7 @@ export const SquadHeaderMain = styled("h2")`
 export const SquadResponsiveImage = styled("div")`
   width: 100%;
   height: 100%;
-  
+
   img {
     width: 100%;
     height: 100%;
