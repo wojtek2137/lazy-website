@@ -33,13 +33,13 @@ export function MainView() {
 
             <MainTitle id="main-title">Świąteczny Jazz na Żywo</MainTitle>
             <SubHeader>
-              Wigilie firmowe • Sinatra & Bublé • Kraków • Małopolska • Cała
+              Koncerty świąteczne • Sinatra & Bublé • Kraków • Małopolska • Cała
               Polska
             </SubHeader>
 
             <CTAButton
               href="/wigilie-firmowe/"
-              aria-label="Dowiedz się więcej o wigiliach firmowych"
+              aria-label="Sprawdź naszą ofertę świąteczną"
             >
               Sprawdź naszą ofertę świąteczną
             </CTAButton>
