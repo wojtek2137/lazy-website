@@ -392,7 +392,7 @@ export function ContactSection() {
           {/* Christmas Services Card */}
           <ContactCard>
             <ContactHeader id="christmas-services">
-              🎄 Oferta Świąteczna 2025
+              🎄 Oferta Świąteczna 2026
             </ContactHeader>
             <div
               style={{
@@ -434,7 +434,7 @@ export function ContactSection() {
                   e.currentTarget.style.transform = "translateY(0)";
                   e.currentTarget.style.boxShadow = "none";
                 }}
-                aria-label="Zobacz ofertę świąteczną zespołu na 2025"
+                aria-label="Zobacz ofertę świąteczną zespołu na 2026"
               >
                 🎅 Oferta Świąteczna
               </a>

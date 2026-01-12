@@ -27,21 +27,17 @@ export function MainView() {
         <ContentWrapper>
           <Logo role="img" aria-label="Logo zespołu Lazy Swing Band" />
           <HeaderWrapper>
-            <SubHeader>
-              Polski zespół jazzowy na sezon świąteczny 2025
-            </SubHeader>
+            <SubHeader>Polski zespół jazzowy rodowodem z Krakowa</SubHeader>
 
-            <MainTitle id="main-title">Świąteczny Jazz na Żywo</MainTitle>
+            <MainTitle id="main-title">Swingowa Muzyka na Żywo</MainTitle>
             <SubHeader>
-              Koncerty świąteczne • Sinatra & Bublé • Kraków • Małopolska • Cała
+              Koncerty • Festiwale • Potańcówki z Polskim Radiem • Imprezy
+              firmowe • Bankiety • Eventy VIP • Kraków • Małopolska • Cała
               Polska
             </SubHeader>
 
-            <CTAButton
-              href="/wigilie-firmowe/"
-              aria-label="Sprawdź naszą ofertę świąteczną"
-            >
-              Sprawdź naszą ofertę świąteczną
+            <CTAButton href="#kontakt" aria-label="Skontaktuj się z nami">
+              Skontaktuj się z nami
             </CTAButton>
           </HeaderWrapper>
         </ContentWrapper>
