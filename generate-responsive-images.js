@@ -73,6 +73,30 @@ async function main() {
       inputImage: "public/images/stage-layout.png",
       imageName: "stage-layout",
     },
+    {
+      inputImage: "src/assets/images/Melchiory 1.jpg",
+      imageName: "melchiory-2026-1",
+    },
+    {
+      inputImage: "src/assets/images/Melchiory 2.jpg",
+      imageName: "melchiory-2026-2",
+    },
+    {
+      inputImage: "src/assets/images/Melchiory 3.jpg",
+      imageName: "melchiory-2026-3",
+    },
+    {
+      inputImage: "src/assets/images/Melchiory 4.jpg",
+      imageName: "melchiory-2026-4",
+    },
+    {
+      inputImage: "src/assets/images/Melchiory 5.jpg",
+      imageName: "melchiory-2026-5",
+    },
+    {
+      inputImage: "src/assets/images/lato-z-radiem-2026-plakat.png",
+      imageName: "lato-z-radiem-2026-plakat",
+    },
   ];
 
   const outputDir = "public/images/responsive";

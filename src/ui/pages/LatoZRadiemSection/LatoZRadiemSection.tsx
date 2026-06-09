@@ -167,12 +167,14 @@ export function LatoZRadiemSection() {
 
   return (
     <LatoZRadiemWrapper
-      id="lato-z-radiem"
-      aria-labelledby="lato-z-radiem-heading"
+      id="lato-z-radiem-2025"
+      aria-labelledby="lato-z-radiem-2025-heading"
     >
       <ContentContainer>
         <SectionHeader>
-          <MainTitle id="lato-z-radiem-heading">Lato z Radiem</MainTitle>
+          <MainTitle id="lato-z-radiem-2025-heading">
+            Lato z Radiem 2025
+          </MainTitle>
           <Subtitle>Międzypokoleniowe potańcówki z Lazy Swing Band</Subtitle>
         </SectionHeader>
 

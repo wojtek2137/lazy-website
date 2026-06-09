@@ -8,7 +8,9 @@ import { ListenUsView } from "ui/pages/ListenUsView/ListenUsView";
 import { colors, fonts } from "config/theme";
 import { YouTubeView } from "ui/pages/YouTubeView/YouTubeView";
 import { SquadSection } from "ui/pages/SquadSection/SquadSection";
+import { LatoZRadiem2026Section } from "ui/pages/LatoZRadiem2026Section/LatoZRadiem2026Section";
 import { LatoZRadiemSection } from "ui/pages/LatoZRadiemSection/LatoZRadiemSection";
+import { Melchiory2026Section } from "ui/pages/Melchiory2026Section/Melchiory2026Section";
 
 import { ModernNavigation2024 } from "ui/components/ModernNavigation2024";
 import { QuickActions2024 } from "ui/components/QuickActions2024";
@@ -352,6 +354,9 @@ export function Ui() {
         <MainView />
 
         <SectionTransition />
+        <LatoZRadiem2026Section />
+
+        <SectionTransition />
 
         <section id="o-nas" aria-labelledby="about-heading">
           <ModernSectionWrapper backgroundImage={About} parallaxEffect>
@@ -411,6 +416,8 @@ export function Ui() {
           </ModernSectionWrapper>
         </section>
 
+        <SectionTransition />
+        <Melchiory2026Section />
         <SectionTransition />
         <LatoZRadiemSection />
         <SectionTransition />
@@ -522,10 +529,14 @@ export function Ui() {
                     color="gold"
                     enhanced
                   >
-                    Nasza Oferta
+                    Oferta Komercyjna
                   </ModernHeading>
                 </header>
                 <ModernText size="large" enhanced>
+                  <ModernSpan variant="accent" enhanced>
+                    Oprócz koncertów jazzowych i festiwali występujemy również
+                    na wydarzeniach komercyjnych. <br />{" "}
+                  </ModernSpan>
                   Jeśli organizujecie Państwo{" "}
                   <ModernSpan variant="highlight" enhanced>
                     wszelakie wydarzenia kulturalne
