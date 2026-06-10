@@ -107,11 +107,20 @@ export const ResponsiveLazyImage: React.FC<ResponsiveLazyImageProps> = ({
     ].join(", ");
   };
 
+  const effectiveSrc = (): string => {
+    if (!useResponsive) return src;
+    const filename = src.split("/").pop()?.split(".")[0];
+    const extension = src.split(".").pop();
+    const dir = src.substring(0, src.lastIndexOf("/"));
+    if (!filename || !extension) return src;
+    return `${dir}/${filename}_desktop.${extension}`;
+  };
+
   return (
     <ImageContainer>
       <Image
         ref={imgRef}
-        src={src}
+        src={effectiveSrc()}
         alt={alt}
         loading={loading}
         decoding="async"
