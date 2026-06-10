@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { ResponsiveLazyImage } from "ui/components/ResponsiveLazyImage";
 import {
   LatoZRadiemWrapper,
@@ -25,6 +25,11 @@ import {
   IndicatorDot,
   SwipeHint,
   CarouselRadioLogo,
+  LightboxOverlay,
+  LightboxImage,
+  LightboxClose,
+  LightboxNav,
+  LightboxCounter,
 } from "./LatoZRadiemSection.style";
 
 // Use responsive images from public folder
@@ -120,6 +125,41 @@ export function LatoZRadiemSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = useCallback((index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+    document.body.style.overflow = "hidden";
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxOpen(false);
+    document.body.style.overflow = "";
+  }, []);
+
+  const navigateLightbox = useCallback(
+    (direction: "prev" | "next") => {
+      setLightboxIndex((prev) => {
+        if (direction === "prev")
+          return (prev - 1 + carouselSlides.length) % carouselSlides.length;
+        return (prev + 1) % carouselSlides.length;
+      });
+    },
+    []
+  );
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") navigateLightbox("prev");
+      if (e.key === "ArrowRight") navigateLightbox("next");
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxOpen, closeLightbox, navigateLightbox]);
 
   // Auto-advance carousel every 5 seconds
   useEffect(() => {
@@ -289,7 +329,18 @@ export function LatoZRadiemSection() {
               <CarouselTrack $currentIndex={currentSlide}>
                 {carouselSlides.map((slide, index) => (
                   <CarouselCard key={index}>
-                    <CardImageWrapper>
+                    <CardImageWrapper
+                      onClick={() => openLightbox(index)}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`Powiększ zdjęcie: ${slide.title}`}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          openLightbox(index);
+                        }
+                      }}
+                    >
                       <ResponsiveLazyImage
                         src={slide.src}
                         alt={slide.alt}
@@ -321,6 +372,58 @@ export function LatoZRadiemSection() {
           </ImageCarousel>
         </ContentGrid>
       </ContentContainer>
+
+      {lightboxOpen && (
+        <LightboxOverlay onClick={closeLightbox}>
+          <LightboxClose
+            onClick={(e) => {
+              e.stopPropagation();
+              closeLightbox();
+            }}
+            aria-label="Zamknij podgląd zdjęcia"
+          >
+            ✕
+          </LightboxClose>
+
+          <LightboxNav
+            $direction="prev"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigateLightbox("prev");
+            }}
+            aria-label="Poprzednie zdjęcie"
+          >
+            ‹
+          </LightboxNav>
+
+          <LightboxImage
+            src={(() => {
+              const s = carouselSlides[lightboxIndex].src;
+              const filename = s.split("/").pop()?.split(".")[0] ?? "";
+              const ext = s.split(".").pop() ?? "webp";
+              const dir = s.substring(0, s.lastIndexOf("/"));
+              return `${dir}/${filename}_desktop.${ext}`;
+            })()}
+            alt={carouselSlides[lightboxIndex].alt}
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          <LightboxNav
+            $direction="next"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigateLightbox("next");
+            }}
+            aria-label="Następne zdjęcie"
+          >
+            ›
+          </LightboxNav>
+
+          <LightboxCounter>
+            {lightboxIndex + 1} / {carouselSlides.length}
+          </LightboxCounter>
+        </LightboxOverlay>
+      )}
     </LatoZRadiemWrapper>
   );
 }

@@ -482,14 +482,24 @@ export const CardImageWrapper = styled("div")`
   flex: 1;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+
+  /* Override ResponsiveLazyImage internal height:100% wrapper */
+  & > div {
+    height: 100%;
+  }
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transform: scale(0.7);
+    transform: scale(1);
     transition: transform 0.6s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
   }
 
   &::before {
@@ -735,4 +745,82 @@ export const CarouselRadioLogo = styled("div")`
     top: 15px;
     right: 15px;
   }
+`;
+
+export const LightboxOverlay = styled("div")`
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+
+export const LightboxImage = styled("img")`
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: default;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+`;
+
+export const LightboxClose = styled("button")`
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  z-index: 1001;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+`;
+
+export const LightboxNav = styled("button")<{ $direction: "prev" | "next" }>`
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  ${({ $direction }) => ($direction === "prev" ? "left: 16px;" : "right: 16px;")}
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 36px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  z-index: 1001;
+  line-height: 1;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+`;
+
+export const LightboxCounter = styled("div")`
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  z-index: 1001;
 `;
