@@ -1,34 +1,25 @@
 {
   "name": "lazy-website",
   "version": "0.1.0",
-  "homepage": "https://www.lazyswingband.com",
   "private": true,
   "engines": {
     "node": ">=20.18.0",
     "yarn": ">=1.22.0"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.11",
-    "@types/react": "^18.0.26",
-    "@types/react-dom": "^18.0.10",
-    "@types/styled-components": "^5.1.26",
     "next": "^14.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.1.0",
-    "typescript": "^4.9.4"
+    "styled-components": "^6.1.0"
   },
   "scripts": {
     "predeploy": "next build && cp CNAME out/",
     "deploy": "gh-pages -d out",
     "start": "next dev",
     "build": "next build",
-    "eslint": "eslint \"./src/**/*.{ts,tsx}\"",
-    "eslint:fix": "eslint \"./src/**/*.{ts,tsx}\" --fix",
+    "test": "jest",
+    "eslint": "eslint \"./src/**/*.{ts,tsx}\" \"./pages/**/*.{ts,tsx}\"",
+    "eslint:fix": "eslint \"./src/**/*.{ts,tsx}\" \"./pages/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md,html}\"",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md,html}\"",
     "ts-check": "./node_modules/typescript/bin/tsc -p ./tsconfig.json"
@@ -42,10 +33,17 @@
     }
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
     "eslint": "^8.30.0",
-    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "^14.2.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
@@ -54,7 +52,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "gh-pages": "^6.3.0",
     "prettier": "^3.6.2",
-    "sharp": "^0.34.3"
+    "typescript": "^5.0.0"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

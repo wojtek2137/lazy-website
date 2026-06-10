@@ -81,16 +81,15 @@ export const colors: ColorPaletteTypes = {
 
 export const fonts: FontTypes = {
   outfit: {
-    ExtraLight: "Outfit",
-    Light: "Outfit",
-    Medium: "Outfit",
-    SemiBold: "Outfit",
+    ExtraLight: "var(--font-outfit)",
+    Light: "var(--font-outfit)",
+    Medium: "var(--font-outfit)",
+    SemiBold: "var(--font-outfit)",
   },
 };
 
-// Optimized font stack with proper fallbacks - Outfit 2024
 export const fontStacks = {
-  primary: `'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif`,
+  primary: `var(--font-outfit), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif`,
   fallback: `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif`,
 };
 

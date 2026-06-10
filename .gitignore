@@ -10,7 +10,6 @@ out
 
 # Next.js
 .next
-next-env.d.ts
 
 # Environment variables
 .env

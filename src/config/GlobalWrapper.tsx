@@ -1,25 +1,6 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
 
-type FontType =
-  | "outfit_extralight"
-  | "outfit_light"
-  | "outfit_medium"
-  | "outfit_semibold";
-
-const getFont = (font: FontType, src: string, weight: number): string => {
-  return `
-        @font-face {
-            font-family: 'Outfit';
-            src: url(${src}) format('woff2');
-            font-weight: ${weight};
-            font-style: normal;
-            font-display: swap;
-            unicode-range: U+0020-00FF, U+0100-017F, U+0180-024F, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-    `;
-};
-
 const GlobalStyles = createGlobalStyle`
   /* Remove default focus for mouse users, keep for keyboard */
   *:focus {
@@ -37,11 +18,6 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  ${getFont("outfit_extralight", "/assets/fonts/Outfit-ExtraLight.woff2", 200)};
-  ${getFont("outfit_light", "/assets/fonts/Outfit-Light.woff2", 300)};
-  ${getFont("outfit_medium", "/assets/fonts/Outfit-Medium.woff2", 500)};
-  ${getFont("outfit_semibold", "/assets/fonts/Outfit-SemiBold.woff2", 600)};
-
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
@@ -54,7 +30,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     background: #000000;
     overflow-x: hidden;
-    /* Optymalizacje dla polskich znaków */
+    font-family: var(--font-outfit), -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;

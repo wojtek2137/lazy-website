@@ -28,7 +28,7 @@ export default function Home() {
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://lazyswingband.com/" />
+        <meta property="og:url" content="https://www.lazyswingband.com/" />
         <meta
           property="og:title"
           content="Lazy Swing Band - Polski Zespół Jazzowy | Taneczna Muzyka | Swing, Retro, Wielki Gatsby"
@@ -39,7 +39,7 @@ export default function Home() {
         />
         <meta
           property="og:image"
-          content="https://lazyswingband.com/logo-color.png"
+          content="https://www.lazyswingband.com/logo-color.png"
         />
         <meta
           property="og:image:alt"
@@ -49,14 +49,17 @@ export default function Home() {
         <meta property="og:image:height" content="709" />
         <meta property="og:locale" content="pl_PL" />
         <meta property="og:site_name" content="Lazy Swing Band" />
-        <meta property="music:musician" content="https://lazyswingband.com" />
+        <meta
+          property="music:musician"
+          content="https://www.lazyswingband.com"
+        />
         <meta property="fb:admins" content="lazyswingersband" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@lazyswingband" />
         <meta name="twitter:creator" content="@lazyswingband" />
-        <meta name="twitter:url" content="https://lazyswingband.com/" />
+        <meta name="twitter:url" content="https://www.lazyswingband.com/" />
         <meta
           name="twitter:title"
           content="Lazy Swing Band - Polski Zespół Jazzowy | Taneczna Muzyka | Swing, Retro, Wielki Gatsby"
@@ -67,7 +70,7 @@ export default function Home() {
         />
         <meta
           name="twitter:image"
-          content="https://lazyswingband.com/logo-color.png"
+          content="https://www.lazyswingband.com/logo-color.png"
         />
         <meta
           name="twitter:image:alt"
@@ -84,7 +87,7 @@ export default function Home() {
           content="https://music.youtube.com/playlist?list=OLAK5uy_lkk1xPxBViBc6BJV15Z1go2wJyJRYvNQI"
         />
 
-        <link rel="canonical" href="https://lazyswingband.com/" />
+        <link rel="canonical" href="https://www.lazyswingband.com/" />
 
         {/* Schema.org JSON-LD - MusicGroup */}
         <script
@@ -97,9 +100,9 @@ export default function Home() {
               alternateName: "LSB",
               description:
                 "Polski zespół jazzowy — taneczna muzyka, która łączy pokolenia i rezonuje na estradzie, w radiu oraz na międzypokoleniowych potańcówkach. Kultywujemy tradycje muzyki swingowej lat 20. i 30. Specjalizujemy się w tworzeniu niezapomnianych doświadczeń muzycznych w stylu retro i Wielki Gatsby, z repertuarem do tańca swingowego i kultury swingowej, muzyką przedwojenną oraz świątecznymi standardami jazzowymi. Występowaliśmy w programie Lato z Radiem i Telewizją Polską (2025). Zapraszamy na Lato z Radiem 2026! Wystąpiliśmy na gali Melchiory 2026. Idealny na imprezy VIP, eleganckie gale i bankiety.",
-              url: "https://lazyswingband.com",
-              logo: "https://lazyswingband.com/logo-color.png",
-              image: "https://lazyswingband.com/logo-color.png",
+              url: "https://www.lazyswingband.com",
+              logo: "https://www.lazyswingband.com/logo-color.png",
+              image: "https://www.lazyswingband.com/logo-color.png",
               genre: ["Jazz", "Swing", "Big Band"],
               foundingDate: "2016",
               foundingLocation: {
@@ -212,7 +215,7 @@ export default function Home() {
                   performer: {
                     "@type": "MusicGroup",
                     name: "Lazy Swing Band",
-                    url: "https://lazyswingband.com",
+                    url: "https://www.lazyswingband.com",
                   },
                 },
                 {
@@ -238,14 +241,14 @@ export default function Home() {
                   performer: {
                     "@type": "MusicGroup",
                     name: "Lazy Swing Band",
-                    url: "https://lazyswingband.com",
+                    url: "https://www.lazyswingband.com",
                   },
                 },
               ],
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "Booking",
-                url: "https://lazyswingband.com#kontakt",
+                url: "https://www.lazyswingband.com#kontakt",
               },
             }),
           }}
@@ -263,43 +266,43 @@ export default function Home() {
                   "@type": "ListItem",
                   position: 1,
                   name: "Strona główna",
-                  item: "https://lazyswingband.com/",
+                  item: "https://www.lazyswingband.com/",
                 },
                 {
                   "@type": "ListItem",
                   position: 2,
                   name: "Lato z Radiem 2026",
-                  item: "https://lazyswingband.com/#lato-z-radiem-2026",
+                  item: "https://www.lazyswingband.com/#lato-z-radiem-2026",
                 },
                 {
                   "@type": "ListItem",
                   position: 3,
                   name: "O nas",
-                  item: "https://lazyswingband.com/#o-nas",
+                  item: "https://www.lazyswingband.com/#o-nas",
                 },
                 {
                   "@type": "ListItem",
                   position: 4,
                   name: "Melchiory 2026",
-                  item: "https://lazyswingband.com/#melchiory-2026",
+                  item: "https://www.lazyswingband.com/#melchiory-2026",
                 },
                 {
                   "@type": "ListItem",
                   position: 5,
                   name: "Lato z Radiem 2025",
-                  item: "https://lazyswingband.com/#lato-z-radiem-2025",
+                  item: "https://www.lazyswingband.com/#lato-z-radiem-2025",
                 },
                 {
                   "@type": "ListItem",
                   position: 6,
                   name: "Usługi",
-                  item: "https://lazyswingband.com/#uslugi",
+                  item: "https://www.lazyswingband.com/#uslugi",
                 },
                 {
                   "@type": "ListItem",
                   position: 7,
                   name: "Kontakt",
-                  item: "https://lazyswingband.com/#kontakt",
+                  item: "https://www.lazyswingband.com/#kontakt",
                 },
               ],
             }),

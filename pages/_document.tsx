@@ -64,42 +64,11 @@ export default class MyDocument extends Document {
           <meta name="geo.position" content="50.0647;19.9450" />
           <meta name="ICBM" content="50.0647, 19.9450" />
 
-          {/* Preload critical resources for Core Web Vitals */}
+          {/* Preload critical hero image for Core Web Vitals */}
           <link
             rel="preload"
             href="/images/responsive/homepage-hero.webp"
             as="image"
-          />
-          <link
-            rel="preload"
-            href="/assets/fonts/Outfit-Medium.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-
-          {/* Prefetch secondary fonts */}
-          <link rel="prefetch" href="/logo-color.png" />
-          <link
-            rel="prefetch"
-            href="/assets/fonts/Outfit-Light.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="prefetch"
-            href="/assets/fonts/Outfit-SemiBold.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="prefetch"
-            href="/assets/fonts/Outfit-ExtraLight.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
           />
 
           {/* Resource hints */}
