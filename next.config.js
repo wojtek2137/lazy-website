@@ -4,11 +4,7 @@ const nextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
   compiler: {
-    styledComponents: {
-      ssr: true,
-      displayName: true,
-      fileName: true,
-    },
+    styledComponents: true,
   },
 };
 
