@@ -49,7 +49,7 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../rider-styles.css" />
+    <link rel="stylesheet" href="../rider-styles.css?v=20260109" />
   </head>
   <body>
     <div id="app-content">
@@ -78,7 +78,7 @@
             src="../images/responsive/lazy-rider_mobile.webp"
             alt="Lazy Swing Band performing - jazz band photo"
             class="band-photo"
-            loading="lazy"
+            loading="eager"
             width="600"
             height="600"
           />
@@ -226,7 +226,7 @@
                 src="../images/responsive/stage-layout_mobile.webp"
                 alt="Lazy Swing Band stage layout diagram - instrument placement: piano with monitor M4, drums, double bass, vocals with monitor M3, saxophone and trumpet with backing vocals microphone plus monitor M2, monitor M1 in center stage"
                 class="stage-layout-image"
-                loading="lazy"
+                loading="eager"
                 width="800"
                 height="600"
               />
@@ -265,5 +265,68 @@
         </p>
       </footer>
     </div>
+    <script>
+      function printRider() {
+        var imgs = document.querySelectorAll("img");
+        var pending = imgs.length;
+        var fired = false;
+        function tryPrint() {
+          if (!fired) {
+            fired = true;
+            window.print();
+          }
+        }
+        if (pending === 0) {
+          tryPrint();
+          return;
+        }
+        var timeout = setTimeout(tryPrint, 5000);
+        imgs.forEach(function (img) {
+          if (img.complete) {
+            pending--;
+          } else {
+            img.addEventListener("load", function () {
+              pending--;
+              if (pending === 0) {
+                clearTimeout(timeout);
+                tryPrint();
+              }
+            });
+            img.addEventListener("error", function () {
+              pending--;
+              if (pending === 0) {
+                clearTimeout(timeout);
+                tryPrint();
+              }
+            });
+          }
+        });
+        if (pending <= 0) {
+          clearTimeout(timeout);
+          tryPrint();
+        }
+      }
+    </script>
+    <button
+      class="download-pdf-btn"
+      onclick="printRider()"
+      aria-label="Download rider as PDF"
+      title="Download rider as PDF"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="7 10 12 15 17 10" />
+        <line x1="12" y1="15" x2="12" y2="3" />
+      </svg>
+      Download as PDF
+    </button>
   </body>
 </html>

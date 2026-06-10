@@ -442,5 +442,137 @@
       "size": "3.5KB",
       "format": "webp"
     }
+  },
+  "melchiory-2026-1": {
+    "desktop": {
+      "path": "./responsive/melchiory-2026-1_desktop.webp",
+      "size": "134.2KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/melchiory-2026-1_tablet.webp",
+      "size": "34.4KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/melchiory-2026-1_mobile.webp",
+      "size": "17.2KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/melchiory-2026-1_thumb.webp",
+      "size": "2.7KB",
+      "format": "webp"
+    }
+  },
+  "melchiory-2026-2": {
+    "desktop": {
+      "path": "./responsive/melchiory-2026-2_desktop.webp",
+      "size": "82.5KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/melchiory-2026-2_tablet.webp",
+      "size": "19.6KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/melchiory-2026-2_mobile.webp",
+      "size": "10.3KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/melchiory-2026-2_thumb.webp",
+      "size": "1.8KB",
+      "format": "webp"
+    }
+  },
+  "melchiory-2026-3": {
+    "desktop": {
+      "path": "./responsive/melchiory-2026-3_desktop.webp",
+      "size": "102.7KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/melchiory-2026-3_tablet.webp",
+      "size": "26.9KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/melchiory-2026-3_mobile.webp",
+      "size": "15.1KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/melchiory-2026-3_thumb.webp",
+      "size": "3KB",
+      "format": "webp"
+    }
+  },
+  "melchiory-2026-4": {
+    "desktop": {
+      "path": "./responsive/melchiory-2026-4_desktop.webp",
+      "size": "119.2KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/melchiory-2026-4_tablet.webp",
+      "size": "35.6KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/melchiory-2026-4_mobile.webp",
+      "size": "18.5KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/melchiory-2026-4_thumb.webp",
+      "size": "3.1KB",
+      "format": "webp"
+    }
+  },
+  "melchiory-2026-5": {
+    "desktop": {
+      "path": "./responsive/melchiory-2026-5_desktop.webp",
+      "size": "149.6KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/melchiory-2026-5_tablet.webp",
+      "size": "39.1KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/melchiory-2026-5_mobile.webp",
+      "size": "19.5KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/melchiory-2026-5_thumb.webp",
+      "size": "2.9KB",
+      "format": "webp"
+    }
+  },
+  "lato-z-radiem-2026-plakat": {
+    "desktop": {
+      "path": "./responsive/lato-z-radiem-2026-plakat_desktop.webp",
+      "size": "207.3KB",
+      "format": "webp"
+    },
+    "tablet": {
+      "path": "./responsive/lato-z-radiem-2026-plakat_tablet.webp",
+      "size": "56.8KB",
+      "format": "webp"
+    },
+    "mobile": {
+      "path": "./responsive/lato-z-radiem-2026-plakat_mobile.webp",
+      "size": "25.6KB",
+      "format": "webp"
+    },
+    "thumb": {
+      "path": "./responsive/lato-z-radiem-2026-plakat_thumb.webp",
+      "size": "3.4KB",
+      "format": "webp"
+    }
   }
 }

@@ -29,10 +29,37 @@
     <lastmod>2026-01-12</lastmod>
   </url>
   <url>
-    <loc>https://lazyswingband.com/#lato-z-radiem</loc>
+    <loc>https://lazyswingband.com/#lato-z-radiem-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <lastmod>2026-06-09</lastmod>
+    <image:image>
+      <image:loc>https://lazyswingband.com/images/responsive/lato-z-radiem-2026-plakat_desktop.webp</image:loc>
+      <image:title>Lato z Radiem 2026 - Plakat zapraszający z Lazy Swing Band</image:title>
+      <image:caption>Plakat zapraszający na trasę Lata z Radiem 2026 — Lazy Swing Band ponownie na międzypokoleniowych potańcówkach w całej Polsce</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://lazyswingband.com/#lato-z-radiem-2025</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <lastmod>2026-01-12</lastmod>
+  </url>
+  <url>
+    <loc>https://lazyswingband.com/#melchiory-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <lastmod>2026-06-09</lastmod>
+    <image:image>
+      <image:loc>https://lazyswingband.com/images/responsive/melchiory-2026-1_desktop.webp</image:loc>
+      <image:title>Lazy Swing Band na gali Melchiory 2026 - Nagrody Dziennikarskie Polskiego Radia</image:title>
+      <image:caption>Zespół Lazy Swing Band uświetnił muzycznie galę Melchiory 2026 — prestiżowe nagrody dziennikarskie Polskiego Radia</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lazyswingband.com/images/responsive/melchiory-2026-2_desktop.webp</image:loc>
+      <image:title>Występ Lazy Swing Band na Melchiory 2026</image:title>
+      <image:caption>Swingowa energia Lazy Swing Band podczas gali Melchiory 2026</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://lazyswingband.com/#albumy</loc>
