@@ -1,6 +1,5 @@
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { colors, fonts, spacing, typography, shadows } from "config/theme";
-import LogoImage from "assets/images/logo-color.webp";
 
 const breakpoints = [576, 768, 992, 1200];
 const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
@@ -10,7 +9,7 @@ export const Logo = styled("div")`
   display: flex;
   min-width: 500px;
   min-height: 500px;
-  background: url("${LogoImage}");
+  background: url("/assets/images/logo-color.webp");
   background-repeat: no-repeat;
   background-size: cover;
   filter: drop-shadow(${shadows.glow});

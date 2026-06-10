@@ -5,7 +5,7 @@ import React, {
   useRef,
   useMemo,
 } from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { colors, fonts, spacing, typography, shadows } from "config/theme";
 
 // Command Palette Interface
@@ -133,17 +133,17 @@ const CommandResults = styled.div`
   }
 `;
 
-const CommandItem = styled.div<{ isSelected: boolean }>`
+const CommandItem = styled.div<{ $isSelected: boolean }>`
   display: flex;
   align-items: center;
   padding: 16px 24px;
   cursor: pointer;
-  background: ${({ isSelected }) =>
-    isSelected
+  background: ${({ $isSelected }) =>
+    $isSelected
       ? `linear-gradient(90deg, ${colors.primary.gold}15, ${colors.primary.gold}05)`
       : "transparent"};
   border-left: 3px solid
-    ${({ isSelected }) => (isSelected ? colors.primary.gold : "transparent")};
+    ${({ $isSelected }) => ($isSelected ? colors.primary.gold : "transparent")};
   transition: all 0.2s ease;
 
   &:hover {
@@ -214,18 +214,18 @@ const BreadcrumbWrapper = styled.div`
   }
 `;
 
-const BreadcrumbItem = styled.span<{ isActive: boolean }>`
-  color: ${({ isActive }) =>
-    isActive ? colors.primary.gold : colors.neutrals.N300};
+const BreadcrumbItem = styled.span<{ $isActive: boolean }>`
+  color: ${({ $isActive }) =>
+    $isActive ? colors.primary.gold : colors.neutrals.N300};
   font-family: ${fonts.outfit.Medium};
   font-size: ${typography.bodySmall.size};
   font-weight: 500;
   transition: color 0.2s ease;
-  cursor: ${({ isActive }) => (isActive ? "default" : "pointer")};
+  cursor: ${({ $isActive }) => ($isActive ? "default" : "pointer")};
 
   &:hover {
-    color: ${({ isActive }) =>
-      isActive ? colors.primary.gold : colors.primary.sandy};
+    color: ${({ $isActive }) =>
+      $isActive ? colors.primary.gold : colors.primary.sandy};
   }
 
   &:focus-visible {
@@ -704,9 +704,9 @@ export function ModernNavigation2024({
 
       {/* Smart Breadcrumbs */}
       <BreadcrumbWrapper>
-        <BreadcrumbItem isActive={false}>Lazy Swing Band</BreadcrumbItem>
+        <BreadcrumbItem $isActive={false}>Lazy Swing Band</BreadcrumbItem>
         <BreadcrumbSeparator>/</BreadcrumbSeparator>
-        <BreadcrumbItem isActive={true}>
+        <BreadcrumbItem $isActive={true}>
           {navigationItems.find((item) => item.id === currentSection)?.label ||
             "Start"}
         </BreadcrumbItem>
@@ -721,7 +721,7 @@ export function ModernNavigation2024({
               ref={commandInputRef}
               placeholder="Szukaj sekcji, wpisz komendę..."
               value={searchQuery}
-              onChange={(e) => {
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setSearchQuery(e.target.value);
                 setSelectedIndex(0);
               }}
@@ -730,8 +730,8 @@ export function ModernNavigation2024({
               {filteredItems.map((item, index) => (
                 <CommandItem
                   key={item.id}
-                  isSelected={index === selectedIndex}
-                  onClick={(e) => {
+                  $isSelected={index === selectedIndex}
+                  onClick={(e: React.MouseEvent) => {
                     e.stopPropagation();
                     handleNavigation(item.href);
                   }}
@@ -745,7 +745,7 @@ export function ModernNavigation2024({
                 </CommandItem>
               ))}
               {filteredItems.length === 0 && (
-                <CommandItem isSelected={false}>
+                <CommandItem $isSelected={false}>
                   <CommandContent>
                     <CommandLabel>Brak wyników</CommandLabel>
                     <CommandDescription>

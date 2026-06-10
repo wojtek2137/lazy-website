@@ -6,6 +6,11 @@ node_modules
 # Production builds
 build
 dist
+out
+
+# Next.js
+.next
+next-env.d.ts
 
 # Environment variables
 .env

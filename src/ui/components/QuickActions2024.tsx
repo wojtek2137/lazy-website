@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { colors, fonts } from "config/theme";
 
 // Quick Actions Panel - 2024 UX Trends

@@ -1,9 +1,6 @@
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import React, { useState } from "react";
 import { MainView } from "./pages/MainView/MainView";
-import About from "assets/images/about.webp";
-import About2 from "assets/images/about_2.webp";
-import About3 from "assets/images/about_3.webp";
 import { ListenUsView } from "ui/pages/ListenUsView/ListenUsView";
 import { colors, fonts } from "config/theme";
 import { YouTubeView } from "ui/pages/YouTubeView/YouTubeView";
@@ -359,36 +356,39 @@ export function Ui() {
         <SectionTransition />
 
         <section id="o-nas" aria-labelledby="about-heading">
-          <ModernSectionWrapper backgroundImage={About} parallaxEffect>
-            <ModernContentContainer glassmorphism enhanced>
-              <ModernTextWrapper centerAlign enhanced>
+          <ModernSectionWrapper
+            $backgroundImage="/assets/images/about.webp"
+            $parallaxEffect
+          >
+            <ModernContentContainer $glassmorphism $enhanced>
+              <ModernTextWrapper $centerAlign $enhanced>
                 <header>
                   <ModernHeading
                     id="about-heading"
                     size="medium"
                     color="gold"
-                    enhanced
+                    $enhanced
                   >
                     O Zespole
                   </ModernHeading>
                 </header>
-                <ModernText size="large" emphasis enhanced>
+                <ModernText size="large" $emphasis $enhanced>
                   Jesteśmy{" "}
-                  <ModernSpan variant="highlight" enhanced>
+                  <ModernSpan $variant="highlight" $enhanced>
                     młodą i dynamiczną grupą
                   </ModernSpan>
                   , która kocha muzykę i kulturę swingową. Nasz zespół powstał w
                   Krakowie, gdzie w 2016 roku zaczęliśmy naszą przygodę od
                   małych swingowych potańcówek w{" "}
-                  <ModernSpan variant="glow" enhanced>
+                  <ModernSpan $variant="glow" $enhanced>
                     Piwnicy pod Baranami.
                   </ModernSpan>
                 </ModernText>
-                <ModernText size="medium" enhanced>
+                <ModernText size="medium" $enhanced>
                   Od tamtej pory przeszliśmy długą drogę, stając się jednym z
                   najbardziej rozpoznawalnych zespołów swingowych w Polsce.
                   Wystąpiliśmy na{" "}
-                  <ModernSpan variant="accent" enhanced>
+                  <ModernSpan $variant="accent" $enhanced>
                     <a
                       href="https://podcasty.polskieradio.pl/jedynka/audycje/lato-z-radiem-,166/odcinek/potancowka-lata-z-radiem-przy-dzwiekach-grupy-lazy-swing-band-maciej-walecki-sprawdza-jak-bawili-sie-uczestnicy-,54eb4a7e-6a45-4f5a-a3e1-540e3bc97f1b"
                       target="_blank"
@@ -399,7 +399,7 @@ export function Ui() {
                     </a>
                   </ModernSpan>
                   , a zespół został notowany w{" "}
-                  <ModernSpan variant="highlight" enhanced>
+                  <ModernSpan $variant="highlight" $enhanced>
                     <a
                       href="https://www.facebook.com/photo/?fbid=878329507633646&set=a.438180431648558"
                       target="_blank"
@@ -426,36 +426,36 @@ export function Ui() {
         <SectionTransition />
         <section id="festiwale" aria-labelledby="festivals-heading">
           <ModernSectionWrapper
-            backgroundImage={About3}
-            parallaxEffect
+            $backgroundImage="/assets/images/about_3.webp"
+            $parallaxEffect
             data-bg="about3"
           >
-            <ModernContentContainer glassmorphism enhanced>
-              <ModernTextWrapper centerAlign enhanced>
+            <ModernContentContainer $glassmorphism $enhanced>
+              <ModernTextWrapper $centerAlign $enhanced>
                 <header>
                   <ModernHeading
                     id="festivals-heading"
                     size="medium"
                     color="gold"
-                    enhanced
+                    $enhanced
                   >
                     Występy na Festiwalach
                   </ModernHeading>
                 </header>
-                <ModernText size="large" emphasis enhanced>
+                <ModernText size="large" $emphasis $enhanced>
                   Nasza pasja do muzyki swingowej prowadzi nas nie tylko po
                   całej Polsce, ale także{" "}
-                  <ModernSpan variant="accent" enhanced>
+                  <ModernSpan $variant="accent" $enhanced>
                     poza jej granice
                   </ModernSpan>
                   .
                 </ModernText>
-                <ModernText size="medium" enhanced>
-                  <ModernSpan variant="highlight" enhanced>
+                <ModernText size="medium" $enhanced>
+                  <ModernSpan $variant="highlight" $enhanced>
                     Zawitaliśmy między innymi na takie festiwale jak:
                   </ModernSpan>
                 </ModernText>
-                <ModernList variant="grid" enhanced>
+                <ModernList $variant="grid" $enhanced>
                   <li>
                     <a
                       href="https://dragonswing.pl/"
@@ -502,7 +502,7 @@ export function Ui() {
                     </a>
                   </li>
                 </ModernList>
-                <ModernText size="medium" enhanced>
+                <ModernText size="medium" $enhanced>
                   i wiele innych...
                 </ModernText>
               </ModernTextWrapper>
@@ -516,38 +516,38 @@ export function Ui() {
         <SectionTransition />
         <section id="uslugi" aria-labelledby="services-heading">
           <ModernSectionWrapper
-            backgroundImage={About2}
-            parallaxEffect
+            $backgroundImage="/assets/images/about_2.webp"
+            $parallaxEffect
             data-bg="about2"
           >
-            <ModernContentContainer glassmorphism enhanced>
-              <ModernTextWrapper centerAlign enhanced>
+            <ModernContentContainer $glassmorphism $enhanced>
+              <ModernTextWrapper $centerAlign $enhanced>
                 <header>
                   <ModernHeading
                     id="services-heading"
                     size="medium"
                     color="gold"
-                    enhanced
+                    $enhanced
                   >
                     Oferta Komercyjna
                   </ModernHeading>
                 </header>
-                <ModernText size="large" enhanced>
-                  <ModernSpan variant="accent" enhanced>
+                <ModernText size="large" $enhanced>
+                  <ModernSpan $variant="accent" $enhanced>
                     Oprócz koncertów jazzowych i festiwali występujemy również
                     na wydarzeniach komercyjnych. <br />{" "}
                   </ModernSpan>
                   Jeśli organizujecie Państwo{" "}
-                  <ModernSpan variant="highlight" enhanced>
+                  <ModernSpan $variant="highlight" $enhanced>
                     wszelakie wydarzenia kulturalne
                   </ModernSpan>
                   , a może poszukują{" "}
-                  <ModernSpan variant="accent" enhanced>
+                  <ModernSpan $variant="accent" $enhanced>
                     klimatycznego zespołu
                   </ModernSpan>
                   , rodem z Ojca Chrzestnego...
                 </ModernText>
-                <ModernList variant="grid" enhanced>
+                <ModernList $variant="grid" $enhanced>
                   <li>Festiwale jazzowe i retro-festiwale</li>
                   <li>Festiwale tańca swingowego</li>
                   <li>Targi i wydarzenia korporacyjne</li>
@@ -556,8 +556,8 @@ export function Ui() {
                   <li>Imprezy dla zróżnicowanej publiczności</li>
                   <li>Projekty filmowe i teatralne</li>
                 </ModernList>
-                <ModernText size="large" emphasis enhanced>
-                  <ModernSpan variant="glow" enhanced>
+                <ModernText size="large" $emphasis $enhanced>
+                  <ModernSpan $variant="glow" $enhanced>
                     - JESTEŚMY IDEALNYM WYBOREM!
                   </ModernSpan>
                 </ModernText>
@@ -569,9 +569,9 @@ export function Ui() {
         <SectionTransition />
 
         <section id="swieta" aria-labelledby="christmas-heading">
-          <ModernSectionWrapper darkTheme>
-            <ModernContentContainer glassmorphism maxWidth="1200px">
-              <ModernTextWrapper centerAlign>
+          <ModernSectionWrapper $darkTheme>
+            <ModernContentContainer $glassmorphism $maxWidth="1200px">
+              <ModernTextWrapper $centerAlign>
                 <header>
                   <ModernHeading
                     id="christmas-heading"
@@ -583,33 +583,33 @@ export function Ui() {
                 </header>
                 <ChristmasContentGrid>
                   <ChristmasTextSection>
-                    <ModernText size="large" emphasis>
+                    <ModernText size="large" $emphasis>
                       W okresie bożonarodzeniowym mamy także przygotowany
-                      <ModernSpan variant="glow">
+                      <ModernSpan $variant="glow">
                         {" "}
                         wyjątkowy repertuar świąteczny
                       </ModernSpan>
                       !
                     </ModernText>
                     <ModernText size="medium">
-                      <ModernSpan variant="highlight">
+                      <ModernSpan $variant="highlight">
                         Lazy Christmas!
                       </ModernSpan>{" "}
                       - ze standardami amerykańskich, swingowych przebojów
                       bożonarodzeniowych w niepowtarzalnym klimacie lat 20. i
                       30., takich jak
-                      <ModernSpan variant="glow">
+                      <ModernSpan $variant="glow">
                         {" "}
                         "Let It Snow!"
                       </ModernSpan>{" "}
                       czy inne klasyki{" "}
-                      <ModernSpan variant="highlight">
+                      <ModernSpan $variant="highlight">
                         Franka Sinatry
                       </ModernSpan>
                       .
                     </ModernText>
                     <ModernText size="large">
-                      <ModernSpan variant="accent">
+                      <ModernSpan $variant="accent">
                         To doskonała oferta na wigilie firmowe i inne podobne
                         wydarzenia, w magicznym klimacie bożonarodzeniowym.
                       </ModernSpan>

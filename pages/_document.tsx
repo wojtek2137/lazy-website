@@ -1,0 +1,470 @@
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+  DocumentInitialProps,
+} from "next/document";
+import { ServerStyleSheet } from "styled-components";
+
+export default class MyDocument extends Document {
+  static async getInitialProps(
+    ctx: DocumentContext
+  ): Promise<DocumentInitialProps> {
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+        });
+
+      const initialProps = await Document.getInitialProps(ctx);
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      };
+    } finally {
+      sheet.seal();
+    }
+  }
+
+  render() {
+    return (
+      <Html lang="pl">
+        <Head>
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/logo192.png" />
+          <link rel="apple-touch-icon" sizes="192x192" href="/logo192.png" />
+          <link rel="apple-touch-icon" sizes="512x512" href="/logo512.png" />
+
+          {/* Startup Images for iOS */}
+          <link
+            rel="apple-touch-startup-image"
+            href="/logo512.png"
+            media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="/logo512.png"
+            media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="/logo512.png"
+            media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+          />
+
+          <meta name="theme-color" content="#ccb379" />
+          <meta
+            name="theme-color"
+            media="(prefers-color-scheme: dark)"
+            content="#000000"
+          />
+          <meta
+            name="theme-color"
+            media="(prefers-color-scheme: light)"
+            content="#ccb379"
+          />
+
+          <meta
+            name="description"
+            content="Lazy Swing Band - polski zespół jazzowy — taneczna muzyka, która łączy pokolenia i rezonuje na estradzie, w radiu oraz na międzypokoleniowych potańcówkach. Kultywujemy tradycje muzyki swingowej lat 20. i 30., tworząc niezapomniane doświadczenia muzyczne w stylu retro i Wielki Gatsby. Specjalizujemy się w muzyce przedwojennej, świątecznych standardach jazzowych, tańcu swingowym i kulturze swingowej. Profesjonalny zespół na eleganckie imprezy VIP, gale, bankiety i eventy firmowe. Wystąpiliśmy na gali Melchiory 2026 — Nagrody Dziennikarskie Polskiego Radia. Zapraszamy na Lato z Radiem 2026!"
+          />
+
+          {/* PWA Meta Tags */}
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+          />
+          <meta name="apple-mobile-web-app-title" content="Lazy Swing Band" />
+          <meta name="apple-touch-fullscreen" content="yes" />
+          <meta name="format-detection" content="telephone=no" />
+          <meta name="msapplication-tap-highlight" content="no" />
+          <meta name="msapplication-TileColor" content="#ccb379" />
+          <meta name="msapplication-TileImage" content="/logo192.png" />
+
+          <meta
+            name="keywords"
+            content="zespół na imprezę firmową, zespół na firmówkę, zespół na bankiety, zespół w starym stylu, zespół wielki gatsby, zespół do tańca swingowego, zespół swingowy, polski zespół jazzowy, zespół na potańcówki, zespół retro, zespół z muzyką przedwojenną, zespół na imprezy VIP, taniec swingowy, kultura swingowa, zespół do filmu teatru, zespół na wigilie firmowe, świąteczne hity, bożonarodzeniowe hity, jazz kraków, swing kraków, lazy swing band, muzyka swingowa, eventy firmowe, wesela jazz, eleganckie gale, lato z radiem, lato z radiem 2026, lato z radiem 2025, polskie radio, melchiory 2026, nagrody dziennikarskie, gala melchiory"
+          />
+
+          <meta name="author" content="Lazy Swing Band" />
+          <meta
+            name="robots"
+            content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+          />
+          <meta name="googlebot" content="index, follow" />
+          <meta name="revisit-after" content="1 days" />
+          <meta name="last-modified" content="2026-06-09" />
+
+          {/* Geographic targeting */}
+          <meta name="geo.region" content="PL-12" />
+          <meta name="geo.placename" content="Kraków" />
+          <meta name="geo.position" content="50.0647;19.9450" />
+          <meta name="ICBM" content="50.0647, 19.9450" />
+
+          {/* Open Graph / Facebook */}
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://lazyswingband.com/" />
+          <meta
+            property="og:title"
+            content="Lazy Swing Band - Polski Zespół Jazzowy | Taneczna Muzyka | Swing, Retro, Wielki Gatsby"
+          />
+          <meta
+            property="og:description"
+            content="Polski zespół jazzowy — taneczna muzyka, która łączy pokolenia i rezonuje na estradzie, w radiu oraz na międzypokoleniowych potańcówkach. Wystąpiliśmy na gali Melchiory 2026 oraz na trasie Lata z Radiem. Zapraszamy na Lato z Radiem 2026! Kultywujemy tradycje muzyki swingowej lat 20. i 30. Tworzymy niezapomniane doświadczenia muzyczne w stylu retro i Wielki Gatsby z repertuarem do tańca swingowego i kultury swingowej. Idealny zespół na imprezy VIP, eleganckie gale i bankiety."
+          />
+          <meta
+            property="og:image"
+            content="https://lazyswingband.com/logo-color.png"
+          />
+          <meta
+            property="og:image:alt"
+            content="Lazy Swing Band - Logo zespołu jazzowego z Krakowa"
+          />
+          <meta property="og:image:width" content="709" />
+          <meta property="og:image:height" content="709" />
+          <meta property="og:locale" content="pl_PL" />
+          <meta property="og:site_name" content="Lazy Swing Band" />
+          <meta property="music:musician" content="https://lazyswingband.com" />
+          <meta property="fb:admins" content="lazyswingersband" />
+
+          {/* Twitter Card */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@lazyswingband" />
+          <meta name="twitter:creator" content="@lazyswingband" />
+          <meta name="twitter:url" content="https://lazyswingband.com/" />
+          <meta
+            name="twitter:title"
+            content="Lazy Swing Band - Polski Zespół Jazzowy | Taneczna Muzyka | Swing, Retro, Wielki Gatsby"
+          />
+          <meta
+            name="twitter:description"
+            content="Polski zespół jazzowy — taneczna muzyka, która łączy pokolenia i rezonuje na estradzie, w radiu oraz na międzypokoleniowych potańcówkach. Wystąpiliśmy na gali Melchiory 2026 oraz na trasie Lata z Radiem. Zapraszamy na Lato z Radiem 2026! Kultywujemy tradycje muzyki swingowej lat 20. i 30. Tworzymy niezapomniane doświadczenia muzyczne w stylu retro i Wielki Gatsby z repertuarem do tańca swingowego i kultury swingowej. Idealny zespół na imprezy VIP, eleganckie gale i bankiety."
+          />
+          <meta
+            name="twitter:image"
+            content="https://lazyswingband.com/logo-color.png"
+          />
+          <meta
+            name="twitter:image:alt"
+            content="Lazy Swing Band - Logo zespołu jazzowego z Krakowa"
+          />
+
+          {/* Music specific */}
+          <meta
+            name="music:album"
+            content="https://open.spotify.com/album/5XkBiCPt7nEQUnGjLSjG3P"
+          />
+          <meta
+            name="music:song"
+            content="https://music.youtube.com/playlist?list=OLAK5uy_lkk1xPxBViBc6BJV15Z1go2wJyJRYvNQI"
+          />
+
+          {/* Additional SEO */}
+          <meta name="application-name" content="Lazy Swing Band" />
+          <meta name="msapplication-config" content="/browserconfig.xml" />
+
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="canonical" href="https://lazyswingband.com/" />
+
+          {/* Preload critical resources for Core Web Vitals */}
+          <link
+            rel="preload"
+            href="/images/responsive/homepage-hero.webp"
+            as="image"
+          />
+          <link
+            rel="preload"
+            href="/assets/fonts/Outfit-Medium.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+
+          {/* Prefetch secondary fonts loaded later */}
+          <link rel="prefetch" href="/logo-color.png" />
+          <link
+            rel="prefetch"
+            href="/assets/fonts/Outfit-Light.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="prefetch"
+            href="/assets/fonts/Outfit-SemiBold.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="prefetch"
+            href="/assets/fonts/Outfit-ExtraLight.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+
+          {/* Resource hints for better performance */}
+          <link rel="prefetch" href="/images/responsive/about_desktop.webp" />
+          <link rel="prefetch" href="/images/responsive/lazy_desktop.webp" />
+
+          {/* DNS prefetch and preconnect for faster crawling */}
+          <link
+            rel="preconnect"
+            href="https://www.google.com"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://www.googlebot.com"
+            crossOrigin="anonymous"
+          />
+          <link rel="dns-prefetch" href="https://www.google.com" />
+          <link rel="dns-prefetch" href="https://www.googlebot.com" />
+          <link rel="dns-prefetch" href="https://open.spotify.com" />
+          <link rel="dns-prefetch" href="https://music.youtube.com" />
+          <link rel="dns-prefetch" href="https://www.facebook.com" />
+          <link rel="dns-prefetch" href="https://www.instagram.com" />
+          <link rel="dns-prefetch" href="https://www.youtube.com" />
+
+          {/* Schema.org JSON-LD - MusicGroup */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "MusicGroup",
+                name: "Lazy Swing Band",
+                alternateName: "LSB",
+                description:
+                  "Polski zespół jazzowy — taneczna muzyka, która łączy pokolenia i rezonuje na estradzie, w radiu oraz na międzypokoleniowych potańcówkach. Kultywujemy tradycje muzyki swingowej lat 20. i 30. Specjalizujemy się w tworzeniu niezapomnianych doświadczeń muzycznych w stylu retro i Wielki Gatsby, z repertuarem do tańca swingowego i kultury swingowej, muzyką przedwojenną oraz świątecznymi standardami jazzowymi. Występowaliśmy w programie Lato z Radiem i Telewizją Polską (2025). Zapraszamy na Lato z Radiem 2026! Wystąpiliśmy na gali Melchiory 2026. Idealny na imprezy VIP, eleganckie gale i bankiety.",
+                url: "https://lazyswingband.com",
+                logo: "https://lazyswingband.com/logo-color.png",
+                image: "https://lazyswingband.com/logo-color.png",
+                genre: ["Jazz", "Swing", "Big Band"],
+                foundingDate: "2016",
+                foundingLocation: {
+                  "@type": "Place",
+                  name: "Kraków",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Kraków",
+                    addressCountry: "PL",
+                  },
+                },
+                location: {
+                  "@type": "Place",
+                  name: "Kraków",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Kraków",
+                    addressRegion: "Małopolskie",
+                    addressCountry: "PL",
+                  },
+                },
+                sameAs: [
+                  "https://www.facebook.com/lazyswingersband",
+                  "https://open.spotify.com/album/5XkBiCPt7nEQUnGjLSjG3P",
+                  "https://music.youtube.com/playlist?list=OLAK5uy_lkk1xPxBViBc6BJV15Z1go2wJyJRYvNQI",
+                ],
+                album: [
+                  {
+                    "@type": "MusicAlbum",
+                    name: "Lazy Swingers",
+                    url: "https://open.spotify.com/album/5XkBiCPt7nEQUnGjLSjG3P",
+                  },
+                  {
+                    "@type": "MusicAlbum",
+                    name: "Lazy Christmas",
+                    genre: "Christmas Jazz",
+                  },
+                  {
+                    "@type": "MusicAlbum",
+                    name: "Polish Standards",
+                    genre: "Polish Jazz",
+                  },
+                ],
+                offers: [
+                  {
+                    "@type": "Offer",
+                    category: "Zespół na imprezy firmowe",
+                    description:
+                      "Zespół na firmówki, imprezy integracyjne, spotkania biznesowe w stylu retro i Wielki Gatsby",
+                    areaServed: { "@type": "Country", name: "Polska" },
+                  },
+                  {
+                    "@type": "Offer",
+                    category: "Zespół na bankiety",
+                    description:
+                      "Oprawę muzyczną bankietów, gal, uroczystości z muzyką swingową i jazzową",
+                    areaServed: { "@type": "Country", name: "Polska" },
+                  },
+                  {
+                    "@type": "Offer",
+                    category: "Zespół do tańca swingowego",
+                    description:
+                      "Muzyka do tańca swingowego, Charleston i kultury swingowej na potańcówki i warsztaty taneczne",
+                    areaServed: { "@type": "Country", name: "Polska" },
+                  },
+                  {
+                    "@type": "Offer",
+                    category: "Zespół na imprezy VIP",
+                    description:
+                      "Ekskluzywna oprawa muzyczna imprez VIP, eleganckich gal i bankietów w stylu retro",
+                    areaServed: { "@type": "Country", name: "Polska" },
+                  },
+                  {
+                    "@type": "Offer",
+                    category: "Zespół na wigilie firmowe",
+                    description:
+                      "Świąteczne hity, bożonarodzeniowe koncerty, wigilie firmowe z muzyką jazzową",
+                    areaServed: { "@type": "Country", name: "Polska" },
+                  },
+                  {
+                    "@type": "Offer",
+                    category: "Zespół do filmu i teatru",
+                    description:
+                      "Muzyka przedwojenna, stylizowana oprawa muzyczna do produkcji filmowych i teatralnych",
+                    areaServed: { "@type": "Country", name: "Polska" },
+                  },
+                ],
+                event: [
+                  {
+                    "@type": "Event",
+                    name: "Lato z Radiem 2026",
+                    description:
+                      "Lazy Swing Band ponownie dołącza do trasy Lata z Radiem i Telewizją Polską w 2026 roku! Swingowe potańcówki w najpiękniejszych zakątkach Polski.",
+                    url: "https://www.latozradiem.pl",
+                    startDate: "2026-06-01",
+                    endDate: "2026-09-30",
+                    location: {
+                      "@type": "Place",
+                      name: "Polska",
+                      address: {
+                        "@type": "PostalAddress",
+                        addressCountry: "PL",
+                      },
+                    },
+                    organizer: {
+                      "@type": "Organization",
+                      name: "Polskie Radio",
+                      url: "https://polskieradio.pl",
+                    },
+                    performer: {
+                      "@type": "MusicGroup",
+                      name: "Lazy Swing Band",
+                      url: "https://lazyswingband.com",
+                    },
+                  },
+                  {
+                    "@type": "Event",
+                    name: "Melchiory 2026 - Nagrody Dziennikarskie Polskiego Radia",
+                    description:
+                      "Lazy Swing Band uświetnił muzycznie galę Melchiory 2026 — prestiżowe nagrody dziennikarskie Polskiego Radia. Występ swingowy podczas uroczystej gali.",
+                    url: "https://melchiory.polskieradio.pl",
+                    startDate: "2026-01-01",
+                    location: {
+                      "@type": "Place",
+                      name: "Polska",
+                      address: {
+                        "@type": "PostalAddress",
+                        addressCountry: "PL",
+                      },
+                    },
+                    organizer: {
+                      "@type": "Organization",
+                      name: "Polskie Radio",
+                      url: "https://polskieradio.pl",
+                    },
+                    performer: {
+                      "@type": "MusicGroup",
+                      name: "Lazy Swing Band",
+                      url: "https://lazyswingband.com",
+                    },
+                  },
+                ],
+                contactPoint: {
+                  "@type": "ContactPoint",
+                  contactType: "Booking",
+                  url: "https://lazyswingband.com#kontakt",
+                },
+              }),
+            }}
+          />
+
+          {/* Schema.org JSON-LD - Breadcrumbs */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Strona główna",
+                    item: "https://lazyswingband.com/",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Lato z Radiem 2026",
+                    item: "https://lazyswingband.com/#lato-z-radiem-2026",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: "O nas",
+                    item: "https://lazyswingband.com/#o-nas",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 4,
+                    name: "Melchiory 2026",
+                    item: "https://lazyswingband.com/#melchiory-2026",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 5,
+                    name: "Lato z Radiem 2025",
+                    item: "https://lazyswingband.com/#lato-z-radiem-2025",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 6,
+                    name: "Usługi",
+                    item: "https://lazyswingband.com/#uslugi",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 7,
+                    name: "Kontakt",
+                    item: "https://lazyswingband.com/#kontakt",
+                  },
+                ],
+              }),
+            }}
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}

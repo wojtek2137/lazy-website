@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { colors, fonts, spacing, typography, shadows } from "config/theme";
 
 const breakpoints = [576, 768, 992, 1200];

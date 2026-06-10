@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { colors } from "config/theme";
 
 // Enhanced scroll transition between sections
@@ -22,6 +22,8 @@ export const SectionTransition = styled("div")`
       ${colors.primary.gold}02 102px
     );
   overflow: hidden;
+  /* Performance optimization */
+  contain: layout style paint;
 
   &::before {
     content: "";
@@ -44,6 +46,7 @@ export const SectionTransition = styled("div")`
       0 0 40px ${colors.primary.gold}30;
     /* Reduced animation frequency for performance */
     animation: lineGlow 8s ease-in-out infinite;
+    will-change: width, opacity;
   }
 
   &::after {
@@ -67,6 +70,7 @@ export const SectionTransition = styled("div")`
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
     z-index: 2;
     white-space: nowrap;
+    will-change: opacity, transform;
 
     /* Mobile responsiveness for notes */
     @media (max-width: 576px) {
@@ -225,7 +229,6 @@ export const AdvancedParallaxBackground = styled("div")<{
   background-position: center;
   background-repeat: no-repeat;
   z-index: -3;
-  will-change: transform;
 
   /* Enhanced filter effects */
   filter: brightness(0.7) contrast(1.2) saturate(0.9) blur(0.5px);

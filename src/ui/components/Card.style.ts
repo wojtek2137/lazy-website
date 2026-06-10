@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { colors, fonts, typography } from "config/theme";
 
 export const CardContainer = styled("div")`
@@ -24,7 +24,7 @@ export const CardWrapper = styled("div")`
 `;
 
 interface PropsType {
-  isHover: boolean;
+  $isHover: boolean;
 }
 
 export const ImgBox = styled("div")<PropsType>`
@@ -34,15 +34,15 @@ export const ImgBox = styled("div")<PropsType>`
   overflow: hidden;
   position: absolute;
   top: ${(props): string =>
-    props.isHover === true ? "calc(50% - 75px)" : "12px"};
-  left: ${(props): string => (props.isHover === true ? "-75px" : "12px")};
+    props.$isHover === true ? "calc(50% - 75px)" : "12px"};
+  left: ${(props): string => (props.$isHover === true ? "-75px" : "12px")};
   height: ${(props): string =>
-    props.isHover === true ? "150px" : "calc(100% - 24px)"};
+    props.$isHover === true ? "150px" : "calc(100% - 24px)"};
   width: ${(props): string =>
-    props.isHover === true ? "150px" : "calc(100% - 24px)"};
+    props.$isHover === true ? "150px" : "calc(100% - 24px)"};
   z-index: 1;
   background: ${(props): string =>
-    props.isHover === true
+    props.$isHover === true
       ? "rgba(255,255,255,0.08)"
       : `${colors.primary.gold}15`};
   backdrop-filter: blur(20px);
@@ -63,7 +63,7 @@ export const Img = styled("img")<PropsType>`
   ) !important;
   border-radius: 12px;
   ${(props): string | null =>
-    props.isHover === true ? "max-width: 75px;" : null}
+    props.$isHover === true ? "max-width: 75px;" : null}
 `;
 export const CardContentWrapper = styled("div")`
   display: flex;

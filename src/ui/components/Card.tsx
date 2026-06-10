@@ -45,10 +45,10 @@ export function Card(props: PropsType) {
           onMouseLeave={() => setIsHover(false)}
         >
           <figure>
-            <ImgBox isHover={isHover}>
+            <ImgBox $isHover={isHover}>
               <Img
                 src={coverSrc}
-                isHover={isHover}
+                $isHover={isHover}
                 alt={`Okładka albumu ${name} zespołu Lazy Swing Band`}
               />
             </ImgBox>

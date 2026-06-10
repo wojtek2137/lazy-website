@@ -5,13 +5,7 @@ import {
   ListenUsHeader,
   ListenUsSection,
 } from "./ListenUsView.style";
-import LazySwingersCover from "assets/images/lazy.webp";
-import LazyChristmasCover from "assets/images/christmas.webp";
-import PolishSwingCover from "assets/images/polish.webp";
-import TagSpotify from "assets/images/spotify.png";
-import TagTidal from "assets/images/tidal.png";
-import TagYouTube from "assets/images/youtube.png";
-import TagAppleMusic from "assets/images/apple.png";
+
 export interface CardConfigType {
   name: string;
   cover: string;
@@ -24,67 +18,67 @@ export interface CardConfigType {
 const cards: Array<CardConfigType> = [
   {
     name: "Lazy Swingers Band",
-    cover: LazySwingersCover,
+    cover: "/assets/images/lazy.webp",
     data: [
       {
         src: "https://open.spotify.com/album/6eKPp0p7fb6w0SQlyvHzp0",
-        imageUrl: TagSpotify,
+        imageUrl: "/assets/images/spotify.png",
       },
       {
         src: "https://tidal.com/browse/album/136916865",
-        imageUrl: TagTidal,
+        imageUrl: "/assets/images/tidal.png",
       },
       {
         src: "https://music.youtube.com/playlist?list=OLAK5uy_mZWYpsOls5ank7HnSNuvOeR3eQgvZO9t8",
-        imageUrl: TagYouTube,
+        imageUrl: "/assets/images/youtube.png",
       },
       {
         src: "https://music.apple.com/pl/album/lazy-swingers-band/1507094483",
-        imageUrl: TagAppleMusic,
+        imageUrl: "/assets/images/apple.png",
       },
     ],
   },
   {
     name: "Lazy Christmas",
-    cover: LazyChristmasCover,
+    cover: "/assets/images/christmas.webp",
     data: [
       {
         src: "https://open.spotify.com/album/5XkBiCPt7nEQUnGjLSjG3P",
-        imageUrl: TagSpotify,
+        imageUrl: "/assets/images/spotify.png",
       },
       {
         src: "https://tidal.com/browse/album/168182006",
-        imageUrl: TagTidal,
+        imageUrl: "/assets/images/tidal.png",
       },
       {
         src: "https://music.youtube.com/playlist?list=OLAK5uy_lkk1xPxBViBc6BJV15Z1go2wJyJRYvNQI",
-        imageUrl: TagYouTube,
+        imageUrl: "/assets/images/youtube.png",
       },
       {
         src: "https://music.apple.com/pl/album/lazy-christmas-single/1547365804",
-        imageUrl: TagAppleMusic,
+        imageUrl: "/assets/images/apple.png",
       },
     ],
   },
   {
     name: "Polish Swing For Lindy Hop",
-    cover: PolishSwingCover,
+    cover: "/assets/images/polish.webp",
     data: [
       {
         src: "https://open.spotify.com/album/66XnsvDO5h60grrk1hpzkG",
-        imageUrl: TagSpotify,
+        imageUrl: "/assets/images/spotify.png",
       },
       {
         src: "https://tidal.com/browse/album/236091664",
-        imageUrl: TagTidal,
+        imageUrl: "/assets/images/tidal.png",
       },
       {
         src: "https://music.youtube.com/playlist?list=OLAK5uy_n6alLLIMeF5-DwTYv1UvoAMrzi1GeIaBY",
-        imageUrl: TagYouTube,
+        imageUrl: "/assets/images/youtube.png",
       },
       {
         src: "https://music.apple.com/pl/album/polish-swing-for-lindy-hop/1632523593",
-        imageUrl: TagAppleMusic,
+        imageUrl: "/assets/images/apple.png",
       },
     ],
   },

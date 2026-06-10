@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 interface ResponsiveLazyImageProps {
   src: string;
@@ -15,13 +15,15 @@ const ImageContainer = styled.div`
   overflow: hidden;
 `;
 
-const Image = styled.img<{ $isLoaded: boolean }>`
+const Image = styled.img<{ $isLoaded: boolean; $loading: "lazy" | "eager" }>`
   width: 100%;
   height: 100%;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(20px);
-  filter: blur(5px);
-  opacity: ${(props) => (props.$isLoaded ? 1 : 0)};
+  transform: ${(props) =>
+    props.$loading === "eager" ? "translateY(0)" : "translateY(20px)"};
+  filter: ${(props) => (props.$loading === "eager" ? "blur(0)" : "blur(5px)")};
+  opacity: ${(props) =>
+    props.$loading === "eager" ? 1 : props.$isLoaded ? 1 : 0};
 
   &.loaded {
     transform: translateY(0);
@@ -152,9 +154,10 @@ export const ResponsiveLazyImage: React.FC<ResponsiveLazyImageProps> = ({
           onError={handleImageError}
           className={imageLoaded ? "loaded" : ""}
           $isLoaded={imageLoaded}
+          $loading={loading}
         />
       )}
-      {!imageLoaded && !imageError && (
+      {loading === "lazy" && !imageLoaded && !imageError && (
         <Placeholder>{inView ? "Loading..." : "📷"}</Placeholder>
       )}
     </ImageContainer>

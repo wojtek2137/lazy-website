@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { colors, fonts, spacing, typography } from "config/theme";
 
 export const ListenUsSection = styled("section")`

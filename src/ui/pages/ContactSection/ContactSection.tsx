@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import {
   ContactHeader,
   ContactHeaderCenter,
 } from "ui/pages/ContactSection/ContactSection.style";
 import { colors, fonts, spacing, typography, shadows } from "config/theme";
-import TagFacebookIcon from "assets/images/facebook-icon.png";
-import TagInstagramIcon from "assets/images/instagram-icon.png";
 
 const breakpoints = [576, 768, 992, 1200];
 const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
@@ -261,7 +259,7 @@ export const SocialIcon = styled("div")`
 `;
 
 interface SocialMediaPropsType {
-  isHover: boolean;
+  $isHover: boolean;
 }
 
 export const SocialMediaImg = styled("img")<SocialMediaPropsType>`
@@ -271,7 +269,7 @@ export const SocialMediaImg = styled("img")<SocialMediaPropsType>`
   cursor: pointer;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   filter: ${(props) =>
-    props.isHover ? "brightness(1.1) saturate(1.2)" : "brightness(0.9)"};
+    props.$isHover ? "brightness(1.1) saturate(1.2)" : "brightness(0.9)"};
   background: transparent !important; /* No background for social icons */
 
   &:hover {
@@ -310,8 +308,8 @@ export function ContactSection() {
                 <SocialMediaImg
                   onMouseEnter={() => setIsFbHover(true)}
                   onMouseLeave={() => setIsFbHover(false)}
-                  src={TagFacebookIcon}
-                  isHover={isFbHover}
+                  src="/assets/images/facebook-icon.png"
+                  $isHover={isFbHover}
                   alt="Logo Facebook - napisz wiadomość do zespołu"
                 />
               </a>
@@ -378,8 +376,8 @@ export function ContactSection() {
                 <SocialMediaImg
                   onMouseEnter={() => setIsIgHover(true)}
                   onMouseLeave={() => setIsIgHover(false)}
-                  src={TagInstagramIcon}
-                  isHover={isIgHover}
+                  src="/assets/images/instagram-icon.png"
+                  $isHover={isIgHover}
                   alt="Logo Instagram - obserwuj nasz profil"
                 />
               </a>
