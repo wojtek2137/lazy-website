@@ -15,20 +15,14 @@ const ImageContainer = styled.div`
   overflow: hidden;
 `;
 
-const Image = styled.img<{ $isLoaded: boolean; $loading: "lazy" | "eager" }>`
+const Image = styled.img<{ $isLoaded: boolean }>`
   width: 100%;
   height: 100%;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: ${(props) =>
-    props.$loading === "eager" ? "translateY(0)" : "translateY(20px)"};
-  filter: ${(props) => (props.$loading === "eager" ? "blur(0)" : "blur(5px)")};
-  opacity: ${(props) =>
-    props.$loading === "eager" ? 1 : props.$isLoaded ? 1 : 0};
-
-  &.loaded {
-    transform: translateY(0);
-    filter: blur(0);
-  }
+  transform: ${({ $isLoaded }) =>
+    $isLoaded ? "translateY(0)" : "translateY(20px)"};
+  filter: ${({ $isLoaded }) => ($isLoaded ? "blur(0)" : "blur(5px)")};
+  opacity: ${({ $isLoaded }) => ($isLoaded ? 1 : 0)};
 `;
 
 const Placeholder = styled.div`
@@ -87,32 +81,16 @@ export const ResponsiveLazyImage: React.FC<ResponsiveLazyImageProps> = ({
   loading = "lazy",
   useResponsive = false,
 }) => {
-  const [inView, setInView] = useState(loading === "eager");
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
 
+  // Handle race condition: image may load before React hydrates and attaches onLoad
   useEffect(() => {
-    if (loading === "eager" || inView) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setInView(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    if (imgRef.current?.complete) {
+      setImageLoaded(true);
     }
-
-    return () => observer.disconnect();
-  }, [loading, inView]);
+  }, []);
 
   const generateSrcSet = (originalSrc: string): string => {
     if (!useResponsive) return "";
@@ -129,37 +107,28 @@ export const ResponsiveLazyImage: React.FC<ResponsiveLazyImageProps> = ({
     ].join(", ");
   };
 
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
-  const handleImageError = () => {
-    setImageError(true);
-    setImageLoaded(true); // Hide placeholder even on error
-  };
-
   return (
-    <ImageContainer ref={containerRef}>
-      {inView && (
-        <Image
-          src={src}
-          alt={alt}
-          srcSet={useResponsive ? generateSrcSet(src) : undefined}
-          sizes={
-            useResponsive
-              ? "(max-width: 400px) 100vw, (max-width: 768px) 50vw, 33vw"
-              : undefined
-          }
-          onLoad={handleImageLoad}
-          onError={handleImageError}
-          className={imageLoaded ? "loaded" : ""}
-          $isLoaded={imageLoaded}
-          $loading={loading}
-        />
-      )}
-      {loading === "lazy" && !imageLoaded && !imageError && (
-        <Placeholder>{inView ? "Loading..." : "📷"}</Placeholder>
-      )}
+    <ImageContainer>
+      <Image
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        loading={loading}
+        decoding="async"
+        srcSet={useResponsive ? generateSrcSet(src) : undefined}
+        sizes={
+          useResponsive
+            ? "(max-width: 400px) 100vw, (max-width: 768px) 50vw, 33vw"
+            : undefined
+        }
+        onLoad={() => setImageLoaded(true)}
+        onError={() => {
+          setImageError(true);
+          setImageLoaded(true);
+        }}
+        $isLoaded={imageLoaded}
+      />
+      {!imageLoaded && !imageError && <Placeholder />}
     </ImageContainer>
   );
 };
