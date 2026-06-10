@@ -1,4 +1,3 @@
-import React from "react";
 import Document, {
   Html,
   Head,
@@ -99,8 +98,10 @@ export default class MyDocument extends Document {
           {/* Preload critical hero image for Core Web Vitals */}
           <link
             rel="preload"
-            href="/images/responsive/homepage-hero.webp"
             as="image"
+            href="/images/responsive/homepage-hero_desktop.webp"
+            imageSrcSet="/images/responsive/homepage-hero_mobile.webp 400w, /images/responsive/homepage-hero_tablet.webp 768w, /images/responsive/homepage-hero_desktop.webp 1200w"
+            imageSizes="(max-width: 400px) 100vw, (max-width: 768px) 50vw, 33vw"
           />
 
           {/* Resource hints */}
