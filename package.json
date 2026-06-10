@@ -13,8 +13,8 @@
     "styled-components": "^6.1.0"
   },
   "scripts": {
-    "predeploy": "next build && cp CNAME out/ && touch out/.nojekyll",
-    "deploy": "gh-pages -d out",
+    "predeploy": "next build && cp CNAME out/",
+    "deploy": "gh-pages -d out --nojekyll",
     "start": "next dev",
     "build": "next build",
     "test": "jest",
