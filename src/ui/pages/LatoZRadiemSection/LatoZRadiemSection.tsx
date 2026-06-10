@@ -139,16 +139,13 @@ export function LatoZRadiemSection() {
     document.body.style.overflow = "";
   }, []);
 
-  const navigateLightbox = useCallback(
-    (direction: "prev" | "next") => {
-      setLightboxIndex((prev) => {
-        if (direction === "prev")
-          return (prev - 1 + carouselSlides.length) % carouselSlides.length;
-        return (prev + 1) % carouselSlides.length;
-      });
-    },
-    []
-  );
+  const navigateLightbox = useCallback((direction: "prev" | "next") => {
+    setLightboxIndex((prev) => {
+      if (direction === "prev")
+        return (prev - 1 + carouselSlides.length) % carouselSlides.length;
+      return (prev + 1) % carouselSlides.length;
+    });
+  }, []);
 
   useEffect(() => {
     if (!lightboxOpen) return;

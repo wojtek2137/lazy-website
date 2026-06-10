@@ -794,7 +794,8 @@ export const LightboxNav = styled("button")<{ $direction: "prev" | "next" }>`
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  ${({ $direction }) => ($direction === "prev" ? "left: 16px;" : "right: 16px;")}
+  ${({ $direction }) =>
+    $direction === "prev" ? "left: 16px;" : "right: 16px;"}
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
