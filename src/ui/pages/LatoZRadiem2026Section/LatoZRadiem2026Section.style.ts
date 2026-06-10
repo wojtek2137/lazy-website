@@ -148,6 +148,9 @@ export const Subtitle = styled("p")`
 export const PosterFrame = styled("div")`
   position: relative;
   width: 100%;
+  /* Actual poster dimensions: 1920×1398 — gives the frame intrinsic height
+     so inner height:100% elements (ResponsiveLazyImage) work on iOS Safari */
+  aspect-ratio: 1920 / 1398;
   border-radius: 20px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.03);
@@ -158,14 +161,10 @@ export const PosterFrame = styled("div")`
     inset 0 1px 0 rgba(255, 255, 255, 0.03);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* ResponsiveLazyImage uses height:100% internally — override for content images */
-  & > div {
-    height: auto;
-  }
-
   img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
     display: block;
   }
 
