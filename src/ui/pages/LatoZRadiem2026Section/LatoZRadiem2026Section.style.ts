@@ -158,12 +158,9 @@ export const PosterFrame = styled("div")`
     inset 0 1px 0 rgba(255, 255, 255, 0.03);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover {
-    transform: translateY(-4px);
-    border-color: ${colors.primary.gold}25;
-    box-shadow:
-      0 30px 70px rgba(0, 0, 0, 0.6),
-      0 0 50px ${colors.primary.gold}12;
+  /* ResponsiveLazyImage uses height:100% internally — override for content images */
+  & > div {
+    height: auto;
   }
 
   img {
@@ -195,6 +192,14 @@ export const PosterFrame = styled("div")`
 
   &:hover::before {
     opacity: 1;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: ${colors.primary.gold}25;
+    box-shadow:
+      0 30px 70px rgba(0, 0, 0, 0.6),
+      0 0 50px ${colors.primary.gold}12;
   }
 
   ${mq[1]} {
